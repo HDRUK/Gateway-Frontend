@@ -10,4 +10,4 @@ const ApolloApp = AppComponent => (
   </ApolloProvider>
 );
 
-return ApolloApp;
+export default ApolloApp;
