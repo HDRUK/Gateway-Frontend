@@ -5,14 +5,14 @@ import './LandingPage.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 
-const GET_MOVIES = gql`
-  query {
-    movie(id: 1) {
-      id
-      title
+const EXCHANGE_RATES = gql`
+  {
+    rates(currency: "USD") {
+      currency
+      rate
     }
   }
-`
+`;
 
 function LandingPage() {
   return (
@@ -32,17 +32,15 @@ function LandingPage() {
         </a>
       </header>
 
-      <Query query={GET_MOVIES}>
+      <Query query={EXCHANGE_RATES}>
         {({ loading, error, data }) => {
           if (loading) return <div>Loading...</div>;
           if (error) {
             console.log(error);
             return <div>Error :(</div>;
           } 
-
-          return (
-            <p>{data.movie.title}</p>
-          )
+          console.log(data.rates);
+          return <p>hello</p>
         }}
       </Query>
     </div>
