@@ -1,10 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './LandingPage.css';
-
+import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
-
+// import { Query } from 'react-apollo';
 import { AppContext } from '../../HOC/AppContext/AppContext.js';
 
 const EXCHANGE_RATES = gql`
@@ -16,41 +15,35 @@ const EXCHANGE_RATES = gql`
   }
 `;
 
-const Counter = () => {
-  let queryResult = '';
-  const countAndRefresh = counterFunc => {
-    counterFunc();
-
-    queryResult = <Query query={EXCHANGE_RATES}>
-      {({ loading, error, data }) => {
-        if (loading) {
-          return <div>Loading...</div>;
-        }
-        if (error) {
-          console.log(error);
-          return <div>Error :(</div>;
-        } 
-        console.log(data.rates);
-        return <p>hello</p>
-      }}
-    </Query>
-
-    return queryResult;
-  }
-  
-  return (
-    <AppContext.Consumer>
-      {appContext => (
-        <div>
-          <p onClick={() => countAndRefresh(appContext.counterFunc)}>{appContext.state.counter}</p>
-          {queryResult}
-        </div>
-      )}
-    </AppContext.Consumer>
-  )
-}
-
 function LandingPage() {
+
+  const Counter = () => {
+    
+    const countAndRefetch = (counterFunc, refetch) => {
+      counterFunc();
+      refetch();
+    }
+
+    const { loading, error, data, refetch } = useQuery(EXCHANGE_RATES);
+    if (loading) return <p>Loading ...</p>;
+    if (error) return <div>Error :(</div>;
+
+    return (
+      <AppContext.Consumer>
+        {appContext => (
+          <div>
+            <p onClick={() =>
+              countAndRefetch(appContext.counterFunc, refetch)}>{appContext.state.counter}
+            </p>
+            {data.rates.map((rate, i) => 
+              <p key={`rate-${i}`}>{rate.currency}: {rate.rate}</p>
+            )}
+          </div>
+        )}
+      </AppContext.Consumer>
+    )
+  }
+
   return (
     <div className="App">
       <header className="App-header">
