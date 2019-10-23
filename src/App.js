@@ -7,11 +7,11 @@ import Apollo from './HOC/Apollo/Apollo.js';
 class App extends React.Component {
   render() {
     return (
-      <AppContext>
-        <Apollo>
-          <LandingPage />
-        </Apollo>
-      </AppContext>
+      <Apollo>
+        <AppContext>
+            <LandingPage />
+        </AppContext>
+      </Apollo>
     )
   }
 }
