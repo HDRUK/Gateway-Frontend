@@ -1,9 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import { create } from "react-test-renderer";
+import App from "./App";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("<App> ", () => {
+    let renderedComponent;
+
+    beforeEach(() => {
+        renderedComponent = create(<App />);
+    });
+
+    it("should test the Panel Snapshot", () => {
+        expect(renderedComponent).toMatchSnapshot();
+    });
 });
