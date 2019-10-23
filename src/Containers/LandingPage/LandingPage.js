@@ -5,7 +5,7 @@ import './LandingPage.css';
 import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 
-import { AppContext } from '../../HOC/Context/Context.js';
+import { AppContext } from '../../HOC/AppContext/AppContext.js';
 
 const EXCHANGE_RATES = gql`
   {
