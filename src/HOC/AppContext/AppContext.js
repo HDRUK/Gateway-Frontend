@@ -5,19 +5,15 @@ export const AppContext = React.createContext();
 export const AppContextConsumer = AppContext.Consumer;
 
 class AppContextProvider extends Component {
-    constructor() {
-        super();
-        this.state = {
-            counter: 0
-        };
-        this.counterFunc = this.counterFunc.bind(this);
-    }
+    state = {
+        counter: 0
+    };
 
-    counterFunc() {
+    counterFunc = () => {
         this.setState({
             counter: this.state.counter + 1
         });
-    }
+    };
 
     render() {
         return (
