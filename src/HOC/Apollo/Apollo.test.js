@@ -2,10 +2,6 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Apollo from "./Apollo";
 
-// import mocks from "../../__mocks__/ApolloMock.js";
-
-// import { MockedProvider } from "@apollo/react-testing";
-
 describe("<Apollo> ", () => {
     let renderedComponent;
 
