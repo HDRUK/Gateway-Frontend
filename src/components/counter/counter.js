@@ -14,12 +14,7 @@ const BOOKS = gql`
 `;
 
 const Counter = () => {
-    const countAndRefetch = (counterFunc, refetch) => {
-        counterFunc();
-        refetch();
-    };
-
-    const { loading, error, data, refetch } = useQuery(BOOKS);
+    const { loading, error, data } = useQuery(BOOKS);
     if (loading) return <p>Loading ...</p>;
     if (error) return <div>Error :(</div>;
 
@@ -27,7 +22,7 @@ const Counter = () => {
         <AppContext.Consumer>
             {appContext => (
                 <div>
-                    <p onClick={() => countAndRefetch(appContext.counterFunc, refetch)}>{appContext.state.counter}</p>
+                    <p onClick={appContext.counterFunc}>{appContext.state.counter}</p>
                     {data.books.map((book, i) => (
                         <p key={`book-${i}`}>
                             {book.title}: {book.author}

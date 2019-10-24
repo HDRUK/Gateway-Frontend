@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LandingPage>  should test the counter loading state snapshot 1`] = `
+exports[`<LandingPage>  load query should test the counter loading state snapshot 1`] = `
 <p>
   Loading ...
 </p>

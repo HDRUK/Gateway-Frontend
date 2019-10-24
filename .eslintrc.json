@@ -14,7 +14,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
-    "plugins": ["react", "babel"],
+    "plugins": ["react"],
     "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
