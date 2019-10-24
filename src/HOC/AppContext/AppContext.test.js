@@ -22,9 +22,7 @@ describe("<AppContextProvider> ", () => {
     });
 
     describe("when counterFunc is called", () => {
-        beforeEach(() => {
-            componentInstance.counterFunc();
-        });
+        componentInstance.counterFunc();
 
         it("should increase state counter by 1", () => {
             expect(componentInstance.state.counter).toEqual(1);

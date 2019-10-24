@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LandingPage>  should test the LandingPage Snapshot 1`] = `
+exports[`<App>  should test the App Snapshot 1`] = `
 <div>
   <p>
     Loading ...
