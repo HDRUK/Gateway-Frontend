@@ -22,9 +22,8 @@ describe("<AppContextProvider> ", () => {
     });
 
     describe("when counterFunc is called", () => {
-        componentInstance.counterFunc();
-
         it("should increase state counter by 1", () => {
+            componentInstance.counterFunc();
             expect(componentInstance.state.counter).toEqual(1);
         });
     });
