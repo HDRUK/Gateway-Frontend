@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ibm/plex": "^3.0.0",
     "carbon-components": "^10.7.1",
     "carbon-components-react": "^7.7.1",
     "carbon-icons": "^7.0.7",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "styled-components": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

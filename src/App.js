@@ -1,19 +1,22 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { Font, ParagraphHeading, Heading, DarkText } from "./styles/styles.js";
+import Paragraph from "./components/paragraph";
+
+const textItems = {
+    headingText: "About the Innovation Gateway",
+    paragraphHeading: "What is the Innovation Gateway",
+    paragraphText:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+};
 
 const App = () => (
-    <div className="App">
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                Learn React
-            </a>
-        </header>
-    </div>
+    <Font>
+        <DarkText>
+            <Heading>{textItems.headingText}</Heading>
+            <ParagraphHeading>{textItems.paragraphHeading}</ParagraphHeading>
+            <Paragraph>{textItems.paragraphText}</Paragraph>
+        </DarkText>
+    </Font>
 );
 
 export default App;
