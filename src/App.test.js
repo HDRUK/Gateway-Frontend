@@ -9,7 +9,7 @@ describe("<App> ", () => {
         renderedComponent = create(<App />);
     });
 
-    it("should test the Panel Snapshot", () => {
+    it("should test the App Snapshot", () => {
         expect(renderedComponent).toMatchSnapshot();
     });
 });
