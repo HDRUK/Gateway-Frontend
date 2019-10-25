@@ -1,3 +1,4 @@
+import { Button } from "carbon-components-react";
 import styled from "styled-components";
 
 const Font = styled.text`
@@ -23,5 +24,15 @@ const ParagraphHeading = styled.h2`
     font-weight: 500;
 `;
 
+const StyledButton = styled(Button)`
+    height: 20px;
+    color: #ffffff;
+    background-color: #0f62fe;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    letter-spacing: 0.16px;
+    weight: 400;
+`;
+
 // const BulletPoints = styled
-export { Font, Heading, ParagraphHeading, ParagraphText, DarkText };
+export { Font, Heading, ParagraphHeading, ParagraphText, DarkText, StyledButton };

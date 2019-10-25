@@ -1,6 +1,7 @@
 import React from "react";
-import { Font, ParagraphHeading, Heading, DarkText } from "../../styles/styles.js";
+import { Font, ParagraphHeading, DarkText } from "../../styles/styles.js";
 import Paragraph from "../../components/paragraph/paragraph";
+import Login from "../../components/login/login";
 
 const textItems = {
     landingHeading: "About the Innovation Gateway",
@@ -11,13 +12,15 @@ const textItems = {
 
 const LandingPage = () => {
     return (
-        <Font>
-            <DarkText>
-                <Heading>{textItems.landingHeading}</Heading>
-                <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
-                <Paragraph>{textItems.landingFirstPara}</Paragraph>
-            </DarkText>
-        </Font>
+        <div>
+            <Login></Login>
+            <Font>
+                <DarkText>
+                    <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
+                </DarkText>
+            </Font>
+            <Paragraph>{textItems.landingFirstPara}</Paragraph>
+        </div>
     );
 };
 
