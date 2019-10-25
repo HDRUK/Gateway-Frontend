@@ -23,5 +23,8 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
-    "rules": {}
+    "parser": "babel-eslint",
+    "rules": {
+        "react/prop-types": "off"
+    }
 }
