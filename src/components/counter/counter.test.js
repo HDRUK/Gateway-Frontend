@@ -40,7 +40,7 @@ describe("<LandingPage> ", () => {
     });
 
     describe("when counter clicked", () => {
-        beforeEach(async () => {
+        beforeAll(async () => {
             await act(async () => await wait(1000));
             const p = renderedComponent.root.findAllByType("p");
             await act(async () => p[0].props.onClick());
@@ -52,7 +52,7 @@ describe("<LandingPage> ", () => {
     });
 
     describe("load failing query", () => {
-        beforeEach(async () => {
+        beforeAll(async () => {
             let errorMocks = mocks;
             errorMocks[0].result = null;
             errorMocks[0].error = new Error("Failed to load query");
