@@ -1,4 +1,6 @@
 import React from "react";
+import styled from "styled-components";
+
 import {
     ParagraphHeading,
     DarkText,
@@ -10,7 +12,8 @@ import {
 } from "../../styles/styles.js";
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
-import styled from "styled-components";
+import NewsTile from "../../components/newsTile/newsTile.js";
+import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway",
@@ -26,7 +29,87 @@ const textItems = {
     thirdBullet: "Lorem ipsum",
     firstLink: "Frequently asked questions",
     secondLink: "Forum",
-    thirdLink: "Get in touch with HDR UK"
+    thirdLink: "Get in touch with HDR UK",
+    newsGroupHeading: "HDR News",
+    newsItems: [
+        {
+            image: "",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        {
+            image: "",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        {
+            image: "",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        }
+    ]
+};
+
+const LandingPage = () => {
+    return (
+        <LandingPageWrapper>
+            <SideStripe />
+            <SideStripeRight />
+            <Login />
+
+            <DarkText>
+                <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
+                <SmallSpace></SmallSpace>
+                <Paragraph>{textItems.landingFirstPara}</Paragraph>
+            </DarkText>
+            <SmallSpace></SmallSpace>
+            <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
+            <SmallSpace></SmallSpace>
+            <NewsTileGroup>
+                <NewsTile
+                    image={textItems.newsItems[0].image}
+                    description={textItems.newsItems[0].description}
+                    readMore={textItems.newsItems[0].readMore}
+                />
+                <NewsTile
+                    image={textItems.newsItems[1].image}
+                    description={textItems.newsItems[1].description}
+                    readMore={textItems.newsItems[1].readMore}
+                />
+                <NewsTile
+                    image={textItems.newsItems[2].image}
+                    description={textItems.newsItems[2].description}
+                    readMore={textItems.newsItems[2].readMore}
+                />
+            </NewsTileGroup>
+            <SmallSpace></SmallSpace>
+            <DarkText>
+                <ParagraphHeading>{textItems.landingSecondParaHeading}</ParagraphHeading>
+                <SmallSpace />
+                <Paragraph>{textItems.landingSecondPara}</Paragraph>
+                <ParagraphBullets>
+                    <NewListItem>{textItems.firstBullet}</NewListItem>
+                    <NewListItem>{textItems.secondBullet}</NewListItem>
+                    <NewListItem>{textItems.thirdBullet}</NewListItem>
+                </ParagraphBullets>
+                <MediumSpace />
+                <ParagraphHeading>{textItems.landingThirdParaHeading}</ParagraphHeading>
+                <SmallSpace />
+                <Paragraph>{textItems.landingThirdPara}</Paragraph>
+            </DarkText>
+            <ParagraphBullets>
+                <NewListItem>
+                    <LinkText>{textItems.firstLink}</LinkText>
+                </NewListItem>
+                <NewListItem>
+                    <LinkText>{textItems.secondLink}</LinkText>
+                </NewListItem>
+                <NewListItem>
+                    <LinkText>{textItems.thirdLink}</LinkText>
+                </NewListItem>
+            </ParagraphBullets>
+        </LandingPageWrapper>
+    );
 };
 
 const LandingPageWrapper = styled.div`
@@ -48,44 +131,5 @@ const SideStripeRight = styled(SideStripe)`
     left: unset;
     right: 0;
 `;
-
-const LandingPage = () => {
-    return (
-        <LandingPageWrapper>
-            <SideStripe />
-            <SideStripeRight />
-            <Login></Login>
-
-            <DarkText>
-                <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
-                <SmallSpace></SmallSpace>
-                <Paragraph>{textItems.landingFirstPara}</Paragraph>
-                <ParagraphHeading>{textItems.landingSecondParaHeading}</ParagraphHeading>
-                <SmallSpace></SmallSpace>
-                <Paragraph>{textItems.landingSecondPara}</Paragraph>
-                <ParagraphBullets>
-                    <NewListItem>{textItems.firstBullet}</NewListItem>
-                    <NewListItem>{textItems.secondBullet}</NewListItem>
-                    <NewListItem>{textItems.thirdBullet}</NewListItem>
-                </ParagraphBullets>
-                <MediumSpace></MediumSpace>
-                <ParagraphHeading>{textItems.landingThirdParaHeading}</ParagraphHeading>
-                <SmallSpace></SmallSpace>
-                <Paragraph>{textItems.landingThirdPara}</Paragraph>
-            </DarkText>
-            <ParagraphBullets>
-                <NewListItem>
-                    <LinkText>{textItems.firstLink}</LinkText>
-                </NewListItem>
-                <NewListItem>
-                    <LinkText>{textItems.secondLink}</LinkText>
-                </NewListItem>
-                <NewListItem>
-                    <LinkText>{textItems.thirdLink}</LinkText>
-                </NewListItem>
-            </ParagraphBullets>
-        </LandingPageWrapper>
-    );
-};
 
 export default LandingPage;

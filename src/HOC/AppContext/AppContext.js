@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export const AppContext = React.createContext();
 
@@ -28,5 +29,9 @@ class AppContextProvider extends Component {
         );
     }
 }
+
+AppContextProvider.propTypes = {
+    children: PropTypes.node
+};
 
 export default AppContextProvider;
