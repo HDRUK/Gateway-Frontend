@@ -117,7 +117,8 @@ const LandingPage = () => {
 
 const LandingPageWrapper = styled.div`
     position: relative;
-    padding: 4rem 4rem 4rem 4rem;
+    // padding: 4rem 4rem 4rem 4rem;
+    padding: 4rem 4rem 4rem 17rem;
     background-color: #ffffff;
 `;
 
