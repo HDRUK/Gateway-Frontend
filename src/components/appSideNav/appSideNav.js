@@ -1,19 +1,32 @@
 import React from "react";
 // import PropTypes from "prop-types";
-import { SideNav, SideNavItems, SideNavLink } from "carbon-components-react";
+import { SideNavItems, SideNavLink } from "carbon-components-react";
+import { MainSideNav, SideStripe, SideNavText, NavHeading, NavText, MenuLine } from "../../styles/styles.js";
 
 const AppSideNav = () => (
-    <SideNav isFixedNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
+    <MainSideNav isFixedNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
+        <NavHeading>Nicola Blackwood</NavHeading>
+        <NavText>UK Government</NavText>
+        <MenuLine></MenuLine>
         <SideNavItems>
-            <SideNavLink href="javascript:void(0)">Search</SideNavLink>
-            <SideNavLink href="javascript:void(0)">My searches</SideNavLink>
-            <SideNavLink href="javascript:void(0)">Browse</SideNavLink>
-            <SideNavLink href="javascript:void(0)">About</SideNavLink>
-            <SideNavLink href="javascript:void(0)">Help</SideNavLink>
+            <SideNavLink>
+                <SideNavText href="javascript:void(0)">Search</SideNavText>
+            </SideNavLink>
+            <SideNavLink>
+                <SideNavText href="javascript:void(0)">My searches</SideNavText>
+            </SideNavLink>
+            <SideNavLink>
+                <SideNavText href="javascript:void(0)">Browse</SideNavText>
+            </SideNavLink>
+            <SideNavLink>
+                <SideNavText href="javascript:void(0)">About</SideNavText>
+            </SideNavLink>
+            <SideNavLink>
+                <SideNavText href="javascript:void(0)">Help</SideNavText>
+            </SideNavLink>
         </SideNavItems>
-    </SideNav>
+        <SideStripe></SideStripe>
+    </MainSideNav>
 );
-
-SideNav.propTypes = {};
 
 export default AppSideNav;

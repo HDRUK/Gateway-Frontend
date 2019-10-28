@@ -8,7 +8,9 @@ import {
     NewListItem,
     LinkText,
     MediumSpace,
-    SmallSpace
+    SmallSpace,
+    SideStripe,
+    LargeSpace
 } from "../../styles/styles.js";
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
@@ -53,8 +55,9 @@ const textItems = {
 const LandingPage = () => {
     return (
         <LandingPageWrapper>
-            <SideStripe />
+            <SideStripeLeft />
             <SideStripeRight />
+            <LargeSpace />
             <Login />
 
             <DarkText>
@@ -118,17 +121,10 @@ const LandingPageWrapper = styled.div`
     background-color: #ffffff;
 `;
 
-const SideStripe = styled.div`
-    position: absolute;
-    top: 0;
+const SideStripeLeft = styled(SideStripe)`
     left: 0;
-    height: 100%;
-    width: 1rem;
-    background-color: #e5e5e5;
 `;
-
 const SideStripeRight = styled(SideStripe)`
-    left: unset;
     right: 0;
 `;
 

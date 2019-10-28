@@ -13,26 +13,29 @@ import GlobalStyle from "./styles/globalStyles.js";
 import hdr_logo_white from "./assets/hdruk_logo_white.png";
 
 class App extends React.Component {
-  render() {
-    return (
-      <Apollo>
-        <AppContext>
-          <AppWrapper>
-            <GlobalStyle />
-            <Header image={hdr_logo_white} />
-            {/* <AppSideNav /> */}
-            <LandingPage />
-            <Footer image={hdr_logo_white} />
-          </AppWrapper>
-        </AppContext>
-      </Apollo>
-    );
-  }
+    render() {
+        return (
+            <Apollo>
+                <AppContext>
+                    <AppWrapper>
+                        <GlobalStyle />
+                        <Header image={hdr_logo_white} />
+                        <AppSideNav />
+
+                        <LandingPage />
+
+                        <Footer image={hdr_logo_white} />
+                    </AppWrapper>
+                </AppContext>
+            </Apollo>
+        );
+    }
 }
 
 const AppWrapper = styled.div`
-  width: 66rem;
-  margin: 0 auto 0;
+    width: 66rem;
+    margin: 0 auto 0;
+    postion: relative;
 `;
 
 export default App;

@@ -1,4 +1,4 @@
-import { Button, UnorderedList } from "carbon-components-react";
+import { Button, UnorderedList, SideNav, SideNavLinkText } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -60,6 +60,43 @@ const StyledButton = styled(Button)`
     width: 215px;
 `;
 
+const MainSideNav = styled(SideNav)`
+    left: unset !important;
+    top: 4rem !important;
+    background-color: #b5bab8;
+    font-size: 1.2rem;
+`;
+const SideNavText = styled(SideNavLinkText)`
+    font-size: 1.2rem !important;
+`;
+
+const NavHeading = styled.p`
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 1rem 0 0 1rem;
+`;
+
+const NavText = styled.p`
+    font-size: 0.8rem;
+    padding: 0 1rem;
+`;
+
+const MenuLine = styled.div`
+    position: relative;
+    width: calc(100% - 3rem);
+    left: 1rem;
+    background-color: #525252;
+    height: 1px;
+    margin: 1rem 0rem 2rem 0rem;
+`;
+
+const SideStripe = styled.div`
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 1rem;
+    background-color: #e5e5e5;
+`;
 export {
     Heading,
     ParagraphHeading,
@@ -72,5 +109,11 @@ export {
     LargeSpace,
     ParagraphBullets,
     NewListItem,
-    LinkText
+    LinkText,
+    MainSideNav,
+    SideStripe,
+    SideNavText,
+    NavHeading,
+    NavText,
+    MenuLine
 };
