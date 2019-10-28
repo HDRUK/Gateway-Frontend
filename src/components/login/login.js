@@ -23,7 +23,9 @@ const Login = () => (
             <CenterBlock>
                 <StyledButton>{textItems.loginButton}</StyledButton>
                 <SmallSpace></SmallSpace>
-                <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                <StyledButton kind="secondary" href="/search">
+                    {textItems.continueButton}
+                </StyledButton>
             </CenterBlock>
             <LargeSpace></LargeSpace>
         </DarkText>

@@ -10,7 +10,7 @@ const AppSideNav = () => (
         <MenuLine></MenuLine>
         <SideNavItems>
             <SideNavLink>
-                <SideNavText href="javascript:void(0)">Search</SideNavText>
+                <SideNavText href="/search">Search</SideNavText>
             </SideNavLink>
             <SideNavLink>
                 <SideNavText href="javascript:void(0)">My searches</SideNavText>
