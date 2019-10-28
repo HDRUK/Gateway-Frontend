@@ -97,6 +97,19 @@ const SideStripe = styled.div`
     width: 1rem;
     background-color: #e5e5e5;
 `;
+
+const LandingPageWrapper = styled.div`
+    position: relative;
+    background-color: #ffffff;
+    padding: 4rem 4rem 4rem 4rem;
+`;
+
+const SideNavPageWrapper = styled.div`
+    position: relative;
+    background-color: #ffffff;
+    padding-left: 15rem;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -115,5 +128,7 @@ export {
     SideNavText,
     NavHeading,
     NavText,
-    MenuLine
+    MenuLine,
+    LandingPageWrapper,
+    SideNavPageWrapper
 };

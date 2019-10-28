@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import Routes from "./Routes";
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
-import AppSideNav from "./components/appSideNav/appSideNav.js";
-import LandingPage from "./Containers/LandingPage/LandingPage.js";
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 
@@ -20,9 +19,8 @@ class App extends React.Component {
                     <AppWrapper>
                         <GlobalStyle />
                         <Header image={hdr_logo_white} />
-                        <AppSideNav />
 
-                        <LandingPage />
+                        <Routes />
 
                         <Footer image={hdr_logo_white} />
                     </AppWrapper>

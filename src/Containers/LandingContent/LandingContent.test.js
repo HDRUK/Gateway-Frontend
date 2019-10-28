@@ -1,6 +1,6 @@
 import React from "react";
 import { create } from "react-test-renderer";
-import LandingPage from "./LandingPage";
+import LandingPage from "./LandingContent";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
