@@ -1,4 +1,4 @@
-import { Button, UnorderedList, Link } from "carbon-components-react";
+import { Button, UnorderedList } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -23,7 +23,9 @@ const NewListItem = styled.li`
     list-style-position: inside;
 `;
 
-const LinkText = styled(Link)``;
+const LinkText = styled.a`
+    text-decoration: underline;
+`;
 
 const Heading = styled.h1`
     font-size: 2.5rem;
