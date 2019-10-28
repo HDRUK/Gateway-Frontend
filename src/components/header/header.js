@@ -1,4 +1,4 @@
-import { Heading, Font } from "../../styles/styles.js";
+import { Heading } from "../../styles/styles.js";
 import React from "react";
 import styled from "styled-components";
 
@@ -33,9 +33,7 @@ const HeaderText = styled(Heading)`
 const Header = props => (
     <HeaderWrapper>
         <HeaderImage src={props.image} />
-        <Font>
-            <HeaderText>{text.headerText}</HeaderText>
-        </Font>
+        <HeaderText>{text.headerText}</HeaderText>
     </HeaderWrapper>
 );
 

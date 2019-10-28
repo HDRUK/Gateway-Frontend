@@ -25,7 +25,7 @@ class App extends React.Component {
                         <GlobalStyle />
                         <Header image={hdr_logo_white} />
                         <LandingPage />
-                        <Footer />
+                        <Footer image={hdr_logo_white} />
                     </AppWrapper>
                 </AppContext>
             </Apollo>

@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         background-color: #3c3c3b;
+        font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
     }
 `;
 
