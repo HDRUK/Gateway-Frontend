@@ -2,12 +2,8 @@ import { Button } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
-const Font = styled.text`
-    font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
-`;
-
 const DarkText = styled.text`
-    color: #454544;
+    color: #3c3c3b;
 `;
 
 const ParagraphText = styled.p`
@@ -25,6 +21,37 @@ const ParagraphHeading = styled.h2`
     font-weight: 500;
 `;
 
-const StyledButton = styled(Button)``;
+const CenterBlock = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
 
-export { Font, Heading, ParagraphHeading, ParagraphText, DarkText, StyledButton };
+const SmallSpace = styled.div`
+    padding: 15px;
+`;
+
+const MediumSpace = styled.div`
+    padding: 30px;
+`;
+
+const LargeSpace = styled.div`
+    padding: 80px;
+`;
+
+const StyledButton = styled(Button)`
+    padding: 15px;
+    width: 215px;
+`;
+
+export {
+    Heading,
+    ParagraphHeading,
+    ParagraphText,
+    DarkText,
+    StyledButton,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace
+};

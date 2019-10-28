@@ -1,4 +1,12 @@
-import { Font, StyledButton, Heading } from "../../styles/styles.js";
+import {
+    StyledButton,
+    Heading,
+    DarkText,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace
+} from "../../styles/styles.js";
 import React from "react";
 
 const textItems = {
@@ -8,15 +16,18 @@ const textItems = {
 };
 
 const Login = () => (
-    <div>
-        <Heading>{textItems.headingText}</Heading>
-        <StyledButton>
-            <Font>{textItems.loginButton}</Font>
-        </StyledButton>
-        <StyledButton kind="secondary">
-            <Font>{textItems.continueButton}</Font>
-        </StyledButton>
-    </div>
+    <CenterBlock>
+        <DarkText>
+            <Heading>{textItems.headingText}</Heading>
+            <MediumSpace></MediumSpace>
+            <CenterBlock>
+                <StyledButton>{textItems.loginButton}</StyledButton>
+                <SmallSpace></SmallSpace>
+                <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+            </CenterBlock>
+            <LargeSpace></LargeSpace>
+        </DarkText>
+    </CenterBlock>
 );
 
 export default Login;
