@@ -1,5 +1,6 @@
 import { Button } from "carbon-components-react";
 import styled from "styled-components";
+import "../carbon-components.css";
 
 const Font = styled.text`
     font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
@@ -16,7 +17,7 @@ const ParagraphText = styled.p`
 
 const Heading = styled.h1`
     font-size: 2.5rem;
-    font-weight: 400;
+    font-weight: 100;
 `;
 
 const ParagraphHeading = styled.h2`
@@ -24,15 +25,6 @@ const ParagraphHeading = styled.h2`
     font-weight: 500;
 `;
 
-const StyledButton = styled(Button)`
-    height: 20px;
-    color: #ffffff;
-    background-color: #0f62fe;
-    font-size: 0.875rem;
-    line-height: 1.125rem;
-    letter-spacing: 0.16px;
-    weight: 400;
-`;
+const StyledButton = styled(Button)``;
 
-// const BulletPoints = styled
 export { Font, Heading, ParagraphHeading, ParagraphText, DarkText, StyledButton };
