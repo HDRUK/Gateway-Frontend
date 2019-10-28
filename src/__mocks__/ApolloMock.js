@@ -1,25 +1,33 @@
 import { gql } from "apollo-boost";
 
-const GET_BOOKS = gql`
+const GET_SEARCH_AUDIT_LOG = gql`
     {
-        books {
+        searchAuditLog {
             __typename
-            title
-            author
+            created_on
+            last_updated
+            search_Detail
+            searchAudit_ID
+            search_user_ID
+            search_end_point
         }
     }
 `;
 
 const mocks = [
     {
-        request: { query: GET_BOOKS },
+        request: { query: GET_SEARCH_AUDIT_LOG },
         result: {
             data: {
-                books: [
+                searchAuditLog: [
                     {
-                        __typename: "Book",
-                        title: "Jurassic Park",
-                        author: "Michael Crichton"
+                        __typename: "SearchAudit_log",
+                        created_on: "1571736386903",
+                        last_updated: "1571736386903",
+                        search_Detail: "https://theapi/thesearch?param1=1",
+                        searchAudit_ID: "1",
+                        search_user_ID: "ANON",
+                        search_end_point: "theapi"
                     }
                 ]
             }

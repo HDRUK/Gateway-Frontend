@@ -10,7 +10,7 @@ import { MockedProvider } from "@apollo/react-testing";
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-describe("<LandingPage> ", () => {
+describe("<Counter> ", () => {
     let renderedComponent;
 
     describe("load query", () => {
@@ -18,9 +18,7 @@ describe("<LandingPage> ", () => {
             act(() => {
                 renderedComponent = create(
                     <MockedProvider mocks={mocks}>
-                        <AppContext.Provider value={context}>
-                            <Counter />
-                        </AppContext.Provider>
+                        <Counter />
                     </MockedProvider>
                 );
             });
@@ -32,22 +30,16 @@ describe("<LandingPage> ", () => {
 
         it("should render the query result", async () => {
             await act(async () => await wait(1000));
-            const p = renderedComponent.root.findAllByType("p");
+            const li = renderedComponent.root.findAllByType("li");
+            console.log("test", renderedComponent.toJSON());
 
-            expect(p[0].props.children).toEqual(0);
-            expect(p[1].props.children).toEqual(["Jurassic Park", ": ", "Michael Crichton"]);
-        });
-    });
+            // expect(h1.props.children).toEqual("1");
 
-    describe("when counter clicked", () => {
-        beforeAll(async () => {
-            await act(async () => await wait(1000));
-            const p = renderedComponent.root.findAllByType("p");
-            await act(async () => p[0].props.onClick());
-        });
-
-        it("should call counterFunc", async () => {
-            expect(context.counterFunc).toHaveBeenCalled();
+            expect(li[0].props.children).toEqual("1571736386903");
+            expect(li[1].props.children).toEqual("1571736386903");
+            expect(li[2].props.children).toEqual("https://theapi/thesearch?param1=1");
+            expect(li[3].props.children).toEqual("ANON");
+            expect(li[4].props.children).toEqual("theapi");
         });
     });
 

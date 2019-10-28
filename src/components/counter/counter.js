@@ -5,6 +5,7 @@ import { gql } from "apollo-boost";
 const GET_SEARCH_AUDIT_LOG = gql`
     {
         searchAuditLog {
+            __typename
             created_on
             last_updated
             search_Detail
