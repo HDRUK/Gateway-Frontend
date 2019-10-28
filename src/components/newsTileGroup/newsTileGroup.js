@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import NewsTile from "../newsTile/newsTile.js";
 
 const NewsTileGroup = props => (
     <Wrapper>
@@ -11,7 +12,11 @@ const NewsTileGroup = props => (
 );
 
 NewsTileGroup.propTypes = {
-    children: PropTypes.arrayOf(PropTypes.node)
+    children: PropTypes.arrayOf(
+        PropTypes.shape({
+            type: PropTypes.oneOf([NewsTile])
+        })
+    ).isRequired
 };
 
 const Wrapper = styled.div``;

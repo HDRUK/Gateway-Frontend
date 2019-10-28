@@ -15,7 +15,7 @@ const Header = props => (
 );
 
 Header.propTypes = {
-    image: PropTypes.string
+    image: PropTypes.string.isRequired
 };
 
 const HeaderWrapper = styled.div`

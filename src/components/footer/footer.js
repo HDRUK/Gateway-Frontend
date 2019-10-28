@@ -33,7 +33,7 @@ const Footer = props => (
 );
 
 Footer.propTypes = {
-    image: PropTypes.string
+    image: PropTypes.string.isRequired
 };
 
 const FooterWrapper = styled.div`

@@ -13,8 +13,8 @@ const NewsTile = props => (
 );
 
 NewsTile.propTypes = {
-    image: PropTypes.string,
-    description: PropTypes.string,
+    image: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
     readMore: PropTypes.string
 };
 
