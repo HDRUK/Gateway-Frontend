@@ -1,4 +1,4 @@
-import { Button } from "carbon-components-react";
+import { Button, UnorderedList, Link } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -10,6 +10,20 @@ const ParagraphText = styled.p`
     font-size: 1.5rem;
     font-weight: 100;
 `;
+
+const ParagraphBullets = styled(UnorderedList)`
+    padding-top: 5px;
+`;
+
+const NewListItem = styled.li`
+    font-size: 1.5rem;
+    font-weight: 100;
+    padding: 5px;
+    list-style-type: disc;
+    list-style-position: inside;
+`;
+
+const LinkText = styled(Link)``;
 
 const Heading = styled.h1`
     font-size: 2.5rem;
@@ -53,5 +67,8 @@ export {
     CenterBlock,
     SmallSpace,
     MediumSpace,
-    LargeSpace
+    LargeSpace,
+    ParagraphBullets,
+    NewListItem,
+    LinkText
 };
