@@ -1,6 +1,18 @@
-// import { Font } from "../../styles/styles.js";
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+
+const NewsTileGroup = props => (
+    <Wrapper>
+        {props.children.map((newsTile, i) => (
+            <NewsTileItem key={`newsTileItem-${i}`}>{newsTile}</NewsTileItem>
+        ))}
+    </Wrapper>
+);
+
+NewsTileGroup.propTypes = {
+    children: PropTypes.arrayOf(PropTypes.node)
+};
 
 const Wrapper = styled.div``;
 
@@ -12,13 +24,5 @@ const NewsTileItem = styled.div`
         margin-right: 0;
     }
 `;
-
-const NewsTileGroup = props => (
-    <Wrapper>
-        {props.children.map((newsTile, i) => (
-            <NewsTileItem key={`newsTileItem-${i}`}>{newsTile}</NewsTileItem>
-        ))}
-    </Wrapper>
-);
 
 export default NewsTileGroup;

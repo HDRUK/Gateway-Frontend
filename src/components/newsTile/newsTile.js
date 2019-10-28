@@ -1,6 +1,22 @@
-// import { Font } from "../../styles/styles.js";
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+
+const NewsTile = props => (
+    <NewsTileWrapper>
+        <ImageSection src={props.image} />
+        <TextSection>
+            <Description>{props.description}</Description>
+            {props.readMore && <ReadMore href={props.readMore}>Read more</ReadMore>}
+        </TextSection>
+    </NewsTileWrapper>
+);
+
+NewsTile.propTypes = {
+    image: PropTypes.string,
+    description: PropTypes.string,
+    readMore: PropTypes.string
+};
 
 const NewsTileWrapper = styled.div`
     display: inline-block;
@@ -29,19 +45,10 @@ const Description = styled.div`
 
 const ReadMore = styled.a`
     display: block;
-    color: blue;
+    color: #2e66a2;
     font-size: 0.8rem;
+    font-weight: 300;
     text-decoration: none;
 `;
-
-const NewsTile = props => (
-    <NewsTileWrapper>
-        <ImageSection src={props.image} />
-        <TextSection>
-            <Description>{props.description}</Description>
-            {props.readMore && <ReadMore href={props.readMore}>Read more</ReadMore>}
-        </TextSection>
-    </NewsTileWrapper>
-);
 
 export default NewsTile;

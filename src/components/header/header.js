@@ -1,9 +1,21 @@
-import { Heading } from "../../styles/styles.js";
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
+import { Heading } from "../../styles/styles.js";
 
 const text = {
     headerText: "Innovation Gateway"
+};
+
+const Header = props => (
+    <HeaderWrapper>
+        <HeaderImage src={props.image} />
+        <HeaderText>{text.headerText}</HeaderText>
+    </HeaderWrapper>
+);
+
+Header.propTypes = {
+    image: PropTypes.string
 };
 
 const HeaderWrapper = styled.div`
@@ -15,7 +27,7 @@ const HeaderWrapper = styled.div`
 
 const HeaderImage = styled.img`
     display: inline-block;
-    max-width: 5rem;
+    max-width: 4.5rem;
     max-height: 3rem;
     margin: 0 3rem 0 4rem;
     vertical-align: middle;
@@ -29,12 +41,5 @@ const HeaderText = styled(Heading)`
     vertical-align: top;
     line-height: 4rem;
 `;
-
-const Header = props => (
-    <HeaderWrapper>
-        <HeaderImage src={props.image} />
-        <HeaderText>{text.headerText}</HeaderText>
-    </HeaderWrapper>
-);
 
 export default Header;

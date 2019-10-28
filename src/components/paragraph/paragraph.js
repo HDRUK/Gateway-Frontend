@@ -1,5 +1,6 @@
-import { Font, ParagraphText, DarkText } from "../../styles/styles.js";
 import React from "react";
+import PropTypes from "prop-types";
+import { Font, ParagraphText, DarkText } from "../../styles/styles.js";
 
 const Paragraph = ({ children }) => (
     <Font>
@@ -8,5 +9,9 @@ const Paragraph = ({ children }) => (
         </DarkText>
     </Font>
 );
+
+Paragraph.propTypes = {
+    children: PropTypes.node
+};
 
 export default Paragraph;

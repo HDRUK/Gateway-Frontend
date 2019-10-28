@@ -11,11 +11,6 @@ import GlobalStyle from "./styles/globalStyles.js";
 
 import hdr_logo_white from "./assets/hdruk_logo_white.png";
 
-const AppWrapper = styled.div`
-    width: 66rem;
-    margin: 0 auto 0;
-`;
-
 class App extends React.Component {
     render() {
         return (
@@ -32,5 +27,10 @@ class App extends React.Component {
         );
     }
 }
+
+const AppWrapper = styled.div`
+    width: 66rem;
+    margin: 0 auto 0;
+`;
 
 export default App;
