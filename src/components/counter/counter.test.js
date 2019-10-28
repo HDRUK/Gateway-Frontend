@@ -31,10 +31,9 @@ describe("<Counter> ", () => {
         it("should render the query result", async () => {
             await act(async () => await wait(1000));
             const li = renderedComponent.root.findAllByType("li");
-            console.log("test", renderedComponent.toJSON());
+            const h1 = renderedComponent.root.findAllByType("h1");
 
-            // expect(h1.props.children).toEqual("1");
-
+            expect(h1[0].props.children).toEqual("1");
             expect(li[0].props.children).toEqual("1571736386903");
             expect(li[1].props.children).toEqual("1571736386903");
             expect(li[2].props.children).toEqual("https://theapi/thesearch?param1=1");
