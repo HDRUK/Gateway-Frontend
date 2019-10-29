@@ -8,6 +8,7 @@ import AppSideNav from "./components/appSideNav/appSideNav.js";
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
+import { SideStripe } from "./styles/styles.js";
 
 import GlobalStyle from "./styles/globalStyles.js";
 
@@ -19,48 +20,46 @@ class App extends React.Component {
             <Apollo>
                 <AppContext>
                     <AppWrapper>
-                        <GlobalStyle />
-                        <Header image={hdr_logo_white} />
                         <BrowserRouter>
-                            <Switch>
-                                <Route exact path="/">
-                                    <PageWrapper>
-                                        <LandingPage />
-                                    </PageWrapper>
-                                </Route>
-                                <Route path="/search">
-                                    <PageWrapper>
-                                        <AppSideNav />
-                                        <div>/search</div>
-                                    </PageWrapper>
-                                </Route>
-                                <Route path="/my-searches">
-                                    <PageWrapper>
-                                        <AppSideNav />
-                                        <div>/my-search</div>
-                                    </PageWrapper>
-                                </Route>
-                                <Route path="/browse">
-                                    <PageWrapper>
-                                        <AppSideNav />
-                                        <div>/browse</div>
-                                    </PageWrapper>
-                                </Route>
-                                <Route path="/about">
-                                    <PageWrapper>
-                                        <AppSideNav />
-                                        <div>/about</div>
-                                    </PageWrapper>
-                                </Route>
-                                <Route path="/help">
-                                    <PageWrapper>
-                                        <AppSideNav />
-                                        <div>/about</div>
-                                    </PageWrapper>
-                                </Route>
-                            </Switch>
+                            <GlobalStyle />
+                            <Header image={hdr_logo_white} />
+                            <PageWrapper>
+                                <Switch>
+                                    <Route exact path="/">
+                                        <ContentWrapper>
+                                            <LandingPage />
+                                        </ContentWrapper>
+                                    </Route>
+                                    <Route path="/search">
+                                        <ContentWrapper nav>
+                                            <div>/search</div>
+                                        </ContentWrapper>
+                                    </Route>
+                                    <Route path="/my-searches">
+                                        <ContentWrapper nav>
+                                            <div>/my-search</div>
+                                        </ContentWrapper>
+                                    </Route>
+                                    <Route path="/browse">
+                                        <ContentWrapper nav>
+                                            <div>/browse</div>
+                                        </ContentWrapper>
+                                    </Route>
+                                    <Route path="/about">
+                                        <ContentWrapper nav>
+                                            <div>/about</div>
+                                        </ContentWrapper>
+                                    </Route>
+                                    <Route path="/help">
+                                        <ContentWrapper nav>
+                                            <div>/help</div>
+                                        </ContentWrapper>
+                                    </Route>
+                                </Switch>
+                            </PageWrapper>
+
+                            <Footer image={hdr_logo_white} />
                         </BrowserRouter>
-                        <Footer image={hdr_logo_white} />
                     </AppWrapper>
                 </AppContext>
             </Apollo>
@@ -75,8 +74,36 @@ const AppWrapper = styled.div`
 
 const PageWrapper = styled.div`
     position: relative;
-    min-height: 50rem;
     overflow: hidden;
+`;
+
+const ContentDiv = styled.div`
+    position: relative;
+    padding: 4rem 4rem 4rem 4rem;
+    background-color: #ffffff;
+    display: inline-block;
+    width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
+    left: ${p => (p.nav ? "16rem" : "0")};
+    min-height: 40rem;
+    vertical-align: top;
+`;
+
+const ContentWrapper = props => (
+    <PageWrapper>
+        {props.nav && <AppSideNav />}
+        <ContentDiv nav={props.nav}>
+            <SideStripeLeft />
+            <SideStripeRight />
+            {props.children}
+        </ContentDiv>
+    </PageWrapper>
+);
+
+const SideStripeLeft = styled(SideStripe)`
+    left: 0;
+`;
+const SideStripeRight = styled(SideStripe)`
+    right: 0;
 `;
 
 export default App;

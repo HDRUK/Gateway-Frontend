@@ -9,6 +9,8 @@ import {
 } from "../../styles/styles.js";
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 const textItems = {
     headingText: "Log in to access our datasets",
     loginButton: "Log in",
@@ -23,7 +25,9 @@ const Login = () => (
             <CenterBlock>
                 <StyledButton>{textItems.loginButton}</StyledButton>
                 <SmallSpace></SmallSpace>
-                <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                <Link to="/search">
+                    <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                </Link>
             </CenterBlock>
             <LargeSpace></LargeSpace>
         </DarkText>

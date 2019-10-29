@@ -8,8 +8,10 @@ import {
     NewListItem,
     LinkText,
     MediumSpace,
-    SmallSpace
+    SmallSpace,
+    LargeSpace
 } from "../../styles/styles.js";
+
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
@@ -53,18 +55,17 @@ const textItems = {
 const LandingPage = () => {
     return (
         <LandingPageWrapper>
-            <SideStripe />
-            <SideStripeRight />
+            <LargeSpace />
             <Login />
 
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
-                <SmallSpace></SmallSpace>
+                <SmallSpace />
                 <Paragraph>{textItems.landingFirstPara}</Paragraph>
             </DarkText>
-            <SmallSpace></SmallSpace>
+            <SmallSpace />
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
-            <SmallSpace></SmallSpace>
+            <SmallSpace />
             <NewsTileGroup>
                 <NewsTile
                     image={textItems.newsItems[0].image}
@@ -82,7 +83,7 @@ const LandingPage = () => {
                     readMore={textItems.newsItems[2].readMore}
                 />
             </NewsTileGroup>
-            <SmallSpace></SmallSpace>
+            <SmallSpace />
             <DarkText>
                 <ParagraphHeading>{textItems.landingSecondParaHeading}</ParagraphHeading>
                 <SmallSpace />
@@ -114,22 +115,6 @@ const LandingPage = () => {
 
 const LandingPageWrapper = styled.div`
     position: relative;
-    padding: 4rem 4rem 4rem 4rem;
-    background-color: #ffffff;
-`;
-
-const SideStripe = styled.div`
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 1rem;
-    background-color: #e5e5e5;
-`;
-
-const SideStripeRight = styled(SideStripe)`
-    left: unset;
-    right: 0;
 `;
 
 export default LandingPage;
