@@ -1,4 +1,4 @@
-import { Button, UnorderedList, SideNavLinkText } from "carbon-components-react";
+import { Button, UnorderedList, SideNavLinkText, Search } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -100,6 +100,19 @@ const SideStripeRight = styled(SideStripe)`
     right: 0;
 `;
 
+const ContentWrapper = styled.div`
+    position: relative;
+    padding: 4rem 4rem 4rem 4rem;
+    background-color: #ffffff;
+    display: inline-block;
+    width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
+    left: ${p => (p.nav ? "16rem" : "0")};
+    min-height: 40rem;
+    vertical-align: top;
+`;
+
+const SearchBar = styled(Search)``;
+
 export {
     Heading,
     ParagraphHeading,
@@ -119,5 +132,7 @@ export {
     SideNavText,
     NavHeading,
     NavText,
-    MenuLine
+    MenuLine,
+    SearchBar,
+    ContentWrapper
 };
