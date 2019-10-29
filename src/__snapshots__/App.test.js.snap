@@ -5,7 +5,8 @@ exports[`<App>  should test the App Snapshot 1`] = `
   className="sc-jlyJG cQVlKh"
 >
   <header
-    className="bx--header sc-eHgmQL snZzi"
+    aria-label="HDR UK Innovation Gateway"
+    className="bx--header sc-cvbbAY gKHbXx"
     role="banner"
   >
     <a
@@ -13,33 +14,33 @@ exports[`<App>  should test the App Snapshot 1`] = `
       onClick={[Function]}
     >
       <img
-        className="sc-cvbbAY eoOpqv"
+        className="sc-jWBwVP elFxSI"
         src="hdruk_logo_white.png"
       />
     </a>
-    <h1
-      className="sc-EHOje sc-jWBwVP hGkMtf"
+    <h2
+      className="sc-bZQynM sc-gzVnrw cmCBHh"
     >
       Innovation Gateway
-    </h1>
+    </h2>
   </header>
   <div
     className="sc-gipzik jNbBzy"
   >
     <div
-      className="sc-chPdSV iiMNDk"
+      className="sc-kgoBCf bVfuFD"
     >
       <div
-        className="sc-jzJRlG sc-cSHVUG jmqzxF"
+        className="sc-cSHVUG sc-kAzzGY bvDSag"
       />
       <div
-        className="sc-jzJRlG sc-kAzzGY eUZgzz"
+        className="sc-cSHVUG sc-chPdSV gyzhhX"
       />
       <div
-        className="sc-dnqmqq IxXZa"
+        className="sc-iwsKbI kOWQtT"
       />
       <div
-        className="sc-gzVnrw ddkUmy"
+        className="sc-htoDjs dtAbCu"
       >
         <text
           className="sc-bdVaJa dcLIZV"
@@ -50,13 +51,13 @@ exports[`<App>  should test the App Snapshot 1`] = `
             Log in to access our datasets
           </h1>
           <div
-            className="sc-dnqmqq IxXZa"
+            className="sc-iwsKbI kOWQtT"
           />
           <div
-            className="sc-gzVnrw ddkUmy"
+            className="sc-htoDjs dtAbCu"
           >
             <button
-              className="sc-gZMcBi jZLWjr bx--btn bx--btn--primary"
+              className="sc-gqjmRU kcJaVK bx--btn bx--btn--primary"
               disabled={false}
               tabIndex={0}
               type="button"
@@ -64,14 +65,14 @@ exports[`<App>  should test the App Snapshot 1`] = `
               Log in
             </button>
             <div
-              className="sc-htoDjs dPlVZm"
+              className="sc-dnqmqq dlGTFF"
             />
             <a
               href="/search"
               onClick={[Function]}
             >
               <button
-                className="sc-gZMcBi jZLWjr bx--btn bx--btn--secondary"
+                className="sc-gqjmRU kcJaVK bx--btn bx--btn--secondary"
                 disabled={false}
                 tabIndex={0}
                 type="button"
@@ -81,7 +82,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
             </a>
           </div>
           <div
-            className="sc-iwsKbI eSJicE"
+            className="sc-gZMcBi jYAjms"
           />
         </text>
       </div>
@@ -94,7 +95,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
           What is the Innovation Gateway
         </h2>
         <div
-          className="sc-htoDjs dPlVZm"
+          className="sc-dnqmqq dlGTFF"
         />
         <text
           className="sc-bdVaJa dcLIZV"
@@ -107,26 +108,26 @@ exports[`<App>  should test the App Snapshot 1`] = `
         </text>
       </text>
       <div
-        className="sc-htoDjs dPlVZm"
+        className="sc-dnqmqq dlGTFF"
       />
       <div
-        className="sc-kkGfuU igLqJb"
+        className="sc-iAyFgw gvVavp"
       >
         <img
-          className="sc-iAyFgw KviLY"
+          className="sc-hSdWYo bVSRdZ"
           src="hdruk_black.png"
         />
         <img
-          className="sc-iAyFgw KviLY"
+          className="sc-hSdWYo bVSRdZ"
           src="hdruk_black.png"
         />
         <img
-          className="sc-iAyFgw KviLY"
+          className="sc-hSdWYo bVSRdZ"
           src="hdruk_black.png"
         />
       </div>
       <div
-        className="sc-htoDjs dPlVZm"
+        className="sc-dnqmqq dlGTFF"
       />
       <h2
         className="sc-bZQynM htZQmN"
@@ -134,31 +135,31 @@ exports[`<App>  should test the App Snapshot 1`] = `
         HDR News
       </h2>
       <div
-        className="sc-htoDjs dPlVZm"
+        className="sc-dnqmqq dlGTFF"
       />
       <div
-        className="sc-hMqMXs cPxEnv"
+        className="sc-kEYyzF gfWKdx"
       >
         <div
-          className="sc-kEYyzF eLpRwF"
+          className="sc-kkGfuU gJHIjr"
         >
           <div
-            className="sc-kpOJdX dozQIn"
+            className="sc-dxgOiQ eJgKXn"
           >
             <div
-              className="sc-dxgOiQ djCWyI"
+              className="sc-ckVGcZ ObcPe"
               src=""
             />
             <div
-              className="sc-ckVGcZ OQpwp"
+              className="sc-jKJlTe kCudHY"
             >
               <div
-                className="sc-jKJlTe jRDNEB"
+                className="sc-eNQAEJ cuBSny"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-eNQAEJ eMaKvB"
+                className="sc-hMqMXs jGyQhK"
                 href="http://localhost:3000"
               >
                 Read more
@@ -167,25 +168,25 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </div>
         </div>
         <div
-          className="sc-kEYyzF eLpRwF"
+          className="sc-kkGfuU gJHIjr"
         >
           <div
-            className="sc-kpOJdX dozQIn"
+            className="sc-dxgOiQ eJgKXn"
           >
             <div
-              className="sc-dxgOiQ djCWyI"
+              className="sc-ckVGcZ ObcPe"
               src=""
             />
             <div
-              className="sc-ckVGcZ OQpwp"
+              className="sc-jKJlTe kCudHY"
             >
               <div
-                className="sc-jKJlTe jRDNEB"
+                className="sc-eNQAEJ cuBSny"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-eNQAEJ eMaKvB"
+                className="sc-hMqMXs jGyQhK"
                 href="http://localhost:3000"
               >
                 Read more
@@ -194,25 +195,25 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </div>
         </div>
         <div
-          className="sc-kEYyzF eLpRwF"
+          className="sc-kkGfuU gJHIjr"
         >
           <div
-            className="sc-kpOJdX dozQIn"
+            className="sc-dxgOiQ eJgKXn"
           >
             <div
-              className="sc-dxgOiQ djCWyI"
+              className="sc-ckVGcZ ObcPe"
               src=""
             />
             <div
-              className="sc-ckVGcZ OQpwp"
+              className="sc-jKJlTe kCudHY"
             >
               <div
-                className="sc-jKJlTe jRDNEB"
+                className="sc-eNQAEJ cuBSny"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-eNQAEJ eMaKvB"
+                className="sc-hMqMXs jGyQhK"
                 href="http://localhost:3000"
               >
                 Read more
@@ -222,7 +223,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-htoDjs dPlVZm"
+        className="sc-dnqmqq dlGTFF"
       />
       <text
         className="sc-bdVaJa dcLIZV"
@@ -233,7 +234,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
           Guidelines for using the Innovation Gateway
         </h2>
         <div
-          className="sc-htoDjs dPlVZm"
+          className="sc-dnqmqq dlGTFF"
         />
         <text
           className="sc-bdVaJa dcLIZV"
@@ -264,7 +265,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </li>
         </ul>
         <div
-          className="sc-dnqmqq IxXZa"
+          className="sc-iwsKbI kOWQtT"
         />
         <h2
           className="sc-bZQynM htZQmN"
@@ -272,7 +273,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
           Help using the Innovation Gateway
         </h2>
         <div
-          className="sc-htoDjs dPlVZm"
+          className="sc-dnqmqq dlGTFF"
         />
         <text
           className="sc-bdVaJa dcLIZV"

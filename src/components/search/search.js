@@ -4,10 +4,10 @@ import { SearchBar, ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from
 const Search = () => (
     <CenterBlock>
         <div>
-            <LargeSpace></LargeSpace>
+            <LargeSpace />
             <ParagraphHeading>What health data do you need? </ParagraphHeading>
-            <SmallSpace></SmallSpace>
-            <SearchBar></SearchBar>
+            <SmallSpace />
+            <SearchBar labelText="Search" />
         </div>
     </CenterBlock>
 );

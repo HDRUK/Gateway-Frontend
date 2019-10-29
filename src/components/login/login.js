@@ -21,15 +21,15 @@ const Login = () => (
     <CenterBlock>
         <DarkText>
             <Heading>{textItems.headingText}</Heading>
-            <MediumSpace></MediumSpace>
+            <MediumSpace />
             <CenterBlock>
-                <StyledButton>{textItems.loginButton}</StyledButton>
-                <SmallSpace></SmallSpace>
+                <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
+                <SmallSpace />
                 <Link to="/search">
                     <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
                 </Link>
             </CenterBlock>
-            <LargeSpace></LargeSpace>
+            <LargeSpace />
         </DarkText>
     </CenterBlock>
 );

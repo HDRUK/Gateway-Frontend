@@ -38,6 +38,10 @@ const ParagraphHeading = styled.h2`
     font-weight: 500;
 `;
 
+const InvertedParagraphHeading = styled(ParagraphHeading)`
+    color: white;
+`;
+
 const CenterBlock = styled.div`
     display: flex;
     align-items: center;
@@ -121,6 +125,7 @@ const LinkNoDecoration = styled(Link)`
 export {
     Heading,
     ParagraphHeading,
+    InvertedParagraphHeading,
     ParagraphText,
     DarkText,
     StyledButton,

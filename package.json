@@ -24,12 +24,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "test:update": "react-scripts test --updateSnapshot",
     "eject": "react-scripts eject",
     "lint": "eslint src/*.js",
     "format": "prettier --check 'src/*.js'",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "update-snapshots": "react-scripts test --updateSnapshot"
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
