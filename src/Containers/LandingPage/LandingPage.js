@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import {
     ParagraphHeading,
@@ -54,7 +53,7 @@ const textItems = {
 
 const LandingPage = () => {
     return (
-        <LandingPageWrapper>
+        <React.Fragment>
             <MediumSpace />
             <Login />
 
@@ -111,12 +110,8 @@ const LandingPage = () => {
                     <LinkText>{textItems.thirdLink}</LinkText>
                 </NewListItem>
             </ParagraphBullets>
-        </LandingPageWrapper>
+        </React.Fragment>
     );
 };
-
-const LandingPageWrapper = styled.div`
-    position: relative;
-`;
 
 export default LandingPage;

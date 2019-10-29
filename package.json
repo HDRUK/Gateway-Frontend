@@ -28,7 +28,8 @@
     "lint": "eslint src/*.js",
     "format": "prettier --check 'src/*.js'",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "updateSnapshots": "react-scripts test --updateSnapshot"
   },
   "eslintConfig": {
     "extends": "react-app"

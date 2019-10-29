@@ -1,3 +1,4 @@
+import React from "react";
 import {
     StyledButton,
     Heading,
@@ -7,7 +8,6 @@ import {
     MediumSpace,
     LargeSpace
 } from "../../styles/styles.js";
-import React from "react";
 
 import { Link } from "react-router-dom";
 

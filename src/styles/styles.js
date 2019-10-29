@@ -1,4 +1,5 @@
 import { Button, UnorderedList, SideNavLinkText, Search } from "carbon-components-react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -113,6 +114,10 @@ const ContentWrapper = styled.div`
 
 const SearchBar = styled(Search)``;
 
+const LinkNoDecoration = styled(Link)`
+    text-decoration: none;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -133,6 +138,7 @@ export {
     NavHeading,
     NavText,
     MenuLine,
+    ContentWrapper,
     SearchBar,
-    ContentWrapper
+    LinkNoDecoration
 };
