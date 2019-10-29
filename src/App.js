@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
@@ -8,7 +9,7 @@ import AppSideNav from "./components/appSideNav/appSideNav.js";
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
-import { SideStripe } from "./styles/styles.js";
+import { SideStripeLeft, SideStripeRight } from "./styles/styles.js";
 
 import GlobalStyle from "./styles/globalStyles.js";
 
@@ -99,11 +100,9 @@ const ContentWrapper = props => (
     </PageWrapper>
 );
 
-const SideStripeLeft = styled(SideStripe)`
-    left: 0;
-`;
-const SideStripeRight = styled(SideStripe)`
-    right: 0;
-`;
+ContentWrapper.propTypes = {
+    nav: PropTypes.bool,
+    children: PropTypes.node
+};
 
 export default App;

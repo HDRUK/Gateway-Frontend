@@ -1,4 +1,4 @@
-import { Button, UnorderedList, SideNav, SideNavLinkText } from "carbon-components-react";
+import { Button, UnorderedList, SideNavLinkText } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -93,6 +93,13 @@ const SideStripe = styled.div`
     background-color: #e5e5e5;
 `;
 
+const SideStripeLeft = styled(SideStripe)`
+    left: 0;
+`;
+const SideStripeRight = styled(SideStripe)`
+    right: 0;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -107,6 +114,8 @@ export {
     NewListItem,
     LinkText,
     SideStripe,
+    SideStripeLeft,
+    SideStripeRight,
     SideNavText,
     NavHeading,
     NavText,
