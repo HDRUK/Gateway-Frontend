@@ -8,14 +8,14 @@ import {
     NewListItem,
     LinkText,
     MediumSpace,
-    SmallSpace,
-    LargeSpace
+    SmallSpace
 } from "../../styles/styles.js";
 
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
+import ImageBlock from "../../components/imageBlock/imageBlock.js";
 
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway",
@@ -55,7 +55,7 @@ const textItems = {
 const LandingPage = () => {
     return (
         <LandingPageWrapper>
-            <LargeSpace />
+            <MediumSpace />
             <Login />
 
             <DarkText>
@@ -63,6 +63,8 @@ const LandingPage = () => {
                 <SmallSpace />
                 <Paragraph>{textItems.landingFirstPara}</Paragraph>
             </DarkText>
+            <SmallSpace />
+            <ImageBlock />
             <SmallSpace />
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
             <SmallSpace />

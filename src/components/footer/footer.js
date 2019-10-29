@@ -17,7 +17,11 @@ const Footer = props => (
                 </a>
             </SocialMediaLogo>
             <SocialMediaLogo>
-                <a href="https://www.linkedin.com/company/healthdataresearchuk/">
+                <a
+                    href="https://www.linkedin.com/company/healthdataresearchuk/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     <LogoLinkedin32 />
                 </a>
             </SocialMediaLogo>
@@ -38,9 +42,10 @@ Footer.propTypes = {
 
 const FooterWrapper = styled.div`
     height: 12rem;
+    padding-bottom: 1rem;
     background-color: rgb(60, 60, 59);
     color: white;
-    padding-left: 6rem;
+    padding-left: 7rem;
     font-size: 1.1rem;
     position: relative;
     z-index: 10000;
@@ -52,7 +57,7 @@ const FooterBlock = styled.div`
     width: 33.33%;
     height: 90%;
     vertical-align: top;
-    padding: 3rem 6rem 0 0;
+    padding: 3rem 5rem 0 0;
 `;
 
 const CopyrightText = styled.text`
@@ -65,8 +70,8 @@ const FooterText = styled.div`
 `;
 
 const FooterImage = styled.img`
-    max-width: 10rem;
-    max-height: 6rem;
+    max-width: 8rem;
+    max-height: 5rem;
 `;
 
 const SocialMediaLogo = styled.div`

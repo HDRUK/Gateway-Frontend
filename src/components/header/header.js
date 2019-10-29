@@ -41,7 +41,6 @@ const HeaderImage = styled.img`
 const HeaderText = styled(Heading)`
     font-weight: 400;
     font-size: 1.5rem;
-    margin-left: 5rem;
 `;
 
 export default AppHeader;
