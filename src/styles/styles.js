@@ -1,4 +1,4 @@
-import { Button, UnorderedList, SideNav, SideNavLinkText } from "carbon-components-react";
+import { Button, UnorderedList, SideNav, SideNavLinkText, Search } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -98,10 +98,18 @@ const SideStripe = styled.div`
     background-color: #e5e5e5;
 `;
 
-const LandingPageWrapper = styled.div`
+const SideStripeLeft = styled(SideStripe)`
+    left: 0;
+`;
+const SideStripeRight = styled(SideStripe)`
+    right: 0;
+`;
+
+const ContentWrapper = styled.div`
     position: relative;
     background-color: #ffffff;
     padding: 4rem 4rem 4rem 4rem;
+    min-height: 50rem;
 `;
 
 const SideNavPageWrapper = styled.div`
@@ -109,6 +117,8 @@ const SideNavPageWrapper = styled.div`
     background-color: #ffffff;
     padding-left: 15rem;
 `;
+
+const SearchBar = styled(Search)``;
 
 export {
     Heading,
@@ -125,10 +135,13 @@ export {
     LinkText,
     MainSideNav,
     SideStripe,
+    SideStripeLeft,
+    SideStripeRight,
     SideNavText,
     NavHeading,
     NavText,
     MenuLine,
-    LandingPageWrapper,
-    SideNavPageWrapper
+    ContentWrapper,
+    SideNavPageWrapper,
+    SearchBar
 };

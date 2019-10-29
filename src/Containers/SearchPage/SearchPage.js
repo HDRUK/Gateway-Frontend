@@ -1,14 +1,18 @@
 import React from "react";
-import LandingContent from "../LandingContent/LandingContent";
 import AppSideNav from "../../components/appSideNav/appSideNav";
-import { SideNavPageWrapper } from "../../styles/styles";
+import Search from "../../components/search/search";
+import { SideNavPageWrapper, ContentWrapper, SideStripeLeft, SideStripeRight } from "../../styles/styles";
 
 const SearchPage = () => {
     return (
         <div>
             <AppSideNav />
             <SideNavPageWrapper>
-                <LandingContent />
+                <ContentWrapper>
+                    <SideStripeLeft />
+                    <SideStripeRight />
+                    <Search></Search>
+                </ContentWrapper>
             </SideNavPageWrapper>
         </div>
     );

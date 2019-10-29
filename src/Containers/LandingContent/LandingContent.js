@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import {
     ParagraphHeading,
@@ -9,9 +8,10 @@ import {
     LinkText,
     MediumSpace,
     SmallSpace,
-    SideStripe,
+    SideStripeLeft,
+    SideStripeRight,
     LargeSpace,
-    LandingPageWrapper
+    ContentWrapper
 } from "../../styles/styles.js";
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
@@ -55,7 +55,7 @@ const textItems = {
 
 const LandingContent = () => {
     return (
-        <LandingPageWrapper>
+        <ContentWrapper>
             <SideStripeLeft />
             <SideStripeRight />
             <LargeSpace />
@@ -112,15 +112,8 @@ const LandingContent = () => {
                     <LinkText>{textItems.thirdLink}</LinkText>
                 </NewListItem>
             </ParagraphBullets>
-        </LandingPageWrapper>
+        </ContentWrapper>
     );
 };
-
-const SideStripeLeft = styled(SideStripe)`
-    left: 0;
-`;
-const SideStripeRight = styled(SideStripe)`
-    right: 0;
-`;
 
 export default LandingContent;

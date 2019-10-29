@@ -9,20 +9,20 @@ const AppSideNav = () => (
         <NavText>UK Government</NavText>
         <MenuLine></MenuLine>
         <SideNavItems>
-            <SideNavLink>
-                <SideNavText href="/search">Search</SideNavText>
+            <SideNavLink href="/search">
+                <SideNavText>Search</SideNavText>
             </SideNavLink>
-            <SideNavLink>
-                <SideNavText href="javascript:void(0)">My searches</SideNavText>
+            <SideNavLink href="javascript:void(0)">
+                <SideNavText>My searches</SideNavText>
             </SideNavLink>
-            <SideNavLink>
-                <SideNavText href="javascript:void(0)">Browse</SideNavText>
+            <SideNavLink href="javascript:void(0)">
+                <SideNavText>Browse</SideNavText>
             </SideNavLink>
-            <SideNavLink>
-                <SideNavText href="javascript:void(0)">About</SideNavText>
+            <SideNavLink href="/about">
+                <SideNavText>About</SideNavText>
             </SideNavLink>
-            <SideNavLink>
-                <SideNavText href="javascript:void(0)">Help</SideNavText>
+            <SideNavLink href="javascript:void(0)">
+                <SideNavText>Help</SideNavText>
             </SideNavLink>
         </SideNavItems>
         <SideStripe></SideStripe>
