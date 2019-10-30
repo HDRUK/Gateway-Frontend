@@ -2,13 +2,36 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../carbon-components.css";
 
-const DarkText = styled.text`
+const Heading = styled.h1`
+    font-size: 2.25rem;
+    font-weight: 100;
+    line-height: 2.7rem;
+`;
+
+const ParagraphHeading = styled.h2`
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.7rem;
     color: #3c3c3b;
 `;
 
+const InvertedParagraphHeading = styled(ParagraphHeading)`
+    color: white;
+`;
+
+const InvertedHeaderHeading = styled(InvertedParagraphHeading)`
+    font-weight: 500;
+`;
+
 const ParagraphText = styled.p`
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 100;
+    line-height: 1.7rem;
+    color: #3c3c3b;
+`;
+
+const DarkText = styled.text`
+    color: #3c3c3b;
 `;
 
 const NewListItem = styled.li`
@@ -21,20 +44,6 @@ const NewListItem = styled.li`
 
 const LinkText = styled.a`
     text-decoration: underline;
-`;
-
-const Heading = styled.h1`
-    font-size: 2.5rem;
-    font-weight: 100;
-`;
-
-const ParagraphHeading = styled.h2`
-    font-size: 1.5rem;
-    font-weight: 500;
-`;
-
-const InvertedParagraphHeading = styled(ParagraphHeading)`
-    color: white;
 `;
 
 const CenterBlock = styled.div`
@@ -110,6 +119,7 @@ export {
     Heading,
     ParagraphHeading,
     InvertedParagraphHeading,
+    InvertedHeaderHeading,
     ParagraphText,
     DarkText,
     CenterBlock,
