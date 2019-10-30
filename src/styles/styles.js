@@ -106,6 +106,39 @@ const LinkNoDecoration = styled(Link)`
     text-decoration: none;
 `;
 
+const NewsTileWrapper = styled.div`
+    display: inline-block;
+    width: 18rem;
+    height: 18rem;
+`;
+
+const ImageSection = styled.div`
+    height: 12rem;
+    background-color: #64696c;
+`;
+
+const TextSection = styled.div`
+    box-sizing: border-box;
+    height: 6rem;
+    background-color: #b5bcbd;
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+`;
+
+const Description = styled.div`
+    height: 3rem;
+    max-height: 3rem;
+`;
+
+const ReadMore = styled.a`
+    display: block;
+    color: #2e66a2;
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-decoration: none;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -125,5 +158,10 @@ export {
     NavText,
     MenuLine,
     ContentWrapper,
-    LinkNoDecoration
+    LinkNoDecoration,
+    NewsTileWrapper,
+    ImageSection,
+    TextSection,
+    Description,
+    ReadMore
 };
