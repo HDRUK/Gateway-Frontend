@@ -24,24 +24,7 @@ const textItems = {
     firstLink: "Frequently asked questions",
     secondLink: "Forum",
     thirdLink: "Get in touch with HDR UK",
-    newsGroupHeading: "HDR News",
-    newsItems: [
-        {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        }
-    ]
+    newsGroupHeading: "HDR News"
 };
 
 const LandingPage = () => {
@@ -61,21 +44,9 @@ const LandingPage = () => {
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
             <SmallSpace />
             <NewsTileGroup>
-                <NewsTile
-                    image={textItems.newsItems[0].image}
-                    description={textItems.newsItems[0].description}
-                    readMore={textItems.newsItems[0].readMore}
-                />
-                <NewsTile
-                    image={textItems.newsItems[1].image}
-                    description={textItems.newsItems[1].description}
-                    readMore={textItems.newsItems[1].readMore}
-                />
-                <NewsTile
-                    image={textItems.newsItems[2].image}
-                    description={textItems.newsItems[2].description}
-                    readMore={textItems.newsItems[2].readMore}
-                />
+                <NewsTile value="newsItemOne" />
+                <NewsTile value="newsItemTwo" />
+                <NewsTile value="newsItemThree" />
             </NewsTileGroup>
             <SmallSpace />
             <DarkText>

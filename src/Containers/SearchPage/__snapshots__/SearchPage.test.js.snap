@@ -17,7 +17,7 @@ exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
       className="sc-dnqmqq dlGTFF"
     />
     <div
-      className="bx--search bx--search--xl sc-kkGfuU gqJIVH"
+      className="bx--search bx--search--xl sc-brqgnP SqPLV"
     >
       <svg
         aria-hidden={true}
@@ -40,13 +40,13 @@ exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
       </svg>
       <label
         className="bx--label"
-        htmlFor="search__input__id_mm1sa9bxdyg"
+        htmlFor="search__input__id_hfghmj87ceh"
       >
         Search
       </label>
       <input
         className="bx--search-input"
-        id="search__input__id_mm1sa9bxdyg"
+        id="search__input__id_hfghmj87ceh"
         onChange={[Function]}
         placeholder=""
         type="text"

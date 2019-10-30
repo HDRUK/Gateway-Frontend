@@ -164,6 +164,28 @@ const ReadMore = styled.a`
     text-decoration: none;
 `;
 
+const ImageBlockWrapper = styled.div`
+    height: 4rem;
+    padding-top: 0.6875rem;
+`;
+
+const SmallImage = styled.img`
+    display: inline-block;
+    max-height: 2.625rem;
+    max-width: 8rem;
+    margin-right: 2rem;
+    vertical-align: center;
+`;
+
+const NewsTileItem = styled.div`
+    display: inline-block;
+    margin-right: 2rem;
+
+    :last-child {
+        margin-right: 0;
+    }
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -192,5 +214,8 @@ export {
     ImageSection,
     TextSection,
     Description,
-    ReadMore
+    ReadMore,
+    ImageBlockWrapper,
+    SmallImage,
+    NewsTileItem
 };
