@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import { InvertedParagraphHeading } from "../../styles/styles.js";
+import { InvertedHeaderHeading } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const AppHeader = props => (
         <Link to="/">
             <HeaderImage src={props.image} />
         </Link>
-        <InvertedParagraphHeading>{text.headerText}</InvertedParagraphHeading>
+        <InvertedHeaderHeading>{text.headerText}</InvertedHeaderHeading>
     </HeaderWrapper>
 );
 

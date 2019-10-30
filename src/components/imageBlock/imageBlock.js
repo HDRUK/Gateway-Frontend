@@ -13,13 +13,16 @@ const ImageBlock = () => (
 );
 
 const ImageBlockWrapper = styled.div`
-    max-height: 6rem;
+    height: 4rem;
+    padding-top: 0.6875rem;
 `;
 
 const SmallImage = styled.img`
     display: inline-block;
+    max-height: 2.625rem;
     max-width: 8rem;
     margin-right: 2rem;
+    vertical-align: center;
 `;
 
 export default ImageBlock;
