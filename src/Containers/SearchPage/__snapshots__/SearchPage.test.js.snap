@@ -2,22 +2,22 @@
 
 exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
 <div
-  className="sc-gzVnrw ddkUmy"
+  className="sc-htoDjs dtAbCu"
 >
   <div>
     <div
-      className="sc-iwsKbI eSJicE"
+      className="sc-gZMcBi jYAjms"
     />
     <h2
-      className="sc-EHOje btWVAQ"
+      className="sc-bwzfXH gshKuR"
     >
       What health data do you need? 
     </h2>
     <div
-      className="sc-htoDjs dPlVZm"
+      className="sc-dnqmqq dlGTFF"
     />
     <div
-      className="bx--search bx--search--xl sc-kEYyzF gfWKdx"
+      className="bx--search bx--search--xl sc-kkGfuU gqJIVH"
     >
       <svg
         aria-hidden={true}
@@ -40,13 +40,13 @@ exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
       </svg>
       <label
         className="bx--label"
-        htmlFor="search__input__id_1jww26axx6v"
+        htmlFor="search__input__id_mm1sa9bxdyg"
       >
         Search
       </label>
       <input
         className="bx--search-input"
-        id="search__input__id_1jww26axx6v"
+        id="search__input__id_mm1sa9bxdyg"
         onChange={[Function]}
         placeholder=""
         type="text"
