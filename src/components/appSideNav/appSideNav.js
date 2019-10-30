@@ -14,37 +14,42 @@ const text = {
     company: "UK Government"
 };
 
+const routes = [
+    {
+        path: "/search",
+        text: text.search
+    },
+    {
+        path: "/my-searches",
+        text: text.mySearches
+    },
+    {
+        path: "/browse",
+        text: text.browse
+    },
+    {
+        path: "/about",
+        text: text.about
+    },
+    {
+        path: "/help",
+        text: text.help
+    }
+];
+
 const AppSideNav = () => (
     <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
         <NavHeading>{text.username}</NavHeading>
         <NavText>{text.company}</NavText>
         <MenuLine></MenuLine>
         <SideNavItems>
-            <LinkNoDecoration to="/search">
-                <SideNavLink>
-                    <SideNavText>{text.search}</SideNavText>
-                </SideNavLink>
-            </LinkNoDecoration>
-            <LinkNoDecoration to="/my-searches">
-                <SideNavLink>
-                    <SideNavText>{text.mySearches}</SideNavText>
-                </SideNavLink>
-            </LinkNoDecoration>
-            <LinkNoDecoration to="/browse">
-                <SideNavLink>
-                    <SideNavText>{text.browse}</SideNavText>
-                </SideNavLink>
-            </LinkNoDecoration>
-            <LinkNoDecoration to="/about">
-                <SideNavLink>
-                    <SideNavText>{text.about}</SideNavText>
-                </SideNavLink>
-            </LinkNoDecoration>
-            <LinkNoDecoration to="/help">
-                <SideNavLink>
-                    <SideNavText>{text.help}</SideNavText>
-                </SideNavLink>
-            </LinkNoDecoration>
+            {routes.map(route => (
+                <LinkNoDecoration to={route.path} key={`route${route.path}`}>
+                    <SideNavLink>
+                        <SideNavText>{route.text}</SideNavText>
+                    </SideNavLink>
+                </LinkNoDecoration>
+            ))}
         </SideNavItems>
     </MainSideNav>
 );
