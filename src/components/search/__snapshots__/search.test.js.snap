@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
+exports[`<Search>  should test the NewsTile Snapshot 1`] = `
 <div
   className="sc-gzVnrw ddkUmy"
 >
@@ -40,13 +40,13 @@ exports[`<SearchPage>  should test the SearchPage Snapshot 1`] = `
       </svg>
       <label
         className="bx--label"
-        htmlFor="search__input__id_1jww26axx6v"
+        htmlFor="search__input__id_gtc5bjv97x"
       >
         Search
       </label>
       <input
         className="bx--search-input"
-        id="search__input__id_1jww26axx6v"
+        id="search__input__id_gtc5bjv97x"
         onChange={[Function]}
         placeholder=""
         type="text"

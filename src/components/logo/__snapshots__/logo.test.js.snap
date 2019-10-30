@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph>  should test the NewsTile Snapshot 1`] = `
+<img
+  src="hdruk_logo_white.png"
+/>
+`;

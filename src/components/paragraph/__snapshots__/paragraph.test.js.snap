@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph>  should test the NewsTile Snapshot 1`] = `
+<text
+  className="sc-bdVaJa dcLIZV"
+>
+  <p
+    className="sc-bwzfXH kcFaQD"
+  />
+</text>
+`;

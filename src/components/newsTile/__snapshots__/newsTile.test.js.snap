@@ -1,18 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login>  should test the NewsTile Snapshot 1`] = `
+exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `
 <div
-  className="sc-bdVaJa fvJigT"
+  className="sc-chPdSV jJIBPJ"
 >
   <div
-    className="sc-bwzfXH hRDmjX"
+    className="sc-kgoBCf bhNzTN"
+    src="test"
   />
   <div
-    className="sc-htpNat bxbeGY"
+    className="sc-kGXeez iBKkUD"
   >
     <div
-      className="sc-bxivhb jkNCyZ"
-    />
+      className="sc-kpOJdX iMDLaJ"
+    >
+      test
+    </div>
+    <a
+      className="sc-dxgOiQ gMhxSk"
+      href="test"
+    >
+      Read more
+    </a>
   </div>
 </div>
 `;
