@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login>  should test the NewsTile Snapshot 1`] = `
+<div
+  className="sc-bdVaJa fvJigT"
+>
+  <div
+    className="sc-bwzfXH hRDmjX"
+  />
+  <div
+    className="sc-htpNat bxbeGY"
+  >
+    <div
+      className="sc-bxivhb jkNCyZ"
+    />
+  </div>
+</div>
+`;

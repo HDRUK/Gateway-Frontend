@@ -1,15 +1,15 @@
-import React from "react";
-import { create } from "react-test-renderer";
-import App from "./App";
+// import React from "react";
+// import { create } from "react-test-renderer";
+// import App from "./App";
 
-describe("<App> ", () => {
-    let renderedComponent;
+// describe("<App> ", () => {
+//     let renderedComponent;
 
-    beforeEach(() => {
-        renderedComponent = create(<App />);
-    });
+//     beforeEach(() => {
+//         renderedComponent = create(<App />);
+//     });
 
-    it("should test the App Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
-});
+//     it("should test the App Snapshot", () => {
+//         expect(renderedComponent).toMatchSnapshot();
+//     });
+// });

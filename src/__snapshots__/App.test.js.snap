@@ -6,7 +6,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
 >
   <header
     aria-label="HDR UK Innovation Gateway"
-    className="bx--header sc-cvbbAY gKHbXx"
+    className="bx--header sc-kGXeez doHzoq"
     role="banner"
   >
     <a
@@ -19,7 +19,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
       />
     </a>
     <h2
-      className="sc-bZQynM sc-gzVnrw cmCBHh"
+      className="sc-EHOje sc-bZQynM hZatYU"
     >
       Innovation Gateway
     </h2>
@@ -28,36 +28,36 @@ exports[`<App>  should test the App Snapshot 1`] = `
     className="sc-gipzik jNbBzy"
   >
     <div
-      className="sc-kgoBCf bVfuFD"
+      className="sc-cSHVUG DKPY"
     >
       <div
-        className="sc-cSHVUG sc-kAzzGY bvDSag"
+        className="sc-jTzLTM sc-fjdhpX dnqlsa"
       />
       <div
-        className="sc-cSHVUG sc-chPdSV gyzhhX"
+        className="sc-jTzLTM sc-jzJRlG bgftAE"
       />
       <div
-        className="sc-iwsKbI kOWQtT"
+        className="sc-dnqmqq IxXZa"
       />
       <div
-        className="sc-htoDjs dtAbCu"
+        className="sc-gzVnrw ddkUmy"
       >
         <text
           className="sc-bdVaJa dcLIZV"
         >
           <h1
-            className="sc-EHOje gmsUV"
+            className="sc-ifAKCX JXinN"
           >
             Log in to access our datasets
           </h1>
           <div
-            className="sc-iwsKbI kOWQtT"
+            className="sc-dnqmqq IxXZa"
           />
           <div
-            className="sc-htoDjs dtAbCu"
+            className="sc-gzVnrw ddkUmy"
           >
             <button
-              className="sc-gqjmRU kcJaVK bx--btn bx--btn--primary"
+              className="sc-chPdSV gsbnkk bx--btn bx--btn--primary"
               disabled={false}
               tabIndex={0}
               type="button"
@@ -65,14 +65,14 @@ exports[`<App>  should test the App Snapshot 1`] = `
               Log in
             </button>
             <div
-              className="sc-dnqmqq dlGTFF"
+              className="sc-htoDjs dPlVZm"
             />
             <a
               href="/search"
               onClick={[Function]}
             >
               <button
-                className="sc-gqjmRU kcJaVK bx--btn bx--btn--secondary"
+                className="sc-chPdSV gsbnkk bx--btn bx--btn--secondary"
                 disabled={false}
                 tabIndex={0}
                 type="button"
@@ -82,7 +82,7 @@ exports[`<App>  should test the App Snapshot 1`] = `
             </a>
           </div>
           <div
-            className="sc-gZMcBi jYAjms"
+            className="sc-iwsKbI eSJicE"
           />
         </text>
       </div>
@@ -90,12 +90,12 @@ exports[`<App>  should test the App Snapshot 1`] = `
         className="sc-bdVaJa dcLIZV"
       >
         <h2
-          className="sc-bZQynM htZQmN"
+          className="sc-EHOje btWVAQ"
         >
           What is the Innovation Gateway
         </h2>
         <div
-          className="sc-dnqmqq dlGTFF"
+          className="sc-htoDjs dPlVZm"
         />
         <text
           className="sc-bdVaJa dcLIZV"
@@ -108,58 +108,58 @@ exports[`<App>  should test the App Snapshot 1`] = `
         </text>
       </text>
       <div
-        className="sc-dnqmqq dlGTFF"
+        className="sc-htoDjs dPlVZm"
       />
       <div
-        className="sc-iAyFgw gvVavp"
+        className="sc-hSdWYo kRYYCy"
       >
         <img
-          className="sc-hSdWYo bVSRdZ"
+          className="sc-eHgmQL bEikCX"
           src="hdruk_black.png"
         />
         <img
-          className="sc-hSdWYo bVSRdZ"
+          className="sc-eHgmQL bEikCX"
           src="hdruk_black.png"
         />
         <img
-          className="sc-hSdWYo bVSRdZ"
+          className="sc-eHgmQL bEikCX"
           src="hdruk_black.png"
         />
       </div>
       <div
-        className="sc-dnqmqq dlGTFF"
+        className="sc-htoDjs dPlVZm"
       />
       <h2
-        className="sc-bZQynM htZQmN"
+        className="sc-EHOje btWVAQ"
       >
         HDR News
       </h2>
       <div
-        className="sc-dnqmqq dlGTFF"
+        className="sc-htoDjs dPlVZm"
       />
       <div
-        className="sc-kEYyzF gfWKdx"
+        className="sc-kkGfuU gqJIVH"
       >
         <div
-          className="sc-kkGfuU gJHIjr"
+          className="sc-iAyFgw dMPTmX"
         >
           <div
-            className="sc-dxgOiQ eJgKXn"
+            className="sc-ckVGcZ eIXOVm"
           >
             <div
-              className="sc-ckVGcZ ObcPe"
+              className="sc-jKJlTe gGQuF"
               src=""
             />
             <div
-              className="sc-jKJlTe kCudHY"
+              className="sc-eNQAEJ duVRZU"
             >
               <div
-                className="sc-eNQAEJ cuBSny"
+                className="sc-hMqMXs fvOwSs"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-hMqMXs jGyQhK"
+                className="sc-kEYyzF kJqNXc"
                 href="http://localhost:3000"
               >
                 Read more
@@ -168,25 +168,25 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </div>
         </div>
         <div
-          className="sc-kkGfuU gJHIjr"
+          className="sc-iAyFgw dMPTmX"
         >
           <div
-            className="sc-dxgOiQ eJgKXn"
+            className="sc-ckVGcZ eIXOVm"
           >
             <div
-              className="sc-ckVGcZ ObcPe"
+              className="sc-jKJlTe gGQuF"
               src=""
             />
             <div
-              className="sc-jKJlTe kCudHY"
+              className="sc-eNQAEJ duVRZU"
             >
               <div
-                className="sc-eNQAEJ cuBSny"
+                className="sc-hMqMXs fvOwSs"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-hMqMXs jGyQhK"
+                className="sc-kEYyzF kJqNXc"
                 href="http://localhost:3000"
               >
                 Read more
@@ -195,25 +195,25 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </div>
         </div>
         <div
-          className="sc-kkGfuU gJHIjr"
+          className="sc-iAyFgw dMPTmX"
         >
           <div
-            className="sc-dxgOiQ eJgKXn"
+            className="sc-ckVGcZ eIXOVm"
           >
             <div
-              className="sc-ckVGcZ ObcPe"
+              className="sc-jKJlTe gGQuF"
               src=""
             />
             <div
-              className="sc-jKJlTe kCudHY"
+              className="sc-eNQAEJ duVRZU"
             >
               <div
-                className="sc-eNQAEJ cuBSny"
+                className="sc-hMqMXs fvOwSs"
               >
                 HDR release news of new partners in exciting new digital project
               </div>
               <a
-                className="sc-hMqMXs jGyQhK"
+                className="sc-kEYyzF kJqNXc"
                 href="http://localhost:3000"
               >
                 Read more
@@ -223,18 +223,18 @@ exports[`<App>  should test the App Snapshot 1`] = `
         </div>
       </div>
       <div
-        className="sc-dnqmqq dlGTFF"
+        className="sc-htoDjs dPlVZm"
       />
       <text
         className="sc-bdVaJa dcLIZV"
       >
         <h2
-          className="sc-bZQynM htZQmN"
+          className="sc-EHOje btWVAQ"
         >
           Guidelines for using the Innovation Gateway
         </h2>
         <div
-          className="sc-dnqmqq dlGTFF"
+          className="sc-htoDjs dPlVZm"
         />
         <text
           className="sc-bdVaJa dcLIZV"
@@ -246,34 +246,34 @@ exports[`<App>  should test the App Snapshot 1`] = `
           </p>
         </text>
         <ul
-          className="bx--list--unordered sc-htpNat cGohxE"
+          className="bx--list--unordered sc-kgoBCf deYyFg"
         >
           <li
-            className="sc-bxivhb lfWzjM"
+            className="sc-htpNat dPAgvF"
           >
             Lorem ipsum
           </li>
           <li
-            className="sc-bxivhb lfWzjM"
+            className="sc-htpNat dPAgvF"
           >
             Lorem ipsum
           </li>
           <li
-            className="sc-bxivhb lfWzjM"
+            className="sc-htpNat dPAgvF"
           >
             Lorem ipsum
           </li>
         </ul>
         <div
-          className="sc-iwsKbI kOWQtT"
+          className="sc-dnqmqq IxXZa"
         />
         <h2
-          className="sc-bZQynM htZQmN"
+          className="sc-EHOje btWVAQ"
         >
           Help using the Innovation Gateway
         </h2>
         <div
-          className="sc-dnqmqq dlGTFF"
+          className="sc-htoDjs dPlVZm"
         />
         <text
           className="sc-bdVaJa dcLIZV"
@@ -286,31 +286,31 @@ exports[`<App>  should test the App Snapshot 1`] = `
         </text>
       </text>
       <ul
-        className="bx--list--unordered sc-htpNat cGohxE"
+        className="bx--list--unordered sc-kgoBCf deYyFg"
       >
         <li
-          className="sc-bxivhb lfWzjM"
+          className="sc-htpNat dPAgvF"
         >
           <a
-            className="sc-ifAKCX lgyFgY"
+            className="sc-bxivhb iLyJYN"
           >
             Frequently asked questions
           </a>
         </li>
         <li
-          className="sc-bxivhb lfWzjM"
+          className="sc-htpNat dPAgvF"
         >
           <a
-            className="sc-ifAKCX lgyFgY"
+            className="sc-bxivhb iLyJYN"
           >
             Forum
           </a>
         </li>
         <li
-          className="sc-bxivhb lfWzjM"
+          className="sc-htpNat dPAgvF"
         >
           <a
-            className="sc-ifAKCX lgyFgY"
+            className="sc-bxivhb iLyJYN"
           >
             Get in touch with HDR UK
           </a>
