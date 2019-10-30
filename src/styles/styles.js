@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../carbon-components.css";
+import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
 const Heading = styled.h1`
     font-size: 2.25rem;
@@ -75,6 +76,10 @@ const NavText = styled.p`
     padding: 0 1rem;
 `;
 
+const TinyText = styled.text`
+    font-size: 0.75rem;
+`;
+
 const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
@@ -115,6 +120,18 @@ const LinkNoDecoration = styled(Link)`
     text-decoration: none;
 `;
 
+const Logo = styled.img.attrs({
+    src: hdruk_logo_white
+})``;
+
+const SocialMediaLogo = styled.div`
+    display: inline-block;
+    max-width: 2rem;
+    max-height: 2rem;
+    fill: #ffffff;
+    margin-right: 0.5rem;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -133,7 +150,10 @@ export {
     SideStripeRight,
     NavHeading,
     NavText,
+    TinyText,
     MenuLine,
     ContentWrapper,
-    LinkNoDecoration
+    LinkNoDecoration,
+    Logo,
+    SocialMediaLogo
 };

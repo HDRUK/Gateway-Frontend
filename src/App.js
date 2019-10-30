@@ -15,8 +15,6 @@ import { SideStripeLeft, SideStripeRight, ContentWrapper } from "./styles/styles
 
 import GlobalStyle from "./styles/globalStyles.js";
 
-import hdr_logo_white from "./assets/hdruk_logo_white.png";
-
 class App extends React.Component {
     render() {
         return (
@@ -25,7 +23,7 @@ class App extends React.Component {
                     <AppWrapper>
                         <BrowserRouter>
                             <GlobalStyle />
-                            <Header image={hdr_logo_white} />
+                            <Header />
                             <Switch>
                                 <Route exact path="/">
                                     <Content>
@@ -58,7 +56,7 @@ class App extends React.Component {
                                     </Content>
                                 </Route>
                             </Switch>
-                            <Footer image={hdr_logo_white} />
+                            <Footer />
                         </BrowserRouter>
                     </AppWrapper>
                 </AppContext>
