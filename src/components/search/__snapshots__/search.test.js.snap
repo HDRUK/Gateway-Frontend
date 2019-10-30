@@ -17,7 +17,7 @@ exports[`<Search>  should test the NewsTile Snapshot 1`] = `
       className="sc-dnqmqq dlGTFF"
     />
     <div
-      className="bx--search bx--search--xl sc-kkGfuU gqJIVH"
+      className="bx--search bx--search--xl sc-eHgmQL gmKbQu"
     >
       <svg
         aria-hidden={true}
@@ -40,13 +40,13 @@ exports[`<Search>  should test the NewsTile Snapshot 1`] = `
       </svg>
       <label
         className="bx--label"
-        htmlFor="search__input__id_47okonzdk46"
+        htmlFor="search__input__id_lfbxosh53u"
       >
         Search
       </label>
       <input
         className="bx--search-input"
-        id="search__input__id_47okonzdk46"
+        id="search__input__id_lfbxosh53u"
         onChange={[Function]}
         placeholder=""
         type="text"

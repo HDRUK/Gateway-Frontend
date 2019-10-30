@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppSideNav>  should test the AppSideNav Snapshot 1`] = `
+Array [
+  <div
+    className="bx--side-nav__overlay bx--side-nav__overlay-active"
+  />,
+  <nav
+    aria-label="Side navigation"
+    className="bx--side-nav__navigation bx--side-nav bx--side-nav--expanded sc-kEYyzF exvBSO"
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <p
+      className="sc-gqjmRU bvaZHa"
+    >
+      Nicola Blackwood
+    </p>
+    <p
+      className="sc-VigVT edmemT"
+    >
+      UK Government
+    </p>
+    <div
+      className="sc-fjdhpX QuAmw"
+    />
+    <ul
+      className="bx--side-nav__items"
+    >
+      <a
+        className="sc-kgoBCf eeeUOF"
+        href="/search"
+        onClick={[Function]}
+      >
+        <li
+          className="bx--side-nav__item"
+        >
+          <a
+            className="bx--side-nav__link"
+          >
+            <span
+              className="bx--side-nav__link-text"
+            >
+              Search
+            </span>
+          </a>
+        </li>
+      </a>
+      <a
+        className="sc-kgoBCf eeeUOF"
+        href="/my-searches"
+        onClick={[Function]}
+      >
+        <li
+          className="bx--side-nav__item"
+        >
+          <a
+            className="bx--side-nav__link"
+          >
+            <span
+              className="bx--side-nav__link-text"
+            >
+              My searches
+            </span>
+          </a>
+        </li>
+      </a>
+      <a
+        className="sc-kgoBCf eeeUOF"
+        href="/browse"
+        onClick={[Function]}
+      >
+        <li
+          className="bx--side-nav__item"
+        >
+          <a
+            className="bx--side-nav__link"
+          >
+            <span
+              className="bx--side-nav__link-text"
+            >
+              Browse
+            </span>
+          </a>
+        </li>
+      </a>
+      <a
+        className="sc-kgoBCf eeeUOF"
+        href="/about"
+        onClick={[Function]}
+      >
+        <li
+          className="bx--side-nav__item"
+        >
+          <a
+            className="bx--side-nav__link"
+          >
+            <span
+              className="bx--side-nav__link-text"
+            >
+              About
+            </span>
+          </a>
+        </li>
+      </a>
+      <a
+        className="sc-kgoBCf eeeUOF"
+        href="/help"
+        onClick={[Function]}
+      >
+        <li
+          className="bx--side-nav__item"
+        >
+          <a
+            className="bx--side-nav__link"
+          >
+            <span
+              className="bx--side-nav__link-text"
+            >
+              Help
+            </span>
+          </a>
+        </li>
+      </a>
+    </ul>
+  </nav>,
+]
+`;

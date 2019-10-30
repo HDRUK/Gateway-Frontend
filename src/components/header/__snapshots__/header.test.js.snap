@@ -3,7 +3,7 @@
 exports[`<Header>  should test the Header Snapshot 1`] = `
 <header
   aria-label="HDR UK Innovation Gateway"
-  className="bx--header sc-hMqMXs dittQq"
+  className="bx--header sc-iAyFgw jdSDYx"
   role="banner"
 >
   <a
@@ -11,7 +11,7 @@ exports[`<Header>  should test the Header Snapshot 1`] = `
     onClick={[Function]}
   >
     <img
-      className="sc-iAyFgw cSfdQN"
+      className="sc-kGXeez sc-cvbbAY eNgMwO"
       src="hdruk_logo_white.png"
     />
   </a>

@@ -23,7 +23,7 @@ Array [
         className="sc-htoDjs dtAbCu"
       >
         <button
-          className="sc-jKJlTe gcTxff bx--btn bx--btn--primary"
+          className="sc-kEYyzF lVXqv bx--btn bx--btn--primary"
           disabled={false}
           tabIndex={0}
           type="button"
@@ -38,7 +38,7 @@ Array [
           onClick={[Function]}
         >
           <button
-            className="sc-jKJlTe gcTxff bx--btn bx--btn--secondary"
+            className="sc-kEYyzF lVXqv bx--btn bx--btn--secondary"
             disabled={false}
             tabIndex={0}
             type="button"
@@ -77,18 +77,18 @@ Array [
     className="sc-dnqmqq dlGTFF"
   />,
   <div
-    className="sc-eHgmQL frYnya"
+    className="sc-brqgnP JRcoz"
   >
     <img
-      className="sc-cvbbAY jRIDIi"
+      className="sc-cMljjf csyKvW"
       src="hdruk_black.png"
     />
     <img
-      className="sc-cvbbAY jRIDIi"
+      className="sc-cMljjf csyKvW"
       src="hdruk_black.png"
     />
     <img
-      className="sc-cvbbAY jRIDIi"
+      className="sc-cMljjf csyKvW"
       src="hdruk_black.png"
     />
   </div>,
@@ -104,28 +104,28 @@ Array [
     className="sc-dnqmqq dlGTFF"
   />,
   <div
-    className="sc-iAyFgw gPlgsX"
+    className="sc-cvbbAY dbHDoR"
   >
     <div
-      className="sc-hSdWYo fSefGi"
+      className="sc-jWBwVP hTUbRn"
     >
       <div
-        className="sc-kgoBCf iJneFj"
+        className="sc-dxgOiQ eJgKXn"
       >
         <div
-          className="sc-kGXeez hMHclY"
+          className="sc-ckVGcZ ObcPe"
           src=""
         />
         <div
-          className="sc-kpOJdX lopmEl"
+          className="sc-jKJlTe kCudHY"
         >
           <div
-            className="sc-dxgOiQ kVLemx"
+            className="sc-eNQAEJ cuBSny"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-ckVGcZ khjznS"
+            className="sc-hMqMXs jGyQhK"
             href="http://localhost:3000"
           >
             Read more
@@ -134,25 +134,25 @@ Array [
       </div>
     </div>
     <div
-      className="sc-hSdWYo fSefGi"
+      className="sc-jWBwVP hTUbRn"
     >
       <div
-        className="sc-kgoBCf iJneFj"
+        className="sc-dxgOiQ eJgKXn"
       >
         <div
-          className="sc-kGXeez hMHclY"
+          className="sc-ckVGcZ ObcPe"
           src=""
         />
         <div
-          className="sc-kpOJdX lopmEl"
+          className="sc-jKJlTe kCudHY"
         >
           <div
-            className="sc-dxgOiQ kVLemx"
+            className="sc-eNQAEJ cuBSny"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-ckVGcZ khjznS"
+            className="sc-hMqMXs jGyQhK"
             href="http://localhost:3000"
           >
             Read more
@@ -161,25 +161,25 @@ Array [
       </div>
     </div>
     <div
-      className="sc-hSdWYo fSefGi"
+      className="sc-jWBwVP hTUbRn"
     >
       <div
-        className="sc-kgoBCf iJneFj"
+        className="sc-dxgOiQ eJgKXn"
       >
         <div
-          className="sc-kGXeez hMHclY"
+          className="sc-ckVGcZ ObcPe"
           src=""
         />
         <div
-          className="sc-kpOJdX lopmEl"
+          className="sc-jKJlTe kCudHY"
         >
           <div
-            className="sc-dxgOiQ kVLemx"
+            className="sc-eNQAEJ cuBSny"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-ckVGcZ khjznS"
+            className="sc-hMqMXs jGyQhK"
             href="http://localhost:3000"
           >
             Read more
@@ -212,7 +212,7 @@ Array [
       </p>
     </text>
     <ul
-      className="bx--list--unordered sc-eNQAEJ bFAWsa"
+      className="bx--list--unordered sc-kkGfuU UpHIy"
     >
       <li
         className="sc-bZQynM hRgGJr"
@@ -252,7 +252,7 @@ Array [
     </text>
   </text>,
   <ul
-    className="bx--list--unordered sc-eNQAEJ bFAWsa"
+    className="bx--list--unordered sc-kkGfuU UpHIy"
   >
     <li
       className="sc-bZQynM hRgGJr"

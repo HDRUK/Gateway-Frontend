@@ -2,26 +2,26 @@
 
 exports[`<Footer>  should test the Footer Snapshot 1`] = `
 <div
-  className="sc-bdVaJa jaEUjp"
+  className="sc-kEYyzF fyTrrC"
 >
   <div
-    className="sc-bwzfXH gsQsKP"
+    className="sc-kkGfuU bVaVjO"
   >
     <img
-      className="sc-ifAKCX kowZQd"
+      className="sc-kGXeez sc-hSdWYo CTPCQ"
       src="hdruk_logo_white.png"
     />
   </div>
   <div
-    className="sc-bwzfXH gsQsKP"
+    className="sc-kkGfuU bVaVjO"
   >
     <div
-      className="sc-bxivhb jnZDft"
+      className="sc-iAyFgw ddZtvk"
     >
       Follow us on social media
     </div>
     <div
-      className="sc-EHOje dLiNxS"
+      className="sc-kpOJdX jePBvI"
     >
       <a
         href="https://twitter.com/HDR_UK"
@@ -49,7 +49,7 @@ exports[`<Footer>  should test the Footer Snapshot 1`] = `
       </a>
     </div>
     <div
-      className="sc-EHOje dLiNxS"
+      className="sc-kpOJdX jePBvI"
     >
       <a
         href="https://www.linkedin.com/company/healthdataresearchuk/"
@@ -78,31 +78,31 @@ exports[`<Footer>  should test the Footer Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="sc-bwzfXH gsQsKP"
+    className="sc-kkGfuU bVaVjO"
   >
     <div
-      className="sc-bxivhb jnZDft"
+      className="sc-iAyFgw ddZtvk"
     >
       Visit the HDR UK Site
     </div>
     <div
-      className="sc-bxivhb jnZDft"
+      className="sc-iAyFgw ddZtvk"
     >
       Contact us
     </div>
     <div
-      className="sc-bxivhb jnZDft"
+      className="sc-iAyFgw ddZtvk"
     >
       Accessibility statement
     </div>
     <div
-      className="sc-bxivhb jnZDft"
+      className="sc-iAyFgw ddZtvk"
     >
       Terms and conditions
     </div>
   </div>
   <text
-    className="sc-htpNat vGQgS"
+    className="sc-jTzLTM iPfJDU"
   >
     ©HDR UK 2019. All rights reserved. | Design and development by IBM IX
   </text>

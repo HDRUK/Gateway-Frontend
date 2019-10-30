@@ -2,22 +2,22 @@
 
 exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `
 <div
-  className="sc-kgoBCf iJneFj"
+  className="sc-dxgOiQ eJgKXn"
 >
   <div
-    className="sc-kGXeez hMHclY"
+    className="sc-ckVGcZ ObcPe"
     src="test"
   />
   <div
-    className="sc-kpOJdX lopmEl"
+    className="sc-jKJlTe kCudHY"
   >
     <div
-      className="sc-dxgOiQ kVLemx"
+      className="sc-eNQAEJ cuBSny"
     >
       test
     </div>
     <a
-      className="sc-ckVGcZ khjznS"
+      className="sc-hMqMXs jGyQhK"
       href="test"
     >
       Read more

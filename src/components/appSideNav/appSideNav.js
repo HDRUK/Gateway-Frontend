@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { SideNav, SideNavItems, SideNavLink } from "carbon-components-react";
 import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
-import { SideNavText } from "../../styles/carbonComponents.js";
 
 const text = {
     search: "Search",
@@ -41,13 +40,11 @@ const AppSideNav = () => (
     <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
         <NavHeading>{text.username}</NavHeading>
         <NavText>{text.company}</NavText>
-        <MenuLine></MenuLine>
+        <MenuLine />
         <SideNavItems>
             {routes.map(route => (
                 <LinkNoDecoration to={route.path} key={`route${route.path}`}>
-                    <SideNavLink>
-                        <SideNavText>{route.text}</SideNavText>
-                    </SideNavLink>
+                    <SideNavLink>{route.text}</SideNavLink>
                 </LinkNoDecoration>
             ))}
         </SideNavItems>

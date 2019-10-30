@@ -19,7 +19,7 @@ exports[`<Login>  should test the Login Snapshot 1`] = `
       className="sc-htoDjs dtAbCu"
     >
       <button
-        className="sc-jKJlTe gcTxff bx--btn bx--btn--primary"
+        className="sc-kEYyzF lVXqv bx--btn bx--btn--primary"
         disabled={false}
         tabIndex={0}
         type="button"
@@ -34,7 +34,7 @@ exports[`<Login>  should test the Login Snapshot 1`] = `
         onClick={[Function]}
       >
         <button
-          className="sc-jKJlTe gcTxff bx--btn bx--btn--secondary"
+          className="sc-kEYyzF lVXqv bx--btn bx--btn--secondary"
           disabled={false}
           tabIndex={0}
           type="button"
