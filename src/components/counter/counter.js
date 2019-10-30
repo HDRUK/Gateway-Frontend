@@ -4,7 +4,7 @@ import { gql } from "apollo-boost";
 
 const GET_SEARCH_AUDIT_LOG = gql`
     {
-        searchAuditLog {
+        getSearchAuditLog {
             __typename
             created_on
             last_updated
@@ -25,7 +25,7 @@ const Counter = () => {
 
     return (
         <div>
-            {data.searchAuditLog.map((log, i) => (
+            {data.getSearchAuditLog.map((log, i) => (
                 <div key={`log-${i}`}>
                     <h1>{log.searchAudit_ID}</h1>
                     <ul>

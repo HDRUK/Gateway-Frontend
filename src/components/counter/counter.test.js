@@ -34,8 +34,8 @@ describe("<Counter> ", () => {
             const h1 = renderedComponent.root.findAllByType("h1");
 
             expect(h1[0].props.children).toEqual("1");
-            expect(li[0].props.children).toEqual("1571736386903");
-            expect(li[1].props.children).toEqual("1571736386903");
+            expect(li[0].props.children).toEqual("2019-10-22 10:26:26.903665+01");
+            expect(li[1].props.children).toEqual("2019-10-22 10:26:26.903665+01");
             expect(li[2].props.children).toEqual("https://theapi/thesearch?param1=1");
             expect(li[3].props.children).toEqual("ANON");
             expect(li[4].props.children).toEqual("theapi");

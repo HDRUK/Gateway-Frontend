@@ -2,7 +2,7 @@ import { gql } from "apollo-boost";
 
 const GET_SEARCH_AUDIT_LOG = gql`
     {
-        searchAuditLog {
+        getSearchAuditLog {
             __typename
             created_on
             last_updated
@@ -19,11 +19,11 @@ const mocks = [
         request: { query: GET_SEARCH_AUDIT_LOG },
         result: {
             data: {
-                searchAuditLog: [
+                getSearchAuditLog: [
                     {
                         __typename: "SearchAudit_log",
-                        created_on: "1571736386903",
-                        last_updated: "1571736386903",
+                        created_on: "2019-10-22 10:26:26.903665+01",
+                        last_updated: "2019-10-22 10:26:26.903665+01",
                         search_Detail: "https://theapi/thesearch?param1=1",
                         searchAudit_ID: "1",
                         search_user_ID: "ANON",
