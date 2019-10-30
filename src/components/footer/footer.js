@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
+import { Logo, SocialMediaLogo, TinyText } from "../../styles/styles.js";
 
 const text = {
     followUs: "Follow us on social media",
@@ -17,10 +17,10 @@ const links = {
     linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/"
 };
 
-const Footer = props => (
+const Footer = () => (
     <FooterWrapper>
         <FooterBlock>
-            <FooterImage src={props.image} />
+            <FooterImage />
         </FooterBlock>
         <FooterBlock>
             <FooterText>{text.followUs}</FooterText>
@@ -41,13 +41,9 @@ const Footer = props => (
             <FooterText>{text.accessibilityStatement}</FooterText>
             <FooterText>{text.termsAndConditions}</FooterText>
         </FooterBlock>
-        <CopyrightText>{text.copyright}</CopyrightText>
+        <TinyText>{text.copyright}</TinyText>
     </FooterWrapper>
 );
-
-Footer.propTypes = {
-    image: PropTypes.string.isRequired
-};
 
 const FooterWrapper = styled.div`
     height: 12rem;
@@ -69,26 +65,14 @@ const FooterBlock = styled.div`
     padding: 3rem 5rem 0 0;
 `;
 
-const CopyrightText = styled.text`
-    font-size: 0.75rem;
-`;
-
 const FooterText = styled.div`
     width: 100%;
     margin: 0 0 0.4rem 0;
 `;
 
-const FooterImage = styled.img`
+const FooterImage = styled(Logo)`
     max-width: 8rem;
     max-height: 5rem;
-`;
-
-const SocialMediaLogo = styled.div`
-    display: inline-block;
-    max-width: 2rem;
-    max-height: 2rem;
-    fill: #ffffff;
-    margin-right: 0.5rem;
 `;
 
 export default Footer;
