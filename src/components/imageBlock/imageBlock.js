@@ -1,5 +1,4 @@
 import React from "react";
-// import PropTypes from "prop-types";
 
 import { ImageBlockWrapper, SmallImage } from "../../styles/styles.js";
 
