@@ -2,22 +2,22 @@
 
 exports[`<Search>  should test the NewsTile Snapshot 1`] = `
 <div
-  className="sc-gzVnrw ddkUmy"
+  className="sc-htoDjs dtAbCu"
 >
   <div>
     <div
-      className="sc-iwsKbI eSJicE"
+      className="sc-gZMcBi jYAjms"
     />
     <h2
-      className="sc-EHOje btWVAQ"
+      className="sc-bwzfXH gshKuR"
     >
       What health data do you need? 
     </h2>
     <div
-      className="sc-htoDjs dPlVZm"
+      className="sc-dnqmqq dlGTFF"
     />
     <div
-      className="bx--search bx--search--xl sc-kEYyzF gfWKdx"
+      className="bx--search bx--search--xl sc-kkGfuU gqJIVH"
     >
       <svg
         aria-hidden={true}
@@ -40,13 +40,13 @@ exports[`<Search>  should test the NewsTile Snapshot 1`] = `
       </svg>
       <label
         className="bx--label"
-        htmlFor="search__input__id_gtc5bjv97x"
+        htmlFor="search__input__id_47okonzdk46"
       >
         Search
       </label>
       <input
         className="bx--search-input"
-        id="search__input__id_gtc5bjv97x"
+        id="search__input__id_47okonzdk46"
         onChange={[Function]}
         placeholder=""
         type="text"

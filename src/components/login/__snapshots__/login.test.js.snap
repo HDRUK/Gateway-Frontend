@@ -2,24 +2,24 @@
 
 exports[`<Login>  should test the Login Snapshot 1`] = `
 <div
-  className="sc-gzVnrw ddkUmy"
+  className="sc-htoDjs dtAbCu"
 >
   <text
-    className="sc-bdVaJa dcLIZV"
+    className="sc-EHOje cUVptH"
   >
     <h1
-      className="sc-ifAKCX JXinN"
+      className="sc-bdVaJa hSReXH"
     >
       Log in to access our datasets
     </h1>
     <div
-      className="sc-dnqmqq IxXZa"
+      className="sc-iwsKbI kOWQtT"
     />
     <div
-      className="sc-gzVnrw ddkUmy"
+      className="sc-htoDjs dtAbCu"
     >
       <button
-        className="sc-ckVGcZ kUBMGk bx--btn bx--btn--primary"
+        className="sc-jKJlTe gcTxff bx--btn bx--btn--primary"
         disabled={false}
         tabIndex={0}
         type="button"
@@ -27,14 +27,14 @@ exports[`<Login>  should test the Login Snapshot 1`] = `
         Log in
       </button>
       <div
-        className="sc-htoDjs dPlVZm"
+        className="sc-dnqmqq dlGTFF"
       />
       <a
         href="/search"
         onClick={[Function]}
       >
         <button
-          className="sc-ckVGcZ kUBMGk bx--btn bx--btn--secondary"
+          className="sc-jKJlTe gcTxff bx--btn bx--btn--secondary"
           disabled={false}
           tabIndex={0}
           type="button"
@@ -44,7 +44,7 @@ exports[`<Login>  should test the Login Snapshot 1`] = `
       </a>
     </div>
     <div
-      className="sc-iwsKbI eSJicE"
+      className="sc-gZMcBi jYAjms"
     />
   </text>
 </div>

@@ -3,27 +3,27 @@
 exports[`<LandingPage>  should test the LandingPage Snapshot 1`] = `
 Array [
   <div
-    className="sc-dnqmqq IxXZa"
+    className="sc-iwsKbI kOWQtT"
   />,
   <div
-    className="sc-gzVnrw ddkUmy"
+    className="sc-htoDjs dtAbCu"
   >
     <text
-      className="sc-bdVaJa dcLIZV"
+      className="sc-EHOje cUVptH"
     >
       <h1
-        className="sc-ifAKCX JXinN"
+        className="sc-bdVaJa hSReXH"
       >
         Log in to access our datasets
       </h1>
       <div
-        className="sc-dnqmqq IxXZa"
+        className="sc-iwsKbI kOWQtT"
       />
       <div
-        className="sc-gzVnrw ddkUmy"
+        className="sc-htoDjs dtAbCu"
       >
         <button
-          className="sc-ckVGcZ kUBMGk bx--btn bx--btn--primary"
+          className="sc-jKJlTe gcTxff bx--btn bx--btn--primary"
           disabled={false}
           tabIndex={0}
           type="button"
@@ -31,14 +31,14 @@ Array [
           Log in
         </button>
         <div
-          className="sc-htoDjs dPlVZm"
+          className="sc-dnqmqq dlGTFF"
         />
         <a
           href="/search"
           onClick={[Function]}
         >
           <button
-            className="sc-ckVGcZ kUBMGk bx--btn bx--btn--secondary"
+            className="sc-jKJlTe gcTxff bx--btn bx--btn--secondary"
             disabled={false}
             tabIndex={0}
             type="button"
@@ -48,84 +48,84 @@ Array [
         </a>
       </div>
       <div
-        className="sc-iwsKbI eSJicE"
+        className="sc-gZMcBi jYAjms"
       />
     </text>
   </div>,
   <text
-    className="sc-bdVaJa dcLIZV"
+    className="sc-EHOje cUVptH"
   >
     <h2
-      className="sc-EHOje btWVAQ"
+      className="sc-bwzfXH gshKuR"
     >
       What is the Innovation Gateway
     </h2>
     <div
-      className="sc-htoDjs dPlVZm"
+      className="sc-dnqmqq dlGTFF"
     />
     <text
-      className="sc-bdVaJa dcLIZV"
+      className="sc-EHOje cUVptH"
     >
       <p
-        className="sc-bwzfXH kcFaQD"
+        className="sc-ifAKCX hSPtPb"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </text>
   </text>,
   <div
-    className="sc-htoDjs dPlVZm"
+    className="sc-dnqmqq dlGTFF"
   />,
   <div
-    className="sc-hSdWYo kRYYCy"
+    className="sc-eHgmQL frYnya"
   >
     <img
-      className="sc-eHgmQL bEikCX"
+      className="sc-cvbbAY jRIDIi"
       src="hdruk_black.png"
     />
     <img
-      className="sc-eHgmQL bEikCX"
+      className="sc-cvbbAY jRIDIi"
       src="hdruk_black.png"
     />
     <img
-      className="sc-eHgmQL bEikCX"
+      className="sc-cvbbAY jRIDIi"
       src="hdruk_black.png"
     />
   </div>,
   <div
-    className="sc-htoDjs dPlVZm"
+    className="sc-dnqmqq dlGTFF"
   />,
   <h2
-    className="sc-EHOje btWVAQ"
+    className="sc-bwzfXH gshKuR"
   >
     HDR News
   </h2>,
   <div
-    className="sc-htoDjs dPlVZm"
+    className="sc-dnqmqq dlGTFF"
   />,
   <div
-    className="sc-kkGfuU gqJIVH"
+    className="sc-iAyFgw gPlgsX"
   >
     <div
-      className="sc-iAyFgw dMPTmX"
+      className="sc-hSdWYo fSefGi"
     >
       <div
-        className="sc-chPdSV jJIBPJ"
+        className="sc-kgoBCf iJneFj"
       >
         <div
-          className="sc-kgoBCf bhNzTN"
+          className="sc-kGXeez hMHclY"
           src=""
         />
         <div
-          className="sc-kGXeez iBKkUD"
+          className="sc-kpOJdX lopmEl"
         >
           <div
-            className="sc-kpOJdX iMDLaJ"
+            className="sc-dxgOiQ kVLemx"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-dxgOiQ gMhxSk"
+            className="sc-ckVGcZ khjznS"
             href="http://localhost:3000"
           >
             Read more
@@ -134,25 +134,25 @@ Array [
       </div>
     </div>
     <div
-      className="sc-iAyFgw dMPTmX"
+      className="sc-hSdWYo fSefGi"
     >
       <div
-        className="sc-chPdSV jJIBPJ"
+        className="sc-kgoBCf iJneFj"
       >
         <div
-          className="sc-kgoBCf bhNzTN"
+          className="sc-kGXeez hMHclY"
           src=""
         />
         <div
-          className="sc-kGXeez iBKkUD"
+          className="sc-kpOJdX lopmEl"
         >
           <div
-            className="sc-kpOJdX iMDLaJ"
+            className="sc-dxgOiQ kVLemx"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-dxgOiQ gMhxSk"
+            className="sc-ckVGcZ khjznS"
             href="http://localhost:3000"
           >
             Read more
@@ -161,25 +161,25 @@ Array [
       </div>
     </div>
     <div
-      className="sc-iAyFgw dMPTmX"
+      className="sc-hSdWYo fSefGi"
     >
       <div
-        className="sc-chPdSV jJIBPJ"
+        className="sc-kgoBCf iJneFj"
       >
         <div
-          className="sc-kgoBCf bhNzTN"
+          className="sc-kGXeez hMHclY"
           src=""
         />
         <div
-          className="sc-kGXeez iBKkUD"
+          className="sc-kpOJdX lopmEl"
         >
           <div
-            className="sc-kpOJdX iMDLaJ"
+            className="sc-dxgOiQ kVLemx"
           >
             HDR release news of new partners in exciting new digital project
           </div>
           <a
-            className="sc-dxgOiQ gMhxSk"
+            className="sc-ckVGcZ khjznS"
             href="http://localhost:3000"
           >
             Read more
@@ -189,94 +189,94 @@ Array [
     </div>
   </div>,
   <div
-    className="sc-htoDjs dPlVZm"
+    className="sc-dnqmqq dlGTFF"
   />,
   <text
-    className="sc-bdVaJa dcLIZV"
+    className="sc-EHOje cUVptH"
   >
     <h2
-      className="sc-EHOje btWVAQ"
+      className="sc-bwzfXH gshKuR"
     >
       Guidelines for using the Innovation Gateway
     </h2>
     <div
-      className="sc-htoDjs dPlVZm"
+      className="sc-dnqmqq dlGTFF"
     />
     <text
-      className="sc-bdVaJa dcLIZV"
+      className="sc-EHOje cUVptH"
     >
       <p
-        className="sc-bwzfXH kcFaQD"
+        className="sc-ifAKCX hSPtPb"
       >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </p>
     </text>
     <ul
-      className="bx--list--unordered sc-jKJlTe qBVAz"
+      className="bx--list--unordered sc-eNQAEJ bFAWsa"
     >
       <li
-        className="sc-htpNat dPAgvF"
+        className="sc-bZQynM hRgGJr"
       >
         Lorem ipsum
       </li>
       <li
-        className="sc-htpNat dPAgvF"
+        className="sc-bZQynM hRgGJr"
       >
         Lorem ipsum
       </li>
       <li
-        className="sc-htpNat dPAgvF"
+        className="sc-bZQynM hRgGJr"
       >
         Lorem ipsum
       </li>
     </ul>
     <div
-      className="sc-dnqmqq IxXZa"
+      className="sc-iwsKbI kOWQtT"
     />
     <h2
-      className="sc-EHOje btWVAQ"
+      className="sc-bwzfXH gshKuR"
     >
       Help using the Innovation Gateway
     </h2>
     <div
-      className="sc-htoDjs dPlVZm"
+      className="sc-dnqmqq dlGTFF"
     />
     <text
-      className="sc-bdVaJa dcLIZV"
+      className="sc-EHOje cUVptH"
     >
       <p
-        className="sc-bwzfXH kcFaQD"
+        className="sc-ifAKCX hSPtPb"
       >
         There are several ways to get help using the Innovation Gateway
       </p>
     </text>
   </text>,
   <ul
-    className="bx--list--unordered sc-jKJlTe qBVAz"
+    className="bx--list--unordered sc-eNQAEJ bFAWsa"
   >
     <li
-      className="sc-htpNat dPAgvF"
+      className="sc-bZQynM hRgGJr"
     >
       <a
-        className="sc-bxivhb iLyJYN"
+        className="sc-gzVnrw hGlsen"
       >
         Frequently asked questions
       </a>
     </li>
     <li
-      className="sc-htpNat dPAgvF"
+      className="sc-bZQynM hRgGJr"
     >
       <a
-        className="sc-bxivhb iLyJYN"
+        className="sc-gzVnrw hGlsen"
       >
         Forum
       </a>
     </li>
     <li
-      className="sc-htpNat dPAgvF"
+      className="sc-bZQynM hRgGJr"
     >
       <a
-        className="sc-bxivhb iLyJYN"
+        className="sc-gzVnrw hGlsen"
       >
         Get in touch with HDR UK
       </a>
