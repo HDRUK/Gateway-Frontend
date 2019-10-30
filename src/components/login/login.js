@@ -1,14 +1,6 @@
 import React from "react";
-import {
-    StyledButton,
-    Heading,
-    DarkText,
-    CenterBlock,
-    SmallSpace,
-    MediumSpace,
-    LargeSpace
-} from "../../styles/styles.js";
-
+import { Heading, DarkText, CenterBlock, SmallSpace, MediumSpace, LargeSpace } from "../../styles/styles.js";
+import { StyledButton } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
 const textItems = {

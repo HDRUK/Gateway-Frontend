@@ -1,5 +1,6 @@
 import React from "react";
-import { SearchBar, ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from "../../styles/styles.js";
+import { ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from "../../styles/styles.js";
+import { SearchBar } from "../../styles/carbonComponents.js";
 
 const Search = () => (
     <CenterBlock>

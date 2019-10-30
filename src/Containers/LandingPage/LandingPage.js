@@ -1,20 +1,13 @@
 import React from "react";
 
-import {
-    ParagraphHeading,
-    DarkText,
-    ParagraphBullets,
-    NewListItem,
-    LinkText,
-    MediumSpace,
-    SmallSpace
-} from "../../styles/styles.js";
-
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
+
+import { ParagraphHeading, DarkText, NewListItem, LinkText, MediumSpace, SmallSpace } from "../../styles/styles.js";
+import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway",

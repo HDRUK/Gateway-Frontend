@@ -1,8 +1,8 @@
 import React from "react";
-// import PropTypes from "prop-types";
-import { SideNav, SideNavItems, SideNavLink } from "carbon-components-react";
 import styled from "styled-components";
-import { SideNavText, NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
+import { SideNav, SideNavItems, SideNavLink } from "carbon-components-react";
+import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
+import { SideNavText } from "../../styles/carbonComponents.js";
 
 const text = {
     search: "Search",

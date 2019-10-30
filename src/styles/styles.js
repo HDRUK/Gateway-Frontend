@@ -1,4 +1,3 @@
-import { Button, UnorderedList, SideNavLinkText, Search } from "carbon-components-react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "../carbon-components.css";
@@ -10,10 +9,6 @@ const DarkText = styled.text`
 const ParagraphText = styled.p`
     font-size: 1.5rem;
     font-weight: 100;
-`;
-
-const ParagraphBullets = styled(UnorderedList)`
-    padding-top: 5px;
 `;
 
 const NewListItem = styled.li`
@@ -58,15 +53,6 @@ const MediumSpace = styled.div`
 
 const LargeSpace = styled.div`
     padding: 80px;
-`;
-
-const StyledButton = styled(Button)`
-    padding: 15px;
-    width: 215px;
-`;
-
-const SideNavText = styled(SideNavLinkText)`
-    font-size: 1.2rem !important;
 `;
 
 const NavHeading = styled.p`
@@ -116,8 +102,6 @@ const ContentWrapper = styled.div`
     vertical-align: top;
 `;
 
-const SearchBar = styled(Search)``;
-
 const LinkNoDecoration = styled(Link)`
     text-decoration: none;
 `;
@@ -128,22 +112,18 @@ export {
     InvertedParagraphHeading,
     ParagraphText,
     DarkText,
-    StyledButton,
     CenterBlock,
     SmallSpace,
     MediumSpace,
     LargeSpace,
-    ParagraphBullets,
     NewListItem,
     LinkText,
     SideStripe,
     SideStripeLeft,
     SideStripeRight,
-    SideNavText,
     NavHeading,
     NavText,
     MenuLine,
     ContentWrapper,
-    SearchBar,
     LinkNoDecoration
 };
