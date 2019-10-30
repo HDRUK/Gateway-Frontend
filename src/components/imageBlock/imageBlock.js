@@ -18,7 +18,6 @@ const ImageBlockWrapper = styled.div`
 
 const SmallImage = styled.img`
     display: inline-block;
-    height: 100%;
     max-width: 8rem;
     margin-right: 2rem;
 `;

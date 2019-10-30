@@ -23,7 +23,7 @@ const Login = () => (
             <Heading>{textItems.headingText}</Heading>
             <MediumSpace></MediumSpace>
             <CenterBlock>
-                <StyledButton>{textItems.loginButton}</StyledButton>
+                <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
                 <SmallSpace></SmallSpace>
                 <Link to="/search">
                     <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>

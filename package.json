@@ -37,7 +37,8 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/**/*.stories.js"
     ]
   },
   "browserslist": {

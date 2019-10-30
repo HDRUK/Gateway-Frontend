@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login>  should test the Login Snapshot 1`] = `
+<div
+  className="sc-gzVnrw ddkUmy"
+>
+  <text
+    className="sc-bdVaJa dcLIZV"
+  >
+    <h1
+      className="sc-EHOje gmsUV"
+    >
+      Log in to access our datasets
+    </h1>
+    <div
+      className="sc-dnqmqq IxXZa"
+    />
+    <div
+      className="sc-gzVnrw ddkUmy"
+    >
+      <button
+        className="sc-gZMcBi jZLWjr bx--btn bx--btn--primary"
+        disabled={false}
+        tabIndex={0}
+        type="button"
+      >
+        Log in
+      </button>
+      <div
+        className="sc-htoDjs dPlVZm"
+      />
+      <a
+        href="/search"
+        onClick={[Function]}
+      >
+        <button
+          className="sc-gZMcBi jZLWjr bx--btn bx--btn--secondary"
+          disabled={false}
+          tabIndex={0}
+          type="button"
+        >
+          Continue without logging in
+        </button>
+      </a>
+    </div>
+    <div
+      className="sc-iwsKbI eSJicE"
+    />
+  </text>
+</div>
+`;
