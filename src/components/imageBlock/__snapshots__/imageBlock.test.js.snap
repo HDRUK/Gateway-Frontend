@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ImageBlock>  should test the NewsTile Snapshot 1`] = `
+<div
+  className="sc-kEYyzF dPKAJW"
+>
+  <img
+    className="sc-kkGfuU dsSJCT"
+    src="hdruk_black.png"
+  />
+  <img
+    className="sc-kkGfuU dsSJCT"
+    src="hdruk_black.png"
+  />
+  <img
+    className="sc-kkGfuU dsSJCT"
+    src="hdruk_black.png"
+  />
+</div>
+`;

@@ -2,21 +2,21 @@
 
 exports[`<Footer>  should test the Footer Snapshot 1`] = `
 <div
-  className="sc-kEYyzF fyTrrC"
+  className="sc-hSdWYo cuoCdb"
 >
   <div
-    className="sc-kkGfuU bVaVjO"
+    className="sc-eHgmQL cHykFZ"
   >
     <img
-      className="sc-kGXeez sc-hSdWYo CTPCQ"
+      className="sc-kGXeez sc-jWBwVP jtuAgN"
       src="hdruk_logo_white.png"
     />
   </div>
   <div
-    className="sc-kkGfuU bVaVjO"
+    className="sc-eHgmQL cHykFZ"
   >
     <div
-      className="sc-iAyFgw ddZtvk"
+      className="sc-cvbbAY eWqCsX"
     >
       Follow us on social media
     </div>
@@ -78,25 +78,25 @@ exports[`<Footer>  should test the Footer Snapshot 1`] = `
     </div>
   </div>
   <div
-    className="sc-kkGfuU bVaVjO"
+    className="sc-eHgmQL cHykFZ"
   >
     <div
-      className="sc-iAyFgw ddZtvk"
+      className="sc-cvbbAY eWqCsX"
     >
       Visit the HDR UK Site
     </div>
     <div
-      className="sc-iAyFgw ddZtvk"
+      className="sc-cvbbAY eWqCsX"
     >
       Contact us
     </div>
     <div
-      className="sc-iAyFgw ddZtvk"
+      className="sc-cvbbAY eWqCsX"
     >
       Accessibility statement
     </div>
     <div
-      className="sc-iAyFgw ddZtvk"
+      className="sc-cvbbAY eWqCsX"
     >
       Terms and conditions
     </div>

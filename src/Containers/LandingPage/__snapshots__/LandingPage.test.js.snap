@@ -23,7 +23,7 @@ Array [
         className="sc-htoDjs dtAbCu"
       >
         <button
-          className="sc-kEYyzF lVXqv bx--btn bx--btn--primary"
+          className="sc-hSdWYo kgbWYs bx--btn bx--btn--primary"
           disabled={false}
           tabIndex={0}
           type="button"
@@ -38,7 +38,7 @@ Array [
           onClick={[Function]}
         >
           <button
-            className="sc-kEYyzF lVXqv bx--btn bx--btn--secondary"
+            className="sc-hSdWYo kgbWYs bx--btn bx--btn--secondary"
             disabled={false}
             tabIndex={0}
             type="button"
@@ -77,18 +77,18 @@ Array [
     className="sc-dnqmqq dlGTFF"
   />,
   <div
-    className="sc-brqgnP JRcoz"
+    className="sc-kEYyzF dPKAJW"
   >
     <img
-      className="sc-cMljjf csyKvW"
+      className="sc-kkGfuU dsSJCT"
       src="hdruk_black.png"
     />
     <img
-      className="sc-cMljjf csyKvW"
+      className="sc-kkGfuU dsSJCT"
       src="hdruk_black.png"
     />
     <img
-      className="sc-cMljjf csyKvW"
+      className="sc-kkGfuU dsSJCT"
       src="hdruk_black.png"
     />
   </div>,
@@ -103,11 +103,9 @@ Array [
   <div
     className="sc-dnqmqq dlGTFF"
   />,
-  <div
-    className="sc-cvbbAY dbHDoR"
-  >
+  <div>
     <div
-      className="sc-jWBwVP hTUbRn"
+      className="sc-iAyFgw dMPTmX"
     >
       <div
         className="sc-dxgOiQ eJgKXn"
@@ -134,7 +132,7 @@ Array [
       </div>
     </div>
     <div
-      className="sc-jWBwVP hTUbRn"
+      className="sc-iAyFgw dMPTmX"
     >
       <div
         className="sc-dxgOiQ eJgKXn"
@@ -161,7 +159,7 @@ Array [
       </div>
     </div>
     <div
-      className="sc-jWBwVP hTUbRn"
+      className="sc-iAyFgw dMPTmX"
     >
       <div
         className="sc-dxgOiQ eJgKXn"
@@ -212,7 +210,7 @@ Array [
       </p>
     </text>
     <ul
-      className="bx--list--unordered sc-kkGfuU UpHIy"
+      className="bx--list--unordered sc-eHgmQL bPaHwg"
     >
       <li
         className="sc-bZQynM hRgGJr"
@@ -252,7 +250,7 @@ Array [
     </text>
   </text>,
   <ul
-    className="bx--list--unordered sc-kkGfuU UpHIy"
+    className="bx--list--unordered sc-eHgmQL bPaHwg"
   >
     <li
       className="sc-bZQynM hRgGJr"
