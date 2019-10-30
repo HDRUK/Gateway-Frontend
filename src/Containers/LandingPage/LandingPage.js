@@ -1,21 +1,13 @@
 import React from "react";
-import styled from "styled-components";
-
-import {
-    ParagraphHeading,
-    DarkText,
-    ParagraphBullets,
-    NewListItem,
-    LinkText,
-    MediumSpace,
-    SmallSpace
-} from "../../styles/styles.js";
 
 import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
+
+import { ParagraphHeading, DarkText, NewListItem, LinkText, MediumSpace, SmallSpace } from "../../styles/styles.js";
+import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway",
@@ -54,7 +46,7 @@ const textItems = {
 
 const LandingPage = () => {
     return (
-        <LandingPageWrapper>
+        <React.Fragment>
             <MediumSpace />
             <Login />
 
@@ -111,12 +103,8 @@ const LandingPage = () => {
                     <LinkText>{textItems.thirdLink}</LinkText>
                 </NewListItem>
             </ParagraphBullets>
-        </LandingPageWrapper>
+        </React.Fragment>
     );
 };
-
-const LandingPageWrapper = styled.div`
-    position: relative;
-`;
 
 export default LandingPage;

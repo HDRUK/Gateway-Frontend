@@ -1,13 +1,14 @@
 import React from "react";
-import { SearchBar, ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from "../../styles/styles.js";
+import { ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from "../../styles/styles.js";
+import { SearchBar } from "../../styles/carbonComponents.js";
 
 const Search = () => (
     <CenterBlock>
         <div>
-            <LargeSpace></LargeSpace>
+            <LargeSpace />
             <ParagraphHeading>What health data do you need? </ParagraphHeading>
-            <SmallSpace></SmallSpace>
-            <SearchBar></SearchBar>
+            <SmallSpace />
+            <SearchBar labelText="Search" />
         </div>
     </CenterBlock>
 );

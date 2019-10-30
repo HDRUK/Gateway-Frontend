@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header>  should test the Header Snapshot 1`] = `
+<header
+  aria-label="HDR UK Innovation Gateway"
+  className="bx--header sc-dxgOiQ cYPdwU"
+  role="banner"
+>
+  <a
+    href="/"
+    onClick={[Function]}
+  >
+    <img
+      className="sc-ckVGcZ bkPxdO"
+      src="hdruk_logo_white.png"
+    />
+  </a>
+  <h2
+    className="sc-bZQynM sc-gzVnrw cmCBHh"
+  >
+    Innovation Gateway
+  </h2>
+</header>
+`;
