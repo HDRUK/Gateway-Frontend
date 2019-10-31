@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
-import { SideNav, SideNavItems, SideNavLink } from "carbon-components-react";
+import { SideNavItems, SideNavLink } from "carbon-components-react";
 import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
+import { MainSideNav } from "../../styles/carbonComponents";
 
 const text = {
     search: "Search",
@@ -50,12 +50,5 @@ const AppSideNav = () => (
         </SideNavItems>
     </MainSideNav>
 );
-
-const MainSideNav = styled(SideNav)`
-    display: inline-block;
-    position: absolute;
-    background-color: #b5bab8;
-    font-size: 1.2rem;
-`;
 
 export default AppSideNav;
