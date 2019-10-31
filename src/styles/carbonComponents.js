@@ -1,4 +1,4 @@
-import { Button, UnorderedList, Header, SideNavLinkText, Search } from "carbon-components-react";
+import { Button, UnorderedList, Header, SideNavLinkText, Search, SideNav } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -24,3 +24,10 @@ export const SideNavText = styled(SideNavLinkText)`
 `;
 
 export const SearchBar = styled(Search)``;
+
+export const MainSideNav = styled(SideNav)`
+    display: inline-block;
+    position: absolute;
+    background-color: #b5bab8;
+    font-size: 1.2rem;
+`;
