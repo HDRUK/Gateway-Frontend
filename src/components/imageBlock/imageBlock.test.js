@@ -22,7 +22,7 @@ describe("<ImageBlock> ", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    it("should check the correct style elements are displayed", () => {
+    it("should check the correct elements are displayed", () => {
         const imageBlockWrapper = renderedOutput.findAllByType(ImageBlockWrapper);
         const smallImage = renderedOutput.findAllByType(SmallImage);
 

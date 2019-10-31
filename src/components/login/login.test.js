@@ -2,6 +2,9 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Login from "./Login";
 import { MemoryRouter } from "react-router-dom";
+import { CenterBlock, DarkText, Heading, MediumSpace, SmallSpace, LargeSpace } from "../../styles/styles.js";
+import { StyledButton } from "../../styles/carbonComponents.js";
+import { Link } from "react-router-dom";
 
 describe("<Login> ", () => {
     let renderedComponent;
@@ -16,16 +19,30 @@ describe("<Login> ", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    describe("when the continue button is clicked", () => {
-        it("should have the correct distination", () => {
-            expect(renderedOutput.findByType("a").props.href).toBe("/search");
+    describe("when the login block is rendered", () => {
+        it("the continue button should have the correct destination", () => {
+            const links = renderedOutput.findAllByType("a");
+            const continueDestination = links[0].props.href;
+            expect(continueDestination).toBe("/search");
         });
-        it("should call the continue function", () => {
-            const props = renderedOutput.findByType("a").props;
-            const mockFn = jest.fn();
-            props.onClick = mockFn;
-            props.onClick();
-            expect(mockFn).toHaveBeenCalled();
+        it("should render the correct components", () => {
+            const centerBlocks = renderedOutput.findAllByType(CenterBlock);
+            const darkText = renderedOutput.findAllByType(DarkText);
+            const headings = renderedOutput.findAllByType(Heading);
+            const mediumSpaces = renderedOutput.findAllByType(MediumSpace);
+            const buttons = renderedOutput.findAllByType(StyledButton);
+            const smallSpaces = renderedOutput.findAllByType(SmallSpace);
+            const links = renderedOutput.findAllByType(Link);
+            const largeSpaces = renderedOutput.findAllByType(LargeSpace);
+
+            expect(centerBlocks).toHaveLength(2);
+            expect(darkText).toHaveLength(1);
+            expect(headings).toHaveLength(1);
+            expect(mediumSpaces).toHaveLength(1);
+            expect(buttons).toHaveLength(2);
+            expect(smallSpaces).toHaveLength(1);
+            expect(links).toHaveLength(1);
+            expect(largeSpaces).toHaveLength(1);
         });
     });
 });

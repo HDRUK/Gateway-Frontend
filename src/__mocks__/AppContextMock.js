@@ -22,6 +22,7 @@ const context = {
     images: {
         logoHDR: "test"
     },
+    textItems: { searcHeader: "Test" },
     counterFunc: jest.fn()
 };
 

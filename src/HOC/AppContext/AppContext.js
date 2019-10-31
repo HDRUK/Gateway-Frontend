@@ -29,6 +29,8 @@ class AppContextProvider extends Component {
         logoHDR: hdruk_logo_black
     };
 
+    textItems: { searcHeader: "What health data do you need?" };
+
     state = {
         counter: 0
     };
