@@ -2,17 +2,17 @@ const context = {
     newsItems: {
         newsItemOne: {
             image: "",
-            description: "HDR release news of new partners in exciting new digital project",
+            description: "Test",
             readMore: "http://localhost:3000"
         },
         newsItemTwo: {
             image: "",
-            description: "HDR release news of new partners in exciting new digital project",
+            description: "Test",
             readMore: "http://localhost:3000"
         },
         newsItemThree: {
             image: "",
-            description: "HDR release news of new partners in exciting new digital project",
+            description: "Test",
             readMore: "http://localhost:3000"
         }
     },
