@@ -55,9 +55,9 @@ const LandingPage = () => {
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
             <SmallSpace />
             <NewsTileGroup>
-                <NewsTile value="newsItemOne" />
-                <NewsTile value="newsItemTwo" />
-                <NewsTile value="newsItemThree" />
+                <NewsTile identifier="newsItemOne" />
+                <NewsTile identifier="newsItemTwo" />
+                <NewsTile identifier="newsItemThree" />
             </NewsTileGroup>
             <SmallSpace />
             <DarkText>

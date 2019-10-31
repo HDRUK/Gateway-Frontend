@@ -1,6 +1,6 @@
 const context = {
     newsItems: {
-        test: {
+        newsItemOne: {
             image: "",
             description: "Test",
             readMore: "http://localhost:3000"
