@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
-import { Logo, SocialMediaLogo, TinyText } from "../../styles/styles.js";
+import { SocialMediaLogo, TinyText, FooterWrapper, FooterBlock, FooterText, FooterImage } from "../../styles/styles.js";
 
 const text = {
     followUs: "Follow us on social media",
@@ -44,35 +43,5 @@ const Footer = () => (
         <TinyText>{text.copyright}</TinyText>
     </FooterWrapper>
 );
-
-const FooterWrapper = styled.div`
-    height: 12rem;
-    padding-bottom: 1rem;
-    background-color: rgb(60, 60, 59);
-    color: white;
-    padding-left: 7rem;
-    font-size: 1.1rem;
-    position: relative;
-    z-index: 10000;
-`;
-
-const FooterBlock = styled.div`
-    display: inline-block;
-    box-sizing: border-box;
-    width: 33.33%;
-    height: 90%;
-    vertical-align: top;
-    padding: 3rem 5rem 0 0;
-`;
-
-const FooterText = styled.div`
-    width: 100%;
-    margin: 0 0 0.4rem 0;
-`;
-
-const FooterImage = styled(Logo)`
-    max-width: 8rem;
-    max-height: 5rem;
-`;
 
 export default Footer;
