@@ -169,12 +169,16 @@ const ImageBlockWrapper = styled.div`
     padding-top: 0.6875rem;
 `;
 
-const SmallImage = styled.img`
-    display: inline-block;
+const SmallImage = styled.div`
+    display: inline-flex;
     max-height: 2.625rem;
     max-width: 8rem;
     margin-right: 2rem;
     vertical-align: center;
+`;
+
+const StyledImage = styled.img`
+    max-width: inherit;
 `;
 
 const NewsTileItem = styled.div`
@@ -217,5 +221,6 @@ export {
     ReadMore,
     ImageBlockWrapper,
     SmallImage,
-    NewsTileItem
+    NewsTileItem,
+    StyledImage
 };

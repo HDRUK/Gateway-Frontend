@@ -47,7 +47,9 @@ class AppContextProvider extends Component {
                 value={{
                     state: this.state,
                     counterFunc: this.counterFunc,
-                    newsItems: this.newsItems
+                    newsItems: this.newsItems,
+                    images: this.images,
+                    textItems: this.textItems
                 }}
             >
                 {this.props.children}
