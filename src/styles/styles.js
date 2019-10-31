@@ -219,6 +219,23 @@ const FooterImage = styled(Logo)`
     max-height: 5rem;
 `;
 
+const HeaderImage = styled(Logo)`
+    max-width: 4.5rem;
+    max-height: 3rem;
+    margin: 0 3rem 0 4rem;
+    vertical-align: middle;
+`;
+
+const AppWrapper = styled.div`
+    width: 66rem;
+    margin: 0 auto 0;
+`;
+
+const PageWrapper = styled.div`
+    position: relative;
+    overflow: hidden;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -255,5 +272,8 @@ export {
     FooterWrapper,
     FooterBlock,
     FooterText,
-    FooterImage
+    FooterImage,
+    HeaderImage,
+    AppWrapper,
+    PageWrapper
 };

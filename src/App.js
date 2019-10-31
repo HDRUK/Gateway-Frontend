@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
@@ -11,7 +10,7 @@ import SearchPage from "./Containers/SearchPage/SearchPage.js";
 import AppSideNav from "./components/appSideNav/appSideNav.js";
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
-import { SideStripeLeft, SideStripeRight, ContentWrapper } from "./styles/styles.js";
+import { SideStripeLeft, SideStripeRight, ContentWrapper, PageWrapper, AppWrapper } from "./styles/styles.js";
 
 import GlobalStyle from "./styles/globalStyles.js";
 
@@ -64,16 +63,6 @@ class App extends React.Component {
         );
     }
 }
-
-const AppWrapper = styled.div`
-    width: 66rem;
-    margin: 0 auto 0;
-`;
-
-const PageWrapper = styled.div`
-    position: relative;
-    overflow: hidden;
-`;
 
 const Content = props => (
     <PageWrapper>
