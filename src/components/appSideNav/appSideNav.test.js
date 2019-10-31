@@ -1,6 +1,6 @@
 import React from "react";
 import { create } from "react-test-renderer";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import AppSideNav from "./appSideNav.js";
 
 describe("<AppSideNav> ", () => {
@@ -8,9 +8,9 @@ describe("<AppSideNav> ", () => {
 
     beforeEach(() => {
         renderedComponent = create(
-            <BrowserRouter initialEntries={["/search"]}>
+            <MemoryRouter initialEntries={["/search"]}>
                 <AppSideNav />
-            </BrowserRouter>
+            </MemoryRouter>
         );
     });
 
