@@ -6,13 +6,20 @@ import { BrowserRouter } from "react-router-dom";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
-import Paragraph from "../../components/paragraph/paragraph.js";
 import Login from "../../components/login/login.js";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 
-import { ParagraphHeading, DarkText, NewListItem, LinkText, MediumSpace, SmallSpace } from "../../styles/styles.js";
+import {
+    ParagraphHeading,
+    DarkText,
+    NewListItem,
+    LinkText,
+    MediumSpace,
+    SmallSpace,
+    ParagraphText
+} from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 describe("<LandingPage> ", () => {
@@ -29,7 +36,7 @@ describe("<LandingPage> ", () => {
     });
 
     it("should check the crrect components are displayed", () => {
-        const paragraphs = renderedComponent.root.findAllByType(Paragraph);
+        const paragraphs = renderedComponent.root.findAllByType(ParagraphText);
         const login = renderedComponent.root.findAllByType(Login);
         const newsTiles = renderedComponent.root.findAllByType(NewsTile);
         const newsTileGroup = renderedComponent.root.findAllByType(NewsTileGroup);

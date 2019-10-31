@@ -18,10 +18,6 @@ describe("<NewsTile> ", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    it("should test the NewsTile Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
-
     it("should check the correct style elements are displayed", () => {
         const newsTileWrapper = renderedOutput.findAllByType(NewsTileWrapper);
         const imageSection = renderedOutput.findAllByType(ImageSection);
