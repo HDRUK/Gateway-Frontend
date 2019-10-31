@@ -197,6 +197,16 @@ const HeaderImage = styled(Logo)`
     vertical-align: middle;
 `;
 
+const AppWrapper = styled.div`
+    width: 66rem;
+    margin: 0 auto 0;
+`;
+
+const PageWrapper = styled.div`
+    position: relative;
+    overflow: hidden;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -230,5 +240,7 @@ export {
     SmallImage,
     NewsTileItem,
     StyledImage,
-    HeaderImage
+    HeaderImage,
+    AppWrapper,
+    PageWrapper
 };
