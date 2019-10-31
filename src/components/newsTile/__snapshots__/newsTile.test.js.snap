@@ -1,3 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `undefined`;
+exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `
+<div
+  className="sc-dxgOiQ eJgKXn"
+>
+  <div
+    className="sc-ckVGcZ ObcPe"
+    src=""
+  />
+  <div
+    className="sc-jKJlTe kCudHY"
+  >
+    <div
+      className="sc-eNQAEJ cuBSny"
+    >
+      test description one
+    </div>
+    <a
+      className="sc-hMqMXs jGyQhK"
+      href="#"
+    >
+      Read more
+    </a>
+  </div>
+</div>
+`;

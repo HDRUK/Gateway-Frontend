@@ -6,7 +6,17 @@ const context = {
     newsItems: {
         newsItemOne: {
             image: "",
-            description: "test description",
+            description: "test description one",
+            readMore: "#"
+        },
+        newsItemTwo: {
+            image: "",
+            description: "test description two",
+            readMore: "#"
+        },
+        newsItemThree: {
+            image: "",
+            description: "test description three",
             readMore: "#"
         }
     }

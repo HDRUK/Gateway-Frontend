@@ -11,7 +11,7 @@ describe("<NewsTile> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <NewsTile identifier={"newsTileOne"} />
+                <NewsTile identifier={"newsItemOne"} />
             </AppContext.Provider>
         );
     });
