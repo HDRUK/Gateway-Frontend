@@ -6,13 +6,20 @@ import { BrowserRouter } from "react-router-dom";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
-import Paragraph from "../../components/paragraph/paragraph.js";
 import Login from "../../components/login/login.js";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 
-import { ParagraphHeading, DarkText, NewListItem, LinkText, MediumSpace, SmallSpace } from "../../styles/styles.js";
+import {
+    ParagraphHeading,
+    DarkText,
+    NewListItem,
+    LinkText,
+    MediumSpace,
+    SmallSpace,
+    ParagraphText
+} from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 describe("<LandingPage> ", () => {
@@ -48,12 +55,8 @@ describe("<LandingPage> ", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    it("should test the LandingPage Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
-
     it("should check the correct components are displayed", () => {
-        const paragraphs = renderedOutput.findAllByType(Paragraph);
+        const paragraphs = renderedOutput.findAllByType(ParagraphText);
         const login = renderedOutput.findAllByType(Login);
         const newsTileGroup = renderedOutput.findAllByType(NewsTileGroup);
         const imageBlock = renderedOutput.findAllByType(ImageBlock);
@@ -85,19 +88,19 @@ describe("<LandingPage> ", () => {
         expect(newListItems[2].findByType(LinkText).props.children).toEqual(text.thirdLink);
 
         // First dark text section
-        expect(darkTexts).toHaveLength(6);
+        expect(darkTexts).toHaveLength(3);
         expect(darkTexts[1].props.children[0].props.children).toEqual(text.landingFirstParaHeading);
         expect(darkTexts[1].findAllByType(SmallSpace)).toHaveLength(1);
         expect(darkTexts[1].props.children[2].props.children).toEqual(text.landingFirstPara);
 
         // Second dark text section
-        const darkText2ParagraphHeadings = darkTexts[3].findAllByType(ParagraphHeading);
+        const darkText2ParagraphHeadings = darkTexts[2].findAllByType(ParagraphHeading);
         expect(darkText2ParagraphHeadings[0].props.children).toEqual(text.landingSecondParaHeading);
         expect(darkText2ParagraphHeadings[1].props.children).toEqual(text.landingThirdParaHeading);
-        const darkText2Paragraphs = darkTexts[3].findAllByType(Paragraph);
+        const darkText2Paragraphs = darkTexts[2].findAllByType(ParagraphText);
         expect(darkText2Paragraphs[0].props.children).toEqual(text.landingSecondPara);
         expect(darkText2Paragraphs[1].props.children).toEqual(text.landingThirdPara);
-        const darkText2Bullets = darkTexts[3].findByType(ParagraphBullets);
+        const darkText2Bullets = darkTexts[2].findByType(ParagraphBullets);
         const darkText2BulletsItems = darkText2Bullets.findAllByType(NewListItem);
         expect(darkText2BulletsItems[0].props.children).toEqual(text.firstBullet);
         expect(darkText2BulletsItems[1].props.children).toEqual(text.secondBullet);

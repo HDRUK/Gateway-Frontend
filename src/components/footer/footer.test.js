@@ -9,8 +9,4 @@ describe("<Footer> ", () => {
     beforeEach(() => {
         renderedComponent = create(<Footer image={hdr_logo_white} />);
     });
-
-    it("should test the Footer Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
 });

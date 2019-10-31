@@ -23,6 +23,5 @@ describe("<Apollo> ", () => {
 
     it("should test the Apollo HOC", () => {
         expect(process.env.REACT_APP_GRAPH_QL_ENDPOINT).toEqual(envVarMock.REACT_APP_GRAPH_QL_ENDPOINT);
-        expect(renderedComponent).toMatchSnapshot();
     });
 });

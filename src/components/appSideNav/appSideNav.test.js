@@ -14,10 +14,6 @@ describe("<AppSideNav> ", () => {
         );
     });
 
-    it("should test the AppSideNav Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
-
     // Is this kind of test required / how do we implement this?
     // it("should switch content to about when clicking 'about' link", () => {
     //     console.log(history, location);

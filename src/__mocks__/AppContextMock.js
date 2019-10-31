@@ -1,25 +1,28 @@
 const context = {
-    state: {
-        counter: 0
-    },
-    counterFunc: jest.fn(),
     newsItems: {
         newsItemOne: {
             image: "",
-            description: "test description one",
-            readMore: "#"
+            description: "Test",
+            readMore: "http://localhost:3000"
         },
         newsItemTwo: {
             image: "",
-            description: "test description two",
-            readMore: "#"
+            description: "Test",
+            readMore: "http://localhost:3000"
         },
         newsItemThree: {
             image: "",
-            description: "test description three",
-            readMore: "#"
+            description: "Test",
+            readMore: "http://localhost:3000"
         }
-    }
+    },
+    state: {
+        counter: 0
+    },
+    images: {
+        logoHDR: "test"
+    },
+    counterFunc: jest.fn()
 };
 
 export default context;

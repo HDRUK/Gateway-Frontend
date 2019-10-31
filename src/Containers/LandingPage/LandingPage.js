@@ -1,12 +1,20 @@
 import React from "react";
 
-import Paragraph from "../../components/paragraph/paragraph";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
+import Image from "../../components/image/image.js";
 
-import { ParagraphHeading, DarkText, NewListItem, LinkText, MediumSpace, SmallSpace } from "../../styles/styles.js";
+import {
+    ParagraphHeading,
+    DarkText,
+    NewListItem,
+    LinkText,
+    MediumSpace,
+    SmallSpace,
+    ParagraphText
+} from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
@@ -32,14 +40,17 @@ const LandingPage = () => {
         <React.Fragment>
             <MediumSpace />
             <Login />
-
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
                 <SmallSpace />
-                <Paragraph>{textItems.landingFirstPara}</Paragraph>
+                <ParagraphText>{textItems.landingFirstPara}</ParagraphText>
             </DarkText>
             <SmallSpace />
-            <ImageBlock />
+            <ImageBlock>
+                <Image value="logoHDR" />
+                <Image value="logoHDR" />
+                <Image value="logoHDR" />
+            </ImageBlock>
             <SmallSpace />
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>
             <SmallSpace />
@@ -52,7 +63,7 @@ const LandingPage = () => {
             <DarkText>
                 <ParagraphHeading>{textItems.landingSecondParaHeading}</ParagraphHeading>
                 <SmallSpace />
-                <Paragraph>{textItems.landingSecondPara}</Paragraph>
+                <ParagraphText>{textItems.landingSecondPara}</ParagraphText>
                 <ParagraphBullets>
                     <NewListItem>{textItems.firstBullet}</NewListItem>
                     <NewListItem>{textItems.secondBullet}</NewListItem>
@@ -61,7 +72,7 @@ const LandingPage = () => {
                 <MediumSpace />
                 <ParagraphHeading>{textItems.landingThirdParaHeading}</ParagraphHeading>
                 <SmallSpace />
-                <Paragraph>{textItems.landingThirdPara}</Paragraph>
+                <ParagraphText>{textItems.landingThirdPara}</ParagraphText>
             </DarkText>
             <ParagraphBullets>
                 <NewListItem>

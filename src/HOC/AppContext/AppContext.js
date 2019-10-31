@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import hdruk_logo_black from "../../assets/hdruk_black.png";
 
 export const AppContext = React.createContext();
 
@@ -22,6 +23,10 @@ class AppContextProvider extends Component {
             description: "HDR release news of new partners in exciting new digital project",
             readMore: "http://localhost:3000"
         }
+    };
+
+    images = {
+        logoHDR: hdruk_logo_black
     };
 
     state = {

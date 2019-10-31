@@ -7,6 +7,7 @@ import context from "../../__mocks__/AppContextMock.js";
 
 describe("<NewsTile> ", () => {
     let renderedComponent;
+    let renderedOutput;
 
     beforeEach(() => {
         renderedComponent = create(
@@ -14,23 +15,22 @@ describe("<NewsTile> ", () => {
                 <NewsTile identifier={"newsItemOne"} />
             </AppContext.Provider>
         );
-    });
-
-    it("should test the NewsTile Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
+        renderedOutput = renderedComponent.root;
     });
 
     it("should check the correct style elements are displayed", () => {
-        const newsTileWrapper = renderedComponent.root.findAllByType(NewsTileWrapper);
-        const imageSection = renderedComponent.root.findAllByType(ImageSection);
-        const textSection = renderedComponent.root.findAllByType(TextSection);
-        const description = renderedComponent.root.findAllByType(Description);
-        const readMore = renderedComponent.root.findAllByType(ReadMore);
+        const newsTileWrapper = renderedOutput.findAllByType(NewsTileWrapper);
+        const imageSection = renderedOutput.findAllByType(ImageSection);
+        const textSection = renderedOutput.findAllByType(TextSection);
+        const description = renderedOutput.findAllByType(Description);
+        const readMore = renderedOutput.findAllByType(ReadMore);
 
         expect(newsTileWrapper).toHaveLength(1);
         expect(imageSection).toHaveLength(1);
         expect(textSection).toHaveLength(1);
         expect(description).toHaveLength(1);
         expect(readMore).toHaveLength(1);
+
+        expect(description[0].children[0].props.children).toEqual("Test");
     });
 });
