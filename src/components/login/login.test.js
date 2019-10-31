@@ -6,6 +6,12 @@ import { CenterBlock, DarkText, Heading, MediumSpace, SmallSpace, LargeSpace } f
 import { StyledButton } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
+const text = {
+    headingText: "Log in to access our datasets",
+    loginButton: "Log in",
+    continueButton: "Continue without logging in"
+};
+
 describe("<Login> ", () => {
     let renderedComponent;
     let renderedOutput;
@@ -27,22 +33,31 @@ describe("<Login> ", () => {
         });
         it("should render the correct components", () => {
             const centerBlocks = renderedOutput.findAllByType(CenterBlock);
-            const darkText = renderedOutput.findAllByType(DarkText);
-            const headings = renderedOutput.findAllByType(Heading);
-            const mediumSpaces = renderedOutput.findAllByType(MediumSpace);
-            const buttons = renderedOutput.findAllByType(StyledButton);
-            const smallSpaces = renderedOutput.findAllByType(SmallSpace);
-            const links = renderedOutput.findAllByType(Link);
-            const largeSpaces = renderedOutput.findAllByType(LargeSpace);
+            const darkText = centerBlocks[0].findByType(DarkText);
+            const darkTextChildren = darkText.props.children;
+            expect(darkTextChildren).toHaveLength(4);
+            expect(darkTextChildren[0].type).toEqual(Heading);
+            expect(darkTextChildren[1].type).toEqual(MediumSpace);
+            expect(darkTextChildren[2].type).toEqual(CenterBlock);
+            expect(darkTextChildren[3].type).toEqual(LargeSpace);
 
-            expect(centerBlocks).toHaveLength(2);
-            expect(darkText).toHaveLength(1);
-            expect(headings).toHaveLength(1);
-            expect(mediumSpaces).toHaveLength(1);
-            expect(buttons).toHaveLength(2);
-            expect(smallSpaces).toHaveLength(1);
-            expect(links).toHaveLength(1);
-            expect(largeSpaces).toHaveLength(1);
+            expect(darkTextChildren[0].props.children).toEqual(text.headingText);
+
+            const centerBlock2Content = darkTextChildren[2].props.children;
+            expect(centerBlock2Content).toHaveLength(3);
+            expect(centerBlock2Content[0].type).toEqual(StyledButton);
+            const primaryButton = centerBlock2Content[0];
+            expect(primaryButton.props.kind).toEqual("primary");
+            expect(primaryButton.props.children).toEqual(text.loginButton);
+
+            expect(centerBlock2Content[1].type).toEqual(SmallSpace);
+            expect(centerBlock2Content[2].type).toEqual(Link);
+            expect(centerBlock2Content[2].props.to).toEqual("/search");
+
+            const secondaryButton = centerBlock2Content[2].props.children;
+            expect(secondaryButton.type).toEqual(StyledButton);
+            expect(secondaryButton.props.kind).toEqual("secondary");
+            expect(secondaryButton.props.children).toEqual(text.continueButton);
         });
     });
 });
