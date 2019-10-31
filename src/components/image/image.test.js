@@ -18,10 +18,8 @@ describe("<Image> ", () => {
     });
 
     it("should check the correct style elements are displayed", () => {
-        const image = renderedOutput.findAllByType("img");
+        const image = renderedOutput.findByType("img");
 
-        expect(image).toHaveLength(1);
-
-        expect(image[0].props.src).toBe("test");
+        expect(image.props.src).toBe("test");
     });
 });
