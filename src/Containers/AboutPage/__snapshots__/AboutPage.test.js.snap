@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<AboutPage>  should test the AboutPage Snapshot 1`] = `
-<div>
-  /about
-</div>
-`;

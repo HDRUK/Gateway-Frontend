@@ -5,7 +5,6 @@ import { AppContext } from "../../HOC/AppContext/AppContext.js";
 const NewsTile = identifier => {
     const appContext = useContext(AppContext);
     const newsItem = appContext.newsItems[identifier.value];
-    console.log(newsItem);
 
     return (
         <NewsTileWrapper>

@@ -6,21 +6,19 @@ import { SearchBar } from "../../styles/carbonComponents.js";
 
 describe("<Search> ", () => {
     let renderedComponent;
+    let renderedOutput;
 
     beforeEach(() => {
         renderedComponent = create(<Search />);
-    });
-
-    it("should test the NewsTile Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
+        renderedOutput = renderedComponent.root;
     });
 
     it("should check the correct style elements are displayed", () => {
-        const paragraphText = renderedComponent.root.findAllByType(ParagraphHeading);
-        const darkText = renderedComponent.root.findAllByType(CenterBlock);
-        const largeSpace = renderedComponent.root.findAllByType(LargeSpace);
-        const smallSpace = renderedComponent.root.findAllByType(SmallSpace);
-        const searchBar = renderedComponent.root.findAllByType(SearchBar);
+        const paragraphText = renderedOutput.findAllByType(ParagraphHeading);
+        const darkText = renderedOutput.findAllByType(CenterBlock);
+        const largeSpace = renderedOutput.findAllByType(LargeSpace);
+        const smallSpace = renderedOutput.findAllByType(SmallSpace);
+        const searchBar = renderedOutput.findAllByType(SearchBar);
 
         expect(paragraphText).toHaveLength(1);
         expect(darkText).toHaveLength(1);

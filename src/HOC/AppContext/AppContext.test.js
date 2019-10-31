@@ -18,7 +18,6 @@ describe("<AppContextProvider> ", () => {
     it("should test the AppContextProvider HOC", () => {
         expect(componentInstance.state.counter).toEqual(0);
         expect(componentInstance.counterFunc).toBeDefined();
-        expect(renderedComponent).toMatchSnapshot();
     });
 
     describe("when counterFunc is called", () => {

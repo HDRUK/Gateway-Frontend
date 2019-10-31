@@ -14,8 +14,4 @@ describe("<Header> ", () => {
             </BrowserRouter>
         );
     });
-
-    it("should test the Header Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
-    });
 });

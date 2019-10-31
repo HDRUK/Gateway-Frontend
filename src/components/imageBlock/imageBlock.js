@@ -2,14 +2,18 @@ import React from "react";
 
 import { ImageBlockWrapper, SmallImage } from "../../styles/styles.js";
 
-import hdruk_logo_black from "../../assets/hdruk_black.png";
+import PropTypes from "prop-types";
 
-const ImageBlock = () => (
+const ImageBlock = props => (
     <ImageBlockWrapper>
-        <SmallImage src={hdruk_logo_black} />
-        <SmallImage src={hdruk_logo_black} />
-        <SmallImage src={hdruk_logo_black} />
+        {props.children.map((image, i) => (
+            <SmallImage key={`image-${i}`}>{image}</SmallImage>
+        ))}
     </ImageBlockWrapper>
 );
+
+ImageBlock.propTypes = {
+    children: PropTypes.node
+};
 
 export default ImageBlock;

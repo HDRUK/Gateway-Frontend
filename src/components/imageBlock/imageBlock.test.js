@@ -5,18 +5,16 @@ import { ImageBlockWrapper, SmallImage } from "../../styles/styles.js";
 
 describe("<ImageBlock> ", () => {
     let renderedComponent;
+    let renderedOutput;
 
     beforeEach(() => {
         renderedComponent = create(<ImageBlock />);
-    });
-
-    it("should test the NewsTile Snapshot", () => {
-        expect(renderedComponent).toMatchSnapshot();
+        renderedOutput = renderedComponent.root;
     });
 
     it("should check the correct style elements are displayed", () => {
-        const imageBlockWrapper = renderedComponent.root.findAllByType(ImageBlockWrapper);
-        const smallImage = renderedComponent.root.findAllByType(SmallImage);
+        const imageBlockWrapper = renderedOutput.findAllByType(ImageBlockWrapper);
+        const smallImage = renderedOutput.findAllByType(SmallImage);
 
         expect(imageBlockWrapper).toHaveLength(1);
         expect(smallImage).toHaveLength(3);
