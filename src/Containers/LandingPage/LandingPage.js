@@ -47,9 +47,9 @@ const LandingPage = () => {
             </DarkText>
             <SmallSpace />
             <ImageBlock>
-                <Image value="logoHDR" />
-                <Image value="logoHDR" />
-                <Image value="logoHDR" />
+                <Image identifier="logoHDR" />
+                <Image identifier="logoHDR" />
+                <Image identifier="logoHDR" />
             </ImageBlock>
             <SmallSpace />
             <ParagraphHeading>{textItems.newsGroupHeading}</ParagraphHeading>

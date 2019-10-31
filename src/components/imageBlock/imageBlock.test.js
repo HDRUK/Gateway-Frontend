@@ -14,8 +14,8 @@ describe("<ImageBlock> ", () => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
                 <ImageBlock>
-                    <Image value="logoHDR" />
-                    <Image value="logoHDR" />
+                    <Image identifier="logoHDR" />
+                    <Image identifier="logoHDR" />
                 </ImageBlock>
             </AppContext.Provider>
         );
@@ -24,9 +24,11 @@ describe("<ImageBlock> ", () => {
 
     it("should check the correct elements are displayed", () => {
         const imageBlockWrapper = renderedOutput.findAllByType(ImageBlockWrapper);
-        const smallImage = renderedOutput.findAllByType(SmallImage);
+        const smallImage = imageBlockWrapper[0].findAllByType(SmallImage);
 
         expect(imageBlockWrapper).toHaveLength(1);
         expect(smallImage).toHaveLength(2);
+        expect(smallImage[0].props.children.props.identifier).toBe("logoHDR");
+        expect(smallImage[1].props.children.props.identifier).toBe("logoHDR");
     });
 });
