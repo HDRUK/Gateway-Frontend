@@ -2,12 +2,18 @@ import React from "react";
 import { create } from "react-test-renderer";
 import NewsTile from "./newsTile";
 import { NewsTileWrapper, ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import context from "../../__mocks__/AppContextMock.js";
 
 describe("<NewsTile> ", () => {
     let renderedComponent;
 
     beforeEach(() => {
-        renderedComponent = create(<NewsTile readMore={"test"} description={"test"} image={"test"} />);
+        renderedComponent = create(
+            <AppContext.Provider value={context}>
+                <NewsTile identifier={"newsTileOne"} />
+            </AppContext.Provider>
+        );
     });
 
     it("should test the NewsTile Snapshot", () => {

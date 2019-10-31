@@ -1,27 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `
-<div
-  className="sc-dxgOiQ eJgKXn"
->
-  <div
-    className="sc-ckVGcZ ObcPe"
-    src="test"
-  />
-  <div
-    className="sc-jKJlTe kCudHY"
-  >
-    <div
-      className="sc-eNQAEJ cuBSny"
-    >
-      test
-    </div>
-    <a
-      className="sc-hMqMXs jGyQhK"
-      href="test"
-    >
-      Read more
-    </a>
-  </div>
-</div>
-`;
+exports[`<NewsTile>  should test the NewsTile Snapshot 1`] = `undefined`;
