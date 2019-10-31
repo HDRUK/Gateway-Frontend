@@ -13,23 +13,19 @@ describe("<Search> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <Search value="searchHeader" />
+                <Search identifier="searchHeader" />
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;
     });
 
     it("should check the correct style elements are displayed", () => {
-        const paragraphHeading = renderedOutput.findAllByType(ParagraphHeading);
-        const largeSpace = renderedOutput.findAllByType(LargeSpace);
-        const smallSpace = renderedOutput.findAllByType(SmallSpace);
-        const searchBar = renderedOutput.findAllByType(SearchBar);
-        const centerBlock = renderedOutput.findAllByType(CenterBlock);
+        const paragraphHeading = renderedOutput.findByType(ParagraphHeading);
+        renderedOutput.findByType(LargeSpace);
+        renderedOutput.findByType(SmallSpace);
+        renderedOutput.findByType(SearchBar);
+        renderedOutput.findByType(CenterBlock);
 
-        expect(paragraphHeading).toHaveLength(1);
-        expect(largeSpace).toHaveLength(1);
-        expect(smallSpace).toHaveLength(1);
-        expect(searchBar).toHaveLength(1);
-        expect(centerBlock).toHaveLength(1);
+        expect(paragraphHeading.props.children).toBe("TestSearchHeader");
     });
 });

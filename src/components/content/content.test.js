@@ -16,13 +16,9 @@ describe("Render content with no props", () => {
 
     describe("when the header is rendered", () => {
         it("should render the correct components", () => {
-            const leftStripes = renderedOutput.findAllByType(SideStripeLeft);
-            const rightStripes = renderedOutput.findAllByType(SideStripeRight);
-            const wrappers = renderedOutput.findAllByType(ContentWrapper);
-
-            expect(leftStripes).toHaveLength(1);
-            expect(rightStripes).toHaveLength(1);
-            expect(wrappers).toHaveLength(1);
+            const wrapper = renderedOutput.findByType(ContentWrapper);
+            wrapper.findByType(SideStripeLeft);
+            wrapper.findByType(SideStripeRight);
         });
     });
 });
@@ -41,9 +37,10 @@ describe("Render content with nav prop", () => {
 
     describe("when the header is rendered", () => {
         it("should render the correct components", () => {
-            const sideNavs = renderedOutput.findAllByType(AppSideNav);
+            const wrapper = renderedOutput.findByType(ContentWrapper);
+            renderedOutput.findAllByType(AppSideNav);
 
-            expect(sideNavs).toHaveLength(1);
+            expect(wrapper.props.nav).toBe(true);
         });
     });
 });

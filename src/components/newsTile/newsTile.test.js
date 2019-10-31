@@ -19,18 +19,15 @@ describe("<NewsTile> ", () => {
     });
 
     it("should check the correct style elements are displayed", () => {
-        const newsTileWrapper = renderedOutput.findAllByType(NewsTileWrapper);
-        const imageSection = renderedOutput.findAllByType(ImageSection);
-        const textSection = renderedOutput.findAllByType(TextSection);
-        const description = renderedOutput.findAllByType(Description);
-        const readMore = renderedOutput.findAllByType(ReadMore);
+        const newsTileWrapper = renderedOutput.findByType(NewsTileWrapper);
+        const imageSection = newsTileWrapper.findByType(ImageSection);
+        const textSection = renderedOutput.findByType(TextSection);
+        const description = textSection.findByType(Description);
+        const readMore = textSection.findByType(ReadMore);
 
-        expect(newsTileWrapper).toHaveLength(1);
-        expect(imageSection).toHaveLength(1);
-        expect(textSection).toHaveLength(1);
-        expect(description).toHaveLength(1);
-        expect(readMore).toHaveLength(1);
-
-        expect(description[0].children[0].props.children).toEqual("Test");
+        expect(description.children[0].props.children).toEqual("TestDescription");
+        console.log(imageSection);
+        expect(imageSection.children[0].props.children).toEqual("TestImage");
+        expect(readMore.children[0].props.children).toEqual("http://localhost:3000");
     });
 });

@@ -4,14 +4,14 @@ import Image from "./image";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
-describe("<NewsTile> ", () => {
+describe("<Image> ", () => {
     let renderedComponent;
     let renderedOutput;
 
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <Image value={"logoHDR"} />
+                <Image identifier={"logoHDR"} />
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;

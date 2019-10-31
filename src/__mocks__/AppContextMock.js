@@ -1,8 +1,8 @@
 const context = {
     newsItems: {
         newsItemOne: {
-            image: "",
-            description: "Test",
+            image: "TestImage",
+            description: "TestDescription",
             readMore: "http://localhost:3000"
         },
         newsItemTwo: {
@@ -22,7 +22,7 @@ const context = {
     images: {
         logoHDR: "test"
     },
-    textItems: { searchHeader: "Test" },
+    textItems: { searchHeader: "TestSearchHeader" },
     counterFunc: jest.fn()
 };
 
