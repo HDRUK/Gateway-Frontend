@@ -26,8 +26,7 @@ describe("<NewsTile> ", () => {
         const readMore = textSection.findByType(ReadMore);
 
         expect(description.children[0].props.children).toEqual("TestDescription");
-        console.log(imageSection);
-        expect(imageSection.children[0].props.children).toEqual("TestImage");
-        expect(readMore.children[0].props.children).toEqual("http://localhost:3000");
+        expect(imageSection.children[0].props.src).toEqual("TestImage");
+        expect(readMore.children[0].props.href).toEqual("http://localhost:3000");
     });
 });

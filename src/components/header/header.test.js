@@ -20,21 +20,18 @@ describe("<Header> ", () => {
     });
 
     describe("when the header is rendered", () => {
-        it("should have the correct destination for the header image", () => {
-            const link = renderedOutput.findAllByType(Link);
-            const imageDestination = link[0].props.to;
-            expect(imageDestination).toBe("/");
-        });
         it("should render the correct components", () => {
-            const wrappers = renderedOutput.findAllByType(HeaderWrapper);
-            const links = renderedOutput.findAllByType(Link);
-            const images = renderedOutput.findAllByType(HeaderImage);
-            const headings = renderedOutput.findAllByType(InvertedHeaderHeading);
+            const wrapper = renderedOutput.findByType(HeaderWrapper);
+            expect(wrapper.children[0].props["aria-label"]).toBe("HDR UK Innovation Gateway");
 
-            expect(wrappers).toHaveLength(1);
-            expect(links).toHaveLength(1);
-            expect(images).toHaveLength(1);
-            expect(headings).toHaveLength(1);
+            const link = wrapper.findByType(Link);
+            link.findByType(HeaderImage);
+
+            const imageDestination = link.props.to;
+            expect(imageDestination).toBe("/");
+
+            const header = wrapper.findByType(InvertedHeaderHeading);
+            expect(header.children[0].props.children).toBe("Innovation Gateway");
         });
     });
 });
