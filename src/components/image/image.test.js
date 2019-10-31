@@ -1,30 +1,27 @@
 import React from "react";
 import { create } from "react-test-renderer";
-import NewsTileGroup from "./newsTileGroup";
-import { NewsTileItem } from "../../styles/styles.js";
-import NewsTile from "../newsTile/newsTile";
+import Image from "./image";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
-describe("<NewsTileGroup> ", () => {
+describe("<NewsTile> ", () => {
     let renderedComponent;
     let renderedOutput;
 
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <NewsTileGroup>
-                    <NewsTile identifier="newsItemOne" />
-                    <NewsTile identifier="newsItemTwo" />
-                </NewsTileGroup>
+                <Image value={"logoHDR"} />
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;
     });
 
     it("should check the correct style elements are displayed", () => {
-        const newsTileItem = renderedOutput.findAllByType(NewsTileItem);
+        const image = renderedOutput.findAllByType("img");
 
-        expect(newsTileItem).toHaveLength(2);
+        expect(image).toHaveLength(1);
+
+        expect(image[0].props.src).toBe("test");
     });
 });

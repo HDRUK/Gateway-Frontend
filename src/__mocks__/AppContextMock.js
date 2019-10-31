@@ -19,6 +19,9 @@ const context = {
     state: {
         counter: 0
     },
+    images: {
+        logoHDR: "test"
+    },
     counterFunc: jest.fn()
 };
 
