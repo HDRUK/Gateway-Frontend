@@ -1,7 +1,7 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import LandingPage from "./LandingPage.js";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
@@ -47,9 +47,9 @@ describe("<LandingPage> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <BrowserRouter>
+                <MemoryRouter>
                     <LandingPage />
-                </BrowserRouter>
+                </MemoryRouter>
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;
