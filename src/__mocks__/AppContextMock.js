@@ -22,7 +22,7 @@ const context = {
     images: {
         logoHDR: "test"
     },
-    textItems: { searcHeader: "Test" },
+    textItems: { searchHeader: "Test" },
     counterFunc: jest.fn()
 };
 

@@ -190,6 +190,13 @@ const NewsTileItem = styled.div`
     }
 `;
 
+const HeaderImage = styled(Logo)`
+    max-width: 4.5rem;
+    max-height: 3rem;
+    margin: 0 3rem 0 4rem;
+    vertical-align: middle;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -222,5 +229,6 @@ export {
     ImageBlockWrapper,
     SmallImage,
     NewsTileItem,
-    StyledImage
+    StyledImage,
+    HeaderImage
 };

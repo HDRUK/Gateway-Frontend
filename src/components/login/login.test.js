@@ -20,9 +20,9 @@ describe("<Login> ", () => {
     });
 
     describe("when the login block is rendered", () => {
-        it("the continue button should have the correct destination", () => {
-            const links = renderedOutput.findAllByType("a");
-            const continueDestination = links[0].props.href;
+        it("should have the correct destination for the continue button", () => {
+            const link = renderedOutput.findAllByType(Link);
+            const continueDestination = link[0].props.to;
             expect(continueDestination).toBe("/search");
         });
         it("should render the correct components", () => {
