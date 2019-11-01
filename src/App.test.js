@@ -7,10 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
-import AboutPage from "./Containers/AboutPage/AboutPage.js";
-import SearchPage from "./Containers/SearchPage/SearchPage.js";
 import Header from "./components/header/header.js";
-import Footer from "./components/footer/footer.js";
 import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
@@ -30,8 +27,8 @@ describe("<App> ", () => {
         const appContext = apollo.findByType(AppContext);
         const appWrapper = appContext.findByType(AppWrapper);
         const browserRouter = appWrapper.findByType(BrowserRouter);
-        const globalStyle = browserRouter.findByType(GlobalStyle);
-        const header = browserRouter.findByType(Header);
+        browserRouter.findByType(GlobalStyle);
+        browserRouter.findByType(Header);
         const pageWrapper = browserRouter.findByType(PageWrapper);
         const switches = pageWrapper.findByType(Switch);
         const routes = switches.findAllByType(Route);
