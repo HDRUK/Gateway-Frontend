@@ -227,7 +227,8 @@ const HeaderImage = styled(Logo)`
 `;
 
 const AppWrapper = styled.div`
-    width: 66rem;
+    min-width: 48rem;
+    max-width: 66rem;
     margin: 0 auto 0;
 `;
 
