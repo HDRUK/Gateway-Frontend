@@ -24,10 +24,6 @@ describe("<Counter> ", () => {
             });
         });
 
-        it("should test the counter loading state snapshot", () => {
-            expect(renderedComponent).toMatchSnapshot();
-        });
-
         it("should render the query result", async () => {
             await act(async () => await wait(1000));
             const li = renderedComponent.root.findAllByType("li");
