@@ -20,12 +20,24 @@ describe("<Search> ", () => {
     });
 
     it("should check the correct style elements are displayed", () => {
-        const paragraphHeading = renderedOutput.findByType(ParagraphHeading);
-        renderedOutput.findByType(LargeSpace);
-        renderedOutput.findByType(SmallSpace);
-        renderedOutput.findByType(SearchBar);
-        renderedOutput.findByType(CenterBlock);
+        const paragraphHeading = renderedOutput.findAllByType(ParagraphHeading);
+        const largeSpace = renderedOutput.findAllByType(LargeSpace);
+        const smallSpace = renderedOutput.findAllByType(SmallSpace);
+        const centerBlock = renderedOutput.findAllByType(CenterBlock);
 
-        expect(paragraphHeading.props.children).toBe("TestSearchHeader");
+        expect(paragraphHeading.length).toBe(1);
+        expect(largeSpace.length).toBe(1);
+        expect(smallSpace.length).toBe(1);
+        expect(centerBlock.length).toBe(1);
+
+        expect(paragraphHeading[0].props.children).toBe("TestSearchHeader");
+    });
+
+    it("should call the returnSearchResults function when clicked", () => {
+        const searchBar = renderedOutput.findAllByType(SearchBar);
+        expect(searchBar.length).toBe(1);
+
+        searchBar[0].children[0].props.onKeyPress();
+        expect(context.returnSearchResults).toHaveBeenCalled();
     });
 });

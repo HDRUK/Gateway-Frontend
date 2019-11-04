@@ -20,10 +20,18 @@ describe("<AppContextProvider> ", () => {
         expect(componentInstance.counterFunc).toBeDefined();
     });
 
-    describe("when counterFunc is called", () => {
-        it("should increase state counter by 1", () => {
-            componentInstance.counterFunc();
-            expect(componentInstance.state.counter).toEqual(1);
-        });
+    it("should increase state counter by 1 when counterFunc is called", () => {
+        componentInstance.counterFunc();
+        expect(componentInstance.state.counter).toEqual(1);
+    });
+
+    it("should change the search page state when returnSearchResults is called with key 'Enter", () => {
+        componentInstance.returnSearchResults({ key: "Enter" });
+        expect(componentInstance.state.searchPageState).toBe("results");
+    });
+
+    it("should not change the search page state when returnSearchResults is called with other key", () => {
+        componentInstance.returnSearchResults({ key: "T" });
+        expect(componentInstance.state.searchPageState).toBe("form");
     });
 });

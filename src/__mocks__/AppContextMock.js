@@ -31,7 +31,7 @@ const context = {
     },
     textItems: { searchHeader: "TestSearchHeader" },
     counterFunc: jest.fn(),
-    updateSearchPageState: jest.fn()
+    returnSearchResults: jest.fn()
 };
 
 export default context;
