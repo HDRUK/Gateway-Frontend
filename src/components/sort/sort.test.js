@@ -38,6 +38,7 @@ describe("<Sort> ", () => {
             expect(dropdown[0].children[0].props["type"]).toBe("default");
             expect(dropdown[0].children[0].props["id"]).toBe("sort");
             expect(dropdown[0].children[0].props["items"]).toMatchObject(items);
+            expect(dropdown[0].children[0].props["initialSelectedItem"]).toMatchObject(items[0]);
         });
 
         it("should render the label item", () => {
