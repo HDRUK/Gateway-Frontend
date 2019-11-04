@@ -26,16 +26,16 @@ describe("<Search> ", () => {
         const centerBlock = renderedOutput.findAllByType(CenterBlock);
 
         expect(paragraphHeading.length).toBe(1);
-        expect(largeSpace.length).toBe(1);
-        expect(smallSpace.length).toBe(1);
-        expect(centerBlock.length).toBe(1);
+        expect(largeSpace).toHaveLength(1);
+        expect(smallSpace).toHaveLength(1);
+        expect(centerBlock).toHaveLength(1);
 
         expect(paragraphHeading[0].props.children).toBe("TestSearchHeader");
     });
 
     it("should call the returnSearchResults function when clicked", () => {
         const searchBar = renderedOutput.findAllByType(SearchBar);
-        expect(searchBar.length).toBe(1);
+        expect(searchBar).toHaveLength(1);
 
         searchBar[0].children[0].props.onKeyPress();
         expect(context.returnSearchResults).toHaveBeenCalled();
