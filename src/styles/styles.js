@@ -84,6 +84,17 @@ const Bold = styled.span`
     font-weight: 700;
 `;
 
+const LabelText = styled.p`
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.125rem;
+    letter-spacing: 0.16px;
+    color: #161616;
+    display: inline-flex;
+    justify-content: center;
+    flex-direction: column;
+`;
+
 const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
@@ -241,6 +252,11 @@ const PageWrapper = styled.div`
     overflow: hidden;
 `;
 
+const FloatRight = styled.div`
+    float: right;
+    display: inline-flex;
+`;
+
 export {
     Heading,
     ParagraphHeading,
@@ -281,5 +297,7 @@ export {
     FooterImage,
     HeaderImage,
     AppWrapper,
-    PageWrapper
+    PageWrapper,
+    LabelText,
+    FloatRight
 };

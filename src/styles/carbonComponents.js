@@ -1,4 +1,13 @@
-import { Button, UnorderedList, Header, SideNavLinkText, Search, SideNav, Loading } from "carbon-components-react";
+import {
+    Button,
+    UnorderedList,
+    Header,
+    SideNavLinkText,
+    Search,
+    SideNav,
+    Dropdown,
+    Loading
+} from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
 
@@ -24,6 +33,8 @@ export const SideNavText = styled(SideNavLinkText)`
 `;
 
 export const SearchBar = styled(Search)``;
+
+export const DropdownFilter = styled(Dropdown)``;
 
 export const MainSideNav = styled(SideNav)`
     display: inline-block;
