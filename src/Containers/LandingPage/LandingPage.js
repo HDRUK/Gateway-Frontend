@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
@@ -11,8 +12,8 @@ import {
     DarkText,
     NewListItem,
     LinkText,
-    MediumSpace,
     SmallSpace,
+    MediumSpace,
     ParagraphText
 } from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
@@ -37,8 +38,10 @@ const textItems = {
 
 const LandingPage = () => {
     return (
-        <React.Fragment>
+        <LandingPageWrapper>
             <MediumSpace />
+            <SmallSpace />
+            <SmallSpace />
             <Login />
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
@@ -85,8 +88,12 @@ const LandingPage = () => {
                     <LinkText>{textItems.thirdLink}</LinkText>
                 </NewListItem>
             </ParagraphBullets>
-        </React.Fragment>
+        </LandingPageWrapper>
     );
 };
+
+const LandingPageWrapper = styled.div`
+    padding: 0 3rem 9rem 3rem;
+`;
 
 export default LandingPage;

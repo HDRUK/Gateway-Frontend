@@ -54,15 +54,15 @@ const CenterBlock = styled.div`
 `;
 
 const SmallSpace = styled.div`
-    padding: 15px;
+    padding: 1rem;
 `;
 
 const MediumSpace = styled.div`
-    padding: 30px;
+    padding: 2rem;
 `;
 
 const LargeSpace = styled.div`
-    padding: 80px;
+    padding: 5rem;
 `;
 
 const NavHeading = styled.p`

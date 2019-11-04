@@ -32,7 +32,16 @@ class AppContextProvider extends Component {
     textItems = { searchHeader: "What health data do you need?" };
 
     state = {
-        counter: 0
+        counter: 0,
+        searchPageState: false
+    };
+
+    returnSearchResults = event => {
+        if (event.key === "Enter") {
+            this.setState({
+                searchPageState: !this.state.searchPageState
+            });
+        }
     };
 
     counterFunc = () => {
@@ -49,7 +58,8 @@ class AppContextProvider extends Component {
                     counterFunc: this.counterFunc,
                     newsItems: this.newsItems,
                     images: this.images,
-                    textItems: this.textItems
+                    textItems: this.textItems,
+                    returnSearchResults: this.returnSearchResults
                 }}
             >
                 {this.props.children}
