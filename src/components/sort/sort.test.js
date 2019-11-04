@@ -7,6 +7,7 @@ import { LabelText, FloatRight } from "../../styles/styles.js";
 describe("<Sort> ", () => {
     let renderedComponent;
     let renderedOutput;
+    const textItems = { labelText: "Sort by:" };
     const items = [
         {
             id: "first-item",
@@ -43,6 +44,7 @@ describe("<Sort> ", () => {
             const float = renderedOutput.findAllByType(FloatRight);
             const text = float[0].findAllByType(LabelText);
             expect(text).toHaveLength(1);
+            expect(text[0].props.children).toBe(textItems.labelText);
         });
     });
 });
