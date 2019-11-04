@@ -107,7 +107,7 @@ const SideStripeRight = styled(SideStripe)`
 
 const ContentWrapper = styled.div`
     position: relative;
-    padding: 4rem 4rem 4rem 4rem;
+    padding: 1rem 1rem 0 1rem;
     background-color: #ffffff;
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
