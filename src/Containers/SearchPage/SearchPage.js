@@ -1,5 +1,6 @@
 import React from "react";
 import Search from "../../components/search/search";
+import { SearchBar } from "../../styles/carbonComponents";
 import styled from "styled-components";
 
 const text = {
@@ -21,7 +22,9 @@ class SearchPage extends React.Component {
         return (
             <div>
                 <div onClick={this.initiateSearch}>
-                    <SearchBarWrapper main={!this.state.initiatedSearch}>SEARCH BAR</SearchBarWrapper>
+                    <SearchBarWrapper main={!this.state.initiatedSearch}>
+                        <SearchBar />
+                    </SearchBarWrapper>
                 </div>
                 <Results invisible={!this.state.initiatedSearch}>
                     <SearchInfo>
