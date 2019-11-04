@@ -43,6 +43,11 @@ const NewListItem = styled.li`
     list-style-position: inside;
 `;
 
+const FilterBlockTitle = styled.li`
+    padding: 0.375rem 0 0.375rem 0.5rem;
+    font-weight: 700;
+`;
+
 const LinkText = styled.a`
     text-decoration: underline;
 `;
@@ -292,5 +297,6 @@ export {
     AppWrapper,
     PageWrapper,
     LabelText,
-    FloatRight
+    FloatRight,
+    FilterBlockTitle
 };
