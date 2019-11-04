@@ -36,6 +36,27 @@ class AppContextProvider extends Component {
         searchPageState: false
     };
 
+    search = {
+        loading: false,
+        data: [
+            {
+                title: "Card 1"
+            },
+            {
+                title: "Card 2"
+            },
+            {
+                title: "Card 3"
+            },
+            {
+                title: "Card 4"
+            },
+            {
+                title: "Card 5"
+            }
+        ]
+    };
+
     returnSearchResults = event => {
         if (event.key === "Enter") {
             this.setState({
@@ -59,7 +80,8 @@ class AppContextProvider extends Component {
                     newsItems: this.newsItems,
                     images: this.images,
                     textItems: this.textItems,
-                    returnSearchResults: this.returnSearchResults
+                    returnSearchResults: this.returnSearchResults,
+                    search: this.search
                 }}
             >
                 {this.props.children}

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { SearchBar } from "../../styles/carbonComponents";
-import { ParagraphHeading } from "../../styles/styles.js";
+import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
+import { Bold, ParagraphHeading } from "../../styles/styles.js";
 import styled from "styled-components";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
@@ -14,6 +14,9 @@ const SearchPage = () => {
     const pageState = appContext.state.searchPageState;
     const returnSearchResults = appContext.returnSearchResults;
 
+    const loading = appContext.search.loading;
+    const data = appContext.search.data;
+
     return (
         <div>
             <SearchHeading invisible={pageState}>{text.searchTitle}</SearchHeading>
@@ -24,17 +27,18 @@ const SearchPage = () => {
                 <SearchInfo>
                     <Line />
                     <ResultsCounter>
-                        <Bold>X</Bold> {text.results}
+                        <Bold>00</Bold> {text.results}
                     </ResultsCounter>
                     <SortDiv>SORT COMPONENT</SortDiv>
                 </SearchInfo>
                 <ResultsWrapper>
-                    <TemporaryResultCard />
-                    <TemporaryResultCard />
-                    <TemporaryResultCard />
-                    <TemporaryResultCard />
-                    <TemporaryResultCard />
-                    <TemporaryResultCard />
+                    {loading ? (
+                        <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
+                    ) : (
+                        data.map((card, i) => (
+                            <TemporaryResultCard key={`temporaryResultCard-${i}`}>{card.title}</TemporaryResultCard>
+                        ))
+                    )}
                 </ResultsWrapper>
             </Results>
         </div>
@@ -97,14 +101,11 @@ const TemporaryResultCard = styled.div`
     background-color: #d8d8d8;
     border: 0.0625rem solid #979797;
     border-radius: 0.25rem;
+    padding: 1rem;
 `;
 
 const SearchInfo = styled.div`
     padding: 0 1rem 1rem 1rem;
-`;
-
-const Bold = styled.text`
-    font-weight: 700;
 `;
 
 export default SearchPage;

@@ -31,7 +31,7 @@ const ParagraphText = styled.p`
     color: #3c3c3b;
 `;
 
-const DarkText = styled.text`
+const DarkText = styled.span`
     color: #3c3c3b;
 `;
 
@@ -76,8 +76,12 @@ const NavText = styled.p`
     padding: 0 1rem;
 `;
 
-const TinyText = styled.text`
+const TinyText = styled.span`
     font-size: 0.75rem;
+`;
+
+const Bold = styled.span`
+    font-weight: 700;
 `;
 
 const MenuLine = styled.div`
@@ -256,6 +260,7 @@ export {
     NavHeading,
     NavText,
     TinyText,
+    Bold,
     MenuLine,
     ContentWrapper,
     LinkNoDecoration,
