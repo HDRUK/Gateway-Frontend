@@ -33,7 +33,7 @@ export const ResultsWrapper = styled.div`
     min-height: 32rem;
     max-height: calc(100vh - 25rem);
     overflow: scroll;
-    padding: 0 1rem 0 1rem;
+    padding: 0.25rem 1rem 0 1rem;
 `;
 
 export const ResultsCounter = styled.div`
@@ -44,15 +44,6 @@ export const ResultsCounter = styled.div`
 export const SortDiv = styled.div`
     display: inline-block;
     float: right;
-`;
-
-export const TemporaryResultCard = styled.div`
-    height: 12rem;
-    margin-bottom: 1rem;
-    background-color: #d8d8d8;
-    border: 0.0625rem solid #979797;
-    border-radius: 0.25rem;
-    padding: 1rem;
 `;
 
 export const SearchInfo = styled.div`

@@ -71,7 +71,8 @@ const SmallHeading = styled.p`
 `;
 
 const SmallText = styled.p`
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    line-height: 1.125rem;
 `;
 
 const TinyText = styled.span`

@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
 import { Bold, Line } from "../../styles/styles.js";
@@ -10,10 +9,10 @@ import {
     SearchInfo,
     ResultsCounter,
     SortDiv,
-    ResultsWrapper,
-    TemporaryResultCard
+    ResultsWrapper
 } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
+import ResultCard from "../../components/resultCard/resultCard.js";
 
 const text = {
     results: "Results",
@@ -51,7 +50,7 @@ const SearchPage = () => {
                         <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
                     ) : (
                         data.map((card, i) => (
-                            <TemporaryResultCard key={`temporaryResultCard-${i}`}>{card.title}</TemporaryResultCard>
+                            <ResultCard key={`resultCard-${i}`} title={card.title} description={card.description} />
                         ))
                     )}
                 </ResultsWrapper>

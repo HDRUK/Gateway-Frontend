@@ -40,19 +40,24 @@ class AppContextProvider extends Component {
         loading: false,
         data: [
             {
-                title: "Card 1"
+                title: "Card 1",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed felis imperdiet, cursus odio id, auctor tortor. Cras condimentum fermentum elit, ut feugiat justo mattis eget. Curabitur imperdiet neque nibh, eu rutrum nisl pellentesque in. Aliquam rhoncus augue ac dapibus finibus. Integer at pulvinar ligula, hendrerit semper nulla. Donec magna felis, tempus vel ultrices vitae, pellentesque ac nulla. Fusce malesuada sagittis pellentesque. In condimentum lacinia volutpat. Etiam scelerisque lobortis sapien, in varius nisl dictum ut. Fusce quis varius leo. Maecenas sed arcu nec risus eleifend posuere ac a elit. Nullam bibendum ligula eu sem facilisis, volutpat feugiat sapien commodo. Suspendisse imperdiet convallis elit sed egestas. Suspendisse vitae tellus luctus, tincidunt tellus vitae, ultricies est. Aenean rutrum condimentum leo, in malesuada orci iaculis eu. "
             },
             {
-                title: "Card 2"
+                title:
+                    "Card 2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis sit amet tellus et vulputate. Praesent ligula enim, facilisis vel nisi non, condimentum convallis justo. Sed semper sodales mi hendrerit blandit. Sed posuere tellus quis est consequat, id pretium justo egestas. Sed in augue purus. Donec sed viverra mi. Nulla vitae libero malesuada, tincidunt nibh vitae, venenatis urna.",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis sit amet tellus et vulputate. Praesent ligula enim, facilisis vel nisi non, condimentum convallis justo. Sed semper sodales mi hendrerit blandit. Sed posuere tellus quis est consequat, id pretium justo egestas. Sed in augue purus. Donec sed viverra mi. Nulla vitae libero malesuada, tincidunt nibh vitae, venenatis urna."
             },
             {
-                title: "Card 3"
+                title: "Card 3",
+                description:
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis sit amet tellus et vulputate. Praesent ligula enim, facilisis vel nisi non, condimentum convallis justo. Sed semper sodales mi hendrerit blandit. Sed posuere tellus quis est consequat, id pretium justo egestas. Sed in augue purus. Donec sed viverra mi. Nulla vitae libero malesuada, tincidunt nibh vitae, venenatis urna."
             },
             {
-                title: "Card 4"
-            },
-            {
-                title: "Card 5"
+                title: "Card 4",
+                description: "Lorem ipsum"
             }
         ]
     };
