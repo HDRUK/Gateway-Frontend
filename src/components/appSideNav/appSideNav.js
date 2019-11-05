@@ -1,7 +1,8 @@
 import React from "react";
-import { SideNavItems, SideNavLink } from "carbon-components-react";
+import { SideNavLink } from "carbon-components-react";
 import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
-import { MainSideNav } from "../../styles/carbonComponents";
+import { MainSideNav, NavItems } from "../../styles/carbonComponents";
+import Filter from "../filter/filter.js";
 
 const text = {
     search: "Search",
@@ -41,13 +42,14 @@ const AppSideNav = () => (
         <NavHeading>{text.username}</NavHeading>
         <NavText>{text.company}</NavText>
         <MenuLine />
-        <SideNavItems>
+        <NavItems>
             {routes.map(route => (
                 <LinkNoDecoration to={route.path} key={`route${route.path}`}>
                     <SideNavLink>{route.text}</SideNavLink>
                 </LinkNoDecoration>
             ))}
-        </SideNavItems>
+        </NavItems>
+        <Filter></Filter>
     </MainSideNav>
 );
 

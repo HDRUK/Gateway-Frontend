@@ -8,7 +8,8 @@ import {
     Dropdown,
     Accordion,
     AccordionItem,
-    SideNavItems
+    SideNavItems,
+    Modal
 } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
@@ -47,6 +48,12 @@ export const SideNavText = styled(SideNavLinkText)`
 
 export const NavItems = styled(SideNavItems)`
     flex: inherit;
+`;
+
+export const FilterModal = styled(Modal)`
+    z-index: 1;
+    ${props => props.modalVisibility && "visibility: visible"};
+    opacity: 1;
 `;
 
 export const SearchBar = styled(Search)``;

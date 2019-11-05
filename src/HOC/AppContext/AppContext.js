@@ -38,7 +38,8 @@ class AppContextProvider extends Component {
 
     state = {
         counter: 0,
-        searchPageState: this.searchPageStates.form
+        searchPageState: this.searchPageStates.form,
+        modalVisibility: false
     };
 
     returnSearchResults = event => {
@@ -55,6 +56,12 @@ class AppContextProvider extends Component {
         });
     };
 
+    toggleModal = () => {
+        this.setState({
+            modalVisibility: !this.state.modalVisibility
+        });
+    };
+
     render() {
         return (
             <AppContext.Provider
@@ -64,7 +71,8 @@ class AppContextProvider extends Component {
                     newsItems: this.newsItems,
                     images: this.images,
                     textItems: this.textItems,
-                    returnSearchResults: this.returnSearchResults
+                    returnSearchResults: this.returnSearchResults,
+                    toggleModal: this.toggleModal
                 }}
             >
                 {this.props.children}
