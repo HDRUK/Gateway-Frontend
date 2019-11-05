@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, ParagraphHeading } from "../../styles/styles.js";
 import styled from "styled-components";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
+import { Bold, ParagraphHeading } from "../../styles/styles.js";
+import Sort from "../../components/sort/sort.js";
 
 const text = {
     results: "Results",
@@ -27,9 +28,11 @@ const SearchPage = () => {
                 <SearchInfo>
                     <Line />
                     <ResultsCounter>
-                        <Bold>00</Bold> {text.results}
+                        <Bold>{data ? `${data.length}` : "0"}</Bold> {text.results}
                     </ResultsCounter>
-                    <SortDiv>SORT COMPONENT</SortDiv>
+                    <SortDiv>
+                        <Sort />
+                    </SortDiv>
                 </SearchInfo>
                 <ResultsWrapper>
                     {loading ? (
@@ -75,13 +78,14 @@ const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    max-height: calc(100vh - 24rem);
+    max-height: calc(100vh - 25rem);
     overflow: scroll;
     padding: 0 1rem 0 1rem;
 `;
 
 const ResultsCounter = styled.div`
     display: inline-block;
+    line-height: 2.5rem;
 `;
 
 const SortDiv = styled.div`
@@ -91,7 +95,7 @@ const SortDiv = styled.div`
 
 const Line = styled.div`
     height: 0.0625rem;
-    margin: 1rem 0;
+    margin: 1rem 0 0.5rem 0;
     background-color: black;
 `;
 
@@ -105,7 +109,7 @@ const TemporaryResultCard = styled.div`
 `;
 
 const SearchInfo = styled.div`
-    padding: 0 1rem 1rem 1rem;
+    padding: 0 1rem 0.5rem 1rem;
 `;
 
 export default SearchPage;
