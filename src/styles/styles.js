@@ -65,15 +65,13 @@ const LargeSpace = styled.div`
     padding: 5rem;
 `;
 
-const NavHeading = styled.p`
-    font-size: 1.2rem;
+const SmallHeading = styled.p`
+    font-size: 1.125rem;
     font-weight: 700;
-    padding: 1rem 0 0 1rem;
 `;
 
-const NavText = styled.p`
+const SmallText = styled.p`
     font-size: 0.8rem;
-    padding: 0 1rem;
 `;
 
 const TinyText = styled.span`
@@ -93,6 +91,16 @@ const LabelText = styled.p`
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
+`;
+
+const Line = styled.div`
+    height: 0.0625rem;
+    margin: 1rem 0 0.5rem 0;
+    background-color: black;
+`;
+
+const NavPadding = styled.div`
+    padding: 1rem 1rem 0 1rem;
 `;
 
 const MenuLine = styled.div`
@@ -259,6 +267,7 @@ const FloatRight = styled.div`
 
 export {
     Heading,
+    SmallHeading,
     ParagraphHeading,
     InvertedParagraphHeading,
     InvertedHeaderHeading,
@@ -273,11 +282,12 @@ export {
     SideStripe,
     SideStripeLeft,
     SideStripeRight,
-    NavHeading,
-    NavText,
+    SmallText,
     TinyText,
     Bold,
+    Line,
     MenuLine,
+    NavPadding,
     ContentWrapper,
     LinkNoDecoration,
     Logo,

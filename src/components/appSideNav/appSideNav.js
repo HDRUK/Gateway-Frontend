@@ -1,6 +1,6 @@
 import React from "react";
 import { SideNavItems, SideNavLink } from "carbon-components-react";
-import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
+import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding } from "../../styles/styles.js";
 import { MainSideNav } from "../../styles/carbonComponents";
 
 const text = {
@@ -38,9 +38,11 @@ const routes = [
 
 const AppSideNav = () => (
     <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
-        <NavHeading>{text.username}</NavHeading>
-        <NavText>{text.company}</NavText>
-        <MenuLine />
+        <NavPadding>
+            <SmallHeading>{text.username}</SmallHeading>
+            <SmallText>{text.company}</SmallText>
+            <Line />
+        </NavPadding>
         <SideNavItems>
             {routes.map(route => (
                 <LinkNoDecoration to={route.path} key={`route${route.path}`}>

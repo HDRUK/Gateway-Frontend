@@ -106,7 +106,7 @@ describe("<LandingPage> ", () => {
         expect(darkText2BulletsItems[1].props.children).toEqual(text.secondBullet);
         expect(darkText2BulletsItems[2].props.children).toEqual(text.thirdBullet);
 
-        expect(smallSpaces).toHaveLength(8);
+        expect(smallSpaces).toHaveLength(10);
         expect(mediumSpaces).toHaveLength(3);
     });
 });
