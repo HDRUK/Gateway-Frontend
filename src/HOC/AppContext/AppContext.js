@@ -7,6 +7,11 @@ export const AppContext = React.createContext();
 export const AppContextConsumer = AppContext.Consumer;
 
 class AppContextProvider extends Component {
+    state = {
+        counter: 0,
+        searchPageState: false
+    };
+
     newsItems = {
         newsItemOne: {
             image: "",
@@ -30,11 +35,6 @@ class AppContextProvider extends Component {
     };
 
     textItems = { searchHeader: "What health data do you need?" };
-
-    state = {
-        counter: 0,
-        searchPageState: false
-    };
 
     search = {
         loading: false,

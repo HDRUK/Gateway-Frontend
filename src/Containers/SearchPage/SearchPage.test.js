@@ -25,7 +25,7 @@ describe("<SearchPage> rendered before a search", () => {
     let renderedComponent;
     let renderedOutput;
 
-    beforeEach(() => {
+    beforeAll(() => {
         context.state.searchPageState = false;
         renderedComponent = create(
             <AppContext.Provider value={context}>
@@ -50,7 +50,8 @@ describe("<SearchPage> rendered before a search", () => {
         const searchBar = searchBarWrapper[0].props.children;
         expect(searchBar.type).toBe(SearchBar);
         expect(searchBar.props.labelText).toBe("Search");
-        // TODO: Test onKeyPress function
+        searchBar.props.onKeyPress();
+        expect(searchBar.props.onKeyPress).toHaveBeenCalled();
     });
 
     it("should render the results as invisible", () => {
@@ -70,7 +71,7 @@ describe("<SearchPage> rendered after a search", () => {
     let renderedComponent;
     let renderedOutput;
 
-    beforeEach(() => {
+    beforeAll(() => {
         context.state.searchPageState = true;
         renderedComponent = create(
             <AppContext.Provider value={context}>

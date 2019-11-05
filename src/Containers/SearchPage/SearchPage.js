@@ -28,6 +28,8 @@ const SearchPage = () => {
     const loading = appContext.search.loading;
     const data = appContext.search.data;
 
+    const dataLength = data ? `${data.length}` : "0";
+
     return (
         <div>
             <SearchHeading invisible={pageState}>{text.searchTitle}</SearchHeading>
@@ -38,7 +40,7 @@ const SearchPage = () => {
                 <SearchInfo>
                     <Line />
                     <ResultsCounter>
-                        <Bold>{data ? `${data.length}` : "0"}</Bold> {text.results}
+                        <Bold>{dataLength}</Bold> {text.results}
                     </ResultsCounter>
                     <SortDiv>
                         <Sort />
