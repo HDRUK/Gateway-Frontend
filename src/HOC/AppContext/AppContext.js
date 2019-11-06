@@ -39,7 +39,8 @@ class AppContextProvider extends Component {
     state = {
         counter: 0,
         searchPageState: this.searchPageStates.form,
-        modalVisibility: false
+        modalVisibility: false,
+        itemRef: React.createRef()
     };
 
     returnSearchResults = event => {
@@ -60,6 +61,7 @@ class AppContextProvider extends Component {
         this.setState({
             modalVisibility: !this.state.modalVisibility
         });
+        console.log(this.state.itemRef);
     };
 
     render() {

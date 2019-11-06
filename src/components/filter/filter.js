@@ -20,6 +20,7 @@ const filterTitles = {
 
 const Filter = () => {
     const appContext = useContext(AppContext);
+    let itemRef = appContext.state.itemRef;
     return (
         <AccordionBlock>
             <FilterBlockTitle>Filter</FilterBlockTitle>
@@ -27,23 +28,36 @@ const Filter = () => {
             <AccordionElement title={filterTitles.secondFilter} />
             <AccordionElement title={filterTitles.thirdFilter} />
             <AccordionElement
+                onHeadingClick={appContext.toggleModal}
                 open={appContext.state.modalVisibility}
-                onClick={appContext.toggleModal}
                 title={filterTitles.fourthFilter}
             >
-                <FilterModal
-                    modalVisibility={appContext.state.modalVisibility}
-                    aria-label="fourthFilter"
-                    id="fourthFilter"
-                    modalHeading="fourthFilter"
-                    onRequestClose={appContext.toggleModal}
-                    onBlur={appContext.toggleModal}
-                    secondaryButtonText="Cancel"
-                    onSecondarySubmit={appContext.toggleModal}
-                >
-                    <p>Hello</p>
-                </FilterModal>
+                {appContext.state.modalVisibility && <div ref={itemRef} />}
             </AccordionElement>
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
+            <AccordionElement title={filterTitles.firstFilter} />
+            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.thirdFilter} />
         </AccordionBlock>
     );
 };

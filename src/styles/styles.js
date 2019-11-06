@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
@@ -254,6 +254,19 @@ const PageWrapper = styled.div`
 const FloatRight = styled.div`
     float: right;
     display: inline-flex;
+`;
+export const FilterDiv = styled.div`
+    ${props =>
+        props.modalVisibility &&
+        css`
+            width: 20rem;
+            height: 20rem;
+            z-index: 10;
+            left: 17rem;
+            display: inline-flex;
+            position: absolute;
+            background-color: black;
+        `};
 `;
 
 export {

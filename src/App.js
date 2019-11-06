@@ -8,6 +8,7 @@ import AboutPage from "./Containers/AboutPage/AboutPage.js";
 import SearchPage from "./Containers/SearchPage/SearchPage.js";
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
+import MenuFilterWrapper from "./components/menuFilterWrapper/menuFilterWrapper.js";
 import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
@@ -23,6 +24,7 @@ class App extends React.Component {
                             <GlobalStyle />
                             <Header />
                             <PageWrapper>
+                                <MenuFilterWrapper />
                                 <Switch>
                                     <Route exact path="/">
                                         <Content>

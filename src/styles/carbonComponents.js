@@ -8,8 +8,7 @@ import {
     Dropdown,
     Accordion,
     AccordionItem,
-    SideNavItems,
-    Modal
+    SideNavItems
 } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
@@ -31,6 +30,7 @@ export const AccordionBlock = styled(Accordion)`
 `;
 
 export const AccordionElement = styled(AccordionItem)`
+    position: relative;
     border-color: #8d8d8d;
 `;
 
@@ -48,12 +48,7 @@ export const SideNavText = styled(SideNavLinkText)`
 
 export const NavItems = styled(SideNavItems)`
     flex: inherit;
-`;
-
-export const FilterModal = styled(Modal)`
-    z-index: 1;
-    ${props => props.modalVisibility && "visibility: visible"};
-    opacity: 1;
+    overflow: visible !important;
 `;
 
 export const SearchBar = styled(Search)``;
@@ -65,4 +60,5 @@ export const MainSideNav = styled(SideNav)`
     position: absolute;
     background-color: #b5bab8;
     font-size: 1.2rem;
+    overflow: auto;
 `;
