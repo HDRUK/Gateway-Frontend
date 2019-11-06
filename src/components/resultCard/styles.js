@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const TitleBox = styled.div`
     display: inline-block;
     width: calc(100% - 1rem);
+    // max-height: 3rem;
+    overflow: hidden;
 `;
 
 export const Arrow = styled.div`
