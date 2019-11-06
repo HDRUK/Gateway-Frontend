@@ -1,6 +1,7 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import SearchPage from "./SearchPage.js";
+import ResultCard from "../../components/resultCard/resultCard.js";
 import {
     SearchHeading,
     SearchBarWrapper,
@@ -8,8 +9,7 @@ import {
     SearchInfo,
     ResultsCounter,
     SortDiv,
-    ResultsWrapper,
-    TemporaryResultCard
+    ResultsWrapper
 } from "./styles.js";
 import { Line } from "../../styles/styles.js";
 import { SearchBar } from "../../styles/carbonComponents.js";
@@ -118,9 +118,10 @@ describe("<SearchPage> rendered after a search", () => {
         expect(resultsWrapper.type).toBe(ResultsWrapper);
         const resultsCards = resultsWrapper.props.children;
         resultsCards.map((card, i) => {
-            expect(card.type).toBe(TemporaryResultCard);
-            expect(card.key).toBe(`temporaryResultCard-${i}`);
-            expect(card.props.children).toBe(context.search.data[i].title);
+            expect(card.type).toBe(ResultCard);
+            expect(card.key).toBe(`resultCard-${i}`);
+            expect(card.props.title).toBe(context.search.data[i].title);
+            expect(card.props.description).toBe(context.search.data[i].description);
         });
     });
 

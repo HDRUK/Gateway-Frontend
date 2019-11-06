@@ -266,6 +266,25 @@ const FloatRight = styled.div`
     display: inline-flex;
 `;
 
+const Card = styled.div`
+    position: relative;
+    min-height: 4rem;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.5);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    overflow: hidden;
+`;
+
+const Preview = styled.p`
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
 export {
     Heading,
     SmallHeading,
@@ -310,5 +329,7 @@ export {
     AppWrapper,
     PageWrapper,
     LabelText,
-    FloatRight
+    FloatRight,
+    Card,
+    Preview
 };
