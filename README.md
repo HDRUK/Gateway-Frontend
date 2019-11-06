@@ -4,17 +4,17 @@
 
 Clone the bitbucket repsoitory
 
-> `git clone git@bitbucket.org:hdr_mvp_gateway/hdr_mvp_gateway_web_application.git`
+> git clone git@bitbucket.org:hdr_mvp_gateway/hdr_mvp_gateway_web_application.git
 
 From a command prompt (Optional to use VS Code), in the cloned directory
 
 To install all dependencies
 
-> `npm install`
+> npm install
 
 To run
 
-> `npm run start`
+> npm run start
 
 ### Setup the .env file
 
@@ -28,11 +28,11 @@ REACT_APP_GRAPH_QL_ENDPOINT=
 
 To run the test scripts run
 
-> `npm run test`
+> npm run test
 
 To run the tests with a coverage report run
 
-> `npm run test:coverage`
+> npm run test:coverage
 
 ### Useful sites:
 
