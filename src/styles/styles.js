@@ -258,6 +258,7 @@ const FloatRight = styled.div`
 export const FilterDiv = styled.div`
     ${props =>
         props.modalVisibility &&
+        props.location &&
         css`
             width: 20rem;
             height: 20rem;
@@ -266,6 +267,7 @@ export const FilterDiv = styled.div`
             display: inline-flex;
             position: absolute;
             background-color: black;
+            top: ${props.location - 20}px;
         `};
 `;
 

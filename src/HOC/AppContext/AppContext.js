@@ -40,7 +40,8 @@ class AppContextProvider extends Component {
         counter: 0,
         searchPageState: this.searchPageStates.form,
         modalVisibility: false,
-        itemRef: React.createRef()
+        itemRef: React.createRef(),
+        filterLocation: 0
     };
 
     returnSearchResults = event => {
@@ -49,6 +50,11 @@ class AppContextProvider extends Component {
                 searchPageState: this.searchPageStates["results"]
             });
         }
+    };
+
+    setFilterLocation = () => {
+        this.state.itemRef.current &&
+            this.setState({ filterLocation: this.state.itemRef.current.getBoundingClientRect().y });
     };
 
     counterFunc = () => {
@@ -61,7 +67,7 @@ class AppContextProvider extends Component {
         this.setState({
             modalVisibility: !this.state.modalVisibility
         });
-        console.log(this.state.itemRef);
+        // this.state.itemRef.current && console.log(this.state.itemRef.current.getBoundingClientRect().y);
     };
 
     render() {
@@ -74,6 +80,7 @@ class AppContextProvider extends Component {
                     images: this.images,
                     textItems: this.textItems,
                     returnSearchResults: this.returnSearchResults,
+                    setFilterLocation: this.setFilterLocation,
                     toggleModal: this.toggleModal
                 }}
             >

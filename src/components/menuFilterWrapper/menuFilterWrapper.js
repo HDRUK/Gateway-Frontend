@@ -10,7 +10,9 @@ const MenuFilterWrapper = () => {
         <React.Fragment>
             {!modalVisibility && <div />}
 
-            {modalVisibility && <FilterDiv modalVisibility={modalVisibility} />}
+            {modalVisibility && (
+                <FilterDiv location={appContext.state.filterLocation} modalVisibility={modalVisibility} />
+            )}
         </React.Fragment>
     );
 };
