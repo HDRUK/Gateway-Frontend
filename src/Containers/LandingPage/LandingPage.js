@@ -36,6 +36,10 @@ const textItems = {
     newsGroupHeading: "HDR News"
 };
 
+const LandingPageWrapper = styled.div`
+    padding: 0 3rem 9rem 3rem;
+`;
+
 const LandingPage = () => {
     return (
         <LandingPageWrapper>
@@ -91,9 +95,5 @@ const LandingPage = () => {
         </LandingPageWrapper>
     );
 };
-
-const LandingPageWrapper = styled.div`
-    padding: 0 3rem 9rem 3rem;
-`;
 
 export default LandingPage;
