@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { NewsTileWrapper, ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
+import { NewsTileWrapper } from "./styles.js";
+import { ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const text = {

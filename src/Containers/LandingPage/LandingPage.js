@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 
+import { LandingPageWrapper } from "./styles.js";
 import {
     ParagraphHeading,
     DarkText,
@@ -35,10 +34,6 @@ const textItems = {
     thirdLink: "Get in touch with HDR UK",
     newsGroupHeading: "HDR News"
 };
-
-const LandingPageWrapper = styled.div`
-    padding: 0 3rem 9rem 3rem;
-`;
 
 const LandingPage = () => {
     return (
