@@ -43,9 +43,9 @@ describe("<Sort> ", () => {
 
         it("should render the label item", () => {
             const float = renderedOutput.findAllByType(FloatRight);
-            const text = float[0].findAllByType(LabelText);
-            expect(text).toHaveLength(1);
-            expect(text[0].props.children).toBe(textItems.labelText);
+            const labelText = float[0].findAllByType(LabelText);
+            expect(labelText).toHaveLength(1);
+            expect(labelText[0].props.children).toBe(textItems.labelText);
         });
     });
 });

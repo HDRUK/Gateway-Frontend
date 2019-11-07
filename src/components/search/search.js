@@ -6,13 +6,13 @@ import PropTypes from "prop-types";
 
 const Search = props => {
     const appContext = useContext(AppContext);
-    const text = appContext.textItems[props.identifier];
+    const searchHeader = appContext.textItems[props.identifier];
     const returnSearchResults = appContext.returnSearchResults;
     return (
         <CenterBlock>
             <div>
                 <LargeSpace />
-                <ParagraphHeading>{text}</ParagraphHeading>
+                <ParagraphHeading>{searchHeader}</ParagraphHeading>
                 <SmallSpace />
                 <SearchBar labelText="Search" onKeyPress={returnSearchResults} />
             </div>

@@ -31,7 +31,7 @@ const ParagraphText = styled.p`
     color: #3c3c3b;
 `;
 
-const DarkText = styled.text`
+const DarkText = styled.span`
     color: #3c3c3b;
 `;
 
@@ -54,30 +54,32 @@ const CenterBlock = styled.div`
 `;
 
 const SmallSpace = styled.div`
-    padding: 15px;
+    padding: 1rem;
 `;
 
 const MediumSpace = styled.div`
-    padding: 30px;
+    padding: 2rem;
 `;
 
 const LargeSpace = styled.div`
-    padding: 80px;
+    padding: 5rem;
 `;
 
-const NavHeading = styled.p`
-    font-size: 1.2rem;
+const SmallHeading = styled.p`
+    font-size: 1.125rem;
     font-weight: 700;
-    padding: 1rem 0 0 1rem;
 `;
 
-const NavText = styled.p`
+const SmallText = styled.p`
     font-size: 0.8rem;
-    padding: 0 1rem;
 `;
 
-const TinyText = styled.text`
+const TinyText = styled.span`
     font-size: 0.75rem;
+`;
+
+const Bold = styled.span`
+    font-weight: 700;
 `;
 
 const LabelText = styled.p`
@@ -90,6 +92,17 @@ const LabelText = styled.p`
     justify-content: center;
     flex-direction: column;
 `;
+
+const Line = styled.div`
+    height: 0.0625rem;
+    margin: 1rem 0 0.5rem 0;
+    background-color: black;
+`;
+
+const NavPadding = styled.div`
+    padding: 1rem 1rem 0 1rem;
+`;
+
 const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
@@ -117,7 +130,7 @@ const SideStripeRight = styled(SideStripe)`
 
 const ContentWrapper = styled.div`
     position: relative;
-    padding: 4rem 4rem 4rem 4rem;
+    padding: 1rem 1rem 0 1rem;
     background-color: #ffffff;
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
@@ -140,11 +153,6 @@ const SocialMediaLogo = styled.div`
     max-height: 2rem;
     fill: #ffffff;
     margin-right: 0.5rem;
-`;
-const NewsTileWrapper = styled.div`
-    display: inline-block;
-    width: 18rem;
-    height: 18rem;
 `;
 
 const ImageSection = styled.div`
@@ -200,35 +208,6 @@ const NewsTileItem = styled.div`
     }
 `;
 
-const FooterWrapper = styled.div`
-    height: 12rem;
-    padding-bottom: 1rem;
-    background-color: rgb(60, 60, 59);
-    color: white;
-    padding-left: 7rem;
-    font-size: 1.1rem;
-    position: relative;
-`;
-
-const FooterBlock = styled.div`
-    display: inline-block;
-    box-sizing: border-box;
-    width: 33.33%;
-    height: 90%;
-    vertical-align: top;
-    padding: 3rem 5rem 0 0;
-`;
-
-const FooterText = styled.div`
-    width: 100%;
-    margin: 0 0 0.4rem 0;
-`;
-
-const FooterImage = styled(Logo)`
-    max-width: 8rem;
-    max-height: 5rem;
-`;
-
 const HeaderImage = styled(Logo)`
     max-width: 4.5rem;
     max-height: 3rem;
@@ -237,7 +216,8 @@ const HeaderImage = styled(Logo)`
 `;
 
 const AppWrapper = styled.div`
-    width: 66rem;
+    min-width: 48rem;
+    max-width: 66rem;
     margin: 0 auto 0;
 `;
 
@@ -253,6 +233,7 @@ const FloatRight = styled.div`
 
 export {
     Heading,
+    SmallHeading,
     ParagraphHeading,
     InvertedParagraphHeading,
     InvertedHeaderHeading,
@@ -267,15 +248,16 @@ export {
     SideStripe,
     SideStripeLeft,
     SideStripeRight,
-    NavHeading,
-    NavText,
+    SmallText,
     TinyText,
+    Bold,
+    Line,
     MenuLine,
+    NavPadding,
     ContentWrapper,
     LinkNoDecoration,
     Logo,
     SocialMediaLogo,
-    NewsTileWrapper,
     ImageSection,
     TextSection,
     Description,
@@ -284,10 +266,6 @@ export {
     SmallImage,
     NewsTileItem,
     StyledImage,
-    FooterWrapper,
-    FooterBlock,
-    FooterText,
-    FooterImage,
     HeaderImage,
     AppWrapper,
     PageWrapper,

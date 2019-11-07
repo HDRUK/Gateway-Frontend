@@ -1,9 +1,7 @@
-const searchPageStates = {
-    form: "form",
-    results: "results"
-};
-
 const context = {
+    state: {
+        counter: 0
+    },
     newsItems: {
         newsItemOne: {
             image: "TestImage",
@@ -21,15 +19,24 @@ const context = {
             readMore: "http://localhost:3000"
         }
     },
-
-    state: {
-        counter: 0,
-        searchPageState: searchPageStates.form
-    },
     images: {
         logoHDR: "test"
     },
     textItems: { searchHeader: "TestSearchHeader" },
+    search: {
+        loading: false,
+        data: [
+            {
+                title: "Card 1"
+            },
+            {
+                title: "Card 2"
+            },
+            {
+                title: "Card 3"
+            }
+        ]
+    },
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn()
 };

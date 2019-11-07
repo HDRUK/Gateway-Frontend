@@ -3,8 +3,8 @@ import { InvertedHeaderHeading, HeaderImage } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
-const text = {
-    headerText: "Innovation Gateway"
+const headerText = {
+    header: "Innovation Gateway"
 };
 
 const AppHeader = () => (
@@ -12,7 +12,7 @@ const AppHeader = () => (
         <Link to="/">
             <HeaderImage />
         </Link>
-        <InvertedHeaderHeading>{text.headerText}</InvertedHeaderHeading>
+        <InvertedHeaderHeading>{headerText.header}</InvertedHeaderHeading>
     </HeaderWrapper>
 );
 
