@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
 import { Bold, Line } from "../../styles/styles.js";
@@ -15,7 +14,8 @@ import {
 } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 
-const text = {
+const searchPageText = {
+    search: "Search",
     results: "Results",
     searchTitle: "What health data to you need?"
 };
@@ -32,15 +32,15 @@ const SearchPage = () => {
 
     return (
         <div>
-            <SearchHeading invisible={pageState}>{text.searchTitle}</SearchHeading>
+            <SearchHeading invisible={pageState}>{searchPageText.searchTitle}</SearchHeading>
             <SearchBarWrapper main={!pageState}>
-                <SearchBar labelText="Search" onKeyPress={returnSearchResults} />
+                <SearchBar labelText={searchPageText.search} onKeyPress={returnSearchResults} />
             </SearchBarWrapper>
             <Results invisible={!pageState}>
                 <SearchInfo>
                     <Line />
                     <ResultsCounter>
-                        <Bold>{dataLength}</Bold> {text.results}
+                        <Bold>{dataLength}</Bold> {searchPageText.results}
                     </ResultsCounter>
                     <SortDiv>
                         <Sort />

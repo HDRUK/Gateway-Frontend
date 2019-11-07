@@ -16,7 +16,7 @@ import { SearchBar } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
-const text = {
+const searchPageText = {
     results: "Results",
     searchTitle: "What health data to you need?"
 };
@@ -39,7 +39,7 @@ describe("<SearchPage> rendered before a search", () => {
         const searchHeading = renderedOutput.findAllByType(SearchHeading);
         expect(searchHeading).toHaveLength(1);
         expect(searchHeading[0].props.invisible).toBe(false);
-        expect(searchHeading[0].props.children).toBe(text.searchTitle);
+        expect(searchHeading[0].props.children).toBe(searchPageText.searchTitle);
     });
 
     it("should render the search bar with wrapper", () => {
@@ -111,7 +111,7 @@ describe("<SearchPage> rendered after a search", () => {
         expect(searchInfoComponents[1].type).toEqual(ResultsCounter);
         const resultsCounterText = searchInfoComponents[1].props.children;
         expect(resultsCounterText[0].props.children).toEqual(`${context.search.data.length}`);
-        expect(resultsCounterText[2]).toEqual(text.results);
+        expect(resultsCounterText[2]).toEqual(searchPageText.results);
         expect(searchInfoComponents[2].type).toEqual(SortDiv);
 
         const resultsWrapper = results[0].props.children[1];

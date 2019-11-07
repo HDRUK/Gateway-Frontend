@@ -3,7 +3,7 @@ import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
 import { FooterWrapper, FooterBlock, FooterText, FooterImage } from "./styles.js";
 import { SocialMediaLogo, TinyText } from "../../styles/styles.js";
 
-const text = {
+const footerText = {
     followUs: "Follow us on social media",
     visitHDRWebsite: "Visit the HDR UK Site",
     contactUs: "Contact us",
@@ -23,7 +23,7 @@ const Footer = () => (
             <FooterImage />
         </FooterBlock>
         <FooterBlock>
-            <FooterText>{text.followUs}</FooterText>
+            <FooterText>{footerText.followUs}</FooterText>
             <SocialMediaLogo>
                 <a href={links.twitter} target="_blank" rel="noopener noreferrer">
                     <LogoTwitter32 />
@@ -36,12 +36,12 @@ const Footer = () => (
             </SocialMediaLogo>
         </FooterBlock>
         <FooterBlock>
-            <FooterText>{text.visitHDRWebsite}</FooterText>
-            <FooterText>{text.contactUs}</FooterText>
-            <FooterText>{text.accessibilityStatement}</FooterText>
-            <FooterText>{text.termsAndConditions}</FooterText>
+            <FooterText>{footerText.visitHDRWebsite}</FooterText>
+            <FooterText>{footerText.contactUs}</FooterText>
+            <FooterText>{footerText.accessibilityStatement}</FooterText>
+            <FooterText>{footerText.termsAndConditions}</FooterText>
         </FooterBlock>
-        <TinyText>{text.copyright}</TinyText>
+        <TinyText>{footerText.copyright}</TinyText>
     </FooterWrapper>
 );
 

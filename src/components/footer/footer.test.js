@@ -5,7 +5,7 @@ import Footer from "./footer.js";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
 import { SocialMediaLogo, TinyText, FooterWrapper, FooterBlock, FooterText, FooterImage } from "../../styles/styles.js";
 
-const text = {
+const footerTextContent = {
     followUs: "Follow us on social media",
     visitHDRWebsite: "Visit the HDR UK Site",
     contactUs: "Contact us",
@@ -39,7 +39,7 @@ describe("<Footer> ", () => {
             footerText: footerBlocks[1].findByType(FooterText),
             socialMediaLogos: footerBlocks[1].findAllByType(SocialMediaLogo)
         };
-        expect(block2Content.footerText.props.children).toEqual(text.followUs);
+        expect(block2Content.footerText.props.children).toEqual(footerTextContent.followUs);
         const twitterLink = block2Content.socialMediaLogos[0].findByType("a");
         expect(twitterLink.props.href).toEqual(links.twitter);
         expect(twitterLink.props.target).toEqual("_blank");
@@ -53,13 +53,13 @@ describe("<Footer> ", () => {
 
         const block3Texts = footerBlocks[2].findAllByType(FooterText);
         expect(block3Texts).toHaveLength(4);
-        expect(block3Texts[0].props.children).toEqual(text.visitHDRWebsite);
-        expect(block3Texts[1].props.children).toEqual(text.contactUs);
-        expect(block3Texts[2].props.children).toEqual(text.accessibilityStatement);
-        expect(block3Texts[3].props.children).toEqual(text.termsAndConditions);
+        expect(block3Texts[0].props.children).toEqual(footerTextContent.visitHDRWebsite);
+        expect(block3Texts[1].props.children).toEqual(footerTextContent.contactUs);
+        expect(block3Texts[2].props.children).toEqual(footerTextContent.accessibilityStatement);
+        expect(block3Texts[3].props.children).toEqual(footerTextContent.termsAndConditions);
 
         const tinyText = footerWrapper.findAllByType(TinyText);
         expect(tinyText).toHaveLength(1);
-        expect(tinyText[0].props.children).toEqual(text.copyright);
+        expect(tinyText[0].props.children).toEqual(footerTextContent.copyright);
     });
 });
