@@ -98,8 +98,8 @@ describe("<LandingPage> ", () => {
         expect(darkText2ParagraphHeadings[0].props.children).toEqual(textItems.landingSecondParaHeading);
         expect(darkText2ParagraphHeadings[1].props.children).toEqual(textItems.landingThirdParaHeading);
         const darkText2Paragraphs = darkTexts[2].findAllByType(ParagraphText);
-        expect(darkText2Paragraphs[0].props.children).toEqual(text.landingSecondPara);
-        expect(darkText2Paragraphs[1].props.children).toEqual(text.landingThirdPara);
+        expect(darkText2Paragraphs[0].props.children).toEqual(textItems.landingSecondPara);
+        expect(darkText2Paragraphs[1].props.children).toEqual(textItems.landingThirdPara);
         const darkText2Bullets = darkTexts[2].findByType(ParagraphBullets);
         const darkText2BulletsItems = darkText2Bullets.findAllByType(NewListItem);
         expect(darkText2BulletsItems[0].props.children).toEqual(textItems.firstBullet);

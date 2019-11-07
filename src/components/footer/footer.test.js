@@ -3,7 +3,8 @@ import { create } from "react-test-renderer";
 import Footer from "./footer.js";
 
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
-import { SocialMediaLogo, TinyText, FooterWrapper, FooterBlock, FooterText, FooterImage } from "../../styles/styles.js";
+import { FooterWrapper, FooterBlock, FooterText, FooterImage } from "./styles.js";
+import { SocialMediaLogo, TinyText } from "../../styles/styles.js";
 
 const footerTextContent = {
     followUs: "Follow us on social media",
