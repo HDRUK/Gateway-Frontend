@@ -38,7 +38,7 @@ const SearchPage = () => {
         });
 
         if (loading) return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
-        if (error) return <div>Error :(</div>;
+        if (error) return <div>{error.status} - Error :(</div>;
 
         setDataLength(data.hdrCatalogueItemsSearch.count);
 
@@ -69,13 +69,6 @@ const SearchPage = () => {
                     </SortDiv>
                 </SearchInfo>
                 <ResultsWrapper>
-                    {/* {loading ? (
-                        <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
-                    ) : (
-                        data.map((card, i) => (
-                            <ResultCard key={`resultCard-${i}`} title={card.title} description={card.description} />
-                        ))
-                    )} */}
                     <ResultsData searchTerm={searchTerm} />
                 </ResultsWrapper>
             </Results>

@@ -39,8 +39,7 @@ const AppContextProvider = props => {
     const textItems = { searchHeader: "What health data do you need?" };
 
     const [search, setSearch] = useState({
-        term: "",
-        data: []
+        term: ""
     });
 
     // const search = {
@@ -69,12 +68,6 @@ const AppContextProvider = props => {
     //     ]
     // };
 
-    const updateSearchData = data => {
-        setSearch({
-            data: data
-        });
-    };
-
     const returnSearchResults = event => {
         if (event.key === "Enter") {
             setState({
@@ -101,8 +94,7 @@ const AppContextProvider = props => {
                 images,
                 textItems,
                 returnSearchResults,
-                search,
-                updateSearchData
+                search
             }}
         >
             {props.children}
