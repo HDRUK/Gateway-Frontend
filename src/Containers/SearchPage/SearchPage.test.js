@@ -18,7 +18,7 @@ import context from "../../__mocks__/AppContextMock.js";
 
 const searchPageText = {
     results: "Results",
-    searchTitle: "What health data to you need?"
+    searchTitle: "What health data do you need?"
 };
 
 describe("<SearchPage> rendered before a search", () => {

@@ -17,7 +17,7 @@ import Sort from "../../components/sort/sort.js";
 const searchPageText = {
     search: "Search",
     results: "Results",
-    searchTitle: "What health data to you need?"
+    searchTitle: "What health data do you need?"
 };
 
 const SearchPage = () => {
