@@ -35,13 +35,13 @@ class AppContextProvider extends Component {
         form: "form",
         results: "results"
     };
+
     itemRef = React.createRef();
 
     state = {
         counter: 0,
         searchPageState: this.searchPageStates.form,
         modalVisibility: false,
-
         filterLocation: 0,
         filterId: 0
     };
@@ -54,8 +54,14 @@ class AppContextProvider extends Component {
         }
     };
 
+    outsideRange = (number, target, range) => {
+        return number < target - range || number > target + range;
+    };
+
     setFilterLocation = () => {
-        this.itemRef.current && this.setState({ filterLocation: this.itemRef.current.getBoundingClientRect().y });
+        this.itemRef.current &&
+            this.outsideRange(this.itemRef.current.getBoundingClientRect().y, this.state.filterLocation, 11) &&
+            this.setState({ filterLocation: this.itemRef.current.getBoundingClientRect().y });
     };
 
     setFilterId = props => {
@@ -69,10 +75,19 @@ class AppContextProvider extends Component {
     };
 
     toggleModal = () => {
-        this.setState({
-            modalVisibility: !this.state.modalVisibility
-        });
-        // this.state.itemRef.current && console.log(this.state.itemRef.current.getBoundingClientRect().y);
+        this.setState(
+            {
+                modalVisibility: !this.state.modalVisibility
+            },
+            () =>
+                this.state.modalVisibility
+                    ? document
+                          .getElementById("main-side-nav")
+                          .childNodes[1].addEventListener("scroll", this.setFilterLocation)
+                    : document
+                          .getElementById("main-side-nav")
+                          .childNodes[1].removeEventListener("scroll", this.setFilterLocation)
+        );
     };
 
     render() {

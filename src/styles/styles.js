@@ -267,7 +267,7 @@ export const FilterDiv = styled.div`
             display: inline-flex;
             position: absolute;
             background-color: black;
-            top: ${props.location - 20}px;
+            top: ${props.location - 100}px;
         `};
 `;
 
