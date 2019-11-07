@@ -35,13 +35,15 @@ class AppContextProvider extends Component {
         form: "form",
         results: "results"
     };
+    itemRef = React.createRef();
 
     state = {
         counter: 0,
         searchPageState: this.searchPageStates.form,
         modalVisibility: false,
-        itemRef: React.createRef(),
-        filterLocation: 0
+
+        filterLocation: 0,
+        filterId: 0
     };
 
     returnSearchResults = event => {
@@ -53,8 +55,11 @@ class AppContextProvider extends Component {
     };
 
     setFilterLocation = () => {
-        this.state.itemRef.current &&
-            this.setState({ filterLocation: this.state.itemRef.current.getBoundingClientRect().y });
+        this.itemRef.current && this.setState({ filterLocation: this.itemRef.current.getBoundingClientRect().y });
+    };
+
+    setFilterId = props => {
+        this.setState({ filterId: props });
     };
 
     counterFunc = () => {
@@ -81,7 +86,9 @@ class AppContextProvider extends Component {
                     textItems: this.textItems,
                     returnSearchResults: this.returnSearchResults,
                     setFilterLocation: this.setFilterLocation,
-                    toggleModal: this.toggleModal
+                    toggleModal: this.toggleModal,
+                    setFilterId: this.setFilterId,
+                    itemRef: this.itemRef
                 }}
             >
                 {this.props.children}

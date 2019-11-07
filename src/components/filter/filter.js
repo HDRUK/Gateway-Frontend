@@ -1,5 +1,5 @@
 import React from "react";
-import { AccordionBlock, AccordionElement } from "../../styles/carbonComponents.js";
+import { AccordionBlock, AccordionElement, DropdownFilter } from "../../styles/carbonComponents.js";
 import { FilterBlockTitle } from "../../styles/styles.js";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
@@ -18,8 +18,8 @@ const filterTitles = {
 class Filter extends React.Component {
     componentDidUpdate() {
         let appContext = this.context;
-        appContext.state.itemRef.current &&
-            appContext.state.filterLocation !== appContext.state.itemRef.current.getBoundingClientRect().y &&
+        appContext.itemRef.current &&
+            appContext.state.filterLocation !== appContext.itemRef.current.getBoundingClientRect().y &&
             appContext.setFilterLocation();
         console.log(appContext.state.filterLocation);
     }
@@ -33,17 +33,34 @@ class Filter extends React.Component {
                         <AccordionElement title={filterTitles.secondFilter} />
                         <AccordionElement title={filterTitles.thirdFilter} />
                         <AccordionElement
-                            onHeadingClick={appContext.toggleModal}
-                            open={appContext.state.modalVisibility}
+                            onHeadingClick={() => {
+                                appContext.setFilterId(0);
+                                appContext.toggleModal();
+                            }}
+                            open={appContext.state.filterId === 0 && appContext.state.modalVisibility}
                             title={filterTitles.fourthFilter}
                         >
-                            {appContext.state.modalVisibility && <div ref={appContext.state.itemRef} />}
+                            {appContext.state.filterId === 0 && appContext.state.modalVisibility && (
+                                <div ref={appContext.itemRef} />
+                            )}
                         </AccordionElement>
                         <AccordionElement title={filterTitles.firstFilter} />
                         <AccordionElement title={filterTitles.secondFilter} />
                         <AccordionElement title={filterTitles.thirdFilter} />
                         <AccordionElement title={filterTitles.firstFilter} />
                         <AccordionElement title={filterTitles.secondFilter} />
+                        <p
+                            onClick={() => {
+                                appContext.setFilterId(1);
+                                appContext.toggleModal();
+                            }}
+                            open={appContext.state.modalVisibility}
+                        >
+                            {filterTitles.fourthFilter}
+                            {appContext.state.filterId === 1 && appContext.state.modalVisibility && (
+                                <div ref={appContext.itemRef} />
+                            )}
+                        </p>
                         <AccordionElement title={filterTitles.thirdFilter} />
                         <AccordionElement title={filterTitles.firstFilter} />
                         <AccordionElement title={filterTitles.secondFilter} />
