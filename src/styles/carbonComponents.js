@@ -8,7 +8,8 @@ import {
     Dropdown,
     Accordion,
     AccordionItem,
-    SideNavItems
+    SideNavItems,
+    Checkbox
 } from "carbon-components-react";
 import styled from "styled-components";
 import "../carbon-components.css";
@@ -51,6 +52,8 @@ export const NavItems = styled(SideNavItems)`
     flex: inherit;
     overflow: visible !important;
 `;
+
+export const CheckboxItem = styled(Checkbox)``;
 
 export const SearchBar = styled(Search)``;
 

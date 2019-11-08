@@ -29,6 +29,7 @@ class AppContextProvider extends Component {
         logoHDR: hdruk_logo_black
     };
 
+    filter = [];
     textItems = { searchHeader: "What health data do you need?" };
 
     searchPageStates = {
@@ -72,6 +73,10 @@ class AppContextProvider extends Component {
         this.setState({
             counter: this.state.counter + 1
         });
+    };
+
+    addFilter = props => {
+        this.filters.append(props);
     };
 
     toggleModal = () => {

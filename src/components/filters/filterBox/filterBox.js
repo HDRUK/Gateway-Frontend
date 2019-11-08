@@ -1,12 +1,27 @@
 import React, { useContext } from "react";
-import { StyledButton } from "../../../styles/carbonComponents.js";
-// import { AppContext } from "../../../HOC/AppContext/AppContext.js";
+import { StyledButton, CheckboxItem } from "../../../styles/carbonComponents.js";
+import { ParagraphText, ButtonSet, FilterBoxContent } from "../../../styles/styles.js";
+import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterBox = () => {
-    // const appContext = useContext(AppContext);
-    // const modalVisibility = appContext.state.modalVisibility;
+    const appContext = useContext(AppContext);
 
-    return <StyledButton kind="secondary">Continue</StyledButton>;
+    return (
+        <React.Fragment>
+            <FilterBoxContent>
+                <ParagraphText>Date Created</ParagraphText>
+                <CheckboxItem
+                    onChange={(value, id) => value && appContext.addFilter(id)}
+                    id="label"
+                    labelText="Label"
+                ></CheckboxItem>
+            </FilterBoxContent>
+            <ButtonSet>
+                <StyledButton kind="secondary">Cancel</StyledButton>
+                <StyledButton kind="primary">Apply</StyledButton>
+            </ButtonSet>
+        </React.Fragment>
+    );
 };
 
 export default FilterBox;
