@@ -2,7 +2,7 @@ import React from "react";
 import { SideNavLink } from "carbon-components-react";
 import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents";
-import Filter from "../filter/filter.js";
+import FilterMenu from "../filters/filterMenu/filterMenu.js";
 
 const text = {
     search: "Search",
@@ -51,7 +51,7 @@ const AppSideNav = () => {
                         </LinkNoDecoration>
                     ))}
                 </NavItems>
-                <Filter></Filter>
+                <FilterMenu></FilterMenu>
             </MainSideNav>
         </div>
     );

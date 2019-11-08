@@ -260,7 +260,7 @@ export const FilterDiv = styled.div`
         props.modalVisibility &&
         props.location &&
         css`
-            width: 20rem;
+            width: 430px;
             height: 20rem;
             z-index: 10;
             left: 17rem;

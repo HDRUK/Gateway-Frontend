@@ -16,6 +16,7 @@ import "../carbon-components.css";
 export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;
+    height: 54px;
 `;
 
 export const ParagraphBullets = styled(UnorderedList)`

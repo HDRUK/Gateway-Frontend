@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { AccordionBlock, AccordionElement } from "../../styles/carbonComponents.js";
-import { FilterBlockTitle } from "../../styles/styles.js";
+import { AccordionBlock, AccordionElement } from "../../../styles/carbonComponents.js";
+import { FilterBlockTitle } from "../../../styles/styles.js";
 
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const filterTitles = {
     firstFilter: "Classifier",
@@ -11,7 +11,7 @@ const filterTitles = {
     fourthFilter: "Date Created"
 };
 
-const Filter = () => {
+const FilterMenu = () => {
     const appContext = useContext(AppContext);
     const filterId = appContext.state.filterId;
     const modalVisibility = appContext.state.modalVisibility;
@@ -74,4 +74,4 @@ const Filter = () => {
     );
 };
 
-export default Filter;
+export default FilterMenu;

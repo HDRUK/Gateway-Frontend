@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import { FilterDiv } from "../../styles/styles.js";
+import { FilterDiv } from "../../../styles/styles.js";
+import FilterBox from "../filterBox/filterBox.js";
 
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const MenuFilterWrapper = () => {
     const appContext = useContext(AppContext);
@@ -12,7 +13,9 @@ const MenuFilterWrapper = () => {
             {!modalVisibility && <div />}
 
             {modalVisibility && (
-                <FilterDiv location={appContext.state.filterLocation} modalVisibility={modalVisibility} />
+                <FilterDiv location={appContext.state.filterLocation} modalVisibility={modalVisibility}>
+                    <FilterBox />
+                </FilterDiv>
             )}
         </React.Fragment>
     );
