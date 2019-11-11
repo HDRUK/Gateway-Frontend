@@ -29,7 +29,8 @@ class AppContextProvider extends Component {
         logoHDR: hdruk_logo_black
     };
 
-    filter = [];
+    filterHeadings = ["first"];
+    filters = {};
     textItems = { searchHeader: "What health data do you need?" };
 
     searchPageStates = {
@@ -76,7 +77,13 @@ class AppContextProvider extends Component {
     };
 
     addFilter = props => {
-        this.filters.append(props);
+        this.filters[props] = props;
+        console.log(this.filters);
+    };
+
+    removeFilter = props => {
+        delete this.filters[props];
+        console.log(this.filters);
     };
 
     toggleModal = () => {
@@ -108,7 +115,10 @@ class AppContextProvider extends Component {
                     setFilterLocation: this.setFilterLocation,
                     toggleModal: this.toggleModal,
                     setFilterId: this.setFilterId,
-                    itemRef: this.itemRef
+                    itemRef: this.itemRef,
+                    addFilter: this.addFilter,
+                    removeFilter: this.removeFilter,
+                    filterHeadings: this.filterHeadings
                 }}
             >
                 {this.props.children}

@@ -1,5 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { AccordionBlock, AccordionElement } from "../../../styles/carbonComponents.js";
+import {
+    AccordionBlock,
+    AccordionElement,
+    CheckboxItem,
+    DateSelector,
+    DateInput
+} from "../../../styles/carbonComponents.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
@@ -23,10 +29,32 @@ const FilterMenu = () => {
         <AccordionBlock>
             <div />
             <FilterBlockTitle>Filter</FilterBlockTitle>
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
+            <AccordionElement title={filterTitles.firstFilter}>
+                <CheckboxItem
+                    onChange={(value, id) => (value ? appContext.addFilter(id) : appContext.removeFilter(id))}
+                    id="label"
+                    labelText="Label"
+                ></CheckboxItem>
+            </AccordionElement>
+            <AccordionElement title={filterTitles.secondFilter}>
+                <DateSelector datePickerType="range" dateFormat="m/d/Y">
+                    <DateInput
+                        id="date-picker-input-id-start"
+                        labelText="From"
+                        placeholder="mm/dd/yyyy"
+                        invalidText="A valid value is required"
+                    />
+                    <DateInput
+                        id="date-picker-input-id-end"
+                        labelText="To"
+                        placeholder="mm/dd/yyyy"
+                        invalidText="A valid value is required"
+                    />
+                </DateSelector>
+            </AccordionElement>
             <AccordionElement title={filterTitles.thirdFilter} />
             <AccordionElement
+                modal={true}
                 onHeadingClick={() => {
                     appContext.setFilterId(0);
                     appContext.toggleModal();
@@ -41,16 +69,6 @@ const FilterMenu = () => {
             <AccordionElement title={filterTitles.thirdFilter} />
             <AccordionElement title={filterTitles.firstFilter} />
             <AccordionElement title={filterTitles.secondFilter} />
-            <p
-                onClick={() => {
-                    appContext.setFilterId(1);
-                    appContext.toggleModal();
-                }}
-                open={modalVisibility}
-            >
-                {filterTitles.fourthFilter}
-                {filterId === 1 && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />}
-            </p>
             <AccordionElement title={filterTitles.thirdFilter} />
             <AccordionElement title={filterTitles.firstFilter} />
             <AccordionElement title={filterTitles.secondFilter} />

@@ -9,9 +9,11 @@ import {
     Accordion,
     AccordionItem,
     SideNavItems,
-    Checkbox
+    Checkbox,
+    DatePicker,
+    DatePickerInput
 } from "carbon-components-react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import "../carbon-components.css";
 
 export const StyledButton = styled(Button)`
@@ -34,6 +36,17 @@ export const AccordionBlock = styled(Accordion)`
 export const AccordionElement = styled(AccordionItem)`
     position: relative;
     border-color: #8d8d8d;
+    ${props =>
+        props.modal &&
+        props.open &&
+        css`
+            > div {
+                padding: 0 !important;
+            }
+            * svg {
+                transform: rotate(0deg) !important;
+            }
+        `}
 `;
 
 export const HeaderWrapper = styled(Header)`
@@ -58,6 +71,12 @@ export const CheckboxItem = styled(Checkbox)``;
 export const SearchBar = styled(Search)``;
 
 export const DropdownFilter = styled(Dropdown)``;
+
+export const DateSelector = styled(DatePicker)`
+    flex-direction: column;
+`;
+
+export const DateInput = styled(DatePickerInput)``;
 
 export const MainSideNav = styled(SideNav)`
     display: inline-flex;

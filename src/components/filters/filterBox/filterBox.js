@@ -1,20 +1,17 @@
 import React, { useContext } from "react";
-import { StyledButton, CheckboxItem } from "../../../styles/carbonComponents.js";
-import { ParagraphText, ButtonSet, FilterBoxContent } from "../../../styles/styles.js";
+import { StyledButton } from "../../../styles/carbonComponents.js";
+import Filter from "../filter/filter.js";
+import { ParagraphText, ButtonSet, FilterBoxContent, Triangle } from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
-
     return (
         <React.Fragment>
+            <Triangle />
             <FilterBoxContent>
-                <ParagraphText>Date Created</ParagraphText>
-                <CheckboxItem
-                    onChange={(value, id) => value && appContext.addFilter(id)}
-                    id="label"
-                    labelText="Label"
-                ></CheckboxItem>
+                <ParagraphText>{appContext.filterHeadings[0]}</ParagraphText>
+                <Filter />
             </FilterBoxContent>
             <ButtonSet>
                 <StyledButton kind="secondary">Cancel</StyledButton>

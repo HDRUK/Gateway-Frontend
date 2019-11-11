@@ -265,17 +265,28 @@ export const FilterBoxContent = styled.div`
     padding: 10px;
 `;
 
+export const Triangle = styled.div`
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-right: 2rem solid #f4f4f4;
+    left: -2rem;
+    top: 10px;
+    position: absolute;
+`;
+
 export const FilterDiv = styled.div`
     ${props =>
         props.modalVisibility &&
         props.location &&
         css`
             flex-direction: column;
-            z-index: 10;
+            z-index: 10000;
             left: 17rem;
             display: inline-flex;
             position: absolute;
             background-color: #f4f4f4;
-            top: ${props.location - 100}px;
+            top: ${props.location - 30}px;
         `};
 `;
