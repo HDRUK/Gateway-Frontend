@@ -37,7 +37,7 @@ export const AccordionElement = styled(AccordionItem)`
     position: relative;
     border-color: #8d8d8d;
     ${props =>
-        props.modal &&
+        props.modal === "true" &&
         props.open &&
         css`
             > div {
@@ -66,7 +66,9 @@ export const NavItems = styled(SideNavItems)`
     overflow: visible !important;
 `;
 
-export const CheckboxItem = styled(Checkbox)``;
+export const CheckboxItem = styled(Checkbox)`
+    margin: 5px 10px 0px 0px;
+`;
 
 export const SearchBar = styled(Search)``;
 
@@ -84,4 +86,5 @@ export const MainSideNav = styled(SideNav)`
     background-color: #b5bab8;
     font-size: 1.2rem;
     overflow: auto;
+    z-index: 1;
 `;

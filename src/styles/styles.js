@@ -265,6 +265,16 @@ export const FilterBoxContent = styled.div`
     padding: 10px;
 `;
 
+export const FilterBlock = styled.div`
+    flex-wrap: wrap;
+    display: inline-flex;
+    flex-direction: column;
+    max-height: 7rem;
+    > div {
+        margin-top: 0 !important;
+    }
+`;
+
 export const Triangle = styled.div`
     width: 0;
     height: 0;
@@ -272,7 +282,7 @@ export const Triangle = styled.div`
     border-bottom: 1rem solid transparent;
     border-right: 2rem solid #f4f4f4;
     left: -2rem;
-    top: 10px;
+    top: 1rem;
     position: absolute;
 `;
 
@@ -282,11 +292,12 @@ export const FilterDiv = styled.div`
         props.location &&
         css`
             flex-direction: column;
-            z-index: 10000;
-            left: 17rem;
+            z-index: 10;
+            left: 1rem;
             display: inline-flex;
             position: absolute;
             background-color: #f4f4f4;
-            top: ${props.location - 30}px;
+            top: ${props.location - 110}px;
+            transition: 0s;
         `};
 `;

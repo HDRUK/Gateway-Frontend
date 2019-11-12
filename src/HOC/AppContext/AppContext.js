@@ -40,12 +40,86 @@ class AppContextProvider extends Component {
 
     itemRef = React.createRef();
 
+    filterObject = [
+        {
+            id: 0,
+            title: "Date created"
+        },
+        {
+            id: 1,
+            title: "Classifier",
+            values: [
+                {
+                    id: 0,
+                    title: "First classifier"
+                },
+                {
+                    id: 1,
+                    title: "Second classifier"
+                },
+                {
+                    id: 2,
+                    title: "Third classifier"
+                },
+                {
+                    id: 3,
+                    title: "Fourth classifier"
+                },
+                {
+                    id: 4,
+                    title: "Fifth classifier"
+                }
+            ]
+        },
+        {
+            id: 2,
+            title: "Test Item",
+            values: [
+                {
+                    id: 0,
+                    title: "First test"
+                },
+                {
+                    id: 1,
+                    title: "Second test"
+                },
+                {
+                    id: 2,
+                    title: "Third test"
+                },
+                {
+                    id: 3,
+                    title: "Fourth test"
+                },
+                {
+                    id: 4,
+                    title: "Fifth test"
+                }
+            ]
+        },
+        {
+            id: 3,
+            title: "Data model type",
+            values: [
+                {
+                    id: 0,
+                    title: "First type"
+                },
+                {
+                    id: 1,
+                    title: "Second type"
+                }
+            ]
+        }
+    ];
+
     state = {
         counter: 0,
         searchPageState: this.searchPageStates.form,
         modalVisibility: false,
         filterLocation: 0,
-        filterId: 0
+        filterId: null,
+        windowScroll: 0
     };
 
     returnSearchResults = event => {
@@ -61,6 +135,8 @@ class AppContextProvider extends Component {
     };
 
     setFilterLocation = () => {
+        this.outsideRange(window.scrollY, this.state.windowScroll, 10) &&
+            this.setState({ windowScroll: window.scrollY });
         this.itemRef.current &&
             this.outsideRange(this.itemRef.current.getBoundingClientRect().y, this.state.filterLocation, 11) &&
             this.setState({ filterLocation: this.itemRef.current.getBoundingClientRect().y });
@@ -86,19 +162,27 @@ class AppContextProvider extends Component {
         console.log(this.filters);
     };
 
-    toggleModal = () => {
+    openFilterBox = () => {
         this.setState(
             {
-                modalVisibility: !this.state.modalVisibility
+                modalVisibility: true
             },
             () =>
-                this.state.modalVisibility
-                    ? document
-                          .getElementById("main-side-nav")
-                          .childNodes[1].addEventListener("scroll", this.setFilterLocation)
-                    : document
-                          .getElementById("main-side-nav")
-                          .childNodes[1].removeEventListener("scroll", this.setFilterLocation)
+                document
+                    .getElementById("main-side-nav")
+                    .childNodes[1].addEventListener("scroll", this.setFilterLocation)
+        );
+    };
+
+    closeFilterBox = () => {
+        this.setState(
+            {
+                modalVisibility: false
+            },
+            () =>
+                document
+                    .getElementById("main-side-nav")
+                    .childNodes[1].removeEventListener("scroll", this.setFilterLocation)
         );
     };
 
@@ -113,12 +197,14 @@ class AppContextProvider extends Component {
                     textItems: this.textItems,
                     returnSearchResults: this.returnSearchResults,
                     setFilterLocation: this.setFilterLocation,
-                    toggleModal: this.toggleModal,
                     setFilterId: this.setFilterId,
                     itemRef: this.itemRef,
                     addFilter: this.addFilter,
                     removeFilter: this.removeFilter,
-                    filterHeadings: this.filterHeadings
+                    filterHeadings: this.filterHeadings,
+                    openFilterBox: this.openFilterBox,
+                    closeFilterBox: this.closeFilterBox,
+                    filterObject: this.filterObject
                 }}
             >
                 {this.props.children}

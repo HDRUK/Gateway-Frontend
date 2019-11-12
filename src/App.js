@@ -22,9 +22,9 @@ class App extends React.Component {
                     <AppWrapper>
                         <BrowserRouter>
                             <GlobalStyle />
+
                             <Header />
                             <PageWrapper>
-                                <MenuFilterWrapper />
                                 <Switch>
                                     <Route exact path="/">
                                         <Content>
@@ -33,6 +33,7 @@ class App extends React.Component {
                                     </Route>
                                     <Route path="/search">
                                         <Content nav>
+                                            <MenuFilterWrapper />
                                             <SearchPage />
                                         </Content>
                                     </Route>

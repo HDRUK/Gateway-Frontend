@@ -1,21 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import {
-    AccordionBlock,
-    AccordionElement,
-    CheckboxItem,
-    DateSelector,
-    DateInput
-} from "../../../styles/carbonComponents.js";
+import { AccordionBlock, AccordionElement, DateSelector, DateInput } from "../../../styles/carbonComponents.js";
+
+import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
-
-const filterTitles = {
-    firstFilter: "Classifier",
-    secondFilter: "Data Model Type",
-    thirdFilter: "Last Updated",
-    fourthFilter: "Date Created"
-};
 
 const FilterMenu = () => {
     const appContext = useContext(AppContext);
@@ -29,65 +18,54 @@ const FilterMenu = () => {
         <AccordionBlock>
             <div />
             <FilterBlockTitle>Filter</FilterBlockTitle>
-            <AccordionElement title={filterTitles.firstFilter}>
-                <CheckboxItem
-                    onChange={(value, id) => (value ? appContext.addFilter(id) : appContext.removeFilter(id))}
-                    id="label"
-                    labelText="Label"
-                ></CheckboxItem>
-            </AccordionElement>
-            <AccordionElement title={filterTitles.secondFilter}>
-                <DateSelector datePickerType="range" dateFormat="m/d/Y">
-                    <DateInput
-                        id="date-picker-input-id-start"
-                        labelText="From"
-                        placeholder="mm/dd/yyyy"
-                        invalidText="A valid value is required"
-                    />
-                    <DateInput
-                        id="date-picker-input-id-end"
-                        labelText="To"
-                        placeholder="mm/dd/yyyy"
-                        invalidText="A valid value is required"
-                    />
-                </DateSelector>
-            </AccordionElement>
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement
-                modal={true}
-                onHeadingClick={() => {
-                    appContext.setFilterId(0);
-                    appContext.toggleModal();
-                }}
-                open={filterId === 0 && modalVisibility}
-                title={filterTitles.fourthFilter}
-            >
-                {filterId === 0 && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />}
-            </AccordionElement>
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
-            <AccordionElement title={filterTitles.firstFilter} />
-            <AccordionElement title={filterTitles.secondFilter} />
-            <AccordionElement title={filterTitles.thirdFilter} />
+            {appContext.filterObject.map((filter, i) => (
+                <AccordionElement
+                    key={`resultCard-${i}`}
+                    title={filter.title}
+                    open={
+                        filter.values && filter.values.length > 4 && !modalVisibility
+                            ? undefined
+                            : filterId === filter.id
+                    }
+                    modal={filter.values && filter.values.length > 4 && "true"}
+                    onHeadingClick={() => {
+                        if (filter.values && filter.values.length > 4) {
+                            if (!modalVisibility) {
+                                appContext.openFilterBox();
+                            } else if (appContext.state.filterId === filter.id) {
+                                appContext.closeFilterBox();
+                            }
+                        } else {
+                            appContext.closeFilterBox();
+                        }
+                        appContext.setFilterId(filter.id);
+                    }}
+                >
+                    {filter.values ? (
+                        filter.values.length > 4 ? (
+                            filterId === filter.id &&
+                            modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
+                        ) : (
+                            filter.values.map((filter, i) => <Filter key={`resultCard-${i}`} title={filter.title} />)
+                        )
+                    ) : (
+                        <DateSelector datePickerType="range" dateFormat="m/d/Y">
+                            <DateInput
+                                id="date-picker-input-id-start"
+                                labelText="From"
+                                placeholder="dd/mm/yyyy"
+                                invalidText="A valid value is required"
+                            />
+                            <DateInput
+                                id="date-picker-input-id-end"
+                                labelText="To"
+                                placeholder="dd/mm/yyyy"
+                                invalidText="A valid value is required"
+                            />
+                        </DateSelector>
+                    )}
+                </AccordionElement>
+            ))}
         </AccordionBlock>
     );
 };

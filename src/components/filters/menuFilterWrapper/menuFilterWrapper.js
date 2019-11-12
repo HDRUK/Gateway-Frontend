@@ -13,7 +13,10 @@ const MenuFilterWrapper = () => {
             {!modalVisibility && <div />}
 
             {modalVisibility && (
-                <FilterDiv location={appContext.state.filterLocation} modalVisibility={modalVisibility}>
+                <FilterDiv
+                    location={appContext.state.filterLocation + appContext.state.windowScroll}
+                    modalVisibility={modalVisibility}
+                >
                     <FilterBox />
                 </FilterDiv>
             )}
