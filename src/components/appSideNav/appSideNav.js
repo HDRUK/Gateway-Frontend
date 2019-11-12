@@ -3,6 +3,7 @@ import { SideNavLink } from "carbon-components-react";
 import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
+import PropTypes from "prop-types";
 
 const text = {
     search: "Search",
@@ -37,7 +38,7 @@ const routes = [
     }
 ];
 
-const AppSideNav = () => {
+const AppSideNav = props => {
     return (
         <div id="main-side-nav">
             <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
@@ -51,10 +52,13 @@ const AppSideNav = () => {
                         </LinkNoDecoration>
                     ))}
                 </NavItems>
-                <FilterMenu></FilterMenu>
+                {props.filter && <FilterMenu></FilterMenu>}
             </MainSideNav>
         </div>
     );
 };
 
+AppSideNav.propTypes = {
+    filter: PropTypes.bool
+};
 export default AppSideNav;

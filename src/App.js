@@ -32,7 +32,7 @@ class App extends React.Component {
                                         </Content>
                                     </Route>
                                     <Route path="/search">
-                                        <Content nav>
+                                        <Content nav filter>
                                             <MenuFilterWrapper />
                                             <SearchPage />
                                         </Content>

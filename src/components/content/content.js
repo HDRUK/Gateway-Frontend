@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const Content = props => (
     <React.Fragment>
-        {props.nav && <AppSideNav />}
+        {props.nav && <AppSideNav filter={props.filter} />}
         <ContentWrapper nav={props.nav}>
             <SideStripeLeft />
             <SideStripeRight />
@@ -16,7 +16,8 @@ const Content = props => (
 
 Content.propTypes = {
     nav: PropTypes.bool,
-    children: PropTypes.node
+    children: PropTypes.node,
+    filter: PropTypes.bool
 };
 
 export default Content;
