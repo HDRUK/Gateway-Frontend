@@ -1,5 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { AccordionBlock, AccordionElement, DateSelector, DateInput } from "../../../styles/carbonComponents.js";
+import {
+    AccordionBlock,
+    AccordionElement,
+    DateSelector,
+    DateInput,
+    FilterButton
+} from "../../../styles/carbonComponents.js";
 
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
@@ -27,7 +33,7 @@ const FilterMenu = () => {
                             ? undefined
                             : filterId === filter.id
                     }
-                    modal={filter.values && filter.values.length > 4 && "true"}
+                    modal={filter.values && filter.values.length > 4 ? "true" : "false"}
                     onHeadingClick={() => {
                         if (filter.values && filter.values.length > 4) {
                             if (!modalVisibility) {
@@ -46,7 +52,12 @@ const FilterMenu = () => {
                             filterId === filter.id &&
                             modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                         ) : (
-                            filter.values.map((filter, i) => <Filter key={`resultCard-${i}`} title={filter.title} />)
+                            <div>
+                                {filter.values.map((filter, i) => (
+                                    <Filter key={`resultCard-${i}`} title={filter.title} />
+                                ))}
+                                <FilterButton>Apply</FilterButton>
+                            </div>
                         )
                     ) : (
                         <DateSelector datePickerType="range" dateFormat="m/d/Y">

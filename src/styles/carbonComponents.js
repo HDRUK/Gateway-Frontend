@@ -21,6 +21,15 @@ export const StyledButton = styled(Button)`
     width: 215px;
     height: 54px;
 `;
+export const FilterButton = styled(Button)`
+    width: calc(125% + 2rem + 2px);
+    margin-left: -1rem;
+    min-height: 1rem;
+    height: 32px;
+    padding: 0px 0px 0px 10px;
+    bottom: -1.8rem;
+    margin-top: -1rem;
+`;
 
 export const ParagraphBullets = styled(UnorderedList)`
     padding-top: 5px;

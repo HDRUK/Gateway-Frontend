@@ -9,7 +9,6 @@ const FilterBox = () => {
     const filters = appContext.filterObject.find(element => {
         return element.id === appContext.state.filterId;
     });
-    console.log(filters);
     return (
         <React.Fragment>
             <Triangle />
