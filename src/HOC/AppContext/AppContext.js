@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
 
-// import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-// import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
-
 export const AppContext = React.createContext();
 export const AppContextConsumer = AppContext.Consumer;
 
@@ -54,19 +51,11 @@ const AppContextProvider = props => {
             offSet
         });
 
-    const setDataLength = length => {
-        const newObject = {
-            ...searchData,
-            length
-        };
-        console.log("setDataLength", length, newObject);
-        setSearchData(newObject);
-    };
-
     const clearSearchData = () => {
         setSearchData({
             ...searchData,
             offSet: 10,
+            length: 0,
             data: []
         });
     };
@@ -79,15 +68,14 @@ const AppContextProvider = props => {
         });
     };
 
-    const returnSearchResults = event => {
-        if (event.key === "Enter") {
+    const returnSearchResults = value => {
+        !state.searchPageState &&
             setState({
                 searchPageState: true
             });
-            setSearch({
-                term: event.target.value
-            });
-        }
+        setSearch({
+            term: value
+        });
     };
 
     const counterFunc = () => {
@@ -110,8 +98,7 @@ const AppContextProvider = props => {
                 setSearchData,
                 clearSearchData,
                 insertSearchData,
-                setOffSet,
-                setDataLength
+                setOffSet
             }}
         >
             {props.children}

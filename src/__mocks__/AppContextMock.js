@@ -24,22 +24,16 @@ const context = {
     },
     textItems: { searchHeader: "TestSearchHeader" },
     search: {
-        loading: false,
-        data: [
-            {
-                title: "Card 1",
-                description: "Description 1"
-            },
-            {
-                title: "Card 2",
-                description: "Description 2"
-            },
-            {
-                title: "Card 3",
-                description: "Description 3"
-            }
-        ]
+        term: ""
     },
+    searchData: {
+        offSet: 10,
+        length: 0,
+        data: []
+    },
+    setOffSet: jest.fn(),
+    clearSearchData: jest.fn(),
+    insertSearchData: jest.fn(),
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn()
 };
