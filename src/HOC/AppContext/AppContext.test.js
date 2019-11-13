@@ -26,12 +26,14 @@ describe("<AppContextProvider> ", () => {
     });
 
     it("should change the search page state when returnSearchResults is called with key 'Enter", () => {
+        const prevSearchPageState = componentInstance.state.searchPageState;
         componentInstance.returnSearchResults({ key: "Enter" });
-        expect(componentInstance.state.searchPageState).toBe("results");
+        expect(componentInstance.state.searchPageState).toBe(!prevSearchPageState);
     });
 
     it("should not change the search page state when returnSearchResults is called with other key", () => {
+        const prevSearchPageState = componentInstance.state.searchPageState;
         componentInstance.returnSearchResults({ key: "T" });
-        expect(componentInstance.state.searchPageState).toBe("form");
+        expect(componentInstance.state.searchPageState).toBe(prevSearchPageState);
     });
 });

@@ -31,7 +31,7 @@ export const ParagraphText = styled.p`
     color: #3c3c3b;
 `;
 
-export const DarkText = styled.text`
+export const DarkText = styled.span`
     color: #3c3c3b;
 `;
 
@@ -59,30 +59,31 @@ export const CenterBlock = styled.div`
 `;
 
 export const SmallSpace = styled.div`
-    padding: 15px;
+    padding: 1rem;
 `;
-
 export const MediumSpace = styled.div`
-    padding: 30px;
+    padding: 2rem;
 `;
 
 export const LargeSpace = styled.div`
-    padding: 80px;
+    padding: 5rem;
 `;
 
-export const NavHeading = styled.p`
-    font-size: 1.2rem;
+export const SmallHeading = styled.p`
+    font-size: 1.125rem;
     font-weight: 700;
-    padding: 1rem 0 0 1rem;
 `;
 
-export const NavText = styled.p`
+export const SmallText = styled.p`
     font-size: 0.8rem;
-    padding: 0 1rem;
 `;
 
-export const TinyText = styled.text`
+export const TinyText = styled.span`
     font-size: 0.75rem;
+`;
+
+export const Bold = styled.span`
+    font-weight: 700;
 `;
 
 export const LabelText = styled.p`
@@ -95,6 +96,17 @@ export const LabelText = styled.p`
     justify-content: center;
     flex-direction: column;
 `;
+
+export const Line = styled.div`
+    height: 0.0625rem;
+    margin: 1rem 0 0.5rem 0;
+    background-color: black;
+`;
+
+export const NavPadding = styled.div`
+    padding: 1rem 1rem 0 1rem;
+`;
+
 export const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
@@ -137,7 +149,7 @@ export const SideStripeRight = styled(SideStripe)`
 
 export const ContentWrapper = styled.div`
     position: relative;
-    padding: 4rem 4rem 4rem 4rem;
+    padding: 1rem 1rem 0 1rem;
     background-color: #ffffff;
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
@@ -257,7 +269,8 @@ export const HeaderImage = styled(Logo)`
 `;
 
 export const AppWrapper = styled.div`
-    width: 66rem;
+    min-width: 48rem;
+    max-width: 66rem;
     margin: 0 auto 0;
 `;
 

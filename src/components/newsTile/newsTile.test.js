@@ -1,7 +1,8 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import NewsTile from "./newsTile";
-import { NewsTileWrapper, ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
+import { NewsTileWrapper } from "./styles.js";
+import { ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 

@@ -7,6 +7,15 @@ export const AppContext = React.createContext();
 export const AppContextConsumer = AppContext.Consumer;
 
 class AppContextProvider extends Component {
+    state = {
+        counter: 0,
+        searchPageState: false,
+        modalVisibility: false,
+        filterLocation: 0,
+        filterId: null,
+        windowScroll: 0
+    };
+
     newsItems = {
         newsItemOne: {
             image: "",
@@ -30,11 +39,6 @@ class AppContextProvider extends Component {
     };
     filters = {};
     textItems = { searchHeader: "What health data do you need?" };
-
-    searchPageStates = {
-        form: "form",
-        results: "results"
-    };
 
     itemRef = React.createRef();
 
@@ -111,19 +115,31 @@ class AppContextProvider extends Component {
         }
     ];
 
-    state = {
-        counter: 0,
-        searchPageState: this.searchPageStates.form,
-        modalVisibility: false,
-        filterLocation: 0,
-        filterId: null,
-        windowScroll: 0
+    search = {
+        loading: false,
+        data: [
+            {
+                title: "Card 1"
+            },
+            {
+                title: "Card 2"
+            },
+            {
+                title: "Card 3"
+            },
+            {
+                title: "Card 4"
+            },
+            {
+                title: "Card 5"
+            }
+        ]
     };
 
     returnSearchResults = event => {
         if (event.key === "Enter") {
             this.setState({
-                searchPageState: this.searchPageStates["results"]
+                searchPageState: !this.state.searchPageState
             });
         }
     };
@@ -202,7 +218,8 @@ class AppContextProvider extends Component {
                     filterHeadings: this.filterHeadings,
                     openFilterBox: this.openFilterBox,
                     closeFilterBox: this.closeFilterBox,
-                    filterObject: this.filterObject
+                    filterObject: this.filterObject,
+                    search: this.search
                 }}
             >
                 {this.props.children}

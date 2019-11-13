@@ -1,9 +1,13 @@
-const searchPageStates = {
-    form: "form",
-    results: "results"
-};
-
 const context = {
+    state: {
+        counter: 0,
+        searchPageState: false,
+        modalVisibility: false,
+        filterLocation: 0,
+        filterId: null,
+        windowScroll: 0
+    },
+
     newsItems: {
         newsItemOne: {
             image: "TestImage",
@@ -95,18 +99,24 @@ const context = {
         }
     ],
 
-    state: {
-        counter: 0,
-        searchPageState: searchPageStates.form,
-        modalVisibility: false,
-        filterLocation: 0,
-        filterId: null,
-        windowScroll: 0
-    },
     images: {
         logoHDR: "test"
     },
     textItems: { searchHeader: "TestSearchHeader" },
+    search: {
+        loading: false,
+        data: [
+            {
+                title: "Card 1"
+            },
+            {
+                title: "Card 2"
+            },
+            {
+                title: "Card 3"
+            }
+        ]
+    },
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn(),
     addFilter: jest.fn(),

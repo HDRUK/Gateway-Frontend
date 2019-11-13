@@ -6,7 +6,7 @@ import { CenterBlock, DarkText, Heading, MediumSpace, SmallSpace, LargeSpace } f
 import { StyledButton } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
-const text = {
+const loginText = {
     headingText: "Log in to access our datasets",
     loginButton: "Log in",
     continueButton: "Continue without logging in"
@@ -41,14 +41,14 @@ describe("<Login> ", () => {
             expect(darkTextChildren[2].type).toEqual(CenterBlock);
             expect(darkTextChildren[3].type).toEqual(LargeSpace);
 
-            expect(darkTextChildren[0].props.children).toEqual(text.headingText);
+            expect(darkTextChildren[0].props.children).toEqual(loginText.headingText);
 
             const centerBlock2Content = darkTextChildren[2].props.children;
             expect(centerBlock2Content).toHaveLength(3);
             expect(centerBlock2Content[0].type).toEqual(StyledButton);
             const primaryButton = centerBlock2Content[0];
             expect(primaryButton.props.kind).toEqual("primary");
-            expect(primaryButton.props.children).toEqual(text.loginButton);
+            expect(primaryButton.props.children).toEqual(loginText.loginButton);
 
             expect(centerBlock2Content[1].type).toEqual(SmallSpace);
             expect(centerBlock2Content[2].type).toEqual(Link);
@@ -57,7 +57,7 @@ describe("<Login> ", () => {
             const secondaryButton = centerBlock2Content[2].props.children;
             expect(secondaryButton.type).toEqual(StyledButton);
             expect(secondaryButton.props.kind).toEqual("secondary");
-            expect(secondaryButton.props.children).toEqual(text.continueButton);
+            expect(secondaryButton.props.children).toEqual(loginText.continueButton);
         });
     });
 });

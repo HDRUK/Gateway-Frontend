@@ -1,11 +1,11 @@
 import React from "react";
-import { SideNavLink } from "carbon-components-react";
-import { NavHeading, NavText, MenuLine, LinkNoDecoration } from "../../styles/styles.js";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
 import PropTypes from "prop-types";
+import { SideNavItems, SideNavLink } from "carbon-components-react";
+import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding } from "../../styles/styles.js";
 
-const text = {
+const sideNavText = {
     search: "Search",
     mySearches: "My searches",
     browse: "Browse",
@@ -18,23 +18,23 @@ const text = {
 const routes = [
     {
         path: "/search",
-        text: text.search
+        text: sideNavText.search
     },
     {
         path: "/my-searches",
-        text: text.mySearches
+        text: sideNavText.mySearches
     },
     {
         path: "/browse",
-        text: text.browse
+        text: sideNavText.browse
     },
     {
         path: "/about",
-        text: text.about
+        text: sideNavText.about
     },
     {
         path: "/help",
-        text: text.help
+        text: sideNavText.help
     }
 ];
 
@@ -42,9 +42,11 @@ const AppSideNav = props => {
     return (
         <div id="main-side-nav">
             <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
-                <NavHeading>{text.username}</NavHeading>
-                <NavText>{text.company}</NavText>
-                <MenuLine />
+                <NavPadding>
+                    <SmallHeading>{sideNavText.username}</SmallHeading>
+                    <SmallText>{sideNavText.company}</SmallText>
+                    <Line />
+                </NavPadding>
                 <NavItems>
                     {routes.map(route => (
                         <LinkNoDecoration to={route.path} key={`route${route.path}`}>

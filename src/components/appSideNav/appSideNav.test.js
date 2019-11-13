@@ -2,13 +2,14 @@ import React from "react";
 import { create } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 import AppSideNav from "./appSideNav.js";
-import { MenuLine } from "../../styles/styles.js";
-import { MainSideNav, NavItems } from "../../styles/carbonComponents.js";
+import { MainSideNav } from "../../styles/carbonComponents.js";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
+import { SideNavItems } from "carbon-components-react";
+import { Line, SmallHeading, SmallText } from "../../styles/styles.js";
 
-const text = {
+const sideNavText = {
     search: "Search",
     mySearches: "My searches",
     browse: "Browse",
@@ -21,23 +22,23 @@ const text = {
 const routes = [
     {
         path: "/search",
-        text: text.search
+        text: sideNavText.search
     },
     {
         path: "/my-searches",
-        text: text.mySearches
+        text: sideNavText.mySearches
     },
     {
         path: "/browse",
-        text: text.browse
+        text: sideNavText.browse
     },
     {
         path: "/about",
-        text: text.about
+        text: sideNavText.about
     },
     {
         path: "/help",
-        text: text.help
+        text: sideNavText.help
     }
 ];
 
@@ -61,13 +62,19 @@ describe("<AppSideNav> ", () => {
         expect(mainSideNav[0].props.isChildOfHeader).toEqual(false);
         expect(mainSideNav[0].props["aria-label"]).toEqual("Side navigation");
 
-        const components = mainSideNav[0].props.children;
-        expect(components[0].props.children).toEqual(text.username);
-        expect(components[1].props.children).toEqual(text.company);
-        expect(components[2].type).toEqual(MenuLine);
-        expect(components[3].type).toEqual(NavItems);
+        const components = mainSideNav.props.children;
+        const navPadding = components[0];
+        const navPaddingComponents = navPadding.props.children;
+        expect(navPaddingComponents[0].type).toEqual(SmallHeading);
+        expect(navPaddingComponents[0].props.children).toEqual(sideNavText.username);
+        expect(navPaddingComponents[1].type).toEqual(SmallText);
+        expect(navPaddingComponents[1].props.children).toEqual(sideNavText.company);
+        expect(navPaddingComponents[2].type).toEqual(Line);
 
-        const links = components[3].props.children;
+        const sideNavItems = components[1];
+        expect(sideNavItems.type).toEqual(SideNavItems);
+
+        const links = sideNavItems.props.children;
         routes.map((route, i) => {
             expect(links[i].props.to).toEqual(route.path);
             const sideNavLink = links[i].props.children;

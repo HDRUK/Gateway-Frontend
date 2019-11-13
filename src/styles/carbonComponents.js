@@ -11,7 +11,8 @@ import {
     SideNavItems,
     Checkbox,
     DatePicker,
-    DatePickerInput
+    DatePickerInput,
+    Loading
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -96,4 +97,8 @@ export const MainSideNav = styled(SideNav)`
     font-size: 1.2rem;
     overflow: auto;
     z-index: 1;
+`;
+
+export const CenterLoading = styled(Loading)`
+    margin: 0 auto 0;
 `;

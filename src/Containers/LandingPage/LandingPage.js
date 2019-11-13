@@ -1,18 +1,18 @@
 import React from "react";
-
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 
+import { LandingPageWrapper } from "./styles.js";
 import {
     ParagraphHeading,
     DarkText,
     NewListItem,
     LinkText,
-    MediumSpace,
     SmallSpace,
+    MediumSpace,
     ParagraphText
 } from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
@@ -37,8 +37,10 @@ const textItems = {
 
 const LandingPage = () => {
     return (
-        <React.Fragment>
+        <LandingPageWrapper>
             <MediumSpace />
+            <SmallSpace />
+            <SmallSpace />
             <Login />
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
@@ -85,7 +87,7 @@ const LandingPage = () => {
                     <LinkText>{textItems.thirdLink}</LinkText>
                 </NewListItem>
             </ParagraphBullets>
-        </React.Fragment>
+        </LandingPageWrapper>
     );
 };
 
