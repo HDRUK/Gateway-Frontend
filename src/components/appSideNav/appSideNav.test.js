@@ -6,7 +6,7 @@ import { SideNavItems } from "carbon-components-react";
 import { Line, SmallHeading, SmallText } from "../../styles/styles.js";
 import { MainSideNav } from "../../styles/carbonComponents.js";
 
-const text = {
+const sideNavText = {
     search: "Search",
     mySearches: "My searches",
     browse: "Browse",
@@ -19,23 +19,23 @@ const text = {
 const routes = [
     {
         path: "/search",
-        text: text.search
+        text: sideNavText.search
     },
     {
         path: "/my-searches",
-        text: text.mySearches
+        text: sideNavText.mySearches
     },
     {
         path: "/browse",
-        text: text.browse
+        text: sideNavText.browse
     },
     {
         path: "/about",
-        text: text.about
+        text: sideNavText.about
     },
     {
         path: "/help",
-        text: text.help
+        text: sideNavText.help
     }
 ];
 
@@ -62,9 +62,9 @@ describe("<AppSideNav> ", () => {
         const navPadding = components[0];
         const navPaddingComponents = navPadding.props.children;
         expect(navPaddingComponents[0].type).toEqual(SmallHeading);
-        expect(navPaddingComponents[0].props.children).toEqual(text.username);
+        expect(navPaddingComponents[0].props.children).toEqual(sideNavText.username);
         expect(navPaddingComponents[1].type).toEqual(SmallText);
-        expect(navPaddingComponents[1].props.children).toEqual(text.company);
+        expect(navPaddingComponents[1].props.children).toEqual(sideNavText.company);
         expect(navPaddingComponents[2].type).toEqual(Line);
 
         const sideNavItems = components[1];

@@ -17,9 +17,10 @@ import ResultCard from "../../components/resultCard/resultCard.js";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
 
-const text = {
+const searchPageText = {
+    search: "Search",
     results: "Results",
-    searchTitle: "What health data to you need?"
+    searchTitle: "What health data do you need?"
 };
 
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
@@ -122,15 +123,15 @@ const SearchPage = () => {
 
     return (
         <div>
-            <SearchHeading invisible={pageState}>{text.searchTitle}</SearchHeading>
+            <SearchHeading invisible={pageState}>{searchPageText.searchTitle}</SearchHeading>
             <SearchBarWrapper main={!pageState}>
-                <SearchBar labelText="Search" onKeyPress={onSearch} />
+                <SearchBar labelText={searchPageText.search} onKeyPress={onSearch} />
             </SearchBarWrapper>
             <Results invisible={!pageState}>
                 <SearchInfo>
                     <Line />
                     <ResultsCounter>
-                        <Bold>{dataLength}</Bold> {text.results}
+                        <Bold>{dataLength}</Bold> {searchPageText.results}
                     </ResultsCounter>
                     <SortDiv>
                         <Sort />

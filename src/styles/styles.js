@@ -155,11 +155,6 @@ const SocialMediaLogo = styled.div`
     fill: #ffffff;
     margin-right: 0.5rem;
 `;
-const NewsTileWrapper = styled.div`
-    display: inline-block;
-    width: 18rem;
-    height: 18rem;
-`;
 
 const ImageSection = styled.div`
     height: 12rem;
@@ -212,35 +207,6 @@ const NewsTileItem = styled.div`
     :last-child {
         margin-right: 0;
     }
-`;
-
-const FooterWrapper = styled.div`
-    height: 12rem;
-    padding-bottom: 1rem;
-    background-color: rgb(60, 60, 59);
-    color: white;
-    padding-left: 7rem;
-    font-size: 1.1rem;
-    position: relative;
-`;
-
-const FooterBlock = styled.div`
-    display: inline-block;
-    box-sizing: border-box;
-    width: 33.33%;
-    height: 90%;
-    vertical-align: top;
-    padding: 3rem 5rem 0 0;
-`;
-
-const FooterText = styled.div`
-    width: 100%;
-    margin: 0 0 0.4rem 0;
-`;
-
-const FooterImage = styled(Logo)`
-    max-width: 8rem;
-    max-height: 5rem;
 `;
 
 const HeaderImage = styled(Logo)`
@@ -312,7 +278,6 @@ export {
     LinkNoDecoration,
     Logo,
     SocialMediaLogo,
-    NewsTileWrapper,
     ImageSection,
     TextSection,
     Description,
@@ -321,10 +286,6 @@ export {
     SmallImage,
     NewsTileItem,
     StyledImage,
-    FooterWrapper,
-    FooterBlock,
-    FooterText,
-    FooterImage,
     HeaderImage,
     AppWrapper,
     PageWrapper,

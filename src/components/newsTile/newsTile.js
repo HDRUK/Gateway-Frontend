@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { NewsTileWrapper, ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
+import { NewsTileWrapper } from "./styles.js";
+import { ImageSection, TextSection, Description, ReadMore } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-const text = {
+const newsTileText = {
     readMore: "Read more"
 };
 
@@ -16,7 +17,7 @@ const NewsTile = props => {
             <ImageSection src={newsItem.image} />
             <TextSection>
                 <Description>{newsItem.description}</Description>
-                {newsItem.readMore && <ReadMore href={newsItem.readMore}>{text.readMore}</ReadMore>}
+                {newsItem.readMore && <ReadMore href={newsItem.readMore}>{newsTileText.readMore}</ReadMore>}
             </TextSection>
         </NewsTileWrapper>
     );

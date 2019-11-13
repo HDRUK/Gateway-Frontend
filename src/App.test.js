@@ -32,7 +32,6 @@ describe("<App> ", () => {
         const pageWrapper = browserRouter.findByType(PageWrapper);
         const switches = pageWrapper.findByType(Switch);
         const routes = switches.findAllByType(Route);
-        // console.log(routes.length);
 
         // QUESTION - because of switch only one route renders - how do we test others?
 
