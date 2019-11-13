@@ -2,7 +2,7 @@ import React from "react";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
 import PropTypes from "prop-types";
-import { SideNavItems, SideNavLink } from "carbon-components-react";
+import { SideNavLink } from "carbon-components-react";
 import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding } from "../../styles/styles.js";
 
 const sideNavText = {
