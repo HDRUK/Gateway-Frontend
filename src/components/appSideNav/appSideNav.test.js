@@ -2,11 +2,10 @@ import React from "react";
 import { create } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 import AppSideNav from "./appSideNav.js";
-import { MainSideNav } from "../../styles/carbonComponents.js";
+import { MainSideNav, NavItems } from "../../styles/carbonComponents.js";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
-import { SideNavItems } from "carbon-components-react";
 import { Line, SmallHeading, SmallText } from "../../styles/styles.js";
 
 const sideNavText = {
@@ -62,7 +61,7 @@ describe("<AppSideNav> ", () => {
         expect(mainSideNav[0].props.isChildOfHeader).toEqual(false);
         expect(mainSideNav[0].props["aria-label"]).toEqual("Side navigation");
 
-        const components = mainSideNav.props.children;
+        const components = mainSideNav[0].props.children;
         const navPadding = components[0];
         const navPaddingComponents = navPadding.props.children;
         expect(navPaddingComponents[0].type).toEqual(SmallHeading);
@@ -72,7 +71,7 @@ describe("<AppSideNav> ", () => {
         expect(navPaddingComponents[2].type).toEqual(Line);
 
         const sideNavItems = components[1];
-        expect(sideNavItems.type).toEqual(SideNavItems);
+        expect(sideNavItems.type).toEqual(NavItems);
 
         const links = sideNavItems.props.children;
         routes.map((route, i) => {
@@ -100,7 +99,7 @@ describe("<AppSideNav> with filters", () => {
     it("should render AppSideNav components", () => {
         const mainSideNav = renderedOutput.findByType(MainSideNav);
         const components = mainSideNav.props.children;
-
-        expect(components[4].type).toEqual(FilterMenu);
+        const filterMenu = components[2];
+        expect(filterMenu.type).toEqual(FilterMenu);
     });
 });

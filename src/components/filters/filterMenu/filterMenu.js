@@ -58,7 +58,7 @@ const FilterMenu = () => {
                                     <Filter key={`resultCard-${i}`} title={filter.title} />
                                 ))}
 
-                                <FilterButton>Apply</FilterButton>
+                                <FilterButton kind="primary">Apply</FilterButton>
                             </div>
                         )
                     ) : (
