@@ -29,8 +29,6 @@ class AppContextProvider extends Component {
         logoHDR: hdruk_logo_black
     };
 
-    filterHeadings = ["first"];
-    filters = {};
     textItems = { searchHeader: "What health data do you need?" };
 
     searchPageStates = {

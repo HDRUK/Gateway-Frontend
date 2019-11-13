@@ -6,7 +6,7 @@ import {
     DateInput,
     FilterButton
 } from "../../../styles/carbonComponents.js";
-
+import AppliedFilter from "../appliedFilter/appliedFilter.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
@@ -53,9 +53,11 @@ const FilterMenu = () => {
                             modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                         ) : (
                             <div>
+                                <AppliedFilter />
                                 {filter.values.map((filter, i) => (
                                     <Filter key={`resultCard-${i}`} title={filter.title} />
                                 ))}
+
                                 <FilterButton>Apply</FilterButton>
                             </div>
                         )
