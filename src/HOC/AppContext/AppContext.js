@@ -13,7 +13,8 @@ class AppContextProvider extends Component {
         modalVisibility: false,
         filterLocation: 0,
         filterId: null,
-        windowScroll: 0
+        windowScroll: 0,
+        datasetCount: 0
     };
 
     newsItems = {
@@ -166,6 +167,13 @@ class AppContextProvider extends Component {
         });
     };
 
+    setDataSetCount = props => {
+        props !== this.state.datasetCount &&
+            this.setState({
+                datasetCount: props
+            });
+    };
+
     addFilter = props => {
         this.filters[props] = props;
         console.log(this.filters);
@@ -219,7 +227,8 @@ class AppContextProvider extends Component {
                     openFilterBox: this.openFilterBox,
                     closeFilterBox: this.closeFilterBox,
                     filterObject: this.filterObject,
-                    search: this.search
+                    search: this.search,
+                    setDataSetCount: this.setDataSetCount
                 }}
             >
                 {this.props.children}

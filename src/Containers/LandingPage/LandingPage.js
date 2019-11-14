@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 import { useQuery } from "@apollo/react-hooks";
 import Login from "../../components/login/login";
@@ -39,11 +40,12 @@ const textItems = {
 };
 
 const LandingPage = () => {
+    const appContext = useContext(AppContext);
     const { loading, error, data } = useQuery(DATASET_COUNT);
     if (loading) return <p>Loading ...</p>;
     if (error) return <div>Error :(</div>;
 
-    console.log("DATASET_COUNT", data.hdrDataModelSearch.count);
+    appContext.setDataSetCount(data.hdrDataModelSearch.count);
     return (
         <LandingPageWrapper>
             <MediumSpace />
