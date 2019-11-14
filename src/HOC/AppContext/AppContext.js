@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
 
 export const AppContext = React.createContext();
+AppContext.displayName = "AppContext";
 export const AppContextConsumer = AppContext.Consumer;
 
 const AppContextProvider = props => {

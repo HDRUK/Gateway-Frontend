@@ -32,15 +32,10 @@ const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLeng
     }
 };
 
-const ResultsData = props => {
-    const loading = props.loading;
-    const data = props.searchData;
-    const fetchMore = props.fetchMore;
-    const error = props.error;
-
+const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore, loading, error) => {
     const onLoadMore = offSet => {
         fetchMore({
-            variables: { recordLimit: 10, recordOffset: offSet, searchTerm: props.searchTerm },
+            variables: { recordLimit: 10, recordOffset: offSet, searchTerm },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
@@ -60,10 +55,9 @@ const ResultsData = props => {
 
     const processedData = (data && data.data) || [];
 
+    console.log(processedData, loading);
     return (
-        <ResultsWrapper
-            onScroll={e => handleScroll(e, onLoadMore, props.offSet, props.setOffSet, props.dataLength, loading)}
-        >
+        <ResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
                 ? processedData.map((result, i) => (
                       <ResultCard key={`resultCard-${i}`} title={result.label} description={result.description} />
@@ -81,17 +75,16 @@ const SearchPage = () => {
 
     const searchTerm = appContext.search.term;
     const searchData = appContext.searchData;
-    const dataLength = appContext.searchData ? appContext.searchData.length : "0";
-    const offSet = appContext.searchData.offSet;
+    const dataLength = searchData ? searchData.length : "0";
+    const offSet = searchData.offSet;
 
     const clearSearchData = appContext.clearSearchData;
-    const insertSearchData = appContext.insertSearchData;
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
 
     const onSearch = e => {
-        if (e.key === "Enter") {
+        if (e && e.key === "Enter") {
             returnSearchResults(e.target.value);
             clearSearchData();
             getItemsSearch({
@@ -103,23 +96,18 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
-        if (data && data.hdrCatalogueItemsSearch.data && !loading) {
-            insertSearchData(parseInt(data.hdrCatalogueItemsSearch.count, 10), data.hdrCatalogueItemsSearch.data);
+        if (!loading && data && data.hdrCatalogueItemsSearch.data) {
+            appContext.insertSearchData(
+                parseInt(data.hdrCatalogueItemsSearch.count, 10),
+                data.hdrCatalogueItemsSearch.data
+            );
         }
+        // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, loading]);
 
     const joinedLoading =
         loading || networkStatus === 3 || (searchData.data.length < offSet && offSet < searchData.length);
-
-    console.log(
-        "joinedLoading",
-        joinedLoading,
-        loading,
-        networkStatus,
-        searchData.data.length,
-        offSet,
-        searchData.length
-    );
 
     return (
         <div>
@@ -137,17 +125,7 @@ const SearchPage = () => {
                         <Sort />
                     </SortDiv>
                 </SearchInfo>
-                <ResultsData
-                    searchTerm={searchTerm}
-                    searchData={searchData}
-                    offSet={offSet}
-                    setOffSet={setOffSet}
-                    dataLength={dataLength}
-                    fetchMore={fetchMore}
-                    loading={joinedLoading}
-                    error={error}
-                    insertSearchData={insertSearchData}
-                />
+                {resultsData(searchTerm, searchData, offSet, setOffSet, dataLength, fetchMore, joinedLoading, error)}
             </Results>
         </div>
     );
