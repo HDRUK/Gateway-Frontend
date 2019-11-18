@@ -177,6 +177,4 @@ describe("<SearchPage> rendered after a search", () => {
             expect(card.props.description).toBe(context.searchData.data[i].description);
         });
     });
-
-    // TODO: Test loading/error states - to be done when GQL Query is implemented
 });

@@ -55,7 +55,6 @@ const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore,
 
     const processedData = (data && data.data) || [];
 
-    console.log(processedData, loading);
     return (
         <ResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
