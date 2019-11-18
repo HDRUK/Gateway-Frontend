@@ -23,7 +23,7 @@ const AppContextProvider = props => {
     const [filters, setFilters] = useState([]);
 
     const [search, setSearch] = useState({
-        term: ""
+        term: null
     });
 
     const [searchData, setSearchData] = useState({

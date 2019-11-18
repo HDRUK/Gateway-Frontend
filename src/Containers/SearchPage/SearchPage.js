@@ -83,7 +83,7 @@ const SearchPage = () => {
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
 
     const onSearch = e => {
-        if (e && e.key === "Enter") {
+        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             returnSearchResults(e.target.value);
             clearSearchData();
             getItemsSearch({
