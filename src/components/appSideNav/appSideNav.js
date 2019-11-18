@@ -1,7 +1,9 @@
 import React from "react";
-import { SideNavItems, SideNavLink } from "carbon-components-react";
+import { MainSideNav, NavItems } from "../../styles/carbonComponents";
+import FilterMenu from "../filters/filterMenu/filterMenu.js";
+import PropTypes from "prop-types";
+import { SideNavLink } from "carbon-components-react";
 import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding } from "../../styles/styles.js";
-import { MainSideNav } from "../../styles/carbonComponents";
 
 const sideNavText = {
     search: "Search",
@@ -36,21 +38,29 @@ const routes = [
     }
 ];
 
-const AppSideNav = () => (
-    <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
-        <NavPadding>
-            <SmallHeading>{sideNavText.username}</SmallHeading>
-            <SmallText>{sideNavText.company}</SmallText>
-            <Line />
-        </NavPadding>
-        <SideNavItems>
-            {routes.map(route => (
-                <LinkNoDecoration to={route.path} key={`route${route.path}`}>
-                    <SideNavLink>{route.text}</SideNavLink>
-                </LinkNoDecoration>
-            ))}
-        </SideNavItems>
-    </MainSideNav>
-);
+const AppSideNav = props => {
+    return (
+        <div id="main-side-nav">
+            <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
+                <NavPadding>
+                    <SmallHeading>{sideNavText.username}</SmallHeading>
+                    <SmallText>{sideNavText.company}</SmallText>
+                    <Line />
+                </NavPadding>
+                <NavItems>
+                    {routes.map(route => (
+                        <LinkNoDecoration to={route.path} key={`route${route.path}`}>
+                            <SideNavLink>{route.text}</SideNavLink>
+                        </LinkNoDecoration>
+                    ))}
+                </NavItems>
+                {props.filter && <FilterMenu></FilterMenu>}
+            </MainSideNav>
+        </div>
+    );
+};
 
+AppSideNav.propTypes = {
+    filter: PropTypes.bool
+};
 export default AppSideNav;

@@ -1,41 +1,41 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
-const Heading = styled.h1`
+export const Heading = styled.h1`
     font-size: 2.25rem;
     font-weight: 100;
     line-height: 2.7rem;
 `;
 
-const ParagraphHeading = styled.h2`
+export const ParagraphHeading = styled.h2`
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.7rem;
     color: #3c3c3b;
 `;
 
-const InvertedParagraphHeading = styled(ParagraphHeading)`
+export const InvertedParagraphHeading = styled(ParagraphHeading)`
     color: white;
 `;
 
-const InvertedHeaderHeading = styled(InvertedParagraphHeading)`
+export const InvertedHeaderHeading = styled(InvertedParagraphHeading)`
     font-weight: 500;
 `;
 
-const ParagraphText = styled.p`
+export const ParagraphText = styled.p`
     font-size: 1.4rem;
     font-weight: 100;
     line-height: 1.7rem;
     color: #3c3c3b;
 `;
 
-const DarkText = styled.span`
+export const DarkText = styled.span`
     color: #3c3c3b;
 `;
 
-const NewListItem = styled.li`
+export const NewListItem = styled.li`
     font-size: 1.5rem;
     font-weight: 100;
     padding: 5px;
@@ -43,47 +43,51 @@ const NewListItem = styled.li`
     list-style-position: inside;
 `;
 
-const LinkText = styled.a`
+export const FilterBlockTitle = styled.li`
+    padding: 0.375rem 0 0.375rem 0.5rem;
+    font-weight: 700;
+`;
+
+export const LinkText = styled.a`
     text-decoration: underline;
 `;
 
-const CenterBlock = styled.div`
+export const CenterBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 
-const SmallSpace = styled.div`
+export const SmallSpace = styled.div`
     padding: 1rem;
 `;
-
-const MediumSpace = styled.div`
+export const MediumSpace = styled.div`
     padding: 2rem;
 `;
 
-const LargeSpace = styled.div`
+export const LargeSpace = styled.div`
     padding: 5rem;
 `;
 
-const SmallHeading = styled.p`
+export const SmallHeading = styled.p`
     font-size: 1.125rem;
     font-weight: 700;
 `;
 
-const SmallText = styled.p`
+export const SmallText = styled.p`
     font-size: 0.9rem;
     line-height: 1.125rem;
 `;
 
-const TinyText = styled.span`
+export const TinyText = styled.span`
     font-size: 0.75rem;
 `;
 
-const Bold = styled.span`
+export const Bold = styled.span`
     font-weight: 700;
 `;
 
-const LabelText = styled.p`
+export const LabelText = styled.p`
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.125rem;
@@ -94,17 +98,17 @@ const LabelText = styled.p`
     flex-direction: column;
 `;
 
-const Line = styled.div`
+export const Line = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 0.5rem 0;
     background-color: black;
 `;
 
-const NavPadding = styled.div`
+export const NavPadding = styled.div`
     padding: 1rem 1rem 0 1rem;
 `;
 
-const MenuLine = styled.div`
+export const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
     left: 1rem;
@@ -113,7 +117,21 @@ const MenuLine = styled.div`
     margin: 1rem 0rem 2rem 0rem;
 `;
 
-const SideStripe = styled.div`
+export const SelectedFilter = styled.div`
+    height: 24px;
+    border-radius: 18px;
+    background-color: #d5d9e0;
+    display: inline-flex;
+`;
+
+export const CloseButton = styled.button`
+    margin-left: 10px;
+    background: none;
+    border: none;
+    padding-bottom: 5px;
+`;
+
+export const SideStripe = styled.div`
     position: absolute;
     top: 0;
     right: 0;
@@ -122,14 +140,15 @@ const SideStripe = styled.div`
     background-color: #e5e5e5;
 `;
 
-const SideStripeLeft = styled(SideStripe)`
+export const SideStripeLeft = styled(SideStripe)`
     left: 0;
 `;
-const SideStripeRight = styled(SideStripe)`
+
+export const SideStripeRight = styled(SideStripe)`
     right: 0;
 `;
 
-const ContentWrapper = styled.div`
+export const ContentWrapper = styled.div`
     position: relative;
     padding: 1rem 1rem 0 1rem;
     background-color: #ffffff;
@@ -140,28 +159,33 @@ const ContentWrapper = styled.div`
     vertical-align: top;
 `;
 
-const LinkNoDecoration = styled(Link)`
+export const LinkNoDecoration = styled(Link)`
     text-decoration: none;
 `;
 
-const Logo = styled.img.attrs({
+export const Logo = styled.img.attrs({
     src: hdruk_logo_white
 })``;
 
-const SocialMediaLogo = styled.div`
+export const SocialMediaLogo = styled.div`
     display: inline-block;
     max-width: 2rem;
     max-height: 2rem;
     fill: #ffffff;
     margin-right: 0.5rem;
 `;
+export const NewsTileWrapper = styled.div`
+    display: inline-block;
+    width: 18rem;
+    height: 18rem;
+`;
 
-const ImageSection = styled.div`
+export const ImageSection = styled.div`
     height: 12rem;
     background-color: #64696c;
 `;
 
-const TextSection = styled.div`
+export const TextSection = styled.div`
     box-sizing: border-box;
     height: 6rem;
     background-color: #b5bcbd;
@@ -170,12 +194,12 @@ const TextSection = styled.div`
     font-weight: 300;
 `;
 
-const Description = styled.div`
+export const Description = styled.div`
     height: 3rem;
     max-height: 3rem;
 `;
 
-const ReadMore = styled.a`
+export const ReadMore = styled.a`
     display: block;
     color: #2e66a2;
     font-size: 0.8rem;
@@ -183,12 +207,12 @@ const ReadMore = styled.a`
     text-decoration: none;
 `;
 
-const ImageBlockWrapper = styled.div`
+export const ImageBlockWrapper = styled.div`
     height: 4rem;
     padding-top: 0.6875rem;
 `;
 
-const SmallImage = styled.div`
+export const SmallImage = styled.div`
     display: inline-flex;
     max-height: 2.625rem;
     max-width: 8rem;
@@ -196,11 +220,11 @@ const SmallImage = styled.div`
     vertical-align: center;
 `;
 
-const StyledImage = styled.img`
+export const StyledImage = styled.img`
     max-width: inherit;
 `;
 
-const NewsTileItem = styled.div`
+export const NewsTileItem = styled.div`
     display: inline-block;
     margin-right: 2rem;
 
@@ -209,30 +233,59 @@ const NewsTileItem = styled.div`
     }
 `;
 
-const HeaderImage = styled(Logo)`
+export const FooterWrapper = styled.div`
+    height: 12rem;
+    padding-bottom: 1rem;
+    background-color: rgb(60, 60, 59);
+    color: white;
+    padding-left: 7rem;
+    font-size: 1.1rem;
+    position: relative;
+`;
+
+export const FooterBlock = styled.div`
+    display: inline-block;
+    box-sizing: border-box;
+    width: 33.33%;
+    height: 90%;
+    vertical-align: top;
+    padding: 3rem 5rem 0 0;
+`;
+
+export const FooterText = styled.div`
+    width: 100%;
+    margin: 0 0 0.4rem 0;
+`;
+
+export const FooterImage = styled(Logo)`
+    max-width: 8rem;
+    max-height: 5rem;
+`;
+
+export const HeaderImage = styled(Logo)`
     max-width: 4.5rem;
     max-height: 3rem;
     margin: 0 3rem 0 4rem;
     vertical-align: middle;
 `;
 
-const AppWrapper = styled.div`
+export const AppWrapper = styled.div`
     min-width: 48rem;
     max-width: 66rem;
     margin: 0 auto 0;
 `;
 
-const PageWrapper = styled.div`
+export const PageWrapper = styled.div`
     position: relative;
     overflow: hidden;
 `;
 
-const FloatRight = styled.div`
+export const FloatRight = styled.div`
     float: right;
     display: inline-flex;
 `;
 
-const Card = styled.div`
+export const Card = styled.div`
     position: relative;
     min-height: 4rem;
     margin-bottom: 1rem;
@@ -243,7 +296,7 @@ const Card = styled.div`
     overflow: hidden;
 `;
 
-const Preview = styled.div`
+export const Preview = styled.div`
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -251,46 +304,91 @@ const Preview = styled.div`
     text-overflow: ellipsis;
 `;
 
-export {
-    Heading,
-    SmallHeading,
-    ParagraphHeading,
-    InvertedParagraphHeading,
-    InvertedHeaderHeading,
-    ParagraphText,
-    DarkText,
-    CenterBlock,
-    SmallSpace,
-    MediumSpace,
-    LargeSpace,
-    NewListItem,
-    LinkText,
-    SideStripe,
-    SideStripeLeft,
-    SideStripeRight,
-    SmallText,
-    TinyText,
-    Bold,
-    Line,
-    MenuLine,
-    NavPadding,
-    ContentWrapper,
-    LinkNoDecoration,
-    Logo,
-    SocialMediaLogo,
-    ImageSection,
-    TextSection,
-    Description,
-    ReadMore,
-    ImageBlockWrapper,
-    SmallImage,
-    NewsTileItem,
-    StyledImage,
-    HeaderImage,
-    AppWrapper,
-    PageWrapper,
-    LabelText,
-    FloatRight,
-    Card,
-    Preview
-};
+export const ButtonSet = styled.div`
+    flex-direction: row;
+`;
+
+export const FilterBoxContent = styled.div`
+    padding: 10px;
+`;
+
+export const FilterBlock = styled.div`
+    flex-wrap: wrap;
+    display: inline-flex;
+    flex-direction: column;
+    max-height: 7rem;
+    > div {
+        margin-top: 0 !important;
+    }
+`;
+
+export const Triangle = styled.div`
+    width: 0;
+    height: 0;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-right: 2rem solid #f4f4f4;
+    left: -2rem;
+    top: 1rem;
+    position: absolute;
+`;
+
+export const FilterDiv = styled.div`
+    ${props =>
+        props.modalVisibility &&
+        props.location &&
+        css`
+            flex-direction: column;
+            z-index: 10;
+            left: 1rem;
+            display: inline-flex;
+            position: absolute;
+            background-color: #f4f4f4;
+            top: ${props.location - 110}px;
+            transition: 0s;
+        `};
+`;
+
+// export {
+//     Heading,
+//     SmallHeading,
+//     ParagraphHeading,
+//     InvertedParagraphHeading,
+//     InvertedHeaderHeading,
+//     ParagraphText,
+//     DarkText,
+//     CenterBlock,
+//     SmallSpace,
+//     MediumSpace,
+//     LargeSpace,
+//     NewListItem,
+//     LinkText,
+//     SideStripe,
+//     SideStripeLeft,
+//     SideStripeRight,
+//     SmallText,
+//     TinyText,
+//     Bold,
+//     Line,
+//     MenuLine,
+//     NavPadding,
+//     ContentWrapper,
+//     LinkNoDecoration,
+//     Logo,
+//     SocialMediaLogo,
+//     ImageSection,
+//     TextSection,
+//     Description,
+//     ReadMore,
+//     ImageBlockWrapper,
+//     SmallImage,
+//     NewsTileItem,
+//     StyledImage,
+//     HeaderImage,
+//     AppWrapper,
+//     PageWrapper,
+//     LabelText,
+//     FloatRight,
+//     Card,
+//     Preview
+// };

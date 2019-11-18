@@ -6,10 +6,30 @@ export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
 export const AppContextConsumer = AppContext.Consumer;
 
+const outsideRange = (number, target, range) => {
+    return number < target - range || number > target + range;
+};
+
 const AppContextProvider = props => {
     const [state, setState] = useState({
         counter: 0,
-        searchPageState: false
+        searchPageState: false,
+        modalVisibility: false,
+        filterLocation: 0,
+        windowScroll: 0
+    });
+
+    const [activeFilter, setActiveFilter] = useState(null);
+    const [filters, setFilters] = useState([]);
+
+    const [search, setSearch] = useState({
+        term: ""
+    });
+
+    const [searchData, setSearchData] = useState({
+        offSet: 10,
+        length: 0,
+        data: []
     });
 
     const newsItems = {
@@ -36,16 +56,6 @@ const AppContextProvider = props => {
 
     const textItems = { searchHeader: "What health data do you need?" };
 
-    const [search, setSearch] = useState({
-        term: ""
-    });
-
-    const [searchData, setSearchData] = useState({
-        offSet: 10,
-        length: 0,
-        data: []
-    });
-
     const setOffSet = offSet =>
         setSearchData({
             ...searchData,
@@ -61,6 +71,81 @@ const AppContextProvider = props => {
         });
     };
 
+    const itemRef = React.createRef();
+
+    const filterObject = [
+        {
+            id: 0,
+            title: "Date created"
+        },
+        {
+            id: 1,
+            title: "Classifier",
+            values: [
+                {
+                    id: 0,
+                    title: "First classifier"
+                },
+                {
+                    id: 1,
+                    title: "Second classifier"
+                },
+                {
+                    id: 2,
+                    title: "Third classifier"
+                },
+                {
+                    id: 3,
+                    title: "Fourth classifier"
+                },
+                {
+                    id: 4,
+                    title: "Fifth classifier"
+                }
+            ]
+        },
+        {
+            id: 2,
+            title: "Test Item",
+            values: [
+                {
+                    id: 0,
+                    title: "First test"
+                },
+                {
+                    id: 1,
+                    title: "Second test"
+                },
+                {
+                    id: 2,
+                    title: "Third test"
+                },
+                {
+                    id: 3,
+                    title: "Fourth test"
+                },
+                {
+                    id: 4,
+                    title: "Fifth test"
+                }
+            ]
+        },
+        {
+            id: 3,
+            title: "Data model type",
+            values: [
+                {
+                    id: 0,
+                    title: "First type"
+                },
+                {
+                    id: 1,
+                    title: "Second type"
+                }
+            ]
+        }
+    ];
+
     const insertSearchData = (length, newData) => {
         setSearchData({
             ...searchData,
@@ -72,6 +157,7 @@ const AppContextProvider = props => {
     const returnSearchResults = value => {
         !state.searchPageState &&
             setState({
+                ...state,
                 searchPageState: true
             });
         setSearch({
@@ -79,10 +165,53 @@ const AppContextProvider = props => {
         });
     };
 
+    const setFilterLocation = () => {
+        outsideRange(window.scrollY, state.windowScroll, 10) &&
+            setState({
+                ...state,
+                windowScroll: window.scrollY
+            });
+        itemRef.current &&
+            outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11) &&
+            setState({
+                ...state,
+                filterLocation: itemRef.current.getBoundingClientRect().y
+            });
+    };
+
+    const setFilterId = filterId => {
+        setActiveFilter(filterId);
+    };
+
     const counterFunc = () => {
-        this.setState({
-            counter: this.state.counter + 1
+        setState({
+            ...state,
+            counter: state.counter + 1
         });
+    };
+
+    const addFilter = id => {
+        setFilters([...filters, id]);
+    };
+
+    const removeFilter = id => {
+        setFilters(filters.filter(f => f !== id));
+    };
+
+    const openFilterBox = () => {
+        setState({
+            ...state,
+            modalVisibility: true
+        });
+        document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
+    };
+
+    const closeFilterBox = () => {
+        setState({
+            ...state,
+            modalVisibility: false
+        });
+        document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
     return (
@@ -99,7 +228,16 @@ const AppContextProvider = props => {
                 setSearchData,
                 clearSearchData,
                 insertSearchData,
-                setOffSet
+                setOffSet,
+                setFilterLocation: setFilterLocation,
+                setFilterId: setFilterId,
+                itemRef,
+                activeFilter,
+                addFilter,
+                removeFilter,
+                openFilterBox,
+                closeFilterBox,
+                filterObject
             }}
         >
             {props.children}
