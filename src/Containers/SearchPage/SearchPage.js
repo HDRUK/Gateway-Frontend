@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line } from "../../styles/styles.js";
+import { Bold, Line, LinkNoDecoration } from "../../styles/styles.js";
 import {
     SearchHeading,
     SearchBarWrapper,
@@ -59,7 +59,9 @@ const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore,
         <ResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
                 ? processedData.map((result, i) => (
-                      <ResultCard key={`resultCard-${i}`} title={result.label} description={result.description} />
+                      <LinkNoDecoration key={`resultCard-${i}`}>
+                          <ResultCard title={result.label} description={result.description} />
+                      </LinkNoDecoration>
                   ))
                 : !loading && <div>No results</div>}
             {loading && <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />}

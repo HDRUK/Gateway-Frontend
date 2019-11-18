@@ -1,8 +1,14 @@
 import React from "react";
-import { Heading, DarkText, CenterBlock, SmallSpace, MediumSpace, LargeSpace } from "../../styles/styles.js";
+import {
+    Heading,
+    DarkText,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace,
+    LinkNoDecoration
+} from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { Link } from "react-router-dom";
-
 const textItems = {
     headingText: "Log in to access our datasets",
     loginButton: "Log in",
@@ -17,9 +23,9 @@ const Login = () => (
             <CenterBlock>
                 <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
                 <SmallSpace />
-                <Link to="/search">
+                <LinkNoDecoration to="/search">
                     <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                </Link>
+                </LinkNoDecoration>
             </CenterBlock>
             <LargeSpace />
         </DarkText>
