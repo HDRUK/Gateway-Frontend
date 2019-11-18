@@ -1,13 +1,9 @@
-import React, { useContext } from "react";
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
-
-import { useQuery } from "@apollo/react-hooks";
+import React from "react";
 import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
-import { DATASET_COUNT } from "../../queries/queries.js";
 
 import { LandingPageWrapper } from "./styles.js";
 import {
@@ -40,12 +36,6 @@ const textItems = {
 };
 
 const LandingPage = () => {
-    const appContext = useContext(AppContext);
-    const { loading, error, data } = useQuery(DATASET_COUNT);
-    if (loading) return <p>Loading ...</p>;
-    if (error) return <div>Error :(</div>;
-
-    appContext.setDataSetCount(data.hdrDataModelSearch.count);
     return (
         <LandingPageWrapper>
             <MediumSpace />

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
+import { useQuery } from "@apollo/react-hooks";
+
+import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 
@@ -14,7 +17,7 @@ class AppContextProvider extends Component {
         filterLocation: 0,
         filterId: null,
         windowScroll: 0,
-        datasetCount: 0
+        datasetCount: null
     };
 
     newsItems = {
@@ -137,6 +140,15 @@ class AppContextProvider extends Component {
         ]
     };
 
+    getDatasetCount = () => {
+        // const { loading, error, data } = useQuery(DATASET_COUNT);
+        // if (loading || error) return null;
+        // data.hdrDataModelSearch.count !== this.state.datasetCount &&
+        //     this.setState({
+        //         datasetCount: data.hdrDataModelSearch.count
+        //     });
+    };
+
     returnSearchResults = event => {
         if (event.key === "Enter") {
             this.setState({
@@ -165,13 +177,6 @@ class AppContextProvider extends Component {
         this.setState({
             counter: this.state.counter + 1
         });
-    };
-
-    setDataSetCount = props => {
-        props !== this.state.datasetCount &&
-            this.setState({
-                datasetCount: props
-            });
     };
 
     addFilter = props => {
@@ -228,7 +233,7 @@ class AppContextProvider extends Component {
                     closeFilterBox: this.closeFilterBox,
                     filterObject: this.filterObject,
                     search: this.search,
-                    setDataSetCount: this.setDataSetCount
+                    getDatasetCount: this.getDatasetCount
                 }}
             >
                 {this.props.children}
