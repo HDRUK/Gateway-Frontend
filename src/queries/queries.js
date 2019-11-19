@@ -14,3 +14,26 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
         }
     }
 `;
+
+export const RESULT_DETAIL = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                domainType
+                label
+                description
+                author
+                organisation
+                editable
+                documentationVersion
+                lastUpdated
+                type
+                finalised
+            }
+        }
+    }
+`;

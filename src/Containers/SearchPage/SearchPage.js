@@ -61,7 +61,7 @@ const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore,
                 ? processedData.map((result, i) => (
                       <LinkNoDecoration
                           key={`resultCard-${i}`}
-                          to={`detail/:${result.id}`}
+                          to={`detail/${result.id}`}
                           onClick={() => searchResultId(result.id)}
                       >
                           <DarkText>
@@ -80,7 +80,7 @@ const SearchPage = () => {
     const pageState = appContext.state.searchPageState;
     const returnSearchResults = appContext.returnSearchResults;
 
-    const searchResultId = appContext.searchResultId;
+    const searchResultId = appContext.setSearchResultId;
     const searchTerm = appContext.search.term;
     const searchData = appContext.searchData;
     const dataLength = searchData ? searchData.length : "0";

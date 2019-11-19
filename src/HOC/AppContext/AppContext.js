@@ -16,7 +16,8 @@ const AppContextProvider = props => {
         searchPageState: false,
         modalVisibility: false,
         filterLocation: 0,
-        windowScroll: 0
+        windowScroll: 0,
+        searchResultId: undefined
     });
 
     const [activeFilter, setActiveFilter] = useState(null);
@@ -183,7 +184,7 @@ const AppContextProvider = props => {
         setActiveFilter(filterId);
     };
 
-    const searchResultId = id => {
+    const setSearchResultId = id => {
         setState({
             ...state,
             searchResultId: id
@@ -245,7 +246,7 @@ const AppContextProvider = props => {
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
-                searchResultId
+                setSearchResultId
             }}
         >
             {props.children}

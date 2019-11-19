@@ -58,7 +58,7 @@ class App extends React.Component {
                                             <div>/help</div>
                                         </Content>
                                     </Route>
-                                    <Route path="/detail">
+                                    <Route path="/detail/:id">
                                         <Content nav>
                                             <DetailPage />
                                         </Content>
