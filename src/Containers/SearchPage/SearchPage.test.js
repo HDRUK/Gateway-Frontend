@@ -181,6 +181,10 @@ describe("<SearchPage> rendered after a search", () => {
             expect(result.type).toEqual(LinkNoDecoration);
             expect(result.key).toBe(`resultCard-${i}`);
             expect(result.props.to).toEqual("detail/undefined");
+
+            result.props.onClick();
+            expect(context.setSearchResultId).toHaveBeenCalled();
+
             const textStyle = result.props.children;
             expect(textStyle.type).toBe(DarkText);
             const card = textStyle.props.children;
