@@ -214,6 +214,32 @@ const AppContextProvider = props => {
         document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
+    const loginUser = () => {
+        fetch("/login")
+            .then(res => {
+                console.log("RES ", res.status);
+            })
+            .catch(err => {
+                console.log("ERROR ", err);
+            });
+        // .then(
+        //     result => {
+        //         this.setState({
+        //             isLoaded: true,
+        //             items: result.items
+        //         });
+        //     },
+        //     // Note: it's important to handle errors here
+        //     // instead of a catch() block so that we don't swallow
+        //     // exceptions from actual bugs in components.
+        //     error => {
+        //         this.setState({
+        //             isLoaded: true,
+        //             error
+        //         });
+        //     }
+        // );
+    };
     return (
         <AppContext.Provider
             value={{
@@ -237,7 +263,8 @@ const AppContextProvider = props => {
                 removeFilter,
                 openFilterBox,
                 closeFilterBox,
-                filterObject
+                filterObject,
+                loginUser
             }}
         >
             {props.children}
