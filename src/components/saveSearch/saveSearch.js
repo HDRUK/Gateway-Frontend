@@ -15,36 +15,38 @@ const SaveSearch = () => {
     const [saveSearch, { loading }] = useMutation(SEARCH_SAVE);
 
     return (
-        <SaveSearchButton
-            onClick={() =>
-                saveSearch({
-                    variables: {
-                        userId: "TimTest",
-                        searchTerm: appContext.search.term,
-                        endPoint: "http://localhost:5001",
-                        offSet: 0,
-                        recordLimit: 10,
-                        sort: {
-                            applied: "Alphabetical",
-                            value: "Up"
-                        },
-                        filters: [
-                            {
-                                type: "Geography",
-                                value: "Scotland"
+        appContext.search.term && (
+            <SaveSearchButton
+                onClick={() =>
+                    saveSearch({
+                        variables: {
+                            userId: "TimTest",
+                            searchTerm: appContext.search.term,
+                            endPoint: "http://localhost:5001",
+                            offSet: 0,
+                            recordLimit: 10,
+                            sort: {
+                                applied: "Alphabetical",
+                                value: "Up"
                             },
-                            {
-                                type: "Geography",
-                                value: "England"
-                            }
-                        ]
-                    }
-                })
-            }
-        >
-            {textItems.saveSearch}
-            {loading && <RightSmallInlineLoading />}
-        </SaveSearchButton>
+                            filters: [
+                                {
+                                    type: "Geography",
+                                    value: "Scotland"
+                                },
+                                {
+                                    type: "Geography",
+                                    value: "England"
+                                }
+                            ]
+                        }
+                    })
+                }
+            >
+                {textItems.saveSearch}
+                {loading && <RightSmallInlineLoading />}
+            </SaveSearchButton>
+        )
     );
 };
 
