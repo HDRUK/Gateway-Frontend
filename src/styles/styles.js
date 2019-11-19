@@ -31,6 +31,10 @@ export const ParagraphText = styled.p`
     color: #3c3c3b;
 `;
 
+export const LightText = styled.span`
+    color: #979797;
+`;
+
 export const DarkText = styled.span`
     color: #3c3c3b;
 `;
@@ -57,7 +61,9 @@ export const CenterBlock = styled.div`
     align-items: center;
     justify-content: center;
 `;
-
+export const TinySpace = styled.div`
+    padding: 0.5rem;
+`;
 export const SmallSpace = styled.div`
     padding: 1rem;
 `;

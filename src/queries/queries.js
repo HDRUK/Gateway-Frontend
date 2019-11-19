@@ -25,12 +25,18 @@ export const RESULT_DETAIL = gql`
                 id
                 domainType
                 label
+                aliases
                 description
                 author
                 organisation
                 editable
                 documentationVersion
                 lastUpdated
+                classifiers {
+                    id
+                    label
+                    lastUpdated
+                }
                 type
                 finalised
             }
