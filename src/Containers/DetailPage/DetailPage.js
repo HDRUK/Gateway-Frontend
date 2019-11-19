@@ -4,12 +4,16 @@ import { CenterLoading } from "../../styles/carbonComponents";
 import {
     Heading,
     SmallSpace,
-    SmallHeading,
+    BoldInlineText,
     SmallText,
     TinyText,
     LightText,
     DarkText,
-    TinySpace
+    TinySpace,
+    InfoGrid,
+    GridItem,
+    InlineWrappedText,
+    BlueText
 } from "../../styles/styles";
 import PropTypes from "prop-types";
 
@@ -33,22 +37,34 @@ const DetailPage = props => {
             {data && (
                 <SmallSpace>
                     <DarkText>
+                        <TinyText>
+                            <LightText>LAST UPDATED</LightText>
+                            <BlueText>
+                                <SmallText>{data.hdrDataModelID.data.lastUpdated.split("T")[0]}</SmallText>
+                            </BlueText>
+                        </TinyText>
+                        <TinySpace />
                         <Heading>{data.hdrDataModelID.data.label}</Heading>
                         <TinySpace />
-                        <TinyText>
-                            <LightText>PUBLISHER</LightText>
-                        </TinyText>
-                        <SmallText>{data.hdrDataModelID.data.author}</SmallText>
+                        <InfoGrid>
+                            <GridItem>
+                                <TinyText>
+                                    <LightText>AUTHOR</LightText>
+                                </TinyText>
+                                <SmallText>{data.hdrDataModelID.data.author}</SmallText>
+                            </GridItem>
+                            <GridItem>
+                                <TinyText>
+                                    <LightText>ORGANISATION</LightText>
+                                </TinyText>
+                                <SmallText>{data.hdrDataModelID.data.organisation}</SmallText>
+                            </GridItem>
+                        </InfoGrid>
                         <TinySpace />
-                        <SmallHeading>abstract - </SmallHeading>
-                        <p>{data.hdrDataModelID.data.description}</p>
+
+                        <BoldInlineText>abstract - </BoldInlineText>
+                        <InlineWrappedText>{data.hdrDataModelID.data.description}</InlineWrappedText>
                         <TinySpace />
-                        <TinyText>ORG{data.hdrDataModelID.data.organisation}</TinyText>
-                        <p>EDIT{data.hdrDataModelID.data.editable}</p>
-                        <p>DOC VER{data.hdrDataModelID.data.documentationVersion}</p>
-                        <p>LAST UPDATED{data.hdrDataModelID.data.lastUpdated}</p>
-                        <p>TYPE{data.hdrDataModelID.data.type}</p>
-                        <p>FINAL{data.hdrDataModelID.data.finalised}</p>
                     </DarkText>
                 </SmallSpace>
             )}

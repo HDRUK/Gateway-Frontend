@@ -31,12 +31,36 @@ export const ParagraphText = styled.p`
     color: #3c3c3b;
 `;
 
+export const InfoGrid = styled.div`
+    display: flex;
+`;
+
+export const GridItem = styled.div`
+    flex-direction: column;
+    padding-right: 3rem;
+`;
+
+export const BlueText = styled.span`
+    color: #0062ff;
+`;
+
 export const LightText = styled.span`
     color: #979797;
 `;
 
 export const DarkText = styled.span`
     color: #3c3c3b;
+`;
+
+export const BoldInlineText = styled.p`
+    display: inline;
+    font-weight: 700;
+`;
+
+export const InlineWrappedText = styled.p`
+    display: inline;
+    font-weight: 400;
+    white-space: pre-line;
 `;
 
 export const NewListItem = styled.li`
