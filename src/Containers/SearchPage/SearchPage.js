@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line, LinkNoDecoration } from "../../styles/styles.js";
+import { Bold, Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
 import {
     SearchHeading,
     SearchBarWrapper,
@@ -32,7 +32,7 @@ const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLeng
     }
 };
 
-const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore, loading, error) => {
+const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore, loading, error, searchResultId) => {
     const onLoadMore = offSet => {
         fetchMore({
             variables: { recordLimit: 10, recordOffset: offSet, searchTerm },
@@ -59,8 +59,14 @@ const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore,
         <ResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
                 ? processedData.map((result, i) => (
-                      <LinkNoDecoration key={`resultCard-${i}`}>
-                          <ResultCard title={result.label} description={result.description} />
+                      <LinkNoDecoration
+                          key={`resultCard-${i}`}
+                          to={`detail/:${result.id}`}
+                          onClick={() => searchResultId(result.id)}
+                      >
+                          <DarkText>
+                              <ResultCard title={result.label} description={result.description} />
+                          </DarkText>
                       </LinkNoDecoration>
                   ))
                 : !loading && <div>No results</div>}
@@ -74,6 +80,7 @@ const SearchPage = () => {
     const pageState = appContext.state.searchPageState;
     const returnSearchResults = appContext.returnSearchResults;
 
+    const searchResultId = appContext.searchResultId;
     const searchTerm = appContext.search.term;
     const searchData = appContext.searchData;
     const dataLength = searchData ? searchData.length : "0";
@@ -126,7 +133,17 @@ const SearchPage = () => {
                         <Sort />
                     </SortDiv>
                 </SearchInfo>
-                {resultsData(searchTerm, searchData, offSet, setOffSet, dataLength, fetchMore, joinedLoading, error)}
+                {resultsData(
+                    searchTerm,
+                    searchData,
+                    offSet,
+                    setOffSet,
+                    dataLength,
+                    fetchMore,
+                    joinedLoading,
+                    error,
+                    searchResultId
+                )}
             </Results>
         </div>
     );

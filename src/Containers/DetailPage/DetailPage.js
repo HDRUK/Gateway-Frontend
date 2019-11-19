@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const DetailPage = () => {
-    return <div>/detail</div>;
+    const appContext = useContext(AppContext);
+    return <p>{appContext.state.searchResultId}</p>;
 };
 
 export default DetailPage;

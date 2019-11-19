@@ -183,6 +183,13 @@ const AppContextProvider = props => {
         setActiveFilter(filterId);
     };
 
+    const searchResultId = id => {
+        setState({
+            ...state,
+            searchResultId: id
+        });
+    };
+
     const counterFunc = () => {
         setState({
             ...state,
@@ -237,7 +244,8 @@ const AppContextProvider = props => {
                 removeFilter,
                 openFilterBox,
                 closeFilterBox,
-                filterObject
+                filterObject,
+                searchResultId
             }}
         >
             {props.children}
