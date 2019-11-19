@@ -11,12 +11,13 @@ import {
     SortDiv,
     ResultsWrapper
 } from "./styles.js";
-import { Line } from "../../styles/styles.js";
+import { Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
+import { MemoryRouter } from "react-router-dom";
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -80,7 +81,9 @@ describe("<SearchPage> rendered after a search and before data loaded", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <SearchPage />
+                    <MemoryRouter>
+                        <SearchPage />
+                    </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>
         );
@@ -126,7 +129,9 @@ describe("<SearchPage> rendered after a search", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <SearchPage />
+                    <MemoryRouter>
+                        <SearchPage />
+                    </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>
         );
@@ -168,11 +173,18 @@ describe("<SearchPage> rendered after a search", () => {
         const resultsWrapper = results[0].props.children[1];
         expect(resultsWrapper.type).toBe(ResultsWrapper);
         const resultsCards = resultsWrapper.props.children[0];
+
         const loading = resultsWrapper.props.children[1];
         expect(loading).toBe(false);
-        resultsCards.map((card, i) => {
+
+        resultsCards.map((result, i) => {
+            expect(result.type).toEqual(LinkNoDecoration);
+            expect(result.key).toBe(`resultCard-${i}`);
+            expect(result.props.to).toEqual("detail/undefined");
+            const textStyle = result.props.children;
+            expect(textStyle.type).toBe(DarkText);
+            const card = textStyle.props.children;
             expect(card.type).toBe(ResultCard);
-            expect(card.key).toBe(`resultCard-${i}`);
             expect(card.props.title).toBe(context.searchData.data[i].label);
             expect(card.props.description).toBe(context.searchData.data[i].description);
         });
