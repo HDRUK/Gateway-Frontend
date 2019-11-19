@@ -14,3 +14,28 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
         }
     }
 `;
+
+export const SEARCH_SAVE = gql`
+    mutation SearchSave(
+        $userId: String!
+        $searchTerm: String!
+        $endPoint: String!
+        $offSet: Int!
+        $recordLimit: Int!
+        $sort: SortInput!
+        $filters: [FilterInput]
+    ) {
+        searchSave(
+            userId: $userId
+            searchTerm: $searchTerm
+            endPoint: $endPoint
+            offSet: $offSet
+            recordLimit: $recordLimit
+            sort: $sort
+            filters: $filters
+        ) {
+            status
+            message
+        }
+    }
+`;
