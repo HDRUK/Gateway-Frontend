@@ -26,6 +26,7 @@ const searchPageText = {
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
     if (currentTarget.scrollTop + currentTarget.clientHeight >= currentTarget.scrollHeight) {
         if (!loading && offSet <= dataLength) {
+            console.log(offSet);
             onLoadMore(offSet);
             setOffSet(offSet + 10);
         }
@@ -104,11 +105,27 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
+        if (!loading && !data && searchTerm !== null && searchData.data.length === 0) {
+            console.log(searchTerm, searchData);
+            console.log("here");
+            clearSearchData();
+            getItemsSearch({
+                variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
+                fetchPolicy: "network-only",
+                notifyOnNetworkStatusChange: true
+            });
+        }
+    });
+
+    useEffect(() => {
         if (!loading && data && data.hdrCatalogueItemsSearch.data) {
+            console.log("data", data);
             appContext.insertSearchData(
                 parseInt(data.hdrCatalogueItemsSearch.count, 10),
                 data.hdrCatalogueItemsSearch.data
             );
+        } else if (!loading && !data && searchTerm !== null) {
+            clearSearchData();
         }
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -116,6 +133,8 @@ const SearchPage = () => {
 
     const joinedLoading =
         loading || networkStatus === 3 || (searchData.data.length < offSet && offSet < searchData.length);
+
+    console.log("joinedLoading", joinedLoading, "loading", loading, "offSet", offSet, "networkStatus", networkStatus);
 
     return (
         <div>
