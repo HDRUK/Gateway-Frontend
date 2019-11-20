@@ -13,7 +13,7 @@ const textItems = {
 
 const Login = () => {
     const appcontext = useContext(AppContext);
-    // const loginUser = appcontext.loginUser;
+    const loginUser = appcontext.loginUser;
 
     return (
         <CenterBlock>
@@ -21,7 +21,7 @@ const Login = () => {
                 <Heading>{textItems.headingText}</Heading>
                 <MediumSpace />
                 <CenterBlock>
-                    <StyledButton kind="primary" onClick={appcontext.loginUser}>
+                    <StyledButton kind="primary" onClick={loginUser}>
                         {textItems.loginButton}
                     </StyledButton>
                     <SmallSpace />

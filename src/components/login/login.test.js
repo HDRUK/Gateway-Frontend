@@ -6,6 +6,9 @@ import { CenterBlock, DarkText, Heading, MediumSpace, SmallSpace, LargeSpace } f
 import { StyledButton } from "../../styles/carbonComponents.js";
 import { Link } from "react-router-dom";
 
+import { AppContext } from "../../HOC/AppContext/AppContext";
+import context from "../../__mocks__/AppContextMock.js";
+
 const loginText = {
     headingText: "Log in to access our datasets",
     loginButton: "Log in",
@@ -19,7 +22,9 @@ describe("<Login> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MemoryRouter>
-                <Login />
+                <AppContext.Provider value={context}>
+                    <Login />
+                </AppContext.Provider>
             </MemoryRouter>
         );
         renderedOutput = renderedComponent.root;
