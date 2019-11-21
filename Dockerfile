@@ -12,7 +12,7 @@ COPY . .
 EXPOSE 8080  
 
 # Add environment variables 
-ENV REACT_APP_GRAPH_QL_ENDPOINT=endpointhere
+ENV REACT_APP_GRAPH_QL_ENDPOINT=${endpoint}
   
 # Start the app  
 CMD [ "npm","run","start"]  
