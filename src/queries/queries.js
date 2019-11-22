@@ -14,3 +14,27 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
         }
     }
 `;
+
+export const GET_SEARCH_SAVED_BY_USER_ID = gql`
+    query GetSearchSavedByUserId($userId: String!) {
+        getSearchSavedByUserID(userId: $userId) {
+            status
+            message
+            data {
+                id
+                detail
+                endPoint
+                recordLimit
+                recordOffset
+                filters {
+                    type
+                    value
+                }
+                sort {
+                    applied
+                    value
+                }
+            }
+        }
+    }
+`;

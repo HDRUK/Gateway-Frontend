@@ -3,9 +3,12 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
+
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
 import AboutPage from "./Containers/AboutPage/AboutPage.js";
 import SearchPage from "./Containers/SearchPage/SearchPage.js";
+import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage.js";
+
 import Header from "./components/header/header.js";
 import Footer from "./components/footer/footer.js";
 import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper.js";
@@ -39,7 +42,7 @@ class App extends React.Component {
                                     </Route>
                                     <Route path="/my-searches">
                                         <Content nav>
-                                            <div>/my-searches</div>
+                                            <MySearchesPage />
                                         </Content>
                                     </Route>
                                     <Route path="/browse">
