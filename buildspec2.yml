@@ -37,5 +37,7 @@ phases:
       - kubectl get svc --namespace=$NAMESPACE
       - echo viewing configs... 
       - kubectl config view --namespace=$NAMESPACE
+      - echo describe pods..
+      - kubectl describe pods --namespace=$NAMESPACE
      
   
