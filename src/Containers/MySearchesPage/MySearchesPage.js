@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { CenterLoading } from "../../styles/carbonComponents";
-// import { Bold, Line } from "../../styles/styles.js";
+import { ResultsWrapper } from "../../styles/styles.js";
 // import {} from "./styles.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
@@ -23,9 +23,9 @@ const MySearchesPage = () => {
     const results =
         data &&
         data.getSearchSavedByUserID.data.map(search => {
-            return <SavedSearchCard title={search.detail} date={search.id} />;
+            return <SavedSearchCard date={search.createdOn} title={search.detail} />;
         });
-    return <div>{results}</div>;
+    return <ResultsWrapper>{results}</ResultsWrapper>;
 };
 
 export default MySearchesPage;

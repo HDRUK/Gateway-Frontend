@@ -26,6 +26,7 @@ export const GET_SEARCH_SAVED_BY_USER_ID = gql`
                 endPoint
                 recordLimit
                 recordOffset
+                createdOn
                 filters {
                     type
                     value
