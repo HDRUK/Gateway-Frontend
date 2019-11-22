@@ -49,26 +49,14 @@ phases:
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $EKS_CLUSTER_NAME 
       - echo getting deployments...
       - kubectl describe deployments --namespace=$NAMESPACE
-      - echo describin middleware pod...
-      - kubectl describe authwebserver-57b69b6474-4r67c
+ 
 
   build:
     commands:
       - echo updating deployment...
-      - kubectl set image deployments/$APP_NAME $APP_NAME=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REPO:$IMAGE_TAG --namespace=$NAMESPACE
+      - kubectl delete deployments.app/webapp service/webapp --namespace=$NAMESPACE
+      - kubectl describe deployments --namespace=$NAMESPACE
      
   post_build:
     commands:
-      #uncomment the 5 lines BELOW this if CONGIG in variables above change
-      - echo creating configs file...
-      - touch configs.yml
-      - echo "$CONFIG">>configs.yml
-      - echo exposing deployment to load balancer...
-      - kubectl apply -f configs.yml --validate=false
-      - echo retrieving pods in eks cluster...
-      - kubectl get pods --namespace=$NAMESPACE
-      - echo getting external ips from cluster...
-      - kubectl get services -o wide --namespace=$NAMESPACE
-      #uncomment BELOW to rollback to previous deployment version
-      #- echo rollback to previous deployment version...
-      #- kubectl rollout undo deployments/$APP_NAME
+      #uncomment the 5 lines BELOW this 
