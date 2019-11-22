@@ -49,6 +49,8 @@ phases:
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $EKS_CLUSTER_NAME 
       - echo getting deployments...
       - kubectl describe deployments --namespace=$NAMESPACE
+      - echo describin middleware pod...
+      - kubectl describe pod middleware
 
   build:
     commands:
