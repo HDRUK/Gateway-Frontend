@@ -12,7 +12,9 @@ const mySearchesPageText = {};
 
 const MySearchesPage = () => {
     const appContext = useContext(AppContext);
+    const runSearch = appContext.returnSearchResults;
 
+    // TODO: Set userId to come from context when login is implemented
     const { data, loading, error } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: "TimTest" } });
 
     if (loading) {
@@ -22,9 +24,21 @@ const MySearchesPage = () => {
 
     const results =
         data &&
-        data.getSearchSavedByUserID.data.map(search => {
-            return <SavedSearchCard date={search.createdOn} title={search.detail} />;
-        });
+        data.getSearchSavedByUserID &&
+        data.getSearchSavedByUserID.data &&
+        data.getSearchSavedByUserID.data.length > 0 ? (
+            data.getSearchSavedByUserID.data.map(search => {
+                return (
+                    <SavedSearchCard
+                        date={search.createdOn}
+                        title={search.detail}
+                        runSearch={() => runSearch(search.detail)}
+                    />
+                );
+            })
+        ) : (
+            <p>No saved searches</p>
+        );
     return <ResultsWrapper>{results}</ResultsWrapper>;
 };
 

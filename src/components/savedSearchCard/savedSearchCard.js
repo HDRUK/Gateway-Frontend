@@ -28,7 +28,7 @@ const SavedSearchCard = props => {
                 <SavedSearchButton kind="secondary" size="small" disabled={true}>
                     Delete Search
                 </SavedSearchButton>
-                <Link to={`/search`}>
+                <Link to={`/search`} onClick={props.runSearch}>
                     <SavedSearchButton size="small">Run Search</SavedSearchButton>
                 </Link>
             </ButtonDiv>
