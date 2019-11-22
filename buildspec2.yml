@@ -13,11 +13,12 @@ env:
             type: LoadBalancer
             ports:
               - port: 443
+                name: https
                 targetPort: 8080
                 protocol: TCP
             selector:
               app: webapp
-            externalTrafficPolicy: Local
+#externalTrafficPolicy: Local
                       
 phases:
   install:
