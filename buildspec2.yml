@@ -34,5 +34,6 @@ phases:
       - kubectl get deployments --namespace=$NAMESPACE
       - echo getting all...
       - kubectl get all --namespace=$NAMESPACE
+      - kubectl get svc --namespace=$NAMESPACE
      
   
