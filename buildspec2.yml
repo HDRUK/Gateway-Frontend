@@ -18,7 +18,7 @@ env:
                 protocol: TCP
             selector:
               app: webapp
-#externalTrafficPolicy: Local
+            externalTrafficPolicy: Local
                       
 phases:
   install:
