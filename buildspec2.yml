@@ -50,7 +50,7 @@ phases:
       - echo getting deployments...
       - kubectl describe deployments --namespace=$NAMESPACE
       - echo describin middleware pod...
-      - kubectl describe pod middleware
+      - kubectl describe pods
 
   build:
     commands:
