@@ -1,8 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { CenterLoading } from "../../styles/carbonComponents";
 import { ResultsWrapper } from "../../styles/styles.js";
-// import {} from "./styles.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
 import { useQuery } from "@apollo/react-hooks";

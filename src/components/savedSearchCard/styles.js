@@ -12,7 +12,8 @@ export const SavedSearchButton = styled(Button)`
 
 export const ContentDiv = styled.div`
     display: inline-block;
-    min-width: calc(100% - 11.125rem);
+    width: 100%;
+    max-width: calc(100% - 11.125rem);
     height: 100%;
     vertical-align: top;
 `;
@@ -24,7 +25,6 @@ export const ButtonDiv = styled.div`
 `;
 
 export const SavedSearchTable = styled.table`
-    text-transform: uppercase;
     margin-bottom: 0.75rem;
     th,
     td {
