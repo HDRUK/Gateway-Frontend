@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SmallHeading, Card } from "../../styles/styles.js";
+import { Card } from "../../styles/styles.js";
 import { Tag } from "carbon-components-react";
-import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTable } from "./styles.js";
+import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle } from "./styles.js";
 import { Link } from "react-router-dom";
 // TODO: Remove disable from delete button when delete functionality implemented
 import LabeledContent from "../../components/labeledContent/labeledContent.js";
@@ -13,7 +13,7 @@ const SavedSearchCard = props => {
             <ContentDiv>
                 <LabeledContent label="Search Date">{props.date}</LabeledContent>
                 <LabeledContent label="Results">{props.resultsCount || "n/a"}</LabeledContent>
-                <SmallHeading>{props.title}</SmallHeading>
+                <SavedSearchTitle>{props.title}</SavedSearchTitle>
                 {props.filters && props.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
                         {props.filters.map(filter => (

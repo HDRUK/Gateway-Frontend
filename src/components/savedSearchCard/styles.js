@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "carbon-components-react";
+import { SmallHeading } from "../../styles/styles.js";
 
 export const SavedSearchButton = styled(Button)`
     display: inline-block;
@@ -43,4 +44,8 @@ export const SavedSearchTable = styled.table`
         line-height: 1.0625rem;
         color: #0f62fe;
     }
+`;
+
+export const SavedSearchTitle = styled(SmallHeading)`
+    margin: 1rem 0 0.5rem 0;
 `;
