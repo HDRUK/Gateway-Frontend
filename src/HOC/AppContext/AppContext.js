@@ -26,6 +26,8 @@ const AppContextProvider = props => {
         term: null
     });
 
+    const [searchSaved, setSearchSaved] = useState(false);
+
     const [searchData, setSearchData] = useState({
         offSet: 10,
         length: 0,
@@ -163,6 +165,7 @@ const AppContextProvider = props => {
         setSearch({
             term: value
         });
+        setSearchSaved(false);
     };
 
     const setFilterLocation = () => {
@@ -237,7 +240,9 @@ const AppContextProvider = props => {
                 removeFilter,
                 openFilterBox,
                 closeFilterBox,
-                filterObject
+                filterObject,
+                searchSaved,
+                setSearchSaved
             }}
         >
             {props.children}

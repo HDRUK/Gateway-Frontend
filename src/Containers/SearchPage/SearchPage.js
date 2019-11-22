@@ -112,7 +112,7 @@ const SearchPage = () => {
         <div>
             <SearchHeading invisible={pageState}>{searchPageText.searchTitle}</SearchHeading>
             <SearchBarWrapper main={!pageState}>
-                <SearchBar labelText={searchPageText.search} onKeyPress={onSearch} />
+                <SearchBar defaultValue={searchTerm} labelText={searchPageText.search} onKeyPress={onSearch} />
             </SearchBarWrapper>
             <Results invisible={!pageState}>
                 <SearchInfo>

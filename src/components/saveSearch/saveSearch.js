@@ -7,43 +7,49 @@ import { SEARCH_SAVE } from "../../queries/queries.js";
 import { SaveSearchButton, RightSmallInlineLoading } from "./styles.js";
 
 const textItems = {
-    saveSearch: "Save search"
+    saveSearch: "Save search",
+    savedSearch: "Search saved"
 };
 
 const SaveSearch = () => {
     const appContext = useContext(AppContext);
     const [saveSearch, { loading }] = useMutation(SEARCH_SAVE);
+    const searchSaved = appContext.searchSaved;
+    const setSearchSaved = appContext.setSearchSaved;
+
+    let saveVariables = {
+        // TODO: Implement userId value from context
+        userId: "TimTest",
+        searchTerm: appContext.search.term,
+        endPoint: "http://localhost:5001",
+        offSet: 0,
+        recordLimit: 10,
+        // TODO: Implement sort values from context (to be done when sort implemented properly)
+        sort: {
+            applied: "Alphabetical",
+            value: "Up"
+        }
+    };
+
+    if (appContext.filters && appContext.filters.length > 0) {
+        saveVariables.filters = appContext.filters;
+    }
 
     return (
-        appContext.search.term && (
+        appContext.search.term !== null && (
             <SaveSearchButton
-                onClick={() =>
+                onClick={() => {
                     saveSearch({
-                        variables: {
-                            userId: "TimTest",
-                            searchTerm: appContext.search.term,
-                            endPoint: "http://localhost:5001",
-                            offSet: 0,
-                            recordLimit: 10,
-                            sort: {
-                                applied: "Alphabetical",
-                                value: "Up"
-                            },
-                            filters: [
-                                {
-                                    type: "Geography",
-                                    value: "Scotland"
-                                },
-                                {
-                                    type: "Geography",
-                                    value: "England"
-                                }
-                            ]
-                        }
-                    })
-                }
+                        variables: saveVariables
+                    });
+                    setSearchSaved(true);
+                }}
+                kind="primary"
+                disabled={searchSaved}
+                status={searchSaved ? "finished" : "active"}
+                size="small"
             >
-                {textItems.saveSearch}
+                {searchSaved ? textItems.savedSearch : textItems.saveSearch}
                 {loading && <RightSmallInlineLoading />}
             </SaveSearchButton>
         )

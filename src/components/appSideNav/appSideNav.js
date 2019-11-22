@@ -55,8 +55,12 @@ const AppSideNav = props => {
                         </LinkNoDecoration>
                     ))}
                 </NavItems>
-                <SaveSearch />
-                {props.filter && <FilterMenu />}
+                {props.filter && (
+                    <React.Fragment>
+                        <SaveSearch />
+                        <FilterMenu />
+                    </React.Fragment>
+                )}
             </MainSideNav>
         </div>
     );
