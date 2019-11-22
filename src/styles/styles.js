@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
 export const Heading = styled.h1`
@@ -13,7 +12,7 @@ export const ParagraphHeading = styled.h2`
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.7rem;
-    color: #3c3c3b;
+    color: ${p => p.theme.text.primary};
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`

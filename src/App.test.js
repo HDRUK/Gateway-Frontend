@@ -11,8 +11,6 @@ import Header from "./components/header/header.js";
 import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
-import GlobalStyle from "./styles/globalStyles.js";
-
 describe("<App> ", () => {
     let renderedComponent;
     let renderedOutput;

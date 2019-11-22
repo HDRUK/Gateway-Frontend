@@ -15,7 +15,6 @@ import {
     Loading
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
-import "../carbon-components.css";
 
 export const StyledButton = styled(Button)`
     padding: 15px;
