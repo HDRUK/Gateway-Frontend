@@ -1,24 +1,6 @@
 ---
 version: 0.2
 
-env:
-  variables:
-    CONFIG: | 
-          apiVersion: v1
-          kind: Service
-          metadata:
-            name: webapp
-            namespace: hdrdev
-          spec:
-            type: LoadBalancer
-            ports:
-              - port: 443
-                name: https
-                targetPort: 8080
-                protocol: TCP
-            selector:
-              app: webapp
-            externalTrafficPolicy: Local
                       
 phases:
   install:
@@ -49,14 +31,5 @@ phases:
       - aws eks --region $AWS_DEFAULT_REGION update-kubeconfig --name $EKS_CLUSTER_NAME 
       - echo getting deployments...
       - kubectl describe deployments --namespace=$NAMESPACE
- 
-
-  build:
-    commands:
-      - echo updating deployment...
-      - kubectl delete deployments.app/webapp service/webapp --namespace=$NAMESPACE
-      - kubectl describe deployments --namespace=$NAMESPACE
      
-  post_build:
-    commands:
-      #uncomment the 5 lines BELOW this 
+  
