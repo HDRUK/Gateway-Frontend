@@ -25,27 +25,6 @@ export const ButtonDiv = styled.div`
     vertical-align: bottom;
 `;
 
-export const SavedSearchTable = styled.table`
-    margin-bottom: 0.75rem;
-    th,
-    td {
-        padding: 0 0.5rem 0.125rem 0;
-        text-align: left;
-    }
-
-    th {
-        font-size: 0.625rem;
-        line-height: 0.75rem;
-        color: #979797;
-    }
-
-    td {
-        font-size: 0.875rem;
-        line-height: 1.0625rem;
-        color: #0f62fe;
-    }
-`;
-
 export const SavedSearchTitle = styled(SmallHeading)`
     margin: 1rem 0 0.5rem 0;
 `;

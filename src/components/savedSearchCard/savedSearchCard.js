@@ -4,8 +4,9 @@ import { Card } from "../../styles/styles.js";
 import { Tag } from "carbon-components-react";
 import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle } from "./styles.js";
 import { Link } from "react-router-dom";
-// TODO: Remove disable from delete button when delete functionality implemented
 import LabeledContent from "../../components/labeledContent/labeledContent.js";
+
+// TODO: Remove disable from delete button when delete functionality implemented
 
 const SavedSearchCard = props => {
     return (
