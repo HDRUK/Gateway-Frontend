@@ -32,6 +32,7 @@ const MySearchesPage = () => {
                     <SavedSearchCard
                         date={search.createdOn}
                         title={search.detail}
+                        filters={search.filters}
                         runSearch={() => runSearch(search.detail)}
                     />
                 );
