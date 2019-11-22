@@ -35,5 +35,7 @@ phases:
       - echo getting all...
       - kubectl get all --namespace=$NAMESPACE
       - kubectl get svc --namespace=$NAMESPACE
+      - echo viewing configs... 
+      - kubectl config view --namespace=$NAMESPACE
      
   
