@@ -50,7 +50,7 @@ phases:
       - echo getting deployments...
       - kubectl describe deployments --namespace=$NAMESPACE
       - echo describin middleware pod...
-      - kubectl describe pods
+      - kubectl describe authwebserver-57b69b6474-4r67c
 
   build:
     commands:
