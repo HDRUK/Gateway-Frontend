@@ -216,6 +216,15 @@ const AppContextProvider = props => {
         document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
+    const loginUser = () => {
+        fetch("/login")
+            .then(res => {
+                console.log("RES ", res.status);
+            })
+            .catch(err => {
+                console.log("ERROR ", err);
+            });
+    };
     return (
         <AppContext.Provider
             value={{
@@ -240,7 +249,8 @@ const AppContextProvider = props => {
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
-                userId
+                userId,
+                loginUser
             }}
         >
             {props.children}
