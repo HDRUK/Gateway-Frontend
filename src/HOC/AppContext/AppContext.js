@@ -153,7 +153,8 @@ const AppContextProvider = props => {
         setSearchData({
             ...searchData,
             length,
-            data: [...searchData.data, ...newData]
+            offset: newData.length,
+            data: [...newData]
         });
     };
 
@@ -166,12 +167,6 @@ const AppContextProvider = props => {
         setSearch({
             ...search,
             term: value
-        });
-    };
-    const setPreviousTerm = value => {
-        setSearch({
-            ...search,
-            previousTerm: value
         });
     };
 
@@ -250,7 +245,7 @@ const AppContextProvider = props => {
                 textItems,
                 returnSearchResults,
                 search,
-                setPreviousTerm,
+                setSearch,
                 searchData,
                 setSearchData,
                 clearSearchData,

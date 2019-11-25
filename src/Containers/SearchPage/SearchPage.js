@@ -52,7 +52,7 @@ const resultsData = (
                 return Object.assign({}, prev, {
                     hdrCatalogueItemsSearch: {
                         ...prev.hdrCatalogueItemsSearch,
-                        data: [...fetchMoreResult.hdrCatalogueItemsSearch.data]
+                        data: [...prev.hdrCatalogueItemsSearch.data, ...fetchMoreResult.hdrCatalogueItemsSearch.data]
                     }
                 });
             }
@@ -107,31 +107,29 @@ const SearchPage = () => {
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             returnSearchResults(e.target.value);
+            clearSearchData();
         }
     };
 
     useEffect(() => {
         if (searchTerm !== null) {
             if (searchTerm !== previousTerm) {
-                appContext.setPreviousTerm(searchTerm);
-                clearSearchData();
+                appContext.setSearch({
+                    ...appContext.search,
+                    previousTerm: searchTerm
+                });
+
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
             }
-            if (!loading && !data) {
-                if (searchData.length < 10) {
-                    clearSearchData();
-                }
-                appContext.setSearchData({
-                    ...searchData,
-                    length: 0,
-                    data: []
-                });
+            if (!loading && !data && searchData.length === 0) {
+                console.log(offSet);
+
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
@@ -145,6 +143,8 @@ const SearchPage = () => {
                 parseInt(data.hdrCatalogueItemsSearch.count, 10),
                 data.hdrCatalogueItemsSearch.data
             );
+        } else if (!loading && !data && searchTerm !== null) {
+            clearSearchData();
         }
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps
