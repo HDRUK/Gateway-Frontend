@@ -27,7 +27,7 @@ const DetailPage = props => {
     props.match.params.id !== appContext.state.searchResultId && appContext.setSearchResultId(props.match.params.id);
     const { loading, error, data } = useQuery(RESULT_DETAIL, {
         variables: { ID: appContext.state.searchResultId },
-        skip: appContext.state.searchResultId === undefined
+        skip: appContext.state.searchResultId === null
     });
     if (loading) return <CenterLoading />;
     if (error) return <div>Error :(</div>;

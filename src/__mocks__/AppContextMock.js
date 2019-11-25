@@ -5,7 +5,7 @@ const context = {
         modalVisibility: false,
         filterLocation: 0,
         windowScroll: 0,
-        searchResultId: undefined
+        searchResultId: null
     },
 
     filters: [],

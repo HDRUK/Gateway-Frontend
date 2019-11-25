@@ -17,7 +17,8 @@ const AppContextProvider = props => {
         modalVisibility: false,
         filterLocation: 0,
         windowScroll: 0,
-        searchResultId: undefined
+        searchResultId: null,
+        resultsLimit: 10
     });
 
     const [activeFilter, setActiveFilter] = useState(null);
@@ -28,7 +29,7 @@ const AppContextProvider = props => {
     });
 
     const [searchData, setSearchData] = useState({
-        offSet: 10,
+        offSet: 0,
         length: 0,
         data: []
     });
@@ -66,7 +67,7 @@ const AppContextProvider = props => {
     const clearSearchData = () => {
         setSearchData({
             ...searchData,
-            offSet: 10,
+            offSet: 0,
             length: 0,
             data: []
         });

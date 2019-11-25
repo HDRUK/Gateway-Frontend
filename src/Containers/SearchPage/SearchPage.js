@@ -26,16 +26,27 @@ const searchPageText = {
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
     if (currentTarget.scrollTop + currentTarget.clientHeight >= currentTarget.scrollHeight) {
         if (!loading && offSet <= dataLength) {
-            onLoadMore(offSet);
+            onLoadMore(offSet + 10);
             setOffSet(offSet + 10);
         }
     }
 };
 
-const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore, loading, error, searchResultId) => {
+const resultsData = (
+    searchTerm,
+    data,
+    limit,
+    offSet,
+    setOffSet,
+    dataLength,
+    fetchMore,
+    loading,
+    error,
+    searchResultId
+) => {
     const onLoadMore = offSet => {
         fetchMore({
-            variables: { recordLimit: 10, recordOffset: offSet, searchTerm },
+            variables: { recordLimit: limit, recordOffset: offSet, searchTerm },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
@@ -85,6 +96,7 @@ const SearchPage = () => {
     const searchData = appContext.searchData;
     const dataLength = searchData ? searchData.length : "0";
     const offSet = searchData.offSet;
+    const limit = appContext.state.resultsLimit;
 
     const clearSearchData = appContext.clearSearchData;
     const setOffSet = appContext.setOffSet;
@@ -96,7 +108,7 @@ const SearchPage = () => {
             returnSearchResults(e.target.value);
             clearSearchData();
             getItemsSearch({
-                variables: { recordLimit: 10, recordOffset: 0, searchTerm: e.target.value },
+                variables: { recordLimit: limit, recordOffset: 0, searchTerm: e.target.value },
                 fetchPolicy: "cache-and-network",
                 notifyOnNetworkStatusChange: true
             });
@@ -110,7 +122,7 @@ const SearchPage = () => {
                     clearSearchData();
                 }
                 getItemsSearch({
-                    variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
@@ -151,6 +163,7 @@ const SearchPage = () => {
                 {resultsData(
                     searchTerm,
                     searchData,
+                    limit,
                     offSet,
                     setOffSet,
                     dataLength,
