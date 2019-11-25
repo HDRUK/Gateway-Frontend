@@ -104,12 +104,17 @@ const SearchPage = () => {
     };
 
     useEffect(() => {
-        if (!loading && !data && searchTerm !== null) {
-            getItemsSearch({
-                variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
-                fetchPolicy: "cache-and-network",
-                notifyOnNetworkStatusChange: true
-            });
+        if (searchTerm !== null) {
+            if (!loading && !data) {
+                if (searchData.length < 10) {
+                    clearSearchData();
+                }
+                getItemsSearch({
+                    variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
+                    fetchPolicy: "cache-and-network",
+                    notifyOnNetworkStatusChange: true
+                });
+            }
         }
     });
 
@@ -131,7 +136,7 @@ const SearchPage = () => {
         <div>
             <SearchHeading invisible={pageState}>{searchPageText.searchTitle}</SearchHeading>
             <SearchBarWrapper main={!pageState}>
-                <SearchBar labelText={searchPageText.search} onKeyPress={onSearch} />
+                <SearchBar defaultValue={searchTerm} labelText={searchPageText.search} onKeyPress={onSearch} />
             </SearchBarWrapper>
             <Results invisible={!pageState}>
                 <SearchInfo>
