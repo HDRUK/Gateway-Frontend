@@ -12,9 +12,9 @@ const mySearchesPageText = {};
 const MySearchesPage = () => {
     const appContext = useContext(AppContext);
     const runSearch = appContext.returnSearchResults;
+    const userId = appContext.userId;
 
-    // TODO: Set userId to come from context when login is implemented
-    const { data, loading, error } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: "TimTest" } });
+    const { data, loading, error } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: userId } });
 
     if (loading) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
@@ -26,9 +26,10 @@ const MySearchesPage = () => {
         data.getSearchSavedByUserID &&
         data.getSearchSavedByUserID.data &&
         data.getSearchSavedByUserID.data.length > 0 ? (
-            data.getSearchSavedByUserID.data.map(search => {
+            data.getSearchSavedByUserID.data.map((search, i) => {
                 return (
                     <SavedSearchCard
+                        key={`savedSearchCard-${i}`}
                         date={search.createdOn}
                         title={search.detail}
                         filters={search.filters}

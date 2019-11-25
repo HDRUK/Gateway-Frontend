@@ -32,6 +32,8 @@ const AppContextProvider = props => {
         data: []
     });
 
+    const [userId, setUserId] = useState("TimTest");
+
     const newsItems = {
         newsItemOne: {
             image: "",
@@ -237,7 +239,8 @@ const AppContextProvider = props => {
                 removeFilter,
                 openFilterBox,
                 closeFilterBox,
-                filterObject
+                filterObject,
+                userId
             }}
         >
             {props.children}

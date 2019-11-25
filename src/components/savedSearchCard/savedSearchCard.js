@@ -17,8 +17,10 @@ const SavedSearchCard = props => {
                 <SavedSearchTitle>{props.title}</SavedSearchTitle>
                 {props.filters && props.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
-                        {props.filters.map(filter => (
-                            <Tag type="gray">{filter.value}</Tag>
+                        {props.filters.map((filter, i) => (
+                            <Tag key={`filter-tag-${i}`} type="gray">
+                                {filter.value}
+                            </Tag>
                         ))}
                     </LabeledContent>
                 )}
@@ -28,7 +30,9 @@ const SavedSearchCard = props => {
                     Delete Search
                 </SavedSearchButton>
                 <Link to={`/search`} onClick={props.runSearch}>
-                    <SavedSearchButton size="small">Run Search</SavedSearchButton>
+                    <SavedSearchButton kind="primary" size="small">
+                        Run Search
+                    </SavedSearchButton>
                 </Link>
             </ButtonDiv>
         </Card>

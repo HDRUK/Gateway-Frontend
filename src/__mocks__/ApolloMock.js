@@ -1,7 +1,7 @@
 import { gql } from "apollo-boost";
 
 import { CATALOGUE_ITEMS_SEARCH } from "../queries/queries.js";
-import { Description } from "../styles/styles.js";
+import { GET_SEARCH_SAVED_BY_USER_ID } from "../queries/queries.js";
 
 const GET_SEARCH_AUDIT_LOG = gql`
     {
@@ -54,6 +54,58 @@ const mocks = [
                             id: "2",
                             description: "description",
                             label: "label"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    {
+        request: {
+            query: GET_SEARCH_SAVED_BY_USER_ID,
+            variables: { userId: "test" }
+        },
+        result: {
+            data: {
+                getSearchSavedByUserID: {
+                    status: "200",
+                    message: "Search saved data",
+                    data: [
+                        {
+                            id: "1",
+                            detail: "test",
+                            endPoint: "http://localhost:5001",
+                            recordLimit: 10,
+                            recordOffset: 0,
+                            createdOn: "01 Nov 2019",
+                            filters: [
+                                {
+                                    type: "Geography",
+                                    value: "England"
+                                }
+                            ],
+                            sort: {
+                                applied: "Alphabetical",
+                                value: "Up"
+                            }
+                        },
+                        {
+                            id: "2",
+                            detail: "test2",
+                            endPoint: "http://localhost:5001",
+                            recordLimit: 10,
+                            recordOffset: 0,
+                            createdOn: "02 Nov 2019",
+                            filters: [
+                                {
+                                    type: "Geography",
+                                    value: "Scotland"
+                                }
+                            ],
+                            sort: {
+                                applied: "Alphabetical",
+                                value: "Down"
+                            }
                         }
                     ]
                 }
