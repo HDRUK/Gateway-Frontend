@@ -93,6 +93,7 @@ const SearchPage = () => {
 
     const searchResultId = appContext.setSearchResultId;
     const searchTerm = appContext.search.term;
+    const previousTerm = appContext.search.previousTerm;
     const searchData = appContext.searchData;
     const dataLength = searchData ? searchData.length : "0";
     const offSet = searchData.offSet;
@@ -106,17 +107,20 @@ const SearchPage = () => {
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             returnSearchResults(e.target.value);
-            clearSearchData();
-            getItemsSearch({
-                variables: { recordLimit: limit, recordOffset: 0, searchTerm: e.target.value },
-                fetchPolicy: "cache-and-network",
-                notifyOnNetworkStatusChange: true
-            });
         }
     };
 
     useEffect(() => {
         if (searchTerm !== null) {
+            if (searchTerm !== previousTerm) {
+                appContext.setPreviousTerm(searchTerm);
+                clearSearchData();
+                getItemsSearch({
+                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
+                    fetchPolicy: "cache-and-network",
+                    notifyOnNetworkStatusChange: true
+                });
+            }
             if (!loading && !data) {
                 if (searchData.length < 10) {
                     clearSearchData();

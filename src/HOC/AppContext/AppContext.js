@@ -25,7 +25,8 @@ const AppContextProvider = props => {
     const [filters, setFilters] = useState([]);
 
     const [search, setSearch] = useState({
-        term: null
+        term: null,
+        previousTerm: null
     });
 
     const [searchData, setSearchData] = useState({
@@ -163,7 +164,14 @@ const AppContextProvider = props => {
                 searchPageState: true
             });
         setSearch({
+            ...search,
             term: value
+        });
+    };
+    const setPreviousTerm = value => {
+        setSearch({
+            ...search,
+            previousTerm: value
         });
     };
 
@@ -242,6 +250,7 @@ const AppContextProvider = props => {
                 textItems,
                 returnSearchResults,
                 search,
+                setPreviousTerm,
                 searchData,
                 setSearchData,
                 clearSearchData,
