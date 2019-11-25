@@ -1,8 +1,16 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line, ResultsWrapper } from "../../styles/styles.js";
-import { SearchHeading, SearchBarWrapper, Results, SearchInfo, ResultsCounter, SortDiv } from "./styles.js";
+import { Bold, Line } from "../../styles/styles.js";
+import {
+    SearchHeading,
+    SearchBarWrapper,
+    Results,
+    ResultsWrapper,
+    SearchInfo,
+    ResultsCounter,
+    SortDiv
+} from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
