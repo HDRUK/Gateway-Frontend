@@ -121,6 +121,11 @@ const SearchPage = () => {
                 if (searchData.length < 10) {
                     clearSearchData();
                 }
+                appContext.setSearchData({
+                    ...searchData,
+                    length: 0,
+                    data: []
+                });
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
@@ -142,7 +147,7 @@ const SearchPage = () => {
     }, [data, loading]);
 
     const joinedLoading =
-        loading || networkStatus === 3 || (searchData.data.length < offSet && offSet < searchData.length);
+        loading || networkStatus === 3 || (searchData.data.length < offSet && offSet + limit < searchData.length);
 
     return (
         <div>
