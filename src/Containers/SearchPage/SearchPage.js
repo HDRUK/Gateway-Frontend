@@ -126,8 +126,6 @@ const SearchPage = () => {
                 });
             }
             if (!loading && !data && searchData.length === 0) {
-                console.log(offSet);
-
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
