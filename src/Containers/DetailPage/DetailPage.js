@@ -40,30 +40,39 @@ const DetailPage = props => {
                         <TinyText>
                             <LightText>LAST UPDATED</LightText>
                             <BlueText>
-                                <SmallText>{data.hdrDataModelID.data.lastUpdated.split("T")[0]}</SmallText>
+                                <SmallText>
+                                    {data.hdrDataModelID.data.lastUpdated &&
+                                        data.hdrDataModelID.data.lastUpdated.split("T")[0]}
+                                </SmallText>
                             </BlueText>
                         </TinyText>
                         <TinySpace />
-                        <Heading>{data.hdrDataModelID.data.label}</Heading>
+                        <Heading>{data.hdrDataModelID.data.label && data.hdrDataModelID.data.label}</Heading>
                         <TinySpace />
                         <InfoGrid>
                             <GridItem>
                                 <TinyText>
                                     <LightText>AUTHOR</LightText>
                                 </TinyText>
-                                <SmallText>{data.hdrDataModelID.data.author}</SmallText>
+                                <SmallText>
+                                    {data.hdrDataModelID.data.author && data.hdrDataModelID.data.author}
+                                </SmallText>
                             </GridItem>
                             <GridItem>
                                 <TinyText>
                                     <LightText>ORGANISATION</LightText>
                                 </TinyText>
-                                <SmallText>{data.hdrDataModelID.data.organisation}</SmallText>
+                                <SmallText>
+                                    {data.hdrDataModelID.data.organisation && data.hdrDataModelID.data.organisation}
+                                </SmallText>
                             </GridItem>
                         </InfoGrid>
                         <TinySpace />
 
                         <BoldInlineText>abstract - </BoldInlineText>
-                        <InlineWrappedText>{data.hdrDataModelID.data.description}</InlineWrappedText>
+                        <InlineWrappedText>
+                            {data.hdrDataModelID.data.description && data.hdrDataModelID.data.description}
+                        </InlineWrappedText>
                         <TinySpace />
                     </DarkText>
                 </SmallSpace>
