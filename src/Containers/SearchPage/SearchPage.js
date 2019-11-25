@@ -120,7 +120,6 @@ const SearchPage = () => {
                 data.hdrCatalogueItemsSearch.data
             );
         }
-
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, loading]);

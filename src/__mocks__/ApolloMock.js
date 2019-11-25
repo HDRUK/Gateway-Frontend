@@ -1,7 +1,6 @@
 import { gql } from "apollo-boost";
 
 import { CATALOGUE_ITEMS_SEARCH } from "../queries/queries.js";
-import { Description } from "../styles/styles.js";
 
 const GET_SEARCH_AUDIT_LOG = gql`
     {
