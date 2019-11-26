@@ -1,8 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { Heading, DarkText, CenterBlock, SmallSpace, MediumSpace, LargeSpace } from "../../styles/styles.js";
+
+import {
+    Heading,
+    DarkText,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace,
+    LinkNoDecoration
+} from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { Link } from "react-router-dom";
 
 const heading = number => {
     if (number !== null) {
@@ -23,6 +31,7 @@ const Login = () => {
     const appContext = useContext(AppContext);
     appContext.getDatasetCount();
     const datasetCount = appContext.state.datasetCount;
+    const loginUser = appContext.loginUser;
 
     return (
         <CenterBlock>
@@ -30,11 +39,13 @@ const Login = () => {
                 <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
                 <CenterBlock>
-                    <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
+                    <StyledButton kind="primary" onClick={loginUser}>
+                        {textItems.loginButton}
+                    </StyledButton>
                     <SmallSpace />
-                    <Link to="/search">
+                    <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                    </Link>
+                    </LinkNoDecoration>
                 </CenterBlock>
                 <LargeSpace />
             </DarkText>

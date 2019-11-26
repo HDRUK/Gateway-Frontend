@@ -6,9 +6,7 @@ import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
-    const filters = appContext.filterObject.find(element => {
-        return element.id === appContext.state.filterId;
-    });
+    const filters = appContext.filterObject.find(filter => filter.id === appContext.activeFilter);
     return (
         <React.Fragment>
             <Triangle />

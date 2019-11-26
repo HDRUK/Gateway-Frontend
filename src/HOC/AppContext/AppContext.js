@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
 import { useQuery } from "@apollo/react-hooks";
@@ -6,21 +6,41 @@ import { useQuery } from "@apollo/react-hooks";
 import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
-
+AppContext.displayName = "AppContext";
 export const AppContextConsumer = AppContext.Consumer;
 
-class AppContextProvider extends Component {
-    state = {
+const outsideRange = (number, target, range) => {
+    return number < target - range || number > target + range;
+};
+
+const AppContextProvider = props => {
+    const [state, setState] = useState({
         counter: 0,
         searchPageState: false,
         modalVisibility: false,
         filterLocation: 0,
         filterId: null,
         windowScroll: 0,
-        datasetCount: null
-    };
+        datasetCount: null,
+        searchResultId: null,
+        resultsLimit: 10
+    });
 
-    newsItems = {
+    const [activeFilter, setActiveFilter] = useState(null);
+    const [filters, setFilters] = useState([]);
+
+    const [search, setSearch] = useState({
+        term: null,
+        previousTerm: null
+    });
+
+    const [searchData, setSearchData] = useState({
+        offSet: 0,
+        length: 0,
+        data: []
+    });
+
+    const newsItems = {
         newsItemOne: {
             image: "",
             description: "HDR release news of new partners in exciting new digital project",
@@ -38,15 +58,30 @@ class AppContextProvider extends Component {
         }
     };
 
-    images = {
+    const images = {
         logoHDR: hdruk_logo_black
     };
-    filters = {};
-    textItems = { searchHeader: "What health data do you need?" };
 
-    itemRef = React.createRef();
+    const textItems = { searchHeader: "What health data do you need?" };
 
-    filterObject = [
+    const setOffSet = offSet =>
+        setSearchData({
+            ...searchData,
+            offSet
+        });
+
+    const clearSearchData = () => {
+        setSearchData({
+            ...searchData,
+            offSet: 0,
+            length: 0,
+            data: []
+        });
+    };
+
+    const itemRef = React.createRef();
+
+    const filterObject = [
         {
             id: 0,
             title: "Date created"
@@ -119,128 +154,135 @@ class AppContextProvider extends Component {
         }
     ];
 
-    search = {
-        loading: false,
-        data: [
-            {
-                title: "Card 1"
-            },
-            {
-                title: "Card 2"
-            },
-            {
-                title: "Card 3"
-            },
-            {
-                title: "Card 4"
-            },
-            {
-                title: "Card 5"
-            }
-        ]
-    };
-
-    getDatasetCount = () => {
-        // const { loading, error, data } = useQuery(DATASET_COUNT);
-        // if (loading || error) return null;
-        // data.hdrDataModelSearch.count !== this.state.datasetCount &&
-        //     this.setState({
-        //         datasetCount: data.hdrDataModelSearch.count
-        //     });
-    };
-
-    returnSearchResults = event => {
-        if (event.key === "Enter") {
-            this.setState({
-                searchPageState: !this.state.searchPageState
-            });
-        }
-    };
-
-    outsideRange = (number, target, range) => {
-        return number < target - range || number > target + range;
-    };
-
-    setFilterLocation = () => {
-        this.outsideRange(window.scrollY, this.state.windowScroll, 10) &&
-            this.setState({ windowScroll: window.scrollY });
-        this.itemRef.current &&
-            this.outsideRange(this.itemRef.current.getBoundingClientRect().y, this.state.filterLocation, 11) &&
-            this.setState({ filterLocation: this.itemRef.current.getBoundingClientRect().y });
-    };
-
-    setFilterId = props => {
-        this.setState({ filterId: props });
-    };
-
-    counterFunc = () => {
-        this.setState({
-            counter: this.state.counter + 1
+    const insertSearchData = (length, newData) => {
+        setSearchData({
+            ...searchData,
+            length,
+            offset: newData.length,
+            data: [...newData]
         });
     };
 
-    addFilter = props => {
-        this.filters[props] = props;
-        console.log(this.filters);
+    const useDatasetCount = () => {
+        const { loading, error, data } = useQuery(DATASET_COUNT);
+        if (loading || error) return null;
+        data.hdrDataModelSearch.count !== state.datasetCount &&
+            setState({
+                datasetCount: data.hdrDataModelSearch.count
+            });
     };
 
-    removeFilter = props => {
-        delete this.filters[props];
-        console.log(this.filters);
+    const returnSearchResults = value => {
+        !state.searchPageState &&
+            setState({
+                ...state,
+                searchPageState: true
+            });
+        setSearch({
+            ...search,
+            term: value
+        });
     };
 
-    openFilterBox = () => {
-        this.setState(
-            {
-                modalVisibility: true
-            },
-            () =>
-                document
-                    .getElementById("main-side-nav")
-                    .childNodes[1].addEventListener("scroll", this.setFilterLocation)
-        );
+    const setFilterLocation = () => {
+        outsideRange(window.scrollY, state.windowScroll, 10) &&
+            setState({
+                ...state,
+                windowScroll: window.scrollY
+            });
+        itemRef.current &&
+            outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11) &&
+            setState({
+                ...state,
+                filterLocation: itemRef.current.getBoundingClientRect().y
+            });
     };
 
-    closeFilterBox = () => {
-        this.setState(
-            {
-                modalVisibility: false
-            },
-            () =>
-                document
-                    .getElementById("main-side-nav")
-                    .childNodes[1].removeEventListener("scroll", this.setFilterLocation)
-        );
+    const setFilterId = filterId => {
+        setActiveFilter(filterId);
     };
 
-    render() {
-        return (
-            <AppContext.Provider
-                value={{
-                    state: this.state,
-                    counterFunc: this.counterFunc,
-                    newsItems: this.newsItems,
-                    images: this.images,
-                    textItems: this.textItems,
-                    returnSearchResults: this.returnSearchResults,
-                    setFilterLocation: this.setFilterLocation,
-                    setFilterId: this.setFilterId,
-                    itemRef: this.itemRef,
-                    addFilter: this.addFilter,
-                    removeFilter: this.removeFilter,
-                    filterHeadings: this.filterHeadings,
-                    openFilterBox: this.openFilterBox,
-                    closeFilterBox: this.closeFilterBox,
-                    filterObject: this.filterObject,
-                    search: this.search,
-                    getDatasetCount: this.getDatasetCount
-                }}
-            >
-                {this.props.children}
-            </AppContext.Provider>
-        );
-    }
-}
+    const setSearchResultId = id => {
+        setState({
+            ...state,
+            searchResultId: id
+        });
+    };
+
+    const counterFunc = () => {
+        setState({
+            ...state,
+            counter: state.counter + 1
+        });
+    };
+
+    const addFilter = id => {
+        setFilters([...filters, id]);
+    };
+
+    const removeFilter = id => {
+        setFilters(filters.filter(f => f !== id));
+    };
+
+    const openFilterBox = () => {
+        setState({
+            ...state,
+            modalVisibility: true
+        });
+        document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
+    };
+
+    const closeFilterBox = () => {
+        setState({
+            ...state,
+            modalVisibility: false
+        });
+        document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
+    };
+
+    const loginUser = () => {
+        fetch("/login")
+            .then(res => {
+                console.log("RES ", res.status);
+            })
+            .catch(err => {
+                console.log("ERROR ", err);
+            });
+    };
+    return (
+        <AppContext.Provider
+            value={{
+                state,
+                counterFunc,
+                newsItems,
+                images,
+                textItems,
+                returnSearchResults,
+                search,
+                setSearch,
+                searchData,
+                setSearchData,
+                clearSearchData,
+                insertSearchData,
+                setOffSet,
+                setFilterLocation,
+                setFilterId,
+                itemRef,
+                activeFilter,
+                addFilter,
+                removeFilter,
+                openFilterBox,
+                closeFilterBox,
+                filterObject,
+                setSearchResultId,
+                loginUser,
+                useDatasetCount
+            }}
+        >
+            {props.children}
+        </AppContext.Provider>
+    );
+};
 
 AppContextProvider.propTypes = {
     children: PropTypes.node

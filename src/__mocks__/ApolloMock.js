@@ -1,5 +1,7 @@
 import { gql } from "apollo-boost";
 
+import { CATALOGUE_ITEMS_SEARCH } from "../queries/queries.js";
+
 const GET_SEARCH_AUDIT_LOG = gql`
     {
         getSearchAuditLog {
@@ -30,6 +32,30 @@ const mocks = [
                         search_end_point: "theapi"
                     }
                 ]
+            }
+        }
+    },
+    {
+        request: { query: CATALOGUE_ITEMS_SEARCH, variables: { recordLimit: 10, recordOffset: 0, searchTerm: "test" } },
+        result: {
+            data: {
+                hdrCatalogueItemsSearch: {
+                    status: "200",
+                    message: "OK",
+                    count: "123",
+                    data: [
+                        {
+                            id: "1",
+                            description: "description",
+                            label: "label"
+                        },
+                        {
+                            id: "2",
+                            description: "description",
+                            label: "label"
+                        }
+                    ]
+                }
             }
         }
     }

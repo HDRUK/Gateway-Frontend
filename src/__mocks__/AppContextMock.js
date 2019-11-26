@@ -4,9 +4,11 @@ const context = {
         searchPageState: false,
         modalVisibility: false,
         filterLocation: 0,
-        filterId: null,
-        windowScroll: 0
+        windowScroll: 0,
+        searchResultId: null
     },
+
+    filters: [],
 
     newsItems: {
         newsItemOne: {
@@ -104,19 +106,16 @@ const context = {
     },
     textItems: { searchHeader: "TestSearchHeader" },
     search: {
-        loading: false,
-        data: [
-            {
-                title: "Card 1"
-            },
-            {
-                title: "Card 2"
-            },
-            {
-                title: "Card 3"
-            }
-        ]
+        term: ""
     },
+    searchData: {
+        offSet: 10,
+        length: 0,
+        data: []
+    },
+    setOffSet: jest.fn(),
+    clearSearchData: jest.fn(),
+    insertSearchData: jest.fn(),
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn(),
     addFilter: jest.fn(),
@@ -125,7 +124,8 @@ const context = {
     setFilterLocation: jest.fn(),
     setFilterId: jest.fn(),
     openFilterBox: jest.fn(),
-    closeFilterBox: jest.fn()
+    closeFilterBox: jest.fn(),
+    setSearchResultId: jest.fn()
 };
 
 export default context;

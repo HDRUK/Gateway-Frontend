@@ -12,7 +12,7 @@ const Filter = props => {
             onChange={(value, id) => (value ? appContext.addFilter(id) : appContext.removeFilter(id))}
             id={props.title}
             labelText={props.title}
-        ></CheckboxItem>
+        />
     );
 };
 

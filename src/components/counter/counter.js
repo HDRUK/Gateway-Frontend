@@ -21,8 +21,6 @@ const Counter = () => {
     if (loading) return <p>Loading ...</p>;
     if (error) return <div>Error :(</div>;
 
-    console.log("GET_SEARCH_AUDIT_LOG", data);
-
     return (
         <div>
             {data.getSearchAuditLog.map((log, i) => (

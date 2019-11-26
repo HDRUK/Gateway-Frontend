@@ -14,7 +14,7 @@ import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterMenu = () => {
     const appContext = useContext(AppContext);
-    const filterId = appContext.state.filterId;
+    const filterId = appContext.activeFilter;
     const modalVisibility = appContext.state.modalVisibility;
     useEffect(() => {
         modalVisibility && appContext.setFilterLocation();
@@ -22,11 +22,10 @@ const FilterMenu = () => {
 
     return (
         <AccordionBlock>
-            <div />
             <FilterBlockTitle>Filter</FilterBlockTitle>
             {appContext.filterObject.map((filter, i) => (
                 <AccordionElement
-                    key={`resultCard-${i}`}
+                    key={`filterItem-${i}`}
                     title={filter.title}
                     open={
                         filter.values && filter.values.length > 4 && !modalVisibility
@@ -38,7 +37,7 @@ const FilterMenu = () => {
                         if (filter.values && filter.values.length > 4) {
                             if (!modalVisibility) {
                                 appContext.openFilterBox();
-                            } else if (appContext.state.filterId === filter.id) {
+                            } else if (filterId === filter.id) {
                                 appContext.closeFilterBox();
                             }
                         } else {
