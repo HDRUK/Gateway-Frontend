@@ -127,7 +127,7 @@ const SearchPage = () => {
             }
             if (!loading && !data && searchData.length === 0) {
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
+                    variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });

@@ -17,13 +17,12 @@ const AppContextProvider = props => {
     const [state, setState] = useState({
         counter: 0,
         searchPageState: false,
+        resultsLimit: 10,
         modalVisibility: false,
         filterLocation: 0,
-        filterId: null,
         windowScroll: 0,
         datasetCount: null,
-        searchResultId: null,
-        resultsLimit: 10
+        searchResultId: null
     });
 
     const [activeFilter, setActiveFilter] = useState(null);
@@ -168,6 +167,7 @@ const AppContextProvider = props => {
         if (loading || error) return null;
         data.hdrDataModelSearch.count !== state.datasetCount &&
             setState({
+                ...state,
                 datasetCount: data.hdrDataModelSearch.count
             });
     };
