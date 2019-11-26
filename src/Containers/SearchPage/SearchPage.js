@@ -120,14 +120,14 @@ const SearchPage = () => {
                 });
 
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
             }
             if (!loading && !data && searchData.length === 0) {
                 getItemsSearch({
-                    variables: { recordLimit: 10, recordOffset: 0, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
@@ -142,7 +142,11 @@ const SearchPage = () => {
                 data.hdrCatalogueItemsSearch.data
             );
         } else if (!loading && !data && searchTerm !== null) {
-            clearSearchData();
+            appContext.setSearchData({
+                ...searchData,
+                length: 0,
+                data: []
+            });
         }
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps
