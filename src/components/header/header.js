@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { InvertedHeaderHeading, HeaderImage, LargeSpace } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
@@ -10,12 +10,10 @@ const headerText = {
 
 const AppHeader = () => {
     const appContext = useContext(AppContext);
-    // appContext.getDatasetCount();
 
-    const getDatasetCount = appContext.getDatasetCount;
-    useEffect(() => {
-        getDatasetCount();
-    });
+    const useDatasetCount = appContext.useDatasetCount;
+
+    useDatasetCount();
 
     return (
         <HeaderWrapper aria-label="HDR UK Innovation Gateway">

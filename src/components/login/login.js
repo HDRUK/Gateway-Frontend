@@ -29,7 +29,7 @@ const textItems = {
 };
 const Login = () => {
     const appContext = useContext(AppContext);
-    appContext.getDatasetCount();
+    appContext.useDatasetCount();
     const datasetCount = appContext.state.datasetCount;
     const loginUser = appContext.loginUser;
 
