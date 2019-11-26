@@ -3,6 +3,13 @@ import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
+const colorTheme = {
+    lightText: "#979797",
+    darkText: "#3c3c3b",
+    blueText: "#0062ff",
+    labelText: "#161616"
+};
+
 export const Heading = styled.h1`
     font-size: 2.25rem;
     font-weight: 100;
@@ -28,7 +35,7 @@ export const ParagraphText = styled.p`
     font-size: 1.4rem;
     font-weight: 100;
     line-height: 1.7rem;
-    color: #3c3c3b;
+    color: ${colorTheme.darkText};
 `;
 
 export const InfoGrid = styled.div`
@@ -41,15 +48,15 @@ export const GridItem = styled.div`
 `;
 
 export const BlueText = styled.span`
-    color: #0062ff;
+    color: ${colorTheme.blueText};
 `;
 
 export const LightText = styled.span`
-    color: #979797;
+    color: ${colorTheme.lightText};
 `;
 
 export const DarkText = styled.span`
-    color: #3c3c3b;
+    color: ${colorTheme.darkText};
 `;
 
 export const BoldInlineText = styled.p`
@@ -122,7 +129,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: #161616;
+    color: ${colorTheme.labelText};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
