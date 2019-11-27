@@ -3,10 +3,12 @@ import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
-const colorTheme = {
+export const colorTheme = {
+    white: "#ffffff",
     lightText: "#979797",
     darkText: "#3c3c3b",
     blueText: "#0062ff",
+    blueText2: "#0f62fe",
     labelText: "#161616"
 };
 

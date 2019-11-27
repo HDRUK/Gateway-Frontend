@@ -35,6 +35,7 @@ const AppContextProvider = props => {
         data: []
     });
 
+    // TODO: Temporary userId to be replaced when login is implemented.
     const [userId, setUserId] = useState("TimTest");
 
     const newsItems = {

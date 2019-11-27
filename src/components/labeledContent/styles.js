@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colorTheme } from "../../styles/styles.js";
 
 export const LabeledContentWrapper = styled.div`
     display: inline-block;
@@ -13,14 +14,14 @@ export const LabeledContentWrapper = styled.div`
 export const HeaderLabel = styled.h2`
     font-size: 0.625rem;
     line-height: 0.75rem;
-    color: #979797;
+    color: ${colorTheme.lightText};
     text-transform: uppercase;
 `;
 
 export const ContentText = styled.p`
     font-size: 0.875rem;
     line-height: 1.0625rem;
-    color: #0f62fe;
+    color: ${colorTheme.blueText2};
 
     ${p => !p.lowercase && "text-transform: uppercase"}
 `;
