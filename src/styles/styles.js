@@ -354,7 +354,7 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    max-height: calc(100vh - 25rem);
+    max-height: calc(100vh - 17rem);
     overflow: scroll;
     padding: 0.25rem 1rem 0 1rem;
 `;

@@ -9,7 +9,7 @@ import {
     SearchInfo,
     ResultsCounter,
     SortDiv,
-    ResultsWrapper
+    SearchResultsWrapper
 } from "./styles.js";
 import { Line } from "../../styles/styles.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
@@ -66,8 +66,8 @@ describe("<SearchPage> rendered before a search", () => {
         const searchInfo = results[0].props.children[0];
         expect(searchInfo.type).toBe(SearchInfo);
 
-        const resultsWrapper = results[0].props.children[1];
-        expect(resultsWrapper.type).toBe(ResultsWrapper);
+        const searchResultsWrapper = results[0].props.children[1];
+        expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);
     });
 });
 
@@ -165,10 +165,10 @@ describe("<SearchPage> rendered after a search", () => {
         expect(resultsCounterText[2]).toEqual(searchPageText.results);
         expect(searchInfoComponents[2].type).toEqual(SortDiv);
 
-        const resultsWrapper = results[0].props.children[1];
-        expect(resultsWrapper.type).toBe(ResultsWrapper);
-        const resultsCards = resultsWrapper.props.children[0];
-        const loading = resultsWrapper.props.children[1];
+        const searchResultsWrapper = results[0].props.children[1];
+        expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);
+        const resultsCards = searchResultsWrapper.props.children[0];
+        const loading = searchResultsWrapper.props.children[1];
         expect(loading).toBe(false);
         resultsCards.map((card, i) => {
             expect(card.type).toBe(ResultCard);

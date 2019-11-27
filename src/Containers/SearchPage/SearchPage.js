@@ -6,10 +6,10 @@ import {
     SearchHeading,
     SearchBarWrapper,
     Results,
-    ResultsWrapper,
     SearchInfo,
     ResultsCounter,
-    SortDiv
+    SortDiv,
+    SearchResultsWrapper
 } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
@@ -56,14 +56,14 @@ const resultsData = (searchTerm, data, offSet, setOffSet, dataLength, fetchMore,
     const processedData = (data && data.data) || [];
 
     return (
-        <ResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
+        <SearchResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
                 ? processedData.map((result, i) => (
                       <ResultCard key={`resultCard-${i}`} title={result.label} description={result.description} />
                   ))
                 : !loading && <div>No results</div>}
             {loading && <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />}
-        </ResultsWrapper>
+        </SearchResultsWrapper>
     );
 };
 
