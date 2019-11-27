@@ -21,7 +21,7 @@ export const HeaderLabel = styled.h2`
 export const ContentText = styled.p`
     font-size: 0.875rem;
     line-height: 1.0625rem;
-    color: ${colorTheme.blueText2};
+    color: ${colorTheme.blueText};
 
     ${p => !p.lowercase && "text-transform: uppercase"}
 `;

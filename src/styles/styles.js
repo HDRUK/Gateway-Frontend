@@ -7,8 +7,7 @@ export const colorTheme = {
     white: "#ffffff",
     lightText: "#979797",
     darkText: "#3c3c3b",
-    blueText: "#0062ff",
-    blueText2: "#0f62fe",
+    blueText: "#0f62fe",
     labelText: "#161616"
 };
 
