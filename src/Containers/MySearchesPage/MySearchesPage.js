@@ -7,7 +7,10 @@ import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js
 import { useQuery } from "@apollo/react-hooks";
 import { GET_SEARCH_SAVED_BY_USER_ID } from "../../queries/queries.js";
 
-const mySearchesPageText = {};
+const mySearchesPageText = {
+    errorMessage: "Unable to load searches",
+    noResultsMessage: "No searches have been saved"
+};
 
 const MySearchesPage = () => {
     const appContext = useContext(AppContext);
@@ -19,7 +22,7 @@ const MySearchesPage = () => {
     if (loading) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <div>Error</div>;
+    if (error) return <div>{mySearchesPageText.errorMessage}</div>;
 
     const results =
         data &&
@@ -38,7 +41,7 @@ const MySearchesPage = () => {
                 );
             })
         ) : (
-            <p>No saved searches</p>
+            <p>{mySearchesPageText.noResultsMessage}</p>
         );
     return <ResultsWrapper>{results}</ResultsWrapper>;
 };
