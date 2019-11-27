@@ -62,10 +62,7 @@ const resultsData = (
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) {
-        console.log("error", error);
-        return <div>{error.status} - Error :(</div>;
-    }
+    if (error) return <div>{error.status} - Error :(</div>;
 
     const processedData = (data && data.data) || [];
 
