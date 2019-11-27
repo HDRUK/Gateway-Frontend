@@ -1,7 +1,14 @@
 import React, { useContext } from "react";
-import { Heading, DarkText, CenterBlock, SmallSpace, MediumSpace, LargeSpace } from "../../styles/styles.js";
+import {
+    Heading,
+    DarkText,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace,
+    LinkNoDecoration
+} from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { Link } from "react-router-dom";
 
 import { AppContext } from "../../HOC/AppContext/AppContext";
 
@@ -25,9 +32,9 @@ const Login = () => {
                         {textItems.loginButton}
                     </StyledButton>
                     <SmallSpace />
-                    <Link to="/search">
+                    <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                    </Link>
+                    </LinkNoDecoration>
                 </CenterBlock>
                 <LargeSpace />
             </DarkText>

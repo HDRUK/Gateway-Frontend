@@ -3,6 +3,13 @@ import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
+const colorTheme = {
+    lightText: "#979797",
+    darkText: "#3c3c3b",
+    blueText: "#0062ff",
+    labelText: "#161616"
+};
+
 export const Heading = styled.h1`
     font-size: 2.25rem;
     font-weight: 100;
@@ -28,11 +35,39 @@ export const ParagraphText = styled.p`
     font-size: 1.4rem;
     font-weight: 100;
     line-height: 1.7rem;
-    color: #3c3c3b;
+    color: ${colorTheme.darkText};
+`;
+
+export const InfoGrid = styled.div`
+    display: flex;
+`;
+
+export const GridItem = styled.div`
+    flex-direction: column;
+    padding-right: 3rem;
+`;
+
+export const BlueText = styled.span`
+    color: ${colorTheme.blueText};
+`;
+
+export const LightText = styled.span`
+    color: ${colorTheme.lightText};
 `;
 
 export const DarkText = styled.span`
-    color: #3c3c3b;
+    color: ${colorTheme.darkText};
+`;
+
+export const BoldInlineText = styled.p`
+    display: inline;
+    font-weight: 700;
+`;
+
+export const InlineWrappedText = styled.p`
+    display: inline;
+    font-weight: 400;
+    white-space: pre-line;
 `;
 
 export const NewListItem = styled.li`
@@ -57,7 +92,9 @@ export const CenterBlock = styled.div`
     align-items: center;
     justify-content: center;
 `;
-
+export const TinySpace = styled.div`
+    padding: 0.5rem;
+`;
 export const SmallSpace = styled.div`
     padding: 1rem;
 `;
@@ -92,7 +129,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: #161616;
+    color: ${colorTheme.labelText};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;

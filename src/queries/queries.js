@@ -39,3 +39,32 @@ export const GET_SEARCH_SAVED_BY_USER_ID = gql`
         }
     }
 `;
+
+export const RESULT_DETAIL = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                domainType
+                label
+                aliases
+                description
+                author
+                organisation
+                editable
+                documentationVersion
+                lastUpdated
+                classifiers {
+                    id
+                    label
+                    lastUpdated
+                }
+                type
+                finalised
+            }
+        }
+    }
+`;
