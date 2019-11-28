@@ -24,6 +24,7 @@ export const SEARCH_SAVE = gql`
         $recordLimit: Int!
         $sort: SortInput!
         $filters: [FilterInput]
+        $name: String
     ) {
         searchSave(
             userId: $userId
@@ -33,6 +34,7 @@ export const SEARCH_SAVE = gql`
             recordLimit: $recordLimit
             sort: $sort
             filters: $filters
+            name: $name
         ) {
             status
             message
