@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
-import { Card } from "../../styles/styles.js";
-import { Tag } from "carbon-components-react";
-import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle } from "./styles.js";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { Link } from "react-router-dom";
+import { Tag } from "carbon-components-react";
+import { Card } from "../../styles/styles.js";
+import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle } from "./styles.js";
 import LabeledContent from "../../components/labeledContent/labeledContent.js";
 
 // TODO: Remove disable from delete button when delete functionality implemented
 
+const textItems = {
+    deleteSearch: "Delete Search",
+    runSearch: "Run Search"
+};
+
 const SavedSearchCard = props => {
+    const appContext = useContext(AppContext);
+    const runSearch = appContext.returnSearchResults;
+    const data = appContext.savedSearchesData.data && appContext.savedSearchesData.data[props.savedSearchIndex];
     return (
         <Card>
             <ContentDiv>
-                <LabeledContent label="Search Date">{props.date}</LabeledContent>
-                <LabeledContent label="Results">{props.resultsCount || "n/a"}</LabeledContent>
-                <SavedSearchTitle>{props.title}</SavedSearchTitle>
-                {props.filters && props.filters.length > 0 && (
+                <LabeledContent label="Search Date">{data.createdOn}</LabeledContent>
+                <LabeledContent label="Results">{data.resultsCount || "n/a"}</LabeledContent>
+                <SavedSearchTitle>{data.detail}</SavedSearchTitle>
+                {data.filters && data.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
-                        {props.filters.map((filter, i) => (
+                        {data.filters.map((filter, i) => (
                             <Tag key={`filter-tag-${i}`} type="gray">
                                 {filter.value}
                             </Tag>
@@ -27,11 +36,11 @@ const SavedSearchCard = props => {
             </ContentDiv>
             <ButtonDiv>
                 <SavedSearchButton kind="secondary" size="small" disabled={true}>
-                    Delete Search
+                    {textItems.deleteSearch}
                 </SavedSearchButton>
-                <Link to={`/search`} onClick={props.runSearch}>
+                <Link to={`/search`} onClick={() => runSearch(data.detail)}>
                     <SavedSearchButton kind="primary" size="small">
-                        Run Search
+                        {textItems.runSearch}
                     </SavedSearchButton>
                 </Link>
             </ButtonDiv>
@@ -40,10 +49,7 @@ const SavedSearchCard = props => {
 };
 
 SavedSearchCard.propTypes = {
-    date: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    filters: PropTypes.array,
-    resultsCount: PropTypes.number
+    savedSearchIndex: PropTypes.number.isRequired
 };
 
 export default SavedSearchCard;

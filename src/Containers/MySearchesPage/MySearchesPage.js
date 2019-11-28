@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { CenterLoading } from "../../styles/carbonComponents";
 import { ResultsWrapper } from "../../styles/styles.js";
@@ -16,8 +16,15 @@ const MySearchesPage = () => {
     const appContext = useContext(AppContext);
     const runSearch = appContext.returnSearchResults;
     const userId = appContext.userId;
+    const savedSearchesData = appContext.savedSearchesData;
 
     const { data, loading, error } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: userId } });
+
+    useEffect(() => {
+        if (!loading && data && data.getSearchSavedByUserID.data) {
+            appContext.insertSavedSearchesData(data.getSearchSavedByUserID.data);
+        }
+    }, [loading, data]);
 
     if (loading) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
@@ -25,20 +32,9 @@ const MySearchesPage = () => {
     if (error) return <div>{mySearchesPageText.errorMessage}</div>;
 
     const results =
-        data &&
-        data.getSearchSavedByUserID &&
-        data.getSearchSavedByUserID.data &&
-        data.getSearchSavedByUserID.data.length > 0 ? (
-            data.getSearchSavedByUserID.data.map((search, i) => {
-                return (
-                    <SavedSearchCard
-                        key={`savedSearchCard-${i}`}
-                        date={search.createdOn}
-                        title={search.detail}
-                        filters={search.filters}
-                        runSearch={() => runSearch(search.detail)}
-                    />
-                );
+        savedSearchesData.data && savedSearchesData.data.length > 0 ? (
+            savedSearchesData.data.map((search, i) => {
+                return <SavedSearchCard key={`savedSearchCard-${i}`} savedSearchIndex={i} />;
             })
         ) : (
             <p>{mySearchesPageText.noResultsMessage}</p>

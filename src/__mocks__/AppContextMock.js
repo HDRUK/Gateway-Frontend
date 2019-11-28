@@ -117,9 +117,13 @@ const context = {
         length: 0,
         data: []
     },
+    savedSearchesData: {
+        data: []
+    },
     setOffSet: jest.fn(),
     clearSearchData: jest.fn(),
     insertSearchData: jest.fn(),
+    insertSavedSearchesData: jest.fn(),
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn(),
     addFilter: jest.fn(),

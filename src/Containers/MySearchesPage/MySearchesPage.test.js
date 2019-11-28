@@ -43,8 +43,48 @@ describe("<MySearchesPage> rendered before a search", () => {
 describe("<MySearchesPage> rendered after data loaded", () => {
     let renderedComponent;
     let renderedOutput;
+    let resultsData;
 
     beforeAll(() => {
+        resultsData = [
+            {
+                id: "1",
+                detail: "test",
+                endPoint: "http://localhost:5001",
+                recordLimit: 10,
+                recordOffset: 0,
+                createdOn: "01 Nov 2019",
+                filters: [
+                    {
+                        type: "Geography",
+                        value: "England"
+                    }
+                ],
+                sort: {
+                    applied: "Alphabetical",
+                    value: "Up"
+                }
+            },
+            {
+                id: "2",
+                detail: "test2",
+                endPoint: "http://localhost:5001",
+                recordLimit: 10,
+                recordOffset: 0,
+                createdOn: "02 Nov 2019",
+                filters: [
+                    {
+                        type: "Geography",
+                        value: "Scotland"
+                    }
+                ],
+                sort: {
+                    applied: "Alphabetical",
+                    value: "Down"
+                }
+            }
+        ];
+        context.savedSearchesData.data = resultsData;
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
@@ -63,18 +103,11 @@ describe("<MySearchesPage> rendered after data loaded", () => {
         expect(resultsWrapper).toHaveLength(1);
 
         const resultsCards = resultsWrapper[0].props.children;
-        const resultsData = apolloMock[2].result.data.getSearchSavedByUserID.data;
+        expect(resultsCards).toHaveLength(2);
         resultsCards.map((card, i) => {
             expect(card.type).toBe(SavedSearchCard);
             expect(card.key).toBe(`savedSearchCard-${i}`);
-            expect(card.props.date).toBe(resultsData[i].createdOn);
-            expect(card.props.title).toBe(resultsData[i].detail);
-            card.props.runSearch();
-            expect(context.returnSearchResults).toHaveBeenCalled();
-
-            const filters = card.props.filters;
-            expect(filters[0].type).toBe(resultsData[i].filters[0].type);
-            expect(filters[0].value).toBe(resultsData[i].filters[0].value);
+            expect(card.props.savedSearchIndex).toBe(i);
         });
     });
 });
