@@ -7,8 +7,18 @@ import { Modal, TextInput } from "carbon-components-react";
 import { SaveSearchButton, RightSmallInlineLoading } from "./styles.js";
 
 const textItems = {
+    save: "Save",
+    cancel: "Cancel",
     saveSearch: "Save search",
-    savedSearch: "Search saved"
+    savedSearch: "Search saved",
+    rename: "Rename",
+    error: {
+        tooLong: "Name must be less than 100 characters long"
+    },
+    aria: {
+        renameAndSaveSearch: "Rename and save search."
+    },
+    enterTextHere: "Enter text here..."
 };
 
 const SaveSearch = () => {
@@ -19,6 +29,7 @@ const SaveSearch = () => {
     const setSearchSaved = appContext.setSearchSaved;
     const [modalOpen, setModalOpen] = useState(false);
     const [rename, setRename] = useState("");
+    const [renameInvalid, setRenameInvalid] = useState(false);
 
     let saveVariables = {
         // TODO: Implement userId value from context
@@ -58,19 +69,28 @@ const SaveSearch = () => {
                     }}
                     onSecondarySubmit={closeModal}
                     onRequestClose={closeModal}
-                    modalLabel="Save search"
+                    modalLabel={textItems.saveSearch}
                     modalHeading={searchTerm}
-                    primaryButtonText="Save"
-                    secondaryButtonText="Cancel"
-                    primaryButtonDisabled={!(searchTerm || rename)}
-                    aria-label="Rename and save search."
+                    primaryButtonText={textItems.save}
+                    secondaryButtonText={textItems.cancel}
+                    primaryButtonDisabled={!(searchTerm || rename) || renameInvalid}
+                    aria-label={textItems.aria.renameAndSaveSearch}
                 >
                     <TextInput
                         id="save-search-rename"
-                        labelText="Rename"
+                        labelText={textItems.rename}
                         value={rename}
-                        placeholder={searchTerm || "Enter text here..."}
-                        onChange={e => setRename(e.target.value)}
+                        placeholder={searchTerm || textItems.enterTextHere}
+                        onChange={e => {
+                            setRename(e.target.value);
+                            if (e.target.value.length < 100) {
+                                renameInvalid && setRenameInvalid(false);
+                            } else {
+                                setRenameInvalid(true);
+                            }
+                        }}
+                        invalid={renameInvalid}
+                        invalidText={textItems.error.tooLong}
                     />
                 </Modal>
                 <SaveSearchButton
