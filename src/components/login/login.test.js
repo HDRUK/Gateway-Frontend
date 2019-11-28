@@ -57,8 +57,8 @@ describe("<Login> ", () => {
 
             const centerBlock2Content = darkTextChildren[2].props.children;
             expect(centerBlock2Content).toHaveLength(3);
-            expect(centerBlock2Content[0].type).toEqual(StyledButton);
-            const primaryButton = centerBlock2Content[0];
+            expect(centerBlock2Content[0].type).toBe("a");
+            const primaryButton = centerBlock2Content[0].props.children;
             expect(primaryButton.props.kind).toEqual("primary");
             expect(primaryButton.props.children).toEqual(loginText.loginButton);
 
