@@ -15,6 +15,7 @@ const SaveSearch = () => {
     const appContext = useContext(AppContext);
     const [saveSearch, { loading, error }] = useMutation(SEARCH_SAVE);
     const searchSaved = appContext.searchSaved;
+    const searchTerm = appContext.search.term;
     const setSearchSaved = appContext.setSearchSaved;
     const [modalOpen, setModalOpen] = useState(false);
     const [rename, setRename] = useState("");
@@ -43,7 +44,7 @@ const SaveSearch = () => {
     };
 
     return (
-        appContext.search.term !== null && (
+        searchTerm !== null && (
             <>
                 <Modal
                     id="save-search-modal"
@@ -58,17 +59,17 @@ const SaveSearch = () => {
                     onSecondarySubmit={closeModal}
                     onRequestClose={closeModal}
                     modalLabel="Save search"
-                    modalHeading={appContext.search.term}
+                    modalHeading={searchTerm}
                     primaryButtonText="Save"
                     secondaryButtonText="Cancel"
+                    primaryButtonDisabled={!(searchTerm || rename)}
                     aria-label="Rename and save search."
                 >
                     <TextInput
                         id="save-search-rename"
                         labelText="Rename"
-                        light={true}
                         value={rename}
-                        placeholder={appContext.search.term || "Enter text here..."}
+                        placeholder={searchTerm || "Enter text here..."}
                         onChange={e => setRename(e.target.value)}
                     />
                 </Modal>
