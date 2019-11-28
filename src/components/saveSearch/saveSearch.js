@@ -11,6 +11,7 @@ const textItems = {
     cancel: "Cancel",
     saveSearch: "Save search",
     savedSearch: "Search saved",
+    savingSearch: "Seach saving...",
     rename: "Rename",
     error: {
         tooLong: "Name must be less than 100 characters long"
@@ -100,7 +101,7 @@ const SaveSearch = () => {
                     status={searchSaved ? "finished" : "active"}
                     size="small"
                 >
-                    {searchSaved ? textItems.savedSearch : textItems.saveSearch}
+                    {loading ? textItems.savingSearch : searchSaved ? textItems.savedSearch : textItems.saveSearch}
                     {loading && <RightSmallInlineLoading />}
                 </SaveSearchButton>
             </>
