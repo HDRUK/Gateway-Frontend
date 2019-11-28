@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 import { CATALOGUE_ITEMS_SEARCH } from "../queries/queries.js";
 import { GET_SEARCH_SAVED_BY_USER_ID } from "../queries/queries.js";
