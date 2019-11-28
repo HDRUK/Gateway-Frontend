@@ -32,8 +32,6 @@ const Login = () => {
                         {textItems.loginButton}
                     </StyledButton>
                     <SmallSpace />
-                    <a href="/login">Log in</a>
-                    <a href="/logout">Log out</a>
                     <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
                     </LinkNoDecoration>
