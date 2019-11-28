@@ -16,20 +16,23 @@ const AppContextProvider = props => {
         searchPageState: false,
         modalVisibility: false,
         filterLocation: 0,
-        windowScroll: 0
+        windowScroll: 0,
+        searchResultId: null,
+        resultsLimit: 10
     });
 
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
 
     const [search, setSearch] = useState({
-        term: null
+        term: null,
+        previousTerm: null
     });
 
     const [searchSaved, setSearchSaved] = useState(false);
 
     const [searchData, setSearchData] = useState({
-        offSet: 10,
+        offSet: 0,
         length: 0,
         data: []
     });
@@ -67,7 +70,7 @@ const AppContextProvider = props => {
     const clearSearchData = () => {
         setSearchData({
             ...searchData,
-            offSet: 10,
+            offSet: 0,
             length: 0,
             data: []
         });
@@ -152,7 +155,8 @@ const AppContextProvider = props => {
         setSearchData({
             ...searchData,
             length,
-            data: [...searchData.data, ...newData]
+            offset: newData.length,
+            data: [...newData]
         });
     };
 
@@ -163,6 +167,7 @@ const AppContextProvider = props => {
                 searchPageState: true
             });
         setSearch({
+            ...search,
             term: value
         });
         setSearchSaved(false);
@@ -184,6 +189,13 @@ const AppContextProvider = props => {
 
     const setFilterId = filterId => {
         setActiveFilter(filterId);
+    };
+
+    const setSearchResultId = id => {
+        setState({
+            ...state,
+            searchResultId: id
+        });
     };
 
     const counterFunc = () => {
@@ -227,6 +239,7 @@ const AppContextProvider = props => {
                 textItems,
                 returnSearchResults,
                 search,
+                setSearch,
                 searchData,
                 setSearchData,
                 clearSearchData,
@@ -242,7 +255,8 @@ const AppContextProvider = props => {
                 closeFilterBox,
                 filterObject,
                 searchSaved,
-                setSearchSaved
+                setSearchSaved,
+                setSearchResultId
             }}
         >
             {props.children}

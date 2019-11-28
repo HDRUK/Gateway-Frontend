@@ -4,7 +4,8 @@ const context = {
         searchPageState: false,
         modalVisibility: false,
         filterLocation: 0,
-        windowScroll: 0
+        windowScroll: 0,
+        searchResultId: null
     },
 
     filters: [],
@@ -123,7 +124,8 @@ const context = {
     setFilterLocation: jest.fn(),
     setFilterId: jest.fn(),
     openFilterBox: jest.fn(),
-    closeFilterBox: jest.fn()
+    closeFilterBox: jest.fn(),
+    setSearchResultId: jest.fn()
 };
 
 export default context;

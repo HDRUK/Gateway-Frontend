@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
 export const CATALOGUE_ITEMS_SEARCH = gql`
     query HdrCatalogueItemsSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
@@ -38,6 +38,35 @@ export const SEARCH_SAVE = gql`
         ) {
             status
             message
+        }
+    }
+`;
+
+export const RESULT_DETAIL = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                domainType
+                label
+                aliases
+                description
+                author
+                organisation
+                editable
+                documentationVersion
+                lastUpdated
+                classifiers {
+                    id
+                    label
+                    lastUpdated
+                }
+                type
+                finalised
+            }
         }
     }
 `;

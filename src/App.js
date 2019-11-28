@@ -13,6 +13,7 @@ import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
 import GlobalStyle from "./styles/globalStyles.js";
+import DetailPage from "./Containers/DetailPage/DetailPage.js";
 
 class App extends React.Component {
     render() {
@@ -55,6 +56,11 @@ class App extends React.Component {
                                     <Route path="/help">
                                         <Content nav>
                                             <div>/help</div>
+                                        </Content>
+                                    </Route>
+                                    <Route path="/detail/:id">
+                                        <Content nav>
+                                            <DetailPage />
                                         </Content>
                                     </Route>
                                 </Switch>
