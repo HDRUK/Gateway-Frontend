@@ -23,9 +23,9 @@ const Login = () => {
                 <Heading>{textItems.headingText}</Heading>
                 <MediumSpace />
                 <CenterBlock>
-                    <a href="/login">
+                    {/* <a href="/login">
                         <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
-                    </a>
+                    </a> */}
                     <SmallSpace />
                     <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
