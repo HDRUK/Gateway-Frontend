@@ -54,6 +54,7 @@ const SaveSearch = () => {
     const closeModal = () => {
         setModalOpen(false);
         setRename("");
+        renameInvalid && setRenameInvalid(false);
     };
 
     return (
