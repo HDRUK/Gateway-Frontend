@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { SEARCH_SAVE } from "../../queries/queries.js";
 
 import { Modal, TextInput } from "carbon-components-react";
-import { SaveSearchButton, RightSmallInlineLoading } from "./styles.js";
+import { SaveSearchButton, RightSmallInlineLoading, NavErrorText } from "./styles.js";
 
 const textItems = {
     save: "Save",
@@ -12,6 +12,7 @@ const textItems = {
     saveSearch: "Save search",
     savedSearch: "Search saved",
     savingSearch: "Seach saving...",
+    savingFailed: "Unable to save search",
     rename: "Rename",
     error: {
         tooLong: "Name must be less than 100 characters long"
@@ -97,13 +98,18 @@ const SaveSearch = () => {
                 <SaveSearchButton
                     onClick={() => setModalOpen(true)}
                     kind="primary"
-                    disabled={searchSaved}
+                    disabled={searchSaved && !error}
                     status={searchSaved ? "finished" : "active"}
                     size="small"
                 >
-                    {loading ? textItems.savingSearch : searchSaved ? textItems.savedSearch : textItems.saveSearch}
+                    {loading
+                        ? textItems.savingSearch
+                        : searchSaved && !error
+                        ? textItems.savedSearch
+                        : textItems.saveSearch}
                     {loading && <RightSmallInlineLoading />}
                 </SaveSearchButton>
+                {error && <NavErrorText>{textItems.savingFailed}</NavErrorText>}
             </>
         )
     );

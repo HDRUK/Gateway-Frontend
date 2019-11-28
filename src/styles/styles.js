@@ -3,11 +3,13 @@ import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
-const colorTheme = {
+export const colorTheme = {
     lightText: "#979797",
     darkText: "#3c3c3b",
-    blueText: "#0062ff",
-    labelText: "#161616"
+    blueText: "#0f62fe",
+    darkBlue: "#002d9c",
+    labelText: "#161616",
+    error: "#da1e28"
 };
 
 export const Heading = styled.h1`
