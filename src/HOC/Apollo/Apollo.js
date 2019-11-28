@@ -18,7 +18,7 @@ const client = new ApolloClient({
         }),
         new HttpLink({
             uri: process.env.REACT_APP_GRAPH_QL_ENDPOINT,
-            credentials: "same-origin"
+            credentials: "include"
         })
     ]),
     cache: new InMemoryCache()
