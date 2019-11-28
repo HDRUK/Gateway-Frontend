@@ -4,6 +4,7 @@ import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
 export const colorTheme = {
+    white: "#ffffff",
     lightText: "#979797",
     darkText: "#3c3c3b",
     blueText: "#0f62fe",
