@@ -14,7 +14,6 @@ const mySearchesPageText = {
 
 const MySearchesPage = () => {
     const appContext = useContext(AppContext);
-    const runSearch = appContext.returnSearchResults;
     const userId = appContext.userId;
     const savedSearchesData = appContext.savedSearchesData;
 
