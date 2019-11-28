@@ -37,6 +37,11 @@ const SaveSearch = () => {
         saveVariables.filters = appContext.filters;
     }
 
+    const closeModal = () => {
+        setModalOpen(false);
+        setRename("");
+    };
+
     return (
         appContext.search.term !== null && (
             <>
@@ -47,18 +52,11 @@ const SaveSearch = () => {
                         rename && (saveVariables.name = rename);
                         saveSearch({ variables: saveVariables });
                         setSearchSaved(true);
-                        setModalOpen(false);
-                        setRename("");
+                        closeModal();
                         return true;
                     }}
-                    onSecondarySubmit={() => {
-                        setModalOpen(false);
-                        setRename("");
-                    }}
-                    onRequestClose={() => {
-                        setModalOpen(false);
-                        setRename("");
-                    }}
+                    onSecondarySubmit={closeModal}
+                    onRequestClose={closeModal}
                     modalLabel="Save search"
                     modalHeading={appContext.search.term}
                     primaryButtonText="Save"
@@ -70,6 +68,7 @@ const SaveSearch = () => {
                         labelText="Rename"
                         light={true}
                         value={rename}
+                        placeholder={appContext.search.term || "Enter text here..."}
                         onChange={e => setRename(e.target.value)}
                     />
                 </Modal>
