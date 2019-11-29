@@ -40,7 +40,7 @@ const AppContextProvider = props => {
     });
 
     // TODO: Temporary userId to be replaced when login is implemented.
-    const [userId, setUserId] = useState("TimTest");
+    const [userId] = useState("TimTest");
 
     const newsItems = {
         newsItemOne: {
@@ -268,8 +268,7 @@ const AppContextProvider = props => {
                 userId,
                 setSearchResultId,
                 savedSearchesData,
-                insertSavedSearchesData,
-                setSearchResultId
+                insertSavedSearchesData
             }}
         >
             {props.children}
