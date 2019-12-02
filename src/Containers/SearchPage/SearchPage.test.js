@@ -9,7 +9,7 @@ import {
     SearchInfo,
     ResultsCounter,
     SortDiv,
-    ResultsWrapper
+    SearchResultsWrapper
 } from "./styles.js";
 import { Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
@@ -67,29 +67,29 @@ describe("<SearchPage> rendered before a search", () => {
         const searchInfo = results[0].props.children[0];
         expect(searchInfo.type).toBe(SearchInfo);
 
-        const resultsWrapper = results[0].props.children[1];
-        expect(resultsWrapper.type).toBe(ResultsWrapper);
+        const searchResultsWrapper = results[0].props.children[1];
+        expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);
     });
 });
 
-//Commented as tests failing after onEffect added
-
+// TODO: This test needs to be redone to factor in useEffect
 // describe("<SearchPage> rendered after a search and before data loaded", () => {
 //     let renderedComponent;
 //     let renderedOutput;
 
 //     beforeAll(() => {
 //         context.state.searchPageState = true;
+//         context.search.term = "test";
+//         context.search.previousTerm = "test";
 //         renderedComponent = create(
 //             <MockedProvider mocks={apolloMock} addTypename={false}>
 //                 <AppContext.Provider value={context}>
-//                     <MemoryRouter>
-//                         <SearchPage />
-//                     </MemoryRouter>
+//                     <SearchPage />
 //                 </AppContext.Provider>
 //             </MockedProvider>
 //         );
 //         renderedOutput = renderedComponent.root;
+//         act(() => wait(0));
 //     });
 
 //     it("should render loading state initially", async () => {
@@ -108,91 +108,83 @@ describe("<SearchPage> rendered before a search", () => {
 //     });
 // });
 
-// describe("<SearchPage> rendered after a search", () => {
-//     let renderedComponent;
-//     let renderedOutput;
+describe("<SearchPage> rendered after a search", () => {
+    let renderedComponent;
+    let renderedOutput;
 
-//     beforeAll(() => {
-//         context.state.searchPageState = true;
-//         context.searchData = {
-//             offSet: 2,
-//             length: 0,
-//             data: [
-//                 {
-//                     label: "title 1",
-//                     description: "description 1"
-//                 },
-//                 {
-//                     label: "title 2",
-//                     description: "description 2"
-//                 }
-//             ]
-//         };
-//         renderedComponent = create(
-//             <MockedProvider mocks={apolloMock} addTypename={false}>
-//                 <AppContext.Provider value={context}>
-//                     <MemoryRouter>
-//                         <SearchPage />
-//                     </MemoryRouter>
-//                 </AppContext.Provider>
-//             </MockedProvider>
-//         );
-//         renderedOutput = renderedComponent.root;
-//     });
+    beforeAll(() => {
+        context.state.searchPageState = true;
+        context.search.term = "test";
+        context.searchData = {
+            offSet: 0,
+            length: 0,
+            data: [
+                {
+                    label: "title 1",
+                    description: "description 1"
+                },
+                {
+                    label: "title 2",
+                    description: "description 2"
+                }
+            ]
+        };
+        renderedComponent = create(
+            <MockedProvider mocks={apolloMock} addTypename={false}>
+                <AppContext.Provider value={context}>
+                    <MemoryRouter>
+                        <SearchPage />
+                    </MemoryRouter>
+                </AppContext.Provider>
+            </MockedProvider>
+        );
+        renderedOutput = renderedComponent.root;
+        act(() => wait(0));
+    });
 
-//     it("should render search heading as invisible", () => {
-//         const searchHeading = renderedOutput.findAllByType(SearchHeading);
-//         expect(searchHeading).toHaveLength(1);
-//         expect(searchHeading[0].props.invisible).toBe(true);
-//     });
+    it("should render search heading as invisible", () => {
+        const searchHeading = renderedOutput.findAllByType(SearchHeading);
+        expect(searchHeading).toHaveLength(1);
+        expect(searchHeading[0].props.invisible).toBe(true);
+    });
 
-//     it("should render the search bar with wrapper", () => {
-//         const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
-//         expect(searchBarWrapper).toHaveLength(1);
-//         expect(searchBarWrapper[0].props.main).toBe(false);
+    it("should render the search bar with wrapper", () => {
+        const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
+        expect(searchBarWrapper).toHaveLength(1);
+        expect(searchBarWrapper[0].props.main).toBe(false);
 
-//         const searchBar = searchBarWrapper[0].props.children;
-//         expect(searchBar.type).toBe(SearchBar);
-//         expect(searchBar.props.labelText).toBe("Search");
-//     });
+        const searchBar = searchBarWrapper[0].props.children;
+        expect(searchBar.type).toBe(SearchBar);
+        expect(searchBar.props.labelText).toBe("Search");
+    });
 
-//     it("should render the results", async () => {
-//         await act(async () => await wait(1000));
-//         const results = renderedOutput.findAllByType(Results);
-//         expect(results).toHaveLength(1);
-//         expect(results[0].props.invisible).toBe(false);
+    it("should render the results", async () => {
+        const results = renderedOutput.findAllByType(Results);
+        expect(results).toHaveLength(1);
+        expect(results[0].props.invisible).toBe(false);
 
-//         const searchInfo = results[0].props.children[0];
-//         expect(searchInfo.type).toBe(SearchInfo);
-//         const searchInfoComponents = searchInfo.props.children;
-//         expect(searchInfoComponents[0].type).toEqual(Line);
-//         expect(searchInfoComponents[1].type).toEqual(ResultsCounter);
-//         const resultsCounterText = searchInfoComponents[1].props.children;
-//         expect(resultsCounterText[0].props.children).toEqual(context.searchData.length);
-//         expect(resultsCounterText[2]).toEqual(searchPageText.results);
-//         expect(searchInfoComponents[2].type).toEqual(SortDiv);
+        const searchInfo = results[0].props.children[0];
+        expect(searchInfo.type).toBe(SearchInfo);
+        const searchInfoComponents = searchInfo.props.children;
+        expect(searchInfoComponents[0].type).toEqual(Line);
+        expect(searchInfoComponents[1].type).toEqual(ResultsCounter);
+        const resultsCounterText = searchInfoComponents[1].props.children;
+        expect(resultsCounterText[0].props.children).toEqual(context.searchData.length);
+        expect(resultsCounterText[2]).toEqual(searchPageText.results);
+        expect(searchInfoComponents[2].type).toEqual(SortDiv);
 
-//         const resultsWrapper = results[0].props.children[1];
-//         expect(resultsWrapper.type).toBe(ResultsWrapper);
-//         const resultsCards = resultsWrapper.props.children[0];
-
-//         const loading = resultsWrapper.props.children[1];
-//         expect(loading).toBe(false);
-
-//         resultsCards.map((result, i) => {
-//             expect(result.type).toEqual(LinkNoDecoration);
-//             expect(result.key).toBe(`resultCard-${i}`);
-//             expect(result.props.to).toEqual("detail/undefined");
-
-//             result.props.onClick();
-//             expect(context.setSearchResultId).toHaveBeenCalled();
-
-//             const textStyle = result.props.children;
-//             expect(textStyle.type).toBe(DarkText);
-//             const card = textStyle.props.children;
-//             expect(card.type).toBe(ResultCard);
-//             expect(card.props.title).toBe(context.searchData.data[i].label);
-//             expect(card.props.description).toBe(context.searchData.data[i].description);
-//         });
-//     });
-// });
+        const searchResultsWrapper = results[0].props.children[1];
+        expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);
+        const resultsCards = searchResultsWrapper.props.children[0];
+        const loading = searchResultsWrapper.props.children[1];
+        expect(loading).toBe(false);
+        expect(resultsCards).toHaveLength(2);
+        // TODO: These tests needs to be rewritten for new result card factoring in the link to details page
+        // resultsCards.map((card, i) => {
+        //     expect(card.type).toBe(ResultCard);
+        //     expect(card.key).toBe(`resultCard-${i}`);
+        //     expect(card.props.title).toBe(context.searchData.data[i].label);
+        //     expect(card.props.description).toBe(context.searchData.data[i].description);
+        // });
+    });
+});

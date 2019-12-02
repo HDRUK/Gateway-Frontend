@@ -42,6 +42,31 @@ export const SEARCH_SAVE = gql`
     }
 `;
 
+export const GET_SEARCH_SAVED_BY_USER_ID = gql`
+    query GetSearchSavedByUserId($userId: String!) {
+        getSearchSavedByUserID(userId: $userId) {
+            status
+            message
+            data {
+                id
+                detail
+                endPoint
+                recordLimit
+                recordOffset
+                createdOn
+                filters {
+                    type
+                    value
+                }
+                sort {
+                    applied
+                    value
+                }
+            }
+        }
+    }
+`;
+
 export const RESULT_DETAIL = gql`
     query HdrDataModelID($ID: String!) {
         hdrDataModelID(ID: $ID) {

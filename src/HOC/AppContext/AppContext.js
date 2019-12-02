@@ -37,6 +37,13 @@ const AppContextProvider = props => {
         data: []
     });
 
+    const [savedSearchesData, setSavedSearchesData] = useState({
+        data: []
+    });
+
+    // TODO: Temporary userId to be replaced when login is implemented.
+    const [userId] = useState("TimTest");
+
     const newsItems = {
         newsItemOne: {
             image: "",
@@ -160,6 +167,13 @@ const AppContextProvider = props => {
         });
     };
 
+    const insertSavedSearchesData = newData => {
+        setSavedSearchesData({
+            ...savedSearchesData,
+            data: [...newData]
+        });
+    };
+
     const returnSearchResults = value => {
         !state.searchPageState &&
             setState({
@@ -256,7 +270,10 @@ const AppContextProvider = props => {
                 filterObject,
                 searchSaved,
                 setSearchSaved,
-                setSearchResultId
+                setSearchResultId,
+                userId,
+                savedSearchesData,
+                insertSavedSearchesData
             }}
         >
             {props.children}

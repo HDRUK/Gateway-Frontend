@@ -5,7 +5,8 @@ const context = {
         modalVisibility: false,
         filterLocation: 0,
         windowScroll: 0,
-        searchResultId: null
+        searchResultId: null,
+        resultsLimit: 10
     },
 
     filters: [],
@@ -27,6 +28,8 @@ const context = {
             readMore: "http://localhost:3000"
         }
     },
+
+    userId: "test",
 
     filterObject: [
         {
@@ -106,16 +109,21 @@ const context = {
     },
     textItems: { searchHeader: "TestSearchHeader" },
     search: {
-        term: ""
+        term: null,
+        previousTerm: null
     },
     searchData: {
         offSet: 10,
         length: 0,
         data: []
     },
+    savedSearchesData: {
+        data: []
+    },
     setOffSet: jest.fn(),
     clearSearchData: jest.fn(),
     insertSearchData: jest.fn(),
+    insertSavedSearchesData: jest.fn(),
     counterFunc: jest.fn(),
     returnSearchResults: jest.fn(),
     addFilter: jest.fn(),
@@ -125,7 +133,8 @@ const context = {
     setFilterId: jest.fn(),
     openFilterBox: jest.fn(),
     closeFilterBox: jest.fn(),
-    setSearchResultId: jest.fn()
+    setSearchResultId: jest.fn(),
+    setSearch: jest.fn()
 };
 
 export default context;
