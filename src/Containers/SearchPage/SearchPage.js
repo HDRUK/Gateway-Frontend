@@ -144,7 +144,6 @@ const SearchPage = () => {
                 parseInt(data.hdrCatalogueItemsSearch.count, 10),
                 data.hdrCatalogueItemsSearch.data
             );
-            // setOffSet(Math.ceil(data.hdrCatalogueItemsSearch.data.length / 10) * 10);
         } else if (!loading && !data && searchTerm !== null) {
             clearSearchData();
         }
