@@ -17,7 +17,9 @@ const MySearchesPage = () => {
     const userId = appContext.userId;
     const savedSearchesData = appContext.savedSearchesData;
 
-    const { data, loading, error, refetch } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: userId } });
+    const { data, loading, error, refetch } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, {
+        variables: { userId: userId }
+    });
 
     useEffect(() => {
         if (!loading && data && data.getSearchSavedByUserID.data) {
@@ -44,6 +46,7 @@ const MySearchesPage = () => {
         ) : (
             <p>{mySearchesPageText.noResultsMessage}</p>
         );
+
     return <ResultsWrapper>{results}</ResultsWrapper>;
 };
 

@@ -54,6 +54,7 @@ describe("<MySearchesPage> rendered after data loaded", () => {
                 recordLimit: 10,
                 recordOffset: 0,
                 createdOn: "01 Nov 2019",
+                name: null,
                 filters: [
                     {
                         type: "Geography",
@@ -72,6 +73,7 @@ describe("<MySearchesPage> rendered after data loaded", () => {
                 recordLimit: 10,
                 recordOffset: 0,
                 createdOn: "02 Nov 2019",
+                name: "Test 2",
                 filters: [
                     {
                         type: "Geography",

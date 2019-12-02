@@ -20,7 +20,10 @@ import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
 const searchPageText = {
     search: "Search",
     results: "Results",
-    searchTitle: "What health data do you need?"
+    searchTitle: "What health data do you need?",
+    error: {
+        queryError: "Something went wrong. Please try again."
+    }
 };
 
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
@@ -62,7 +65,7 @@ const resultsData = (
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <div>{error.status} - Error :(</div>;
+    if (error) return <SearchResultsWrapper>{searchPageText.error.queryError}</SearchResultsWrapper>;
 
     const processedData = (data && data.data) || [];
 
@@ -125,7 +128,7 @@ const SearchPage = () => {
                     notifyOnNetworkStatusChange: true
                 });
             }
-            if (!loading && !data && searchData.length === 0) {
+            if (!error && !loading && !data && searchData.length === 0) {
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
