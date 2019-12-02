@@ -175,7 +175,7 @@ const AppContextProvider = props => {
         });
     };
 
-    const returnSearchResults = value => {
+    const returnSearchResults = (value, searchSaved = false) => {
         !state.searchPageState &&
             setState({
                 ...state,
@@ -185,7 +185,7 @@ const AppContextProvider = props => {
             ...search,
             term: value
         });
-        setSearchSaved(false);
+        setSearchSaved(searchSaved);
     };
 
     const setFilterLocation = () => {

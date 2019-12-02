@@ -38,7 +38,7 @@ const SavedSearchCard = props => {
                 <SavedSearchButton kind="secondary" size="small" disabled={true}>
                     {textItems.deleteSearch}
                 </SavedSearchButton>
-                <Link to={`/search`} onClick={() => runSearch(data.detail)}>
+                <Link to={`/search`} onClick={() => runSearch(data.detail, true)}>
                     <SavedSearchButton kind="primary" size="small">
                         {textItems.runSearch}
                     </SavedSearchButton>
