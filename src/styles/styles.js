@@ -195,7 +195,7 @@ export const ContentWrapper = styled.div`
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
-    height: calc(100vh - 17rem);
+    height: calc(100% - 17rem);
     min-height: 40rem;
     vertical-align: top;
 `;
