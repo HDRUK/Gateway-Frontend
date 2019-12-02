@@ -399,3 +399,9 @@ export const ResultsWrapper = styled.div`
     overflow: scroll;
     padding: 0.25rem 1rem 0 1rem;
 `;
+
+export const NavErrorText = styled.div`
+    padding: 0.25rem 1rem;
+    font-size: 0.75rem;
+    color: ${colorTheme.error};
+`;

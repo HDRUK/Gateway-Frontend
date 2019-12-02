@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colorTheme } from "../../styles/styles.js";
-import { Button, InlineLoading } from "carbon-components-react";
+import { Button } from "carbon-components-react";
 
 export const SaveSearchButton = styled(Button)`
     width: 90%;
@@ -26,16 +26,4 @@ export const SaveSearchButton = styled(Button)`
     :hover {
         background-color: ${colorTheme.blueText};
     }
-`;
-
-export const RightSmallInlineLoading = styled(InlineLoading)`
-    width: unset;
-    float: right;
-    font-size: 0.5rem;
-`;
-
-export const NavErrorText = styled.div`
-    padding: 0.25rem 1rem;
-    font-size: 0.75rem;
-    color: ${colorTheme.error};
 `;

@@ -4,7 +4,9 @@ import { useMutation } from "@apollo/react-hooks";
 import { SEARCH_SAVE } from "../../queries/queries.js";
 
 import { Modal, TextInput } from "carbon-components-react";
-import { SaveSearchButton, RightSmallInlineLoading, NavErrorText } from "./styles.js";
+import { SaveSearchButton } from "./styles.js";
+import { NavErrorText } from "../../styles/styles.js";
+import { RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 
 const textItems = {
     save: "Save",
