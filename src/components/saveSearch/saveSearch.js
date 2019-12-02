@@ -99,7 +99,7 @@ const SaveSearch = () => {
                 <SaveSearchButton
                     onClick={() => setModalOpen(true)}
                     kind="primary"
-                    disabled={searchSaved && !error}
+                    disabled={searchSaved && !error ? true : false}
                     status={searchSaved ? "finished" : "active"}
                     size="small"
                 >
