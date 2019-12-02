@@ -159,10 +159,11 @@ const AppContextProvider = props => {
     ];
 
     const insertSearchData = (length, newData) => {
+        const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
             ...searchData,
             length,
-            offset: newData.length,
+            offSet: newOffset < 10 ? 0 : newOffset - 10,
             data: [...newData]
         });
     };

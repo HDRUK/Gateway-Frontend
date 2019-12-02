@@ -120,7 +120,7 @@ const SearchPage = () => {
                 });
 
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
@@ -141,6 +141,7 @@ const SearchPage = () => {
                 parseInt(data.hdrCatalogueItemsSearch.count, 10),
                 data.hdrCatalogueItemsSearch.data
             );
+            // setOffSet(Math.ceil(data.hdrCatalogueItemsSearch.data.length / 10) * 10);
         } else if (!loading && !data && searchTerm !== null) {
             clearSearchData();
         }
@@ -149,7 +150,7 @@ const SearchPage = () => {
     }, [data, loading]);
 
     const joinedLoading =
-        loading || networkStatus === 3 || (searchData.data.length < offSet && offSet + limit < searchData.length);
+        loading || networkStatus === 3 || (searchData.data.length === offSet && offSet < searchData.length);
 
     return (
         <div>
