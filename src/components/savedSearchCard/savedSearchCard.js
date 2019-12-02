@@ -23,8 +23,8 @@ const SavedSearchCard = props => {
             <ContentDiv>
                 <LabeledContent label="Search Date">{data.createdOn}</LabeledContent>
                 <LabeledContent label="Results">{data.resultsCount || "n/a"}</LabeledContent>
-                <SavedSearchTitle>{data.detail}</SavedSearchTitle>
-                {data.filters && data.filters.length > 0 && (
+                <SavedSearchTitle>{data.name || data.detail}</SavedSearchTitle>
+                {!data.name && data.filters && data.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
                         {data.filters.map((filter, i) => (
                             <Tag key={`filter-tag-${i}`} type="gray">

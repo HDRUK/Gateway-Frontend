@@ -17,7 +17,7 @@ const MySearchesPage = () => {
     const userId = appContext.userId;
     const savedSearchesData = appContext.savedSearchesData;
 
-    const { data, loading, error } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: userId } });
+    const { data, loading, error, refetch } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, { variables: { userId: userId } });
 
     useEffect(() => {
         if (!loading && data && data.getSearchSavedByUserID.data) {
@@ -26,6 +26,10 @@ const MySearchesPage = () => {
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, data]);
+
+    useEffect(() => {
+        refetch();
+    });
 
     if (loading) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;

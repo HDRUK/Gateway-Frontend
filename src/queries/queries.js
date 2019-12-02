@@ -54,6 +54,7 @@ export const GET_SEARCH_SAVED_BY_USER_ID = gql`
                 recordLimit
                 recordOffset
                 createdOn
+                name
                 filters {
                     type
                     value
