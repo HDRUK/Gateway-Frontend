@@ -15,8 +15,8 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
     }
 `;
 
-export const SEARCH_SAVE = gql`
-    mutation SearchSave(
+export const SEARCH_AUDIT_LOG_SAVE = gql`
+    mutation SearchAuditLogSave(
         $userId: String!
         $searchTerm: String!
         $endPoint: String!
@@ -24,9 +24,8 @@ export const SEARCH_SAVE = gql`
         $recordLimit: Int!
         $sort: SortInput!
         $filters: [FilterInput]
-        $name: String
     ) {
-        searchSave(
+        searchAuditLogSave(
             userId: $userId
             searchTerm: $searchTerm
             endPoint: $endPoint
@@ -34,8 +33,19 @@ export const SEARCH_SAVE = gql`
             recordLimit: $recordLimit
             sort: $sort
             filters: $filters
-            name: $name
         ) {
+            status
+            message
+            data {
+                id
+            }
+        }
+    }
+`;
+
+export const SEARCH_SAVE = gql`
+    mutation SearchSave($searchAuditLogId: String!, $userId: String!, $name: String) {
+        searchSave(searchAuditLogId: $searchAuditLogId, userId: $userId, name: $name) {
             status
             message
         }

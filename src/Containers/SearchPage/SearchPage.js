@@ -14,8 +14,9 @@ import {
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
-import { useLazyQuery } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from "@apollo/react-hooks";
 import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
+import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 
 const searchPageText = {
     search: "Search",
@@ -106,11 +107,26 @@ const SearchPage = () => {
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
+    const [searchAuditLogSave, searchAuditLogSaveResult] = useMutation(SEARCH_AUDIT_LOG_SAVE);
+    console.log("auditLogData", searchAuditLogSaveResult);
 
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             returnSearchResults(e.target.value);
             clearSearchData();
+            // TODO: Add filters to the audit log save
+            // TODO: Implement sort properly
+            searchAuditLogSave({
+                variables: {
+                    userId: appContext.userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: limit,
+                    sort: { applied: "Alphabetical", value: "Up" },
+                    filters: null
+                }
+            });
         }
     };
 
