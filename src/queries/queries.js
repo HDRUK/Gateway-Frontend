@@ -68,3 +68,12 @@ export const RESULT_DETAIL = gql`
         }
     }
 `;
+
+export const DELETE_SAVED_SEARCH = gql`
+    mutation SearchDelete($ID: String!) {
+        searchDelete(searchSavedId: $ID) {
+            status
+            message
+        }
+    }
+`;
