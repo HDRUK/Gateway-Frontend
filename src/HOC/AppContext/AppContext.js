@@ -21,6 +21,9 @@ const AppContextProvider = props => {
         resultsLimit: 10
     });
 
+    const userEmail = localStorage.getItem("userEmail");
+    const userId = localStorage.getItem("userId");
+
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
 
@@ -38,9 +41,6 @@ const AppContextProvider = props => {
     const [savedSearchesData, setSavedSearchesData] = useState({
         data: []
     });
-
-    // TODO: Temporary userId to be replaced when login is implemented.
-    const [userId] = useState("TimTest");
 
     const newsItems = {
         newsItemOne: {
@@ -259,13 +259,14 @@ const AppContextProvider = props => {
                 setFilterLocation,
                 setFilterId,
                 itemRef,
+                userId,
+                userEmail,
                 activeFilter,
                 addFilter,
                 removeFilter,
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
-                userId,
                 setSearchResultId,
                 savedSearchesData,
                 insertSavedSearchesData

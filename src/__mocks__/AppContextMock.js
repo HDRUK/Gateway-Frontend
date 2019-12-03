@@ -29,6 +29,8 @@ const context = {
         }
     },
 
+    userEmail: "test@test.com",
+
     userId: "test",
 
     filterObject: [

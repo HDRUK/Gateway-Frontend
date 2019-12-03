@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { CenterLoading } from "../../styles/carbonComponents";
+import { CenterLoading, StyledButton } from "../../styles/carbonComponents";
 import {
     Heading,
     SmallSpace,
@@ -75,6 +75,9 @@ const DetailPage = props => {
                         </InlineWrappedText>
                         <TinySpace />
                     </DarkText>
+                    <a href="/login">
+                        <StyledButton kind="primary">Log in</StyledButton>
+                    </a>
                 </SmallSpace>
             )}
         </React.Fragment>

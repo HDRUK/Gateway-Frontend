@@ -5,6 +5,9 @@ import { MemoryRouter } from "react-router-dom";
 import { SideStripeLeft, SideStripeRight, ContentWrapper } from "../../styles/styles.js";
 import AppSideNav from "../appSideNav/appSideNav.js";
 
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import context from "../../__mocks__/AppContextMock.js";
+
 describe("Render content with no props", () => {
     let renderedComponent;
     let renderedOutput;
@@ -29,7 +32,9 @@ describe("Render content with nav prop", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MemoryRouter>
-                <Content nav />
+                <AppContext.Provider value={context}>
+                    <Content nav />
+                </AppContext.Provider>
             </MemoryRouter>
         );
         renderedOutput = renderedComponent.root;

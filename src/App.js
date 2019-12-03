@@ -17,6 +17,7 @@ import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
 import GlobalStyle from "./styles/globalStyles.js";
 import DetailPage from "./Containers/DetailPage/DetailPage.js";
+import LoginCallback from "./components/loginCallback/loginCallback.js";
 
 class App extends React.Component {
     render() {
@@ -26,7 +27,6 @@ class App extends React.Component {
                     <AppWrapper>
                         <BrowserRouter>
                             <GlobalStyle />
-
                             <Header />
                             <PageWrapper>
                                 <Switch>
@@ -66,6 +66,7 @@ class App extends React.Component {
                                             <DetailPage />
                                         </Content>
                                     </Route>
+                                    <Route path="/logincallback/" render={props => <LoginCallback {...props} />} />
                                 </Switch>
                             </PageWrapper>
                             <Footer />
