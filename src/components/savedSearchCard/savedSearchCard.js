@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { Link } from "react-router-dom";
@@ -26,12 +26,12 @@ const SavedSearchCard = props => {
     const [deleteModalStatus, setDeleteModalStatus] = useState(false);
     const [deleteSearchQuery, { error, loading, data }] = useMutation(DELETE_SAVED_SEARCH);
 
-    const confirmDelete = id => {
+    const confirmDelete = async id => {
         deleteSearchQuery({ variables: { ID: id } });
-        !loading && data && data.status === 200 && removeSavedSearchData(id);
+        removeSavedSearchData(id);
     };
 
-    console.log("stuff", error, loading, searchesData);
+    console.log("stuff", error, loading, searchesData, data);
 
     return (
         <Card>
