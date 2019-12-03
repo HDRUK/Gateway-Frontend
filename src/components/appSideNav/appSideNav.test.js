@@ -14,7 +14,7 @@ const sideNavText = {
     browse: "Browse",
     about: "About",
     help: "Help",
-    username: "Nicola Blackwood",
+    username: "Marie Curie",
     company: "UK Government"
 };
 
