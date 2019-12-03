@@ -172,6 +172,14 @@ const AppContextProvider = props => {
         });
     };
 
+    const removeSavedSearchData = id => {
+        const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
+        console.log("DATA COMPARE", savedSearchesData.data, newSavedSearchesData);
+        setSavedSearchesData({
+            data: [...newSavedSearchesData]
+        });
+    };
+
     const returnSearchResults = value => {
         !state.searchPageState &&
             setState({
@@ -268,7 +276,8 @@ const AppContextProvider = props => {
                 userId,
                 setSearchResultId,
                 savedSearchesData,
-                insertSavedSearchesData
+                insertSavedSearchesData,
+                removeSavedSearchData
             }}
         >
             {props.children}

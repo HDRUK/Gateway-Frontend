@@ -28,3 +28,14 @@ export const ButtonDiv = styled.div`
 export const SavedSearchTitle = styled(SmallHeading)`
     margin: 1rem 0 0.5rem 0;
 `;
+
+export const CardLoadingBox = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.75;
+    background-color: #ffffff;
+    z-index: 1;
+`;
