@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { Link } from "react-router-dom";
@@ -15,7 +15,9 @@ const textItems = {
     cancel: "Cancel",
     deleteSearch: "Delete Search",
     deleteSearchConfirmation: "Are you sure you want to delete this search?",
-    runSearch: "Run Search"
+    runSearch: "Run Search",
+    searchDate: "Search Date",
+    results: "Results"
 };
 
 const SavedSearchCard = props => {
@@ -63,10 +65,10 @@ const SavedSearchCard = props => {
                 <p>{textItems.deleteSearchConfirmation}</p>
             </Modal>
             <ContentDiv>
-                <LabeledContent label="Search Date">{searchesData.createdOn}</LabeledContent>
-                <LabeledContent label="Results">{searchesData.resultsCount || "n/a"}</LabeledContent>
-                <SavedSearchTitle>{searchesData.detail}</SavedSearchTitle>
-                {searchesData.filters && searchesData.filters.length > 0 && (
+                <LabeledContent label={textItems.searchDate}>{searchesData.createdOn}</LabeledContent>
+                <LabeledContent label={textItems.results}>{searchesData.resultsCount || "n/a"}</LabeledContent>
+                <SavedSearchTitle>{searchesData.name || searchesData.detail}</SavedSearchTitle>
+                {!searchesData.name && searchesData.filters && searchesData.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
                         {searchesData.filters.map((filter, i) => (
                             <Tag key={`filter-tag-${i}`} type="gray">
