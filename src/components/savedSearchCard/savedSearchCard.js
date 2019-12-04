@@ -10,9 +10,9 @@ import LabeledContent from "../../components/labeledContent/labeledContent.js";
 import { useMutation } from "@apollo/react-hooks";
 import { DELETE_SAVED_SEARCH } from "../../queries/queries.js";
 
-// TODO: Remove disable from delete button when delete functionality implemented
-
 const textItems = {
+    delete: "Delete",
+    cancel: "Cancel",
     deleteSearch: "Delete Search",
     deleteSearchConfirmation: "Are you sure you want to delete this search?",
     runSearch: "Run Search"
@@ -31,7 +31,7 @@ const SavedSearchCard = props => {
         removeSavedSearchData(id);
     };
 
-    console.log("stuff", error, loading, searchesData, data);
+    // console.log("stuff", error, loading, searchesData, data);
 
     return (
         <Card>
@@ -44,14 +44,14 @@ const SavedSearchCard = props => {
             <Modal
                 kind="secondary"
                 danger={true}
-                primaryButtonText="Delete"
+                primaryButtonText={textItems.delete}
                 open={deleteModalStatus}
                 shouldSubmitOnEnter={true}
                 hasScrollingContent={false}
                 modalHeading={searchesData.name || searchesData.detail}
-                modalLabel="Delete Search"
+                modalLabel={textItems.deleteSearch}
                 aria-label="A label to be read by screen readers on the modal root node"
-                secondaryButtonText="Cancel"
+                secondaryButtonText={textItems.cancel}
                 onBlur={() => setDeleteModalStatus(false)}
                 onRequestClose={() => setDeleteModalStatus(false)}
                 onRequestSubmit={() => {
