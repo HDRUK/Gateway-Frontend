@@ -26,7 +26,8 @@ const AppContextProvider = props => {
 
     const [search, setSearch] = useState({
         term: null,
-        previousTerm: null
+        previousTerm: null,
+        latestSearchAuditLogId: null
     });
 
     const [searchSaved, setSearchSaved] = useState(false);
@@ -188,6 +189,13 @@ const AppContextProvider = props => {
         setSearchSaved(searchSaved);
     };
 
+    const updateSearchAuditLogId = id => {
+        setSearch({
+            ...search,
+            latestSearchAuditLogId: id
+        });
+    };
+
     const setFilterLocation = () => {
         outsideRange(window.scrollY, state.windowScroll, 10) &&
             setState({
@@ -274,7 +282,8 @@ const AppContextProvider = props => {
                 setSearchResultId,
                 userId,
                 savedSearchesData,
-                insertSavedSearchesData
+                insertSavedSearchesData,
+                updateSearchAuditLogId
             }}
         >
             {props.children}

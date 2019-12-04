@@ -44,8 +44,8 @@ export const SEARCH_AUDIT_LOG_SAVE = gql`
 `;
 
 export const SEARCH_SAVE = gql`
-    mutation SearchSave($searchAuditLogId: String!, $userId: String!, $name: String) {
-        searchSave(searchAuditLogId: $searchAuditLogId, userId: $userId, name: $name) {
+    mutation SearchSave($searchAuditId: String!, $userId: String!, $name: String) {
+        searchSave(searchAuditId: $searchAuditId, userId: $userId, name: $name) {
             status
             message
         }

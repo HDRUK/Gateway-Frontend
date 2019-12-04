@@ -36,17 +36,8 @@ const SaveSearch = () => {
     const [renameInvalid, setRenameInvalid] = useState(false);
 
     let saveVariables = {
-        // TODO: Implement userId value from context
-        userId: "TimTest",
-        searchTerm: appContext.search.term,
-        endPoint: "http://localhost:5001",
-        offSet: 0,
-        recordLimit: 10,
-        // TODO: Implement sort values from context (to be done when sort implemented properly)
-        sort: {
-            applied: "Alphabetical",
-            value: "Up"
-        }
+        searchAuditId: appContext.search.latestSearchAuditLogId,
+        userId: appContext.userId
     };
 
     if (appContext.filters && appContext.filters.length > 0) {

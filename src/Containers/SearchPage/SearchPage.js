@@ -107,15 +107,16 @@ const SearchPage = () => {
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
-    const [searchAuditLogSave, searchAuditLogSaveResult] = useMutation(SEARCH_AUDIT_LOG_SAVE);
-    console.log("auditLogData", searchAuditLogSaveResult);
+    const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
+        onCompleted: data => {
+            appContext.updateSearchAuditLogId(data.searchAuditLogSave.data.id);
+        }
+    });
 
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            returnSearchResults(e.target.value);
-            clearSearchData();
             // TODO: Add filters to the audit log save
-            // TODO: Implement sort properly
+            // TODO: Implement sort functionality
             searchAuditLogSave({
                 variables: {
                     userId: appContext.userId,
@@ -127,6 +128,8 @@ const SearchPage = () => {
                     filters: null
                 }
             });
+            returnSearchResults(e.target.value, false);
+            clearSearchData();
         }
     };
 
