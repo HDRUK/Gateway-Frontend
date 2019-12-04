@@ -75,9 +75,6 @@ const DetailPage = props => {
                         </InlineWrappedText>
                         <TinySpace />
                     </DarkText>
-                    <a href="/login">
-                        <StyledButton kind="primary">Log in</StyledButton>
-                    </a>
                 </SmallSpace>
             )}
         </React.Fragment>

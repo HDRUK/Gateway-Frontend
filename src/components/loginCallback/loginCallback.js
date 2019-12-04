@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import * as qs from "query-string";
+
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 import PropTypes from "prop-types";
 
 const LoginCallback = props => {
+    const appContext = useContext(AppContext);
     const parsedURL = qs.parse(props.location.search);
-    localStorage.setItem("userId", parsedURL.id);
-    localStorage.setItem("userEmail", parsedURL.email);
+    appContext.setUser(parsedURL.id, parsedURL.email);
+    appContext.checkAuthenticated();
     return <Redirect to={parsedURL.route} />;
 };
 

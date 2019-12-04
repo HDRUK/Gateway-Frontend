@@ -21,8 +21,26 @@ const AppContextProvider = props => {
         resultsLimit: 10
     });
 
-    const userEmail = localStorage.getItem("userEmail");
-    const userId = localStorage.getItem("userId");
+    const checkAuthenticated = () => {
+        if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
+            localStorage.setItem("authenticated", "false");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        } else {
+            localStorage.setItem("authenticated", "true");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        }
+    };
+
+    const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+
+    const setUser = (userId, userEmail) => {
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userEmail", userEmail);
+        setUserId(localStorage.getItem("userId"));
+        setUserEmail(localStorage.getItem("userEmail"));
+    };
 
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
@@ -259,8 +277,6 @@ const AppContextProvider = props => {
                 setFilterLocation,
                 setFilterId,
                 itemRef,
-                userId,
-                userEmail,
                 activeFilter,
                 addFilter,
                 removeFilter,
@@ -269,7 +285,13 @@ const AppContextProvider = props => {
                 filterObject,
                 setSearchResultId,
                 savedSearchesData,
-                insertSavedSearchesData
+                insertSavedSearchesData,
+                userId,
+                userEmail,
+                authenticated,
+                setUser,
+                setAuthenticated,
+                checkAuthenticated
             }}
         >
             {props.children}

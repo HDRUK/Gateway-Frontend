@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     Heading,
     DarkText,
@@ -9,6 +9,7 @@ import {
     LinkNoDecoration
 } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const textItems = {
     headingText: "Log in to access our datasets",
@@ -17,15 +18,22 @@ const textItems = {
 };
 
 const Login = () => {
+    const appContext = useContext(AppContext);
     return (
         <CenterBlock>
             <DarkText>
                 <Heading>{textItems.headingText}</Heading>
                 <MediumSpace />
                 <CenterBlock>
-                    <a href="/login">
-                        <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
-                    </a>
+                    {appContext.authenticated === "true" ? (
+                        <a href="/logout">
+                            <StyledButton kind="primary">Log out</StyledButton>
+                        </a>
+                    ) : (
+                        <a href="/login">
+                            <StyledButton kind="primary">Log in</StyledButton>
+                        </a>
+                    )}
                     <SmallSpace />
                     <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>

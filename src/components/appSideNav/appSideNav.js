@@ -21,6 +21,7 @@ const routes = [
         text: sideNavText.search
     },
     {
+        authenticationReq: true,
         path: "/my-searches",
         text: sideNavText.mySearches
     },
@@ -49,11 +50,15 @@ const AppSideNav = props => {
                     <Line />
                 </NavPadding>
                 <NavItems>
-                    {routes.map(route => (
-                        <LinkNoDecoration to={route.path} key={`route${route.path}`}>
-                            <SideNavLink>{route.text}</SideNavLink>
-                        </LinkNoDecoration>
-                    ))}
+                    {routes.map(route =>
+                        !route.authenticationReq || (route.authenticationReq && appContext.authenticated === "true") ? (
+                            <LinkNoDecoration to={route.path} key={`route${route.path}`}>
+                                <SideNavLink>{route.text}</SideNavLink>
+                            </LinkNoDecoration>
+                        ) : (
+                            <React.Fragment />
+                        )
+                    )}
                 </NavItems>
                 {props.filter && <FilterMenu></FilterMenu>}
             </MainSideNav>
