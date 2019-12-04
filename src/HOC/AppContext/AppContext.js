@@ -26,8 +26,11 @@ const AppContextProvider = props => {
 
     const [search, setSearch] = useState({
         term: null,
-        previousTerm: null
+        previousTerm: null,
+        latestSearchAuditLogId: null
     });
+
+    const [searchSaved, setSearchSaved] = useState(false);
 
     const [searchData, setSearchData] = useState({
         offSet: 0,
@@ -157,10 +160,11 @@ const AppContextProvider = props => {
     ];
 
     const insertSearchData = (length, newData) => {
+        const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
             ...searchData,
             length,
-            offset: newData.length,
+            offSet: newOffset < 10 ? 0 : newOffset - 10,
             data: [...newData]
         });
     };
@@ -180,7 +184,7 @@ const AppContextProvider = props => {
         });
     };
 
-    const returnSearchResults = value => {
+    const returnSearchResults = (value, searchSaved = false) => {
         !state.searchPageState &&
             setState({
                 ...state,
@@ -189,6 +193,14 @@ const AppContextProvider = props => {
         setSearch({
             ...search,
             term: value
+        });
+        setSearchSaved(searchSaved);
+    };
+
+    const updateSearchAuditLogId = id => {
+        setSearch({
+            ...search,
+            latestSearchAuditLogId: id
         });
     };
 
@@ -273,11 +285,14 @@ const AppContextProvider = props => {
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
-                userId,
+                searchSaved,
+                setSearchSaved,
                 setSearchResultId,
+                userId,
                 savedSearchesData,
                 insertSavedSearchesData,
-                removeSavedSearchData
+                removeSavedSearchData,
+                updateSearchAuditLogId
             }}
         >
             {props.children}

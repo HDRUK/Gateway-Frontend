@@ -12,7 +12,8 @@ import {
     Checkbox,
     DatePicker,
     DatePickerInput,
-    Loading
+    Loading,
+    InlineLoading
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -101,4 +102,10 @@ export const MainSideNav = styled(SideNav)`
 
 export const CenterLoading = styled(Loading)`
     margin: 0 auto 0;
+`;
+
+export const RightSmallInlineLoading = styled(InlineLoading)`
+    width: unset;
+    float: right;
+    font-size: 0.5rem;
 `;

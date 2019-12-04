@@ -15,6 +15,43 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
     }
 `;
 
+export const SEARCH_AUDIT_LOG_SAVE = gql`
+    mutation SearchAuditLogSave(
+        $userId: String!
+        $searchTerm: String!
+        $endPoint: String!
+        $offSet: Int!
+        $recordLimit: Int!
+        $sort: SortInput!
+        $filters: [FilterInput]
+    ) {
+        searchAuditLogSave(
+            userId: $userId
+            searchTerm: $searchTerm
+            endPoint: $endPoint
+            offSet: $offSet
+            recordLimit: $recordLimit
+            sort: $sort
+            filters: $filters
+        ) {
+            status
+            message
+            data {
+                id
+            }
+        }
+    }
+`;
+
+export const SEARCH_SAVE = gql`
+    mutation SearchSave($searchAuditId: String!, $userId: String!, $name: String) {
+        searchSave(searchAuditId: $searchAuditId, userId: $userId, name: $name) {
+            status
+            message
+        }
+    }
+`;
+
 export const GET_SEARCH_SAVED_BY_USER_ID = gql`
     query GetSearchSavedByUserId($userId: String!) {
         getSearchSavedByUserID(userId: $userId) {
@@ -27,6 +64,7 @@ export const GET_SEARCH_SAVED_BY_USER_ID = gql`
                 recordLimit
                 recordOffset
                 createdOn
+                name
                 filters {
                     type
                     value
