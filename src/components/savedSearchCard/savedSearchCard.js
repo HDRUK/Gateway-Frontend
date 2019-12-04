@@ -78,7 +78,7 @@ const SavedSearchCard = props => {
             </ContentDiv>
             <ButtonDiv>
                 {/* TODO: Replace delete button styling with styling from save search button */}
-                <SavedSearchButton kind="secondary" size="small" onClick={() => setDeleteModalStatus(true)}>
+                <SavedSearchButton kind="tertiary" size="small" onClick={() => setDeleteModalStatus(true)}>
                     {textItems.deleteSearch}
                 </SavedSearchButton>
                 <Link to={`/search`} onClick={() => runSearch(searchesData.detail)}>
