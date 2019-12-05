@@ -1,5 +1,13 @@
 import gql from "graphql-tag";
 
+export const DATASET_COUNT = gql`
+    {
+        hdrDataModelSearch {
+            count
+        }
+    }
+`;
+
 export const CATALOGUE_ITEMS_SEARCH = gql`
     query HdrCatalogueItemsSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
         hdrCatalogueItemsSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
@@ -17,7 +25,7 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
 
 export const SEARCH_AUDIT_LOG_SAVE = gql`
     mutation SearchAuditLogSave(
-        $userId: String!
+        $userId: String
         $searchTerm: String!
         $endPoint: String!
         $offSet: Int!

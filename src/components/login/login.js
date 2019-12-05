@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+
 import {
     Heading,
     DarkText,
@@ -9,22 +11,33 @@ import {
     LinkNoDecoration
 } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
+
+const heading = number => {
+    if (number) {
+        return {
+            headingText: `Enter to access our ${number} datasets`
+        };
+    }
+    return {
+        headingText: `Enter to access our datasets`
+    };
+};
 
 const textItems = {
-    headingText: "Enter to access our datasets",
     loginButton: "Log in",
     logoutButton: "Log out",
     continueButton: "Continue without logging in",
     loggedInContinueButton: "Continue"
 };
-
 const Login = () => {
     const appContext = useContext(AppContext);
+    appContext.useDatasetCount();
+    const datasetCount = appContext.state.datasetCount;
+
     return (
         <CenterBlock>
             <DarkText>
-                <Heading>{textItems.headingText}</Heading>
+                <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
 
                 {appContext.authenticated === "true" ? (

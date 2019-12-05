@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
+import { useQuery } from "@apollo/react-hooks";
+
+import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -14,11 +17,12 @@ const AppContextProvider = props => {
     const [state, setState] = useState({
         counter: 0,
         searchPageState: false,
+        resultsLimit: 10,
         modalVisibility: false,
         filterLocation: 0,
         windowScroll: 0,
-        searchResultId: null,
-        resultsLimit: 10
+        datasetCount: null,
+        searchResultId: null
     });
 
     const checkAuthenticated = () => {
@@ -195,6 +199,16 @@ const AppContextProvider = props => {
         });
     };
 
+    const useDatasetCount = () => {
+        const { loading, error, data } = useQuery(DATASET_COUNT);
+        if (loading || error) return null;
+        data.hdrDataModelSearch.count !== state.datasetCount &&
+            setState({
+                ...state,
+                datasetCount: data.hdrDataModelSearch.count
+            });
+    };
+
     const removeSavedSearchData = id => {
         const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
         setSavedSearchesData({
@@ -306,6 +320,7 @@ const AppContextProvider = props => {
                 searchSaved,
                 setSearchSaved,
                 setSearchResultId,
+                useDatasetCount,
                 userId,
                 savedSearchesData,
                 insertSavedSearchesData,
