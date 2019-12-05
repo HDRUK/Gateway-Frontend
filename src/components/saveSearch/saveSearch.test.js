@@ -9,7 +9,7 @@ import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
 
 import { Modal, TextInput } from "carbon-components-react";
-import { SaveSearchButton, RightSmallInlineLoading, NavErrorText } from "./styles.js";
+import { SaveSearchButton, RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 
 const textItems = {
     save: "Save",
@@ -82,7 +82,7 @@ describe("<SaveSearch> ", () => {
         expect(textInput.props.invalidText).toBe(textItems.error.tooLong);
 
         expect(typeof saveButton.props.onClick).toBe("function");
-        expect(saveButton.props.kind).toBe("primary");
+        expect(saveButton.props.kind).toBe("tertiary");
         expect(saveButton.props.disabled).toBe(false);
         expect(saveButton.props.status).toBe("active");
         expect(saveButton.props.size).toBe("small");

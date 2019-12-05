@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { SEARCH_SAVE } from "../../queries/queries.js";
 
 import { Modal, TextInput } from "carbon-components-react";
-import { SaveSearchButton } from "./styles.js";
+import { SaveSearchButton } from "../../styles/carbonComponents";
 import { NavErrorText } from "../../styles/styles.js";
 import { RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 
@@ -116,7 +116,7 @@ const SaveSearch = () => {
                 </Modal>
                 <SaveSearchButton
                     onClick={() => setModalOpen(true)}
-                    kind="primary"
+                    kind="tertiary"
                     disabled={searchSaved && !error && !searchSavedError.state ? true : false}
                     status={searchSaved ? "finished" : "active"}
                     size="small"

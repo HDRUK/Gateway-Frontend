@@ -195,6 +195,13 @@ const AppContextProvider = props => {
         });
     };
 
+    const removeSavedSearchData = id => {
+        const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
+        setSavedSearchesData({
+            data: [...newSavedSearchesData]
+        });
+    };
+
     const returnSearchResults = (value, searchSaved = false) => {
         !state.searchPageState &&
             setState({
@@ -307,6 +314,7 @@ const AppContextProvider = props => {
                 setUser,
                 setAuthenticated,
                 checkAuthenticated,
+                removeSavedSearchData,
                 updateSearchAuditLogId
             }}
         >

@@ -136,7 +136,8 @@ const context = {
     openFilterBox: jest.fn(),
     closeFilterBox: jest.fn(),
     setSearchResultId: jest.fn(),
-    setSearch: jest.fn()
+    setSearch: jest.fn(),
+    removeSavedSearchData: jest.fn()
 };
 
 export default context;
