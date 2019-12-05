@@ -20,12 +20,13 @@ const FilterMenu = () => {
     const activeFilter = appContext.activeFilter;
     const modalVisibility = appContext.state.modalVisibility;
     const searchTerm = appContext.search.term;
-    useEffect(() => {
-        modalVisibility && appContext.setFilterLocation();
-    });
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
         notifyOnNetworkStatusChange: true
+    });
+
+    useEffect(() => {
+        modalVisibility && appContext.setFilterLocation();
     });
 
     useEffect(() => {
@@ -66,8 +67,8 @@ const FilterMenu = () => {
                     appContext.setFilterId(i);
                 }}
             >
-                {filter.values ? (
-                    filter.values.length > 4 ? (
+                {filter.values &&
+                    (filter.values.length > 4 ? (
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
                         <div>
@@ -79,34 +80,23 @@ const FilterMenu = () => {
 
                             <FilterButton kind="primary">Apply</FilterButton>
                         </div>
-                    )
-                ) : (
-                    <DateSelector datePickerType="range" dateFormat="d/m/Y">
-                        <DateInput
-                            id="date-picker-input-id-start"
-                            labelText="From"
-                            placeholder="dd/mm/yyyy"
-                            invalidText="A valid value is required"
-                        />
-                        <DateInput
-                            id="date-picker-input-id-end"
-                            labelText="To"
-                            placeholder="dd/mm/yyyy"
-                            invalidText="A valid value is required"
-                        />
-                    </DateSelector>
-                )}
+                    ))}
             </AccordionElement>
         );
     };
 
     return (
         <AccordionBlock>
-            <FilterBlockTitle>Filter</FilterBlockTitle>
             {loading ? (
                 <div>Loading ...</div>
             ) : (
-                appContext.filterObject && appContext.filterObject.map((filter, i) => filterElement(filter, i))
+                appContext.filterObject &&
+                appContext.filterObject.length > 0 && (
+                    <React.Fragment>
+                        <FilterBlockTitle>Filter</FilterBlockTitle>
+                        {appContext.filterObject.map((filter, i) => filterElement(filter, i))}
+                    </React.Fragment>
+                )
             )}
             {error && <div>Error :(</div>}
         </AccordionBlock>
