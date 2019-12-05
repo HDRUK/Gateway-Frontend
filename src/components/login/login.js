@@ -15,11 +15,11 @@ import { StyledButton } from "../../styles/carbonComponents.js";
 const heading = number => {
     if (number !== null) {
         return {
-            headingText: `Log in to access our ${number} datasets`
+            headingText: `Enter to access our ${number} datasets`
         };
     }
     return {
-        headingText: `Log in to access our datasets`
+        headingText: `Enter to access our datasets`
     };
 };
 
@@ -31,7 +31,6 @@ const Login = () => {
     const appContext = useContext(AppContext);
     appContext.useDatasetCount();
     const datasetCount = appContext.state.datasetCount;
-    const loginUser = appContext.loginUser;
 
     return (
         <CenterBlock>
@@ -39,9 +38,15 @@ const Login = () => {
                 <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
                 <CenterBlock>
-                    <StyledButton kind="primary" onClick={loginUser}>
-                        {textItems.loginButton}
-                    </StyledButton>
+                    {appContext.authenticated === "true" ? (
+                        <a href="/logout">
+                            <StyledButton kind="primary">Log out</StyledButton>
+                        </a>
+                    ) : (
+                        <a href="/login">
+                            <StyledButton kind="primary">Log in</StyledButton>
+                        </a>
+                    )}
                     <SmallSpace />
                     <LinkNoDecoration to="/search">
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>

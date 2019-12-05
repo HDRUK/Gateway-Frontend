@@ -3,11 +3,14 @@ import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
-const colorTheme = {
+export const colorTheme = {
+    white: "#ffffff",
     lightText: "#979797",
     darkText: "#3c3c3b",
-    blueText: "#0062ff",
-    labelText: "#161616"
+    blueText: "#0f62fe",
+    darkBlue: "#002d9c",
+    labelText: "#161616",
+    error: "#da1e28"
 };
 
 export const Heading = styled.h1`
@@ -192,6 +195,7 @@ export const ContentWrapper = styled.div`
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
+    height: calc(100% - 17rem);
     min-height: 40rem;
     vertical-align: top;
 `;
@@ -384,4 +388,20 @@ export const FilterDiv = styled.div`
             top: ${props.location - 110}px;
             transition: 0s;
         `};
+`;
+
+export const ResultsWrapper = styled.div`
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 32rem;
+    max-height: calc(100vh - 17rem);
+    overflow: scroll;
+    padding: 0.25rem 1rem 0 1rem;
+`;
+
+export const NavErrorText = styled.div`
+    padding: 0.25rem 1rem;
+    font-size: 0.75rem;
+    color: ${colorTheme.error};
 `;

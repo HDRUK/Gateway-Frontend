@@ -12,10 +12,12 @@ import {
     Checkbox,
     DatePicker,
     DatePickerInput,
-    Loading
+    Loading,
+    InlineLoading
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
+import { colorTheme } from "./styles.js";
 
 export const StyledButton = styled(Button)`
     padding: 15px;
@@ -101,4 +103,29 @@ export const MainSideNav = styled(SideNav)`
 
 export const CenterLoading = styled(Loading)`
     margin: 0 auto 0;
+`;
+
+export const RightSmallInlineLoading = styled(InlineLoading)`
+    width: unset;
+    float: right;
+    font-size: 0.5rem;
+`;
+
+export const SaveSearchButton = styled(Button)`
+    width: 90%;
+    margin: 0.5rem auto 0;
+    padding: 0 1rem 0 1rem;
+
+    :disabled {
+        background-color: ${colorTheme.darkBlue};
+        border-color: ${colorTheme.darkBlue};
+        color: ${colorTheme.white};
+
+        :hover {
+            background-color: ${colorTheme.darkBlue};
+            border-color: ${colorTheme.darkBlue};
+            color: ${colorTheme.white};
+            outline-color: ${colorTheme.darkBlue};
+        }
+    }
 `;

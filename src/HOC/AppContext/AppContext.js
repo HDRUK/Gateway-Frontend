@@ -25,17 +25,46 @@ const AppContextProvider = props => {
         searchResultId: null
     });
 
+    const checkAuthenticated = () => {
+        if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
+            localStorage.setItem("authenticated", "false");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        } else {
+            localStorage.setItem("authenticated", "true");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        }
+    };
+
+    const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+
+    const setUser = (userId, userEmail, token) => {
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("token", token);
+        setUserId(localStorage.getItem("userId"));
+        setUserEmail(localStorage.getItem("userEmail"));
+    };
+
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
 
     const [search, setSearch] = useState({
         term: null,
-        previousTerm: null
+        previousTerm: null,
+        latestSearchAuditLogId: null
     });
+
+    const [searchSaved, setSearchSaved] = useState(false);
 
     const [searchData, setSearchData] = useState({
         offSet: 0,
         length: 0,
+        data: []
+    });
+
+    const [savedSearchesData, setSavedSearchesData] = useState({
         data: []
     });
 
@@ -154,10 +183,18 @@ const AppContextProvider = props => {
     ];
 
     const insertSearchData = (length, newData) => {
+        const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
             ...searchData,
             length,
-            offset: newData.length,
+            offSet: newOffset < 10 ? 0 : newOffset - 10,
+            data: [...newData]
+        });
+    };
+
+    const insertSavedSearchesData = newData => {
+        setSavedSearchesData({
+            ...savedSearchesData,
             data: [...newData]
         });
     };
@@ -172,7 +209,14 @@ const AppContextProvider = props => {
             });
     };
 
-    const returnSearchResults = value => {
+    const removeSavedSearchData = id => {
+        const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
+        setSavedSearchesData({
+            data: [...newSavedSearchesData]
+        });
+    };
+
+    const returnSearchResults = (value, searchSaved = false) => {
         !state.searchPageState &&
             setState({
                 ...state,
@@ -181,6 +225,14 @@ const AppContextProvider = props => {
         setSearch({
             ...search,
             term: value
+        });
+        setSearchSaved(searchSaved);
+    };
+
+    const updateSearchAuditLogId = id => {
+        setSearch({
+            ...search,
+            latestSearchAuditLogId: id
         });
     };
 
@@ -240,15 +292,6 @@ const AppContextProvider = props => {
         document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
-    const loginUser = () => {
-        fetch("/login")
-            .then(res => {
-                console.log("RES ", res.status);
-            })
-            .catch(err => {
-                console.log("ERROR ", err);
-            });
-    };
     return (
         <AppContext.Provider
             value={{
@@ -274,9 +317,20 @@ const AppContextProvider = props => {
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
+                searchSaved,
+                setSearchSaved,
                 setSearchResultId,
-                loginUser,
-                useDatasetCount
+                useDatasetCount,
+                userId,
+                savedSearchesData,
+                insertSavedSearchesData,
+                userEmail,
+                authenticated,
+                setUser,
+                setAuthenticated,
+                checkAuthenticated,
+                removeSavedSearchData,
+                updateSearchAuditLogId
             }}
         >
             {props.children}

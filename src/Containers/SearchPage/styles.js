@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ParagraphHeading } from "../../styles/styles.js";
+import { ParagraphHeading, ResultsWrapper } from "../../styles/styles.js";
 
 export const SearchHeading = styled(ParagraphHeading)`
     height: 0;
@@ -16,7 +16,6 @@ export const SearchBarWrapper = styled.div`
     text-align: center;
     transform: translateY(${p => (p.main ? "16rem" : "0")});
     transition: 0.7s;
-    z-index: 1;
 `;
 
 export const Results = styled.div`
@@ -24,16 +23,6 @@ export const Results = styled.div`
     transition: 0.8s;
     transition-delay: 0.5s;
     pointer-events: ${p => (p.invisible ? "none" : "unset")};
-`;
-
-export const ResultsWrapper = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    min-height: 32rem;
-    max-height: calc(100vh - 25rem);
-    overflow: scroll;
-    padding: 0.25rem 1rem 0 1rem;
 `;
 
 export const ResultsCounter = styled.div`
@@ -48,4 +37,8 @@ export const SortDiv = styled.div`
 
 export const SearchInfo = styled.div`
     padding: 0 1rem 0.5rem 1rem;
+`;
+
+export const SearchResultsWrapper = styled(ResultsWrapper)`
+    max-height: calc(100vh - 25.75rem);
 `;
