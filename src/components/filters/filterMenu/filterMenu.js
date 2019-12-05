@@ -6,24 +6,33 @@ import {
     DateInput,
     FilterButton
 } from "../../../styles/carbonComponents.js";
-import AppliedFilter from "../appliedFilter/appliedFilter.js";
+// import AppliedFilter from "../appliedFilter/appliedFilter.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
-import { useQuery } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 import { GET_FILTER_VALUES } from "../../../queries/queries.js";
 
 const FilterMenu = () => {
     const appContext = useContext(AppContext);
     const activeFilter = appContext.activeFilter;
     const modalVisibility = appContext.state.modalVisibility;
+    const searchTerm = appContext.search.term;
     useEffect(() => {
         modalVisibility && appContext.setFilterLocation();
     });
 
-    const { loading, error, data } = useQuery(GET_FILTER_VALUES);
+    const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
+        notifyOnNetworkStatusChange: true
+    });
+
+    useEffect(() => {
+        if (searchTerm) {
+            called ? refetch() : getFilterValues();
+        }
+    }, [searchTerm, called, refetch, getFilterValues]);
 
     useEffect(() => {
         if (data) {
@@ -31,8 +40,6 @@ const FilterMenu = () => {
                 name: filter.fieldName,
                 values: filter.fieldValues
             }));
-
-            console.log("dataObject", filtersArray);
             appContext.setFilterObject(filtersArray);
         }
     }, [data]);
@@ -64,7 +71,8 @@ const FilterMenu = () => {
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
                         <div>
-                            <AppliedFilter />
+                            {/* TODO: Implement applied filters */}
+                            {/* <AppliedFilter /> */}
                             {filter.values.map((value, i) => (
                                 <Filter key={`resultCard-${i}`} title={value} />
                             ))}
@@ -95,9 +103,12 @@ const FilterMenu = () => {
     return (
         <AccordionBlock>
             <FilterBlockTitle>Filter</FilterBlockTitle>
-            {loading && <div>Loading ...</div>}
+            {loading ? (
+                <div>Loading ...</div>
+            ) : (
+                appContext.filterObject && appContext.filterObject.map((filter, i) => filterElement(filter, i))
+            )}
             {error && <div>Error :(</div>}
-            {appContext.filterObject && appContext.filterObject.map((filter, i) => filterElement(filter, i))}
         </AccordionBlock>
     );
 };

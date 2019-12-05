@@ -13,8 +13,8 @@ const FilterBox = () => {
             <FilterBoxContent>
                 <ParagraphText>{filters.title}</ParagraphText>
                 <FilterBlock>
-                    {filters.values.map((filter, i) => (
-                        <Filter key={`resultCard-${i}`} title={filter.title} />
+                    {filters.values.map((value, i) => (
+                        <Filter key={`resultCard-${i}`} title={value} />
                     ))}
                 </FilterBlock>
             </FilterBoxContent>
