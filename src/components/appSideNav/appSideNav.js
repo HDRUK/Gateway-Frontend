@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { SideNavLink } from "carbon-components-react";
 import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import SaveSearch from "../../components/saveSearch/saveSearch.js";
 
 const sideNavText = {
     search: "Search",
@@ -60,7 +61,12 @@ const AppSideNav = props => {
                         )
                     )}
                 </NavItems>
-                {props.filter && <FilterMenu></FilterMenu>}
+                {props.filter && (
+                    <React.Fragment>
+                        <SaveSearch />
+                        <FilterMenu />
+                    </React.Fragment>
+                )}
             </MainSideNav>
         </div>
     );

@@ -10,12 +10,10 @@ const Search = props => {
     const returnSearchResults = appContext.returnSearchResults;
     return (
         <CenterBlock>
-            <div>
-                <LargeSpace />
-                <ParagraphHeading>{searchHeader}</ParagraphHeading>
-                <SmallSpace />
-                <SearchBar labelText="Search" onKeyPress={returnSearchResults} />
-            </div>
+            <LargeSpace />
+            <ParagraphHeading>{searchHeader}</ParagraphHeading>
+            <SmallSpace />
+            <SearchBar labelText="Search" onKeyPress={returnSearchResults} />
         </CenterBlock>
     );
 };

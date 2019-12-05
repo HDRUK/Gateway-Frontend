@@ -16,7 +16,6 @@ export const SearchBarWrapper = styled.div`
     text-align: center;
     transform: translateY(${p => (p.main ? "16rem" : "0")});
     transition: 0.7s;
-    z-index: 1;
 `;
 
 export const Results = styled.div`

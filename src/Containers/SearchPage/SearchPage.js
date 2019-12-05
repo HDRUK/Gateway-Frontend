@@ -14,13 +14,17 @@ import {
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
-import { useLazyQuery } from "@apollo/react-hooks";
+import { useLazyQuery, useMutation } from "@apollo/react-hooks";
 import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
+import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 
 const searchPageText = {
     search: "Search",
     results: "Results",
-    searchTitle: "What health data do you need?"
+    searchTitle: "What health data do you need?",
+    error: {
+        queryError: "Something went wrong. Please try again."
+    }
 };
 
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
@@ -62,7 +66,7 @@ const resultsData = (
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <div>{error.status} - Error :(</div>;
+    if (error) return <SearchResultsWrapper>{searchPageText.error.queryError}</SearchResultsWrapper>;
 
     const processedData = (data && data.data) || [];
 
@@ -103,10 +107,28 @@ const SearchPage = () => {
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
+    const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
+        onCompleted: data => {
+            appContext.updateSearchAuditLogId(data.searchAuditLogSave.data.id);
+        }
+    });
 
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            returnSearchResults(e.target.value);
+            // TODO: Add filters to the audit log save
+            // TODO: Implement sort functionality
+            searchAuditLogSave({
+                variables: {
+                    userId: appContext.userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: limit,
+                    sort: { applied: "Alphabetical", value: "Up" },
+                    filters: null
+                }
+            });
+            returnSearchResults(e.target.value, false);
             clearSearchData();
         }
     };
@@ -120,12 +142,12 @@ const SearchPage = () => {
                 });
 
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: offSet, searchTerm: searchTerm },
+                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
             }
-            if (!loading && !data && searchData.length === 0) {
+            if (!error && !loading && !data && searchData.length === 0) {
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
@@ -149,7 +171,7 @@ const SearchPage = () => {
     }, [data, loading]);
 
     const joinedLoading =
-        loading || networkStatus === 3 || (searchData.data.length < offSet && offSet + limit < searchData.length);
+        loading || networkStatus === 3 || (searchData.data.length === offSet && offSet < searchData.length);
 
     return (
         <div>

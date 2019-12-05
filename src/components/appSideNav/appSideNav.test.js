@@ -6,7 +6,10 @@ import { MainSideNav, NavItems } from "../../styles/carbonComponents.js";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
+import { MockedProvider } from "@apollo/react-testing";
+import apolloMock from "../../__mocks__/ApolloMock.js";
 import { Line, SmallHeading, SmallText } from "../../styles/styles.js";
+import SaveSearch from "../saveSearch/saveSearch.js";
 
 const sideNavText = {
     search: "Search",
@@ -46,11 +49,11 @@ describe("<AppSideNav> ", () => {
 
     beforeEach(() => {
         renderedComponent = create(
-            <MemoryRouter initialEntries={["/search"]}>
-                <AppContext.Provider value={context}>
+            <MockedProvider mocks={apolloMock} addTypename={false}>
+                <MemoryRouter initialEntries={["/search"]}>
                     <AppSideNav filter={false} />
-                </AppContext.Provider>
-            </MemoryRouter>
+                </MemoryRouter>
+            </MockedProvider>
         );
         renderedOutput = renderedComponent.root;
     });
@@ -89,18 +92,24 @@ describe("<AppSideNav> with filters", () => {
 
     beforeEach(() => {
         renderedComponent = create(
-            <AppContext.Provider value={context}>
-                <MemoryRouter initialEntries={["/search"]}>
-                    <AppSideNav filter={true} />
-                </MemoryRouter>
-            </AppContext.Provider>
+            <MockedProvider mocks={apolloMock} addTypename={false}>
+                <AppContext.Provider value={context}>
+                    <MemoryRouter initialEntries={["/search"]}>
+                        <AppSideNav filter={true} />
+                    </MemoryRouter>
+                </AppContext.Provider>
+            </MockedProvider>
         );
         renderedOutput = renderedComponent.root;
     });
     it("should render AppSideNav components", () => {
         const mainSideNav = renderedOutput.findByType(MainSideNav);
         const components = mainSideNav.props.children;
-        const filterMenu = components[2];
+        const filterMenuFragment = components[2];
+        expect(filterMenuFragment.type).toEqual(React.Fragment);
+        const saveSearch = filterMenuFragment.props.children[0];
+        expect(saveSearch.type).toEqual(SaveSearch);
+        const filterMenu = filterMenuFragment.props.children[1];
         expect(filterMenu.type).toEqual(FilterMenu);
     });
 });
