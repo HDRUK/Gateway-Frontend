@@ -3,9 +3,17 @@ import PropTypes from "prop-types";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { Link } from "react-router-dom";
 import { Tag, Modal } from "carbon-components-react";
-import { CenterLoading } from "../../styles/carbonComponents.js";
+import { RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 import { Card } from "../../styles/styles.js";
-import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle, CardLoadingBox } from "./styles.js";
+import {
+    ContentDiv,
+    ButtonDiv,
+    SavedSearchButton,
+    SavedSearchTitle,
+    CardLoadingBox,
+    DeleteSearchButton,
+    InlineButtonText
+} from "./styles.js";
 import LabeledContent from "../../components/labeledContent/labeledContent.js";
 import { useMutation } from "@apollo/react-hooks";
 import { DELETE_SAVED_SEARCH } from "../../queries/queries.js";
@@ -25,24 +33,21 @@ const SavedSearchCard = props => {
     const runSearch = appContext.returnSearchResults;
     const searchesData = appContext.savedSearchesData.data && appContext.savedSearchesData.data[props.savedSearchIndex];
     const removeSavedSearchData = appContext.removeSavedSearchData;
+    const [searchDeleted, setSearchDeleted] = useState(false);
     const [deleteModalStatus, setDeleteModalStatus] = useState(false);
-    const [deleteSearchQuery, { error, loading, data }] = useMutation(DELETE_SAVED_SEARCH);
+    const [deleteSearchQuery, { error, loading, data }] = useMutation(DELETE_SAVED_SEARCH, {
+        onCompleted: data => setSearchDeleted(true)
+    });
 
     const confirmDelete = async id => {
-        deleteSearchQuery({ variables: { ID: id } });
+        await deleteSearchQuery({ variables: { ID: id } });
         removeSavedSearchData(id);
     };
-
-    // console.log("stuff", error, loading, searchesData, data);
 
     return (
         <Card>
             {/* TODO: Use inline loading on the delete button, styling from save search button */}
-            {loading && (
-                <CardLoadingBox>
-                    <CenterLoading withOverlay={false} />
-                </CardLoadingBox>
-            )}
+            {loading && <CardLoadingBox />}
             <Modal
                 kind="secondary"
                 danger={true}
@@ -52,7 +57,7 @@ const SavedSearchCard = props => {
                 hasScrollingContent={false}
                 modalHeading={searchesData.name || searchesData.detail}
                 modalLabel={textItems.deleteSearch}
-                aria-label="A label to be read by screen readers on the modal root node"
+                aria-label="Delete saved search confirmation"
                 secondaryButtonText={textItems.cancel}
                 onBlur={() => setDeleteModalStatus(false)}
                 onRequestClose={() => setDeleteModalStatus(false)}
@@ -80,9 +85,15 @@ const SavedSearchCard = props => {
             </ContentDiv>
             <ButtonDiv>
                 {/* TODO: Replace delete button styling with styling from save search button */}
-                <SavedSearchButton kind="tertiary" size="small" onClick={() => setDeleteModalStatus(true)}>
-                    {textItems.deleteSearch}
-                </SavedSearchButton>
+                <DeleteSearchButton
+                    kind="tertiary"
+                    size="small"
+                    onClick={() => setDeleteModalStatus(true)}
+                    status={searchDeleted ? "finished" : "active"}
+                >
+                    <InlineButtonText>{textItems.deleteSearch}</InlineButtonText>
+                    {loading && <RightSmallInlineLoading />}
+                </DeleteSearchButton>
                 <Link to={`/search`} onClick={() => runSearch(searchesData.detail)}>
                     <SavedSearchButton kind="primary" size="small">
                         {textItems.runSearch}

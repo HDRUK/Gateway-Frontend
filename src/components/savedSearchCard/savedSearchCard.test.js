@@ -10,9 +10,16 @@ import { Link } from "react-router-dom";
 import SavedSearchCard from "./savedSearchCard";
 import LabeledContent from "../../components/labeledContent/labeledContent.js";
 import { Tag, Modal } from "carbon-components-react";
-import { CenterLoading } from "../../styles/carbonComponents.js";
+import { RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 import { Card } from "../../styles/styles.js";
-import { ContentDiv, ButtonDiv, SavedSearchButton, SavedSearchTitle, CardLoadingBox } from "./styles.js";
+import {
+    ContentDiv,
+    ButtonDiv,
+    SavedSearchTitle,
+    CardLoadingBox,
+    DeleteSearchButton,
+    InlineButtonText
+} from "./styles.js";
 
 const textItems = {
     delete: "Delete",
@@ -109,7 +116,7 @@ describe("<SavedSearchCard> ", () => {
         expect(modal.props.hasScrollingContent).toBe(false);
         expect(modal.props.modalHeading).toBe(searchName);
         expect(modal.props.modalLabel).toBe(textItems.deleteSearch);
-        expect(modal.props["aria-label"]).toBe("A label to be read by screen readers on the modal root node");
+        expect(modal.props["aria-label"]).toBe("Delete saved search confirmation");
         expect(modal.props.secondaryButtonText).toBe(textItems.cancel);
         expect(typeof modal.props.onBlur).toBe("function");
         expect(typeof modal.props.onRequestClose).toBe("function");
