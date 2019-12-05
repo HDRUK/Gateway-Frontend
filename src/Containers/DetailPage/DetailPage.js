@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { CenterLoading, StyledButton } from "../../styles/carbonComponents";
+import { CenterLoading } from "../../styles/carbonComponents";
 import {
     Heading,
     SmallSpace,

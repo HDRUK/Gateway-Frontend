@@ -50,9 +50,11 @@ describe("<AppSideNav> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
-                <MemoryRouter initialEntries={["/search"]}>
-                    <AppSideNav filter={false} />
-                </MemoryRouter>
+                <AppContext.Provider value={context}>
+                    <MemoryRouter initialEntries={["/search"]}>
+                        <AppSideNav filter={false} />
+                    </MemoryRouter>
+                </AppContext.Provider>
             </MockedProvider>
         );
         renderedOutput = renderedComponent.root;

@@ -18,7 +18,7 @@ import context from "../../__mocks__/AppContextMock.js";
 
 const loginText = {
     headingText: "Log in to access our datasets",
-    loginButton: "Log in",
+    loginButton: "Log out",
     continueButton: "Continue without logging in"
 };
 

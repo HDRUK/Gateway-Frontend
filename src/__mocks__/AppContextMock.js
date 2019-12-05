@@ -30,7 +30,7 @@ const context = {
     },
 
     userEmail: "test@test.com",
-
+    authenticated: "true",
     userId: "test",
 
     filterObject: [
