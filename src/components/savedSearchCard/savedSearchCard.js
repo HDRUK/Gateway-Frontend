@@ -35,7 +35,7 @@ const SavedSearchCard = props => {
     const removeSavedSearchData = appContext.removeSavedSearchData;
     const [searchDeleted, setSearchDeleted] = useState(false);
     const [deleteModalStatus, setDeleteModalStatus] = useState(false);
-    const [deleteSearchQuery, { error, loading, data }] = useMutation(DELETE_SAVED_SEARCH, {
+    const [deleteSearchQuery, { loading }] = useMutation(DELETE_SAVED_SEARCH, {
         onCompleted: data => setSearchDeleted(true)
     });
 
