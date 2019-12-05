@@ -12,9 +12,11 @@ import { StyledButton } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const textItems = {
-    headingText: "Log in to access our datasets",
+    headingText: "Enter to access our datasets",
     loginButton: "Log in",
-    continueButton: "Continue without logging in"
+    logoutButton: "Log out",
+    continueButton: "Continue without logging in",
+    loggedInContinueButton: "Continue"
 };
 
 const Login = () => {
@@ -24,21 +26,29 @@ const Login = () => {
             <DarkText>
                 <Heading>{textItems.headingText}</Heading>
                 <MediumSpace />
-                <CenterBlock>
-                    {appContext.authenticated === "true" ? (
+
+                {appContext.authenticated === "true" ? (
+                    <CenterBlock>
                         <a href="/logout">
-                            <StyledButton kind="primary">Log out</StyledButton>
+                            <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
                         </a>
-                    ) : (
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.loggedInContinueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                ) : (
+                    <CenterBlock>
                         <a href="/login">
-                            <StyledButton kind="primary">Log in</StyledButton>
+                            <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
                         </a>
-                    )}
-                    <SmallSpace />
-                    <LinkNoDecoration to="/search">
-                        <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                    </LinkNoDecoration>
-                </CenterBlock>
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                )}
+
                 <LargeSpace />
             </DarkText>
         </CenterBlock>
