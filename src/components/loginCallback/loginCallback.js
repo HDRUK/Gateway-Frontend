@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 const LoginCallback = props => {
     const appContext = useContext(AppContext);
     const parsedURL = qs.parse(props.location.search);
-    appContext.setUser(parsedURL.id, parsedURL.email);
+    appContext.setUser(parsedURL.id, parsedURL.email, parsedURL.token);
     appContext.checkAuthenticated();
     return <Redirect to={parsedURL.route} />;
 };

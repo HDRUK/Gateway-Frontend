@@ -35,9 +35,10 @@ const AppContextProvider = props => {
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
     const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
 
-    const setUser = (userId, userEmail) => {
+    const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
         localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("token", token);
         setUserId(localStorage.getItem("userId"));
         setUserEmail(localStorage.getItem("userEmail"));
     };
