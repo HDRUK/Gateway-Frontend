@@ -115,3 +115,16 @@ export const DELETE_SAVED_SEARCH = gql`
         }
     }
 `;
+
+export const GET_FILTER_VALUES = gql`
+    query GetFilterValues {
+        hdrFilterValues {
+            status
+            message
+            data {
+                fieldName
+                fieldValues
+            }
+        }
+    }
+`;
