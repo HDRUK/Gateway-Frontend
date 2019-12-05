@@ -13,7 +13,7 @@ import {
 import { StyledButton } from "../../styles/carbonComponents.js";
 
 const heading = number => {
-    if (number !== null) {
+    if (number) {
         return {
             headingText: `Enter to access our ${number} datasets`
         };
