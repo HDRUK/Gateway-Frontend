@@ -17,7 +17,7 @@ export const CATALOGUE_ITEMS_SEARCH = gql`
 
 export const SEARCH_AUDIT_LOG_SAVE = gql`
     mutation SearchAuditLogSave(
-        $userId: String!
+        $userId: String
         $searchTerm: String!
         $endPoint: String!
         $offSet: Int!
