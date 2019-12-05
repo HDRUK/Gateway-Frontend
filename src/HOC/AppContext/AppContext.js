@@ -178,7 +178,6 @@ const AppContextProvider = props => {
 
     const removeSavedSearchData = id => {
         const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
-        console.log("DATA COMPARE", savedSearchesData.data, newSavedSearchesData);
         setSavedSearchesData({
             data: [...newSavedSearchesData]
         });
