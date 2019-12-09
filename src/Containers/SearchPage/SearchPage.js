@@ -164,7 +164,11 @@ const SearchPage = () => {
                 data.hdrCatalogueItemsSearch.data
             );
         } else if (!loading && !data && searchTerm !== null) {
-            clearSearchData();
+            appContext.setSearchData({
+                ...searchData,
+                length: 0,
+                data: []
+            });
         }
         // We don't want this effect to run everytime appContext is updated, therefore not including in dependencies.
         // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -17,7 +17,6 @@ const sideNavText = {
     browse: "Browse",
     about: "About",
     help: "Help",
-    username: "Marie Curie",
     company: "UK Government"
 };
 
@@ -51,9 +50,11 @@ describe("<AppSideNav> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
-                <MemoryRouter initialEntries={["/search"]}>
-                    <AppSideNav filter={false} />
-                </MemoryRouter>
+                <AppContext.Provider value={context}>
+                    <MemoryRouter initialEntries={["/search"]}>
+                        <AppSideNav filter={false} />
+                    </MemoryRouter>
+                </AppContext.Provider>
             </MockedProvider>
         );
         renderedOutput = renderedComponent.root;
@@ -70,7 +71,7 @@ describe("<AppSideNav> ", () => {
         const navPadding = components[0];
         const navPaddingComponents = navPadding.props.children;
         expect(navPaddingComponents[0].type).toEqual(SmallHeading);
-        expect(navPaddingComponents[0].props.children).toEqual(sideNavText.username);
+        expect(navPaddingComponents[0].props.children).toEqual(context.userEmail);
         expect(navPaddingComponents[1].type).toEqual(SmallText);
         expect(navPaddingComponents[1].props.children).toEqual(sideNavText.company);
         expect(navPaddingComponents[2].type).toEqual(Line);

@@ -17,9 +17,11 @@ import { AppContext } from "../../HOC/AppContext/AppContext";
 import context from "../../__mocks__/AppContextMock.js";
 
 const loginText = {
-    headingText: "Log in to access our datasets",
+    headingText: "Enter to access our datasets",
     loginButton: "Log in",
-    continueButton: "Continue without logging in"
+    logoutButton: "Log out",
+    continueButton: "Continue without logging in",
+    loggedInContinueButton: "Continue"
 };
 
 describe("<Login> ", () => {
@@ -60,7 +62,7 @@ describe("<Login> ", () => {
             expect(centerBlock2Content[0].type).toBe("a");
             const primaryButton = centerBlock2Content[0].props.children;
             expect(primaryButton.props.kind).toEqual("primary");
-            expect(primaryButton.props.children).toEqual(loginText.loginButton);
+            expect(primaryButton.props.children).toEqual(loginText.logoutButton);
 
             expect(centerBlock2Content[1].type).toEqual(SmallSpace);
             expect(centerBlock2Content[2].type).toEqual(LinkNoDecoration);
@@ -69,7 +71,7 @@ describe("<Login> ", () => {
             const secondaryButton = centerBlock2Content[2].props.children;
             expect(secondaryButton.type).toEqual(StyledButton);
             expect(secondaryButton.props.kind).toEqual("secondary");
-            expect(secondaryButton.props.children).toEqual(loginText.continueButton);
+            expect(secondaryButton.props.children).toEqual(loginText.loggedInContinueButton);
         });
     });
 });

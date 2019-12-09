@@ -5,6 +5,8 @@ import Header from "./header.js";
 import { InvertedHeaderHeading, HeaderImage } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import hdr_logo_white from "../../assets/hdruk_logo_white.png";
+import { AppContext } from "../../HOC/AppContext/AppContext";
+import context from "../../__mocks__/AppContextMock.js";
 
 describe("<Header> ", () => {
     let renderedComponent;
@@ -13,7 +15,9 @@ describe("<Header> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MemoryRouter>
-                <Header image={hdr_logo_white} headerText="Title" />
+                <AppContext.Provider value={context}>
+                    <Header image={hdr_logo_white} headerText="Title" />
+                </AppContext.Provider>
             </MemoryRouter>
         );
         renderedOutput = renderedComponent.root;
@@ -30,8 +34,8 @@ describe("<Header> ", () => {
             const imageDestination = link.props.to;
             expect(imageDestination).toBe("/");
 
-            const header = wrapper.findByType(InvertedHeaderHeading);
-            expect(header.children[0].props.children).toBe("Innovation Gateway");
+            const header = wrapper.findAllByType(InvertedHeaderHeading);
+            expect(header[0].children[0].props.children).toBe("Innovation Gateway");
         });
     });
 });

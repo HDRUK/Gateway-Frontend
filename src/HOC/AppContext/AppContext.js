@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
+import { useQuery } from "@apollo/react-hooks";
+
+import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -14,12 +17,35 @@ const AppContextProvider = props => {
     const [state, setState] = useState({
         counter: 0,
         searchPageState: false,
+        resultsLimit: 10,
         modalVisibility: false,
         filterLocation: 0,
         windowScroll: 0,
-        searchResultId: null,
-        resultsLimit: 10
+        datasetCount: null,
+        searchResultId: null
     });
+
+    const checkAuthenticated = () => {
+        if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
+            localStorage.setItem("authenticated", "false");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        } else {
+            localStorage.setItem("authenticated", "true");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        }
+    };
+
+    const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+
+    const setUser = (userId, userEmail, token) => {
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("token", token);
+        setUserId(localStorage.getItem("userId"));
+        setUserEmail(localStorage.getItem("userEmail"));
+    };
 
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
@@ -41,9 +67,6 @@ const AppContextProvider = props => {
     const [savedSearchesData, setSavedSearchesData] = useState({
         data: []
     });
-
-    // TODO: Temporary userId to be replaced when login is implemented.
-    const [userId] = useState("TimTest");
 
     const newsItems = {
         newsItemOne: {
@@ -176,6 +199,16 @@ const AppContextProvider = props => {
         });
     };
 
+    const useDatasetCount = () => {
+        const { loading, error, data } = useQuery(DATASET_COUNT);
+        if (loading || error) return null;
+        data.hdrDataModelSearch.count !== state.datasetCount &&
+            setState({
+                ...state,
+                datasetCount: data.hdrDataModelSearch.count
+            });
+    };
+
     const removeSavedSearchData = id => {
         const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
         setSavedSearchesData({
@@ -287,9 +320,15 @@ const AppContextProvider = props => {
                 searchSaved,
                 setSearchSaved,
                 setSearchResultId,
+                useDatasetCount,
                 userId,
                 savedSearchesData,
                 insertSavedSearchesData,
+                userEmail,
+                authenticated,
+                setUser,
+                setAuthenticated,
+                checkAuthenticated,
                 removeSavedSearchData,
                 updateSearchAuditLogId
             }}
