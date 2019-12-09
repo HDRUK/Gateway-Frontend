@@ -112,6 +112,7 @@ const AppContextProvider = props => {
     const [filterObject, setFilterObject] = useState([]);
     const [newFilterObject, setNewFilterObject] = useState({});
     const [filterString, setFilterString] = useState("");
+    const [prevFilterString, setPrevFilterString] = useState("");
 
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
@@ -266,7 +267,9 @@ const AppContextProvider = props => {
                 newFilterObject,
                 setNewFilterObject,
                 filterString,
-                setFilterString
+                setFilterString,
+                prevFilterString,
+                setPrevFilterString
             }}
         >
             {props.children}

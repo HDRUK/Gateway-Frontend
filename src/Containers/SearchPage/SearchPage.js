@@ -107,6 +107,7 @@ const SearchPage = () => {
     const dataLength = searchData ? searchData.length : "0";
     const offSet = searchData.offSet;
     const limit = appContext.state.resultsLimit;
+    const filterString = appContext.filterString;
 
     const clearSearchData = appContext.clearSearchData;
     const setOffSet = appContext.setOffSet;
@@ -148,6 +149,20 @@ const SearchPage = () => {
 
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
+                    fetchPolicy: "cache-and-network",
+                    notifyOnNetworkStatusChange: true
+                });
+            } else if (filterString !== null && filterString !== appContext.prevFilterString) {
+                appContext.setPrevFilterString(filterString);
+                console.log("filterString", filterString);
+                clearSearchData();
+                getItemsSearch({
+                    variables: {
+                        recordLimit: limit,
+                        recordOffset: 0,
+                        searchTerm: searchTerm,
+                        filterItems: [filterString]
+                    },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });

@@ -22,7 +22,7 @@ const FilterMenu = () => {
     const searchTerm = appContext.search.term;
     const newFilterObject = appContext.newFilterObject;
     const setNewFilterObject = appContext.setNewFilterObject;
-    const filterString = appContext.filterString;
+    // const filterString = appContext.filterString;
     const setFilterString = appContext.setFilterString;
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {

@@ -9,8 +9,13 @@ export const DATASET_COUNT = gql`
 `;
 
 export const CUSTOM_SEARCH = gql`
-    query HdrCustomSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
-        hdrCustomSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
+    query HdrCustomSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!, $filterItems: [String]) {
+        hdrCustomSearch(
+            recordLimit: $recordLimit
+            recordOffset: $recordOffset
+            searchTerm: $searchTerm
+            filterItems: $filterItems
+        ) {
             status
             message
             count
