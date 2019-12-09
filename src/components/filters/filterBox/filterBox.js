@@ -3,6 +3,7 @@ import { StyledButton } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
+import { Tag } from "carbon-components-react";
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
@@ -14,6 +15,11 @@ const FilterBox = () => {
             <Triangle />
             <FilterBoxContent>
                 <ParagraphText>{filterKey}</ParagraphText>
+                <div>
+                    {Object.keys(values).map(
+                        valueI => values[valueI].applied && <Tag type="blue">{values[valueI].value}</Tag>
+                    )}
+                </div>
                 <FilterBlock>
                     {Object.keys(values).map((valueIndex, i) => (
                         <Filter
