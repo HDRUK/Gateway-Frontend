@@ -1,9 +1,7 @@
 import React from "react";
 import { SmallSpace, DarkText } from "../../styles/styles";
 
-import { withRouter } from "react-router-dom";
-
-const NotFound = props => {
+const NotFound = () => {
     return (
         <React.Fragment>
             <SmallSpace>
@@ -13,4 +11,4 @@ const NotFound = props => {
     );
 };
 
-export default withRouter(NotFound);
+export default NotFound;
