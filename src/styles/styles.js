@@ -354,9 +354,11 @@ export const FilterBoxContent = styled.div`
 `;
 
 export const FilterBlock = styled.div`
-    flex-wrap: wrap;
-    display: inline-flex;
-    flex-direction: column;
+    /* flex-wrap: wrap; */
+    display: inline-block;
+    overflow-x: none;
+    overflow-y: auto;
+    /* flex-direction: column; */
     max-height: 7rem;
     > div {
         margin-top: 0 !important;

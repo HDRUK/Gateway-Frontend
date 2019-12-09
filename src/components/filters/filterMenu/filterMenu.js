@@ -74,35 +74,6 @@ const FilterMenu = () => {
         console.log("appliedFilters:", finalFilterString);
     }, [newFilterObject, setNewFilterObject, setFilterString]);
 
-    const handleChange = (filter, valueIndex) => {
-        const filterValue = newFilterObject[filter][valueIndex];
-
-        setNewFilterObject({
-            ...newFilterObject,
-            [filter]: {
-                ...newFilterObject[filter],
-                [valueIndex]: {
-                    ...filterValue,
-                    checked: !filterValue.checked
-                }
-            }
-        });
-    };
-
-    const handleSubmit = filter => {
-        let filterValues = Object.keys(newFilterObject[filter]).map(valueIndex => ({
-            ...newFilterObject[filter][valueIndex],
-            applied: newFilterObject[filter][valueIndex].checked
-        }));
-
-        setNewFilterObject({
-            ...newFilterObject,
-            [filter]: {
-                ...filterValues
-            }
-        });
-    };
-
     const filterElement = (filterKey, filterValues, i) => {
         const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
@@ -140,11 +111,11 @@ const FilterMenu = () => {
                                 <Filter
                                     key={`resultCard-${i}`}
                                     title={filterValues[valueIndex].value}
-                                    onChange={() => handleChange(filterKey, valueIndex)}
+                                    onChange={() => appContext.checkFilters(filterKey, valueIndex)}
                                 />
                             ))}
 
-                            <FilterButton kind="primary" onClick={() => handleSubmit(filterKey)}>
+                            <FilterButton kind="primary" onClick={() => appContext.applyFilter(filterKey)}>
                                 Apply
                             </FilterButton>
                         </form>

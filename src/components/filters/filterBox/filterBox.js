@@ -6,21 +6,38 @@ import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
-    const filters = appContext.filterObject.find((filter, i) => i === appContext.activeFilter);
+    const filterKey = Object.keys(appContext.newFilterObject).find((key, i) => i === appContext.activeFilter);
+    const values = appContext.newFilterObject[filterKey];
+
     return (
         <React.Fragment>
             <Triangle />
             <FilterBoxContent>
-                <ParagraphText>{filters.title}</ParagraphText>
+                <ParagraphText>{filterKey}</ParagraphText>
                 <FilterBlock>
-                    {filters.values.map((value, i) => (
-                        <Filter key={`resultCard-${i}`} title={value} />
+                    {Object.keys(values).map((valueIndex, i) => (
+                        <Filter
+                            key={`resultCard-${i}`}
+                            title={values[valueIndex].value}
+                            defaultChecked={values[valueIndex].checked}
+                            onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                        />
                     ))}
                 </FilterBlock>
             </FilterBoxContent>
             <ButtonSet>
-                <StyledButton kind="secondary">Cancel</StyledButton>
-                <StyledButton kind="primary">Apply</StyledButton>
+                <StyledButton kind="secondary" onClick={appContext.closeFilterBox}>
+                    Cancel
+                </StyledButton>
+                <StyledButton
+                    kind="primary"
+                    onClick={() => {
+                        appContext.applyFilter(filterKey);
+                        appContext.closeFilterBox();
+                    }}
+                >
+                    Apply
+                </StyledButton>
             </ButtonSet>
         </React.Fragment>
     );

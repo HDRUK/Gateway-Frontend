@@ -114,6 +114,35 @@ const AppContextProvider = props => {
     const [filterString, setFilterString] = useState("");
     const [prevFilterString, setPrevFilterString] = useState("");
 
+    const checkFilters = (filter, valueIndex) => {
+        const filterValue = newFilterObject[filter][valueIndex];
+
+        setNewFilterObject({
+            ...newFilterObject,
+            [filter]: {
+                ...newFilterObject[filter],
+                [valueIndex]: {
+                    ...filterValue,
+                    checked: !filterValue.checked
+                }
+            }
+        });
+    };
+
+    const applyFilter = filter => {
+        const filterValues = Object.keys(newFilterObject[filter]).map(valueIndex => ({
+            ...newFilterObject[filter][valueIndex],
+            applied: newFilterObject[filter][valueIndex].checked
+        }));
+
+        setNewFilterObject({
+            ...newFilterObject,
+            [filter]: {
+                ...filterValues
+            }
+        });
+    };
+
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
@@ -269,7 +298,9 @@ const AppContextProvider = props => {
                 filterString,
                 setFilterString,
                 prevFilterString,
-                setPrevFilterString
+                setPrevFilterString,
+                applyFilter,
+                checkFilters
             }}
         >
             {props.children}
