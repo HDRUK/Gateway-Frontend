@@ -6,6 +6,7 @@ import {
     // DateInput,
     FilterButton
 } from "../../../styles/carbonComponents.js";
+import { Tag } from "carbon-components-react";
 // import AppliedFilter from "../appliedFilter/appliedFilter.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
@@ -105,15 +106,21 @@ const FilterMenu = () => {
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
                         <form>
-                            {/* TODO: Implement applied filters */}
-                            {/* <AppliedFilter /> */}
-                            {Object.keys(filterValues).map((valueIndex, i) => (
-                                <Filter
-                                    key={`resultCard-${i}`}
-                                    title={filterValues[valueIndex].value}
-                                    onChange={() => appContext.checkFilters(filterKey, valueIndex)}
-                                />
-                            ))}
+                            {Object.keys(filterValues).map(
+                                valueI =>
+                                    filterValues[valueI].applied && <Tag type="blue">{filterValues[valueI].value}</Tag>
+                            )}
+                            {Object.keys(filterValues).map((valueIndex, i) => {
+                                return (
+                                    <React.Fragment>
+                                        <Filter
+                                            key={`resultCard-${i}`}
+                                            title={filterValues[valueIndex].value}
+                                            onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                                        />
+                                    </React.Fragment>
+                                );
+                            })}
 
                             <FilterButton kind="primary" onClick={() => appContext.applyFilter(filterKey)}>
                                 Apply
