@@ -49,6 +49,7 @@ const AppContextProvider = props => {
 
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
+    const [detailData, setDetailData] = useState([]);
 
     const [search, setSearch] = useState({
         term: null,
@@ -330,7 +331,9 @@ const AppContextProvider = props => {
                 setAuthenticated,
                 checkAuthenticated,
                 removeSavedSearchData,
-                updateSearchAuditLogId
+                updateSearchAuditLogId,
+                detailData,
+                setDetailData
             }}
         >
             {props.children}

@@ -31,21 +31,21 @@ const DetailPage = props => {
     if (loading) return <CenterLoading />;
     if (error) return <div>Error :(</div>;
 
+    data && appContext.setDetailData(data.hdrDataModelID.data);
+
     return (
         <React.Fragment>
             {data && (
                 <SmallSpace>
                     <DarkText>
-                        <StyledHeading>
-                            {data.hdrDataModelID.data.label && data.hdrDataModelID.data.label}
-                        </StyledHeading>
+                        <StyledHeading>{data.hdrDataModelID.data.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
                         <NewStyledButton>Request Access</NewStyledButton>
                         <TinySpace />
                         <InfoGrid>
                             <GridItem>
                                 <TinyText>
-                                    <LightText>AUTHOR</LightText>
+                                    <LightText>RELEASE DATE</LightText>
                                 </TinyText>
                                 <StyledSmallBoldText>
                                     {data.hdrDataModelID.data.author && data.hdrDataModelID.data.author}
@@ -53,7 +53,7 @@ const DetailPage = props => {
                             </GridItem>
                             <GridItem>
                                 <TinyText>
-                                    <LightText>ORGANISATION</LightText>
+                                    <LightText>PUBLISHER</LightText>
                                 </TinyText>
                                 <StyledSmallBoldText>
                                     {data.hdrDataModelID.data.organisation && data.hdrDataModelID.data.organisation}
@@ -65,7 +65,6 @@ const DetailPage = props => {
                             {data.hdrDataModelID.data.description && data.hdrDataModelID.data.description}
                         </StyledSmallText>
                         <TinySpace />
-                        <InfoCard link="Link to Metadata Catalogue URL"></InfoCard>
                         <StyledHeading>Data Access</StyledHeading>
                         <TinySpace />
                         <InfoCard
