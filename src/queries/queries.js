@@ -1,15 +1,25 @@
 import gql from "graphql-tag";
 
-export const CATALOGUE_ITEMS_SEARCH = gql`
-    query HdrCatalogueItemsSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
-        hdrCatalogueItemsSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
+export const DATASET_COUNT = gql`
+    {
+        hdrDataModelSearch {
+            count
+        }
+    }
+`;
+
+export const CUSTOM_SEARCH = gql`
+    query HdrCustomSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
+        hdrCustomSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
             status
             message
             count
             data {
                 id
-                description
-                label
+                title
+                abstract
+                releaseDate
+                publisher
             }
         }
     }

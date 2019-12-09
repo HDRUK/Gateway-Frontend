@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
 
-import { CATALOGUE_ITEMS_SEARCH } from "../queries/queries.js";
+import { CUSTOM_SEARCH } from "../queries/queries.js";
 import { GET_SEARCH_SAVED_BY_USER_ID } from "../queries/queries.js";
 
 const GET_SEARCH_AUDIT_LOG = gql`
@@ -37,10 +37,10 @@ const mocks = [
         }
     },
     {
-        request: { query: CATALOGUE_ITEMS_SEARCH, variables: { recordLimit: 10, recordOffset: 0, searchTerm: "test" } },
+        request: { query: CUSTOM_SEARCH, variables: { recordLimit: 10, recordOffset: 0, searchTerm: "test" } },
         result: {
             data: {
-                hdrCatalogueItemsSearch: {
+                hdrCustomSearch: {
                     status: "200",
                     message: "OK",
                     count: "123",

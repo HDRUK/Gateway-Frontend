@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
+
 import AppContext from "./HOC/AppContext/AppContext.js";
 
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
@@ -19,63 +20,61 @@ import GlobalStyle from "./styles/globalStyles.js";
 import DetailPage from "./Containers/DetailPage/DetailPage.js";
 import LoginCallback from "./components/loginCallback/loginCallback.js";
 
-class App extends React.Component {
-    render() {
-        return (
-            <Apollo>
-                <AppContext>
-                    <AppWrapper>
-                        <BrowserRouter>
-                            <GlobalStyle />
-                            <Header />
-                            <PageWrapper>
-                                <Switch>
-                                    <Route exact path="/">
-                                        <Content>
-                                            <LandingPage />
-                                        </Content>
-                                    </Route>
-                                    <Route path="/search">
-                                        <Content nav filter>
-                                            <MenuFilterWrapper />
-                                            <SearchPage />
-                                        </Content>
-                                    </Route>
-                                    <Route path="/my-searches">
-                                        <Content nav>
-                                            <MySearchesPage />
-                                        </Content>
-                                    </Route>
-                                    <Route path="/browse">
-                                        <Content nav>
-                                            <div>/browse</div>
-                                        </Content>
-                                    </Route>
-                                    <Route path="/about">
-                                        <Content nav>
-                                            <AboutPage />
-                                        </Content>
-                                    </Route>
-                                    <Route path="/help">
-                                        <Content nav>
-                                            <div>/help</div>
-                                        </Content>
-                                    </Route>
-                                    <Route path="/detail/:id">
-                                        <Content nav>
-                                            <DetailPage />
-                                        </Content>
-                                    </Route>
-                                    <Route path="/logincallback/" render={props => <LoginCallback {...props} />} />
-                                </Switch>
-                            </PageWrapper>
-                            <Footer />
-                        </BrowserRouter>
-                    </AppWrapper>
-                </AppContext>
-            </Apollo>
-        );
-    }
-}
+const App = () => {
+    return (
+        <Apollo>
+            <AppContext>
+                <AppWrapper>
+                    <BrowserRouter>
+                        <GlobalStyle />
+                        <Header />
+                        <PageWrapper>
+                            <Switch>
+                                <Route exact path="/">
+                                    <Content>
+                                        <LandingPage />
+                                    </Content>
+                                </Route>
+                                <Route path="/search">
+                                    <Content nav filter>
+                                        <MenuFilterWrapper />
+                                        <SearchPage />
+                                    </Content>
+                                </Route>
+                                <Route path="/my-searches">
+                                    <Content nav>
+                                        <MySearchesPage />
+                                    </Content>
+                                </Route>
+                                <Route path="/browse">
+                                    <Content nav>
+                                        <div>/browse</div>
+                                    </Content>
+                                </Route>
+                                <Route path="/about">
+                                    <Content nav>
+                                        <AboutPage />
+                                    </Content>
+                                </Route>
+                                <Route path="/help">
+                                    <Content nav>
+                                        <div>/help</div>
+                                    </Content>
+                                </Route>
+                                <Route path="/detail/:id">
+                                    <Content nav>
+                                        <DetailPage />
+                                    </Content>
+                                </Route>
+                                <Route path="/logincallback/" render={props => <LoginCallback {...props} />} />
+                            </Switch>
+                        </PageWrapper>
+                        <Footer />
+                    </BrowserRouter>
+                </AppWrapper>
+            </AppContext>
+        </Apollo>
+    );
+};
 
 export default App;

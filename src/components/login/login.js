@@ -1,4 +1,6 @@
 import React, { useContext } from "react";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+
 import {
     Heading,
     DarkText,
@@ -9,36 +11,57 @@ import {
     LinkNoDecoration
 } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-const textItems = {
-    headingText: "Log in to access our datasets",
-    loginButton: "Log in",
-    continueButton: "Continue without logging in"
+const heading = number => {
+    if (number) {
+        return {
+            headingText: `Enter to access our ${number} datasets`
+        };
+    }
+    return {
+        headingText: `Enter to access our datasets`
+    };
 };
 
+const textItems = {
+    loginButton: "Log in",
+    logoutButton: "Log out",
+    continueButton: "Continue without logging in",
+    loggedInContinueButton: "Continue"
+};
 const Login = () => {
     const appContext = useContext(AppContext);
+    appContext.useDatasetCount();
+    const datasetCount = appContext.state.datasetCount;
+
     return (
         <CenterBlock>
             <DarkText>
-                <Heading>{textItems.headingText}</Heading>
+                <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
-                <CenterBlock>
-                    {appContext.authenticated === "true" ? (
+
+                {appContext.authenticated === "true" ? (
+                    <CenterBlock>
                         <a href="/logout">
-                            <StyledButton kind="primary">Log out</StyledButton>
+                            <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
                         </a>
-                    ) : (
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.loggedInContinueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                ) : (
+                    <CenterBlock>
                         <a href="/login">
-                            <StyledButton kind="primary">Log in</StyledButton>
+                            <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
                         </a>
-                    )}
-                    <SmallSpace />
-                    <LinkNoDecoration to="/search">
-                        <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                    </LinkNoDecoration>
-                </CenterBlock>
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                )}
+
                 <LargeSpace />
             </DarkText>
         </CenterBlock>
