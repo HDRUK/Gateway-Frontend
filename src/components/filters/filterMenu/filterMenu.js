@@ -4,7 +4,8 @@ import {
     AccordionElement,
     // DateSelector,
     // DateInput,
-    FilterButton
+    FilterButton,
+    CenterLoading
 } from "../../../styles/carbonComponents.js";
 import { Tag } from "carbon-components-react";
 // import AppliedFilter from "../appliedFilter/appliedFilter.js";
@@ -133,22 +134,21 @@ const FilterMenu = () => {
 
     return (
         <React.Fragment>
-            <AccordionBlock>
-                {loading ? (
-                    <div>Loading ...</div>
-                ) : (
-                    newFilterObject &&
-                    Object.keys(newFilterObject).length > 0 && (
+            {loading ? (
+                <CenterLoading withOverlay={false} />
+            ) : (
+                <AccordionBlock>
+                    {newFilterObject && Object.keys(newFilterObject).length > 0 && (
                         <React.Fragment>
                             <FilterBlockTitle>Filter</FilterBlockTitle>
                             {Object.keys(newFilterObject).map((filterKey, i) =>
                                 filterElement(filterKey, newFilterObject[filterKey], i)
                             )}
                         </React.Fragment>
-                    )
-                )}
-                {error && <div>Error :(</div>}
-            </AccordionBlock>
+                    )}
+                    {error && <div>Error :(</div>}
+                </AccordionBlock>
+            )}
         </React.Fragment>
     );
 };
