@@ -8,7 +8,6 @@ import {
     CenterLoading
 } from "../../../styles/carbonComponents.js";
 import { Tag } from "carbon-components-react";
-// import AppliedFilter from "../appliedFilter/appliedFilter.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
@@ -73,7 +72,6 @@ const FilterMenu = () => {
             finalFilterString += filterString;
         });
         setFilterString(finalFilterString);
-        console.log("appliedFilters:", finalFilterString);
     }, [newFilterObject, setNewFilterObject, setFilterString]);
 
     const filterElement = (filterKey, filterValues, i) => {

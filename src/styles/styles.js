@@ -157,20 +157,6 @@ export const MenuLine = styled.div`
     margin: 1rem 0rem 2rem 0rem;
 `;
 
-export const SelectedFilter = styled.div`
-    height: 24px;
-    border-radius: 18px;
-    background-color: #d5d9e0;
-    display: inline-flex;
-`;
-
-export const CloseButton = styled.button`
-    margin-left: 10px;
-    background: none;
-    border: none;
-    padding-bottom: 5px;
-`;
-
 export const SideStripe = styled.div`
     position: absolute;
     top: 0;
