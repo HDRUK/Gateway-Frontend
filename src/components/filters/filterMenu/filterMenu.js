@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from "react";
 import {
     AccordionBlock,
     AccordionElement,
-    DateSelector,
-    DateInput,
+    // DateSelector,
+    // DateInput,
     FilterButton
 } from "../../../styles/carbonComponents.js";
 // import AppliedFilter from "../appliedFilter/appliedFilter.js";
@@ -20,6 +20,10 @@ const FilterMenu = () => {
     const activeFilter = appContext.activeFilter;
     const modalVisibility = appContext.state.modalVisibility;
     const searchTerm = appContext.search.term;
+    const newFilterObject = appContext.newFilterObject;
+    const setNewFilterObject = appContext.setNewFilterObject;
+    const filterString = appContext.filterString;
+    const setFilterString = appContext.setFilterString;
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
         notifyOnNetworkStatusChange: true
@@ -30,32 +34,90 @@ const FilterMenu = () => {
     });
 
     useEffect(() => {
-        if (searchTerm) {
+        if (searchTerm !== null) {
             called ? refetch() : getFilterValues();
         }
     }, [searchTerm, called, refetch, getFilterValues]);
 
     useEffect(() => {
         if (data) {
-            const filtersArray = data.hdrFilterValues.data.map(filter => ({
-                name: filter.fieldName,
-                values: filter.fieldValues
-            }));
-            appContext.setFilterObject(filtersArray);
+            let newFilterObject = {};
+            data.hdrFilterValues.data.forEach(filter => {
+                newFilterObject[filter.fieldName] = {};
+                filter.fieldValues.forEach((value, i) => {
+                    newFilterObject[filter.fieldName][i] = {
+                        value,
+                        checked: false,
+                        applied: false
+                    };
+                });
+            });
+            appContext.setNewFilterObject(newFilterObject);
         }
     }, [data]);
 
-    const filterElement = (filter, i) => {
-        const filterTitle = filter.name.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
+    useEffect(() => {
+        let finalFilterString = "";
+        let filterApplied = false;
+        Object.keys(newFilterObject).forEach(filterKey => {
+            let filterString = "";
+            const valueState = newFilterObject[filterKey];
+            Object.keys(valueState).forEach(valueKey => {
+                if (valueState[valueKey].applied) {
+                    filterString += `${filterApplied ? "&" : "?"}${filterKey}=${valueState[valueKey].value}`;
+                    filterApplied = true;
+                }
+            });
+            finalFilterString += filterString;
+        });
+        setFilterString(finalFilterString);
+        console.log("appliedFilters:", finalFilterString);
+    }, [newFilterObject, setNewFilterObject, setFilterString]);
+
+    const handleChange = (filter, valueIndex) => {
+        const filterValue = newFilterObject[filter][valueIndex];
+
+        setNewFilterObject({
+            ...newFilterObject,
+            [filter]: {
+                ...newFilterObject[filter],
+                [valueIndex]: {
+                    ...filterValue,
+                    checked: !filterValue.checked
+                }
+            }
+        });
+    };
+
+    const handleSubmit = filter => {
+        let filterValues = Object.keys(newFilterObject[filter]).map(valueIndex => ({
+            ...newFilterObject[filter][valueIndex],
+            applied: newFilterObject[filter][valueIndex].checked
+        }));
+
+        setNewFilterObject({
+            ...newFilterObject,
+            [filter]: {
+                ...filterValues
+            }
+        });
+    };
+
+    const filterElement = (filterKey, filterValues, i) => {
+        const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
         return (
             <AccordionElement
                 key={`filterItem-${i}`}
                 title={filterTitle}
-                open={filter.values && filter.values.length > 4 && !modalVisibility ? undefined : activeFilter === i}
-                modal={filter.values && filter.values.length > 4 ? "true" : "false"}
+                open={
+                    filterValues && Object.keys(filterValues).length > 4 && !modalVisibility
+                        ? undefined
+                        : activeFilter === i
+                }
+                modal={filterValues && Object.keys(filterValues).length > 4 ? "true" : "false"}
                 onHeadingClick={() => {
-                    if (filter.values && filter.values.length > 4) {
+                    if (filterValues && Object.keys(filterValues).length > 4) {
                         if (!modalVisibility) {
                             appContext.openFilterBox();
                         } else if (activeFilter === i) {
@@ -67,39 +129,49 @@ const FilterMenu = () => {
                     appContext.setFilterId(i);
                 }}
             >
-                {filter.values &&
-                    (filter.values.length > 4 ? (
+                {filterValues &&
+                    (Object.keys(filterValues).length > 4 ? (
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
-                        <div>
+                        <form>
                             {/* TODO: Implement applied filters */}
                             {/* <AppliedFilter /> */}
-                            {filter.values.map((value, i) => (
-                                <Filter key={`resultCard-${i}`} title={value} />
+                            {Object.keys(filterValues).map((valueIndex, i) => (
+                                <Filter
+                                    key={`resultCard-${i}`}
+                                    title={filterValues[valueIndex].value}
+                                    onChange={() => handleChange(filterKey, valueIndex)}
+                                />
                             ))}
 
-                            <FilterButton kind="primary">Apply</FilterButton>
-                        </div>
+                            <FilterButton kind="primary" onClick={() => handleSubmit(filterKey)}>
+                                Apply
+                            </FilterButton>
+                        </form>
                     ))}
             </AccordionElement>
         );
     };
 
     return (
-        <AccordionBlock>
-            {loading ? (
-                <div>Loading ...</div>
-            ) : (
-                appContext.filterObject &&
-                appContext.filterObject.length > 0 && (
-                    <React.Fragment>
-                        <FilterBlockTitle>Filter</FilterBlockTitle>
-                        {appContext.filterObject.map((filter, i) => filterElement(filter, i))}
-                    </React.Fragment>
-                )
-            )}
-            {error && <div>Error :(</div>}
-        </AccordionBlock>
+        <React.Fragment>
+            <AccordionBlock>
+                {loading ? (
+                    <div>Loading ...</div>
+                ) : (
+                    newFilterObject &&
+                    Object.keys(newFilterObject).length > 0 && (
+                        <React.Fragment>
+                            <FilterBlockTitle>Filter</FilterBlockTitle>
+                            {Object.keys(newFilterObject).map((filterKey, i) =>
+                                filterElement(filterKey, newFilterObject[filterKey], i)
+                            )}
+                        </React.Fragment>
+                    )
+                )}
+                {error && <div>Error :(</div>}
+            </AccordionBlock>
+        </React.Fragment>
     );
 };
 
