@@ -15,7 +15,7 @@ import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
 import { useLazyQuery, useMutation } from "@apollo/react-hooks";
-import { CATALOGUE_ITEMS_SEARCH } from "../../queries/queries.js";
+import { CUSTOM_SEARCH } from "../../queries/queries.js";
 import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 
 const searchPageText = {
@@ -54,9 +54,9 @@ const resultsData = (
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) return prev;
                 return Object.assign({}, prev, {
-                    hdrCatalogueItemsSearch: {
-                        ...prev.hdrCatalogueItemsSearch,
-                        data: [...prev.hdrCatalogueItemsSearch.data, ...fetchMoreResult.hdrCatalogueItemsSearch.data]
+                    hdrCustomSearch: {
+                        ...prev.hdrCustomSearch,
+                        data: [...prev.hdrCustomSearch.data, ...fetchMoreResult.hdrCustomSearch.data]
                     }
                 });
             }
@@ -73,17 +73,22 @@ const resultsData = (
     return (
         <SearchResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
-                ? processedData.map((result, i) => (
-                      <LinkNoDecoration
-                          key={`resultCard-${i}`}
-                          to={`detail/${result.id}`}
-                          onClick={() => searchResultId(result.id)}
-                      >
-                          <DarkText>
-                              <ResultCard title={result.label} description={result.description} />
-                          </DarkText>
-                      </LinkNoDecoration>
-                  ))
+                ? processedData.map((result, i) => {
+                      return (
+                          <LinkNoDecoration
+                              key={`resultCard-${i}`}
+                              to={`detail/${result.id}`}
+                              onClick={() => searchResultId(result.id)}
+                          >
+                              <DarkText>
+                                  <ResultCard
+                                      title={result.title || "Title Unknown"}
+                                      description={result.abstract || "Description unknown"}
+                                  />
+                              </DarkText>
+                          </LinkNoDecoration>
+                      );
+                  })
                 : !loading && <div>No results</div>}
             {loading && <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />}
         </SearchResultsWrapper>
@@ -106,7 +111,7 @@ const SearchPage = () => {
     const clearSearchData = appContext.clearSearchData;
     const setOffSet = appContext.setOffSet;
 
-    const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CATALOGUE_ITEMS_SEARCH);
+    const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
     const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
         onCompleted: data => {
             appContext.updateSearchAuditLogId(data.searchAuditLogSave.data.id);
@@ -158,11 +163,8 @@ const SearchPage = () => {
     });
 
     useEffect(() => {
-        if (!loading && data && data.hdrCatalogueItemsSearch.data) {
-            appContext.insertSearchData(
-                parseInt(data.hdrCatalogueItemsSearch.count, 10),
-                data.hdrCatalogueItemsSearch.data
-            );
+        if (!loading && data && data.hdrCustomSearch.data) {
+            appContext.insertSearchData(parseInt(data.hdrCustomSearch.count, 10), data.hdrCustomSearch.data);
         } else if (!loading && !data && searchTerm !== null) {
             appContext.setSearchData({
                 ...searchData,
