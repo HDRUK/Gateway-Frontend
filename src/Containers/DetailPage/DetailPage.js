@@ -5,13 +5,11 @@ import {
     StyledHeading,
     SmallSpace,
     StyledSmallText,
-    StyledSmallBoldText,
-    TinyText,
-    LightText,
     DarkText,
     TinySpace,
-    InfoGrid,
-    GridItem
+    StyledCard,
+    Arrow,
+    LinkText
 } from "../../styles/styles";
 import PropTypes from "prop-types";
 
@@ -19,7 +17,7 @@ import { RESULT_DETAIL } from "../../queries/queries.js";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { withRouter } from "react-router-dom";
-import InfoCard from "../../components/infoCard/infoCard";
+import InfoDetailGrid from "../../components/infoDetailGrid/infoDetailGrid";
 
 const DetailPage = props => {
     const appContext = useContext(AppContext);
@@ -31,56 +29,153 @@ const DetailPage = props => {
     if (loading) return <CenterLoading />;
     if (error) return <div>Error :(</div>;
 
-    data && appContext.setDetailData(data.hdrDataModelID.data);
+    let detailData = {};
 
+    let dataAccess = [];
+    let coverage = [];
+    let relatedDatasets = [];
+    let attributions = [];
     return (
         <React.Fragment>
-            {data && (
+            {data && (detailData = data.hdrDataModelID.data) && (
                 <SmallSpace>
                     <DarkText>
-                        <StyledHeading>{data.hdrDataModelID.data.title || "Title Unknown"}</StyledHeading>
+                        <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
                         <NewStyledButton>Request Access</NewStyledButton>
                         <TinySpace />
-                        <InfoGrid>
-                            <GridItem>
-                                <TinyText>
-                                    <LightText>RELEASE DATE</LightText>
-                                </TinyText>
-                                <StyledSmallBoldText>
-                                    {data.hdrDataModelID.data.author && data.hdrDataModelID.data.author}
-                                </StyledSmallBoldText>
-                            </GridItem>
-                            <GridItem>
-                                <TinyText>
-                                    <LightText>PUBLISHER</LightText>
-                                </TinyText>
-                                <StyledSmallBoldText>
-                                    {data.hdrDataModelID.data.organisation && data.hdrDataModelID.data.organisation}
-                                </StyledSmallBoldText>
-                            </GridItem>
-                        </InfoGrid>
+                        <InfoDetailGrid
+                            contents={[
+                                { title: "Date released", content: detailData.releaseDate || "Not specified" },
+                                { title: "Publisher", content: detailData.publisher || "Not specified" },
+                                { title: "License", content: detailData.license || "Not specified" },
+                                { title: "Request time", content: detailData.accessRequestDuration || "Not specified" },
+                                { title: "Standard", content: detailData.conformsTo || "Not specified" }
+                            ]}
+                        ></InfoDetailGrid>
                         <TinySpace />
-                        <StyledSmallText>
-                            {data.hdrDataModelID.data.description && data.hdrDataModelID.data.description}
-                        </StyledSmallText>
+                        <StyledSmallText>{detailData.abstract || "Not specified"}</StyledSmallText>
                         <TinySpace />
+                        {detailData.description && (
+                            <LinkText href={detailData.description}>
+                                <StyledCard>
+                                    Link to description
+                                    <Arrow />
+                                </StyledCard>
+                            </LinkText>
+                        )}
                         <StyledHeading>Data Access</StyledHeading>
                         <TinySpace />
-                        <InfoCard
-                            contents={[
-                                { title: "author", content: "firstAuthor" },
-                                { title: "organisation", content: "firstOrg" }
-                            ]}
-                            link="View access rights"
-                        ></InfoCard>
-                        <InfoCard
-                            contents={[
-                                { title: "author", content: "firstAuthor" },
-                                { title: "organisation", content: "firstOrg" }
-                            ]}
-                        ></InfoCard>
+                        <StyledCard>
+                            {
+                                ((dataAccess = [
+                                    {
+                                        title: "Access request cost",
+                                        content: detailData.accessRequestCost || "Not specified"
+                                    }
+                                ]),
+                                detailData.dataController &&
+                                    dataAccess.push({ title: "Data controller", content: detailData.dataController }),
+                                detailData.dataProcessor &&
+                                    dataAccess.push({ title: "Data processor", content: detailData.dataProcessor }),
+                                detailData.accessRights &&
+                                    dataAccess.push({ title: "Access rights", content: detailData.accessRights }))
+                            }
+                            <InfoDetailGrid contents={dataAccess}></InfoDetailGrid>
+                        </StyledCard>
+                        <StyledHeading>Coverage</StyledHeading>
                         <TinySpace />
+                        <StyledCard>
+                            {
+                                ((coverage = [
+                                    {
+                                        title: "Jurisdiction",
+                                        content: detailData.jurisdiction || "Not specified"
+                                    },
+                                    {
+                                        title: "Geographic coverage",
+                                        content: detailData.geographicCoverage || "Not specified"
+                                    },
+                                    {
+                                        title: "Dataset start date",
+                                        content: detailData.datasetStartDate || "Not specified"
+                                    },
+                                    {
+                                        title: "Dataset end date",
+                                        content: detailData.datasetEndDate || "Not specified"
+                                    }
+                                ]),
+                                detailData.periodicity &&
+                                    coverage.push({ title: "Periodicity", content: detailData.periodicity }))
+                            }
+                            <InfoDetailGrid contents={coverage}></InfoDetailGrid>
+                        </StyledCard>
+                        <StyledHeading>Demographics</StyledHeading>
+                        <TinySpace />
+                        <StyledCard>
+                            <InfoDetailGrid
+                                contents={[
+                                    {
+                                        title: "Statistical population",
+                                        content: detailData.statisticalPopulation || "Not specified"
+                                    },
+                                    { title: "Age band", content: detailData.ageBand || "Not specified" }
+                                ]}
+                            ></InfoDetailGrid>
+                        </StyledCard>
+                        <StyledHeading>Related Resources</StyledHeading>
+                        <TinySpace />
+                        <StyledCard>
+                            <InfoDetailGrid
+                                contents={[
+                                    {
+                                        title: "Physical sample availability",
+                                        content: detailData.physicalSampleAvailability || "Not specified"
+                                    }
+                                ]}
+                            ></InfoDetailGrid>
+                        </StyledCard>
+                        {(detailData.group || detailData.linkedDataset || detailData.derivedDatasets) && (
+                            <React.Fragment>
+                                {
+                                    (detailData.group &&
+                                        relatedDatasets.push({ title: "Group", content: detailData.group }),
+                                    detailData.linkedDataset &&
+                                        relatedDatasets.push({
+                                            title: "Linked datasets",
+                                            content: detailData.linkedDataset
+                                        }),
+                                    detailData.derivedDatasets &&
+                                        relatedDatasets.push({
+                                            title: "Derived datasets",
+                                            content: detailData.derivedDatasets
+                                        }))
+                                }
+                                <StyledHeading>Related Datasets</StyledHeading>
+                                <TinySpace />
+                                <StyledCard>
+                                    <InfoDetailGrid contents={relatedDatasets}></InfoDetailGrid>
+                                </StyledCard>
+                            </React.Fragment>
+                        )}
+                        {(detailData.creator || detailData.citations) && (
+                            <React.Fragment>
+                                {
+                                    (detailData.creator &&
+                                        attributions.push({ title: "Creator", content: detailData.creator }),
+                                    detailData.citations &&
+                                        attributions.push({
+                                            title: "Citations",
+                                            content: detailData.citations
+                                        }))
+                                }
+                                <StyledHeading>Attributions</StyledHeading>
+                                <TinySpace />
+                                <StyledCard>
+                                    <InfoDetailGrid contents={attributions}></InfoDetailGrid>
+                                </StyledCard>
+                            </React.Fragment>
+                        )}
                     </DarkText>
                 </SmallSpace>
             )}
