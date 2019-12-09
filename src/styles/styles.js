@@ -120,7 +120,8 @@ export const SmallText = styled.p`
 `;
 
 export const TinyText = styled.span`
-    font-size: 0.75rem;
+    font-size: 0.6rem;
+    font-weight: 700;
 `;
 
 export const Bold = styled.span`
@@ -404,4 +405,52 @@ export const NavErrorText = styled.div`
     padding: 0.25rem 1rem;
     font-size: 0.75rem;
     color: ${colorTheme.error};
+`;
+
+//NEW STYLES
+
+export const StyledCard = styled.div`
+    position: relative;
+    margin-bottom: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.2rem 0.2rem 0 0;
+    box-shadow: 0 0rem 0.2rem 0 rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    overflow: hidden;
+    border-bottom-width: 0.05rem;
+    border-color: #3db28c;
+    border-style: solid;
+`;
+export const StyledHeading = styled.h1`
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 2.7rem;
+`;
+
+export const StyledSmallBoldText = styled.p`
+    font-size: 0.9rem;
+    line-height: 1.125rem;
+    font-weight: 700;
+`;
+
+export const StyledSmallText = styled.p`
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+`;
+
+export const Arrow = styled.div`
+    position: absolute;
+    right: 1.5rem;
+    display: inline-block;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 0.125rem solid #000000;
+    border-width: 0.06125rem 0.06125rem 0 0;
+    transform: rotate(45deg);
+`;
+
+export const StyledLine = styled.div`
+    height: 0.0625rem;
+    margin: 1rem 0 1rem 0;
+    background-color: #dadada;
 `;

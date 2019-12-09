@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
-import { CenterLoading } from "../../styles/carbonComponents";
+import { CenterLoading, NewStyledButton } from "../../styles/carbonComponents";
 import {
-    Heading,
+    StyledHeading,
     SmallSpace,
-    BoldInlineText,
-    SmallText,
+    StyledSmallText,
+    StyledSmallBoldText,
     TinyText,
     LightText,
     DarkText,
     TinySpace,
     InfoGrid,
-    GridItem,
-    InlineWrappedText,
-    BlueText
+    GridItem
 } from "../../styles/styles";
 import PropTypes from "prop-types";
 
@@ -21,6 +19,7 @@ import { RESULT_DETAIL } from "../../queries/queries.js";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { withRouter } from "react-router-dom";
+import InfoCard from "../../components/infoCard/infoCard";
 
 const DetailPage = props => {
     const appContext = useContext(AppContext);
@@ -37,42 +36,51 @@ const DetailPage = props => {
             {data && (
                 <SmallSpace>
                     <DarkText>
-                        <TinyText>
-                            <LightText>LAST UPDATED</LightText>
-                            <BlueText>
-                                <SmallText>
-                                    {data.hdrDataModelID.data.lastUpdated &&
-                                        data.hdrDataModelID.data.lastUpdated.split("T")[0]}
-                                </SmallText>
-                            </BlueText>
-                        </TinyText>
+                        <StyledHeading>
+                            {data.hdrDataModelID.data.label && data.hdrDataModelID.data.label}
+                        </StyledHeading>
                         <TinySpace />
-                        <Heading>{data.hdrDataModelID.data.label && data.hdrDataModelID.data.label}</Heading>
+                        <NewStyledButton>Request Access</NewStyledButton>
                         <TinySpace />
                         <InfoGrid>
                             <GridItem>
                                 <TinyText>
                                     <LightText>AUTHOR</LightText>
                                 </TinyText>
-                                <SmallText>
+                                <StyledSmallBoldText>
                                     {data.hdrDataModelID.data.author && data.hdrDataModelID.data.author}
-                                </SmallText>
+                                </StyledSmallBoldText>
                             </GridItem>
                             <GridItem>
                                 <TinyText>
                                     <LightText>ORGANISATION</LightText>
                                 </TinyText>
-                                <SmallText>
+                                <StyledSmallBoldText>
                                     {data.hdrDataModelID.data.organisation && data.hdrDataModelID.data.organisation}
-                                </SmallText>
+                                </StyledSmallBoldText>
                             </GridItem>
                         </InfoGrid>
                         <TinySpace />
-
-                        <BoldInlineText>abstract - </BoldInlineText>
-                        <InlineWrappedText>
+                        <StyledSmallText>
                             {data.hdrDataModelID.data.description && data.hdrDataModelID.data.description}
-                        </InlineWrappedText>
+                        </StyledSmallText>
+                        <TinySpace />
+                        <InfoCard link="Link to Metadata Catalogue URL"></InfoCard>
+                        <StyledHeading>Data Access</StyledHeading>
+                        <TinySpace />
+                        <InfoCard
+                            contents={[
+                                { title: "author", content: "firstAuthor" },
+                                { title: "organisation", content: "firstOrg" }
+                            ]}
+                            link="View access rights"
+                        ></InfoCard>
+                        <InfoCard
+                            contents={[
+                                { title: "author", content: "firstAuthor" },
+                                { title: "organisation", content: "firstOrg" }
+                            ]}
+                        ></InfoCard>
                         <TinySpace />
                     </DarkText>
                 </SmallSpace>
