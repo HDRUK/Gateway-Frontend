@@ -7,80 +7,87 @@ import AppContext from "./HOC/AppContext/AppContext.js";
 
 import ErrorBoundary from "./HOC/ErrorBoundary/ErrorBoundary";
 
-import LandingPage from "./Containers/LandingPage/LandingPage.js";
-import AboutPage from "./Containers/AboutPage/AboutPage.js";
-import SearchPage from "./Containers/SearchPage/SearchPage.js";
-import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage.js";
+import LandingPage from "./Containers/LandingPage/LandingPage";
+import AboutPage from "./Containers/AboutPage/AboutPage";
+import SearchPage from "./Containers/SearchPage/SearchPage";
+import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
+import NotFound from "./Containers/NotFound/NotFound";
 
-import Header from "./components/header/header.js";
-import Footer from "./components/footer/footer.js";
-import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper.js";
-import Content from "./components/content/content.js";
-import { PageWrapper, AppWrapper } from "./styles/styles.js";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper";
+import Content from "./components/content/content";
+import { PageWrapper, AppWrapper } from "./styles/styles";
 
-import GlobalStyle from "./styles/globalStyles.js";
-import DetailPage from "./Containers/DetailPage/DetailPage.js";
-import LoginCallback from "./components/loginCallback/loginCallback.js";
+import GlobalStyle from "./styles/globalStyles";
+import DetailPage from "./Containers/DetailPage/DetailPage";
+import LoginCallback from "./components/loginCallback/loginCallback";
 
 const App = () => {
     return (
-        <Apollo>
-            <AppContext>
-                <AppWrapper>
-                    <BrowserRouter>
-                        <GlobalStyle />
-                        <Header />
-                        <PageWrapper>
-                            <Switch>
-                                <Route exact path="/">
-                                    <Content>
-                                        <LandingPage />
-                                    </Content>
-                                </Route>
-                                <Route exact path="/search">
-                                    <Content nav filter>
-                                        <MenuFilterWrapper />
-                                        <SearchPage />
-                                    </Content>
-                                </Route>
-                                <Route exact path="/my-searches">
-                                    <Content nav>
-                                        <MySearchesPage />
-                                    </Content>
-                                </Route>
-                                <Route exact path="/browse">
-                                    <Content nav>
-                                        <div>/browse</div>
-                                    </Content>
-                                </Route>
-                                <Route exact path="/about">
-                                    <Content nav>
-                                        <AboutPage />
-                                    </Content>
-                                </Route>
-                                <Route exact path="/help">
-                                    <Content nav>
-                                        <div>/help</div>
-                                    </Content>
-                                </Route>
-                                <Route exact path="/detail/:id">
-                                    <Content nav>
-                                        <DetailPage />
-                                    </Content>
-                                </Route>
-                                <Route exact path="/logincallback/" render={props => <LoginCallback {...props} />} />
-                                <Route path="*">
-                                    <Content nav>
-                                        <DetailPage />
-                                    </Content>
-                                </Route>
-                            </Switch>
-                        </PageWrapper>
-                        <Footer />
-                    </BrowserRouter>
-                </AppWrapper>
-            </AppContext>
-        </Apollo>
+        <ErrorBoundary>
+            <Apollo>
+                <AppContext>
+                    <AppWrapper>
+                        <BrowserRouter>
+                            <GlobalStyle />
+                            <Header />
+                            <PageWrapper>
+                                <Switch>
+                                    <Route exact path="/">
+                                        <Content>
+                                            <LandingPage />
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/search">
+                                        <Content nav filter>
+                                            <MenuFilterWrapper />
+                                            <SearchPage />
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/my-searches">
+                                        <Content nav>
+                                            <MySearchesPage />
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/browse">
+                                        <Content nav>
+                                            <div>/browse</div>
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/about">
+                                        <Content nav>
+                                            <AboutPage />
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/help">
+                                        <Content nav>
+                                            <div>/help</div>
+                                        </Content>
+                                    </Route>
+                                    <Route exact path="/detail/:id">
+                                        <Content nav>
+                                            <DetailPage />
+                                        </Content>
+                                    </Route>
+                                    <Route
+                                        exact
+                                        path="/logincallback/"
+                                        render={props => <LoginCallback {...props} />}
+                                    />
+                                    <Route path="*">
+                                        <Content nav>
+                                            <NotFound />
+                                        </Content>
+                                    </Route>
+                                </Switch>
+                            </PageWrapper>
+                            <Footer />
+                        </BrowserRouter>
+                    </AppWrapper>
+                </AppContext>
+            </Apollo>
+        </ErrorBoundary>
     );
 };
 
