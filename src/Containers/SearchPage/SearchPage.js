@@ -74,8 +74,6 @@ const resultsData = (
         <SearchResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
             {processedData.length > 0
                 ? processedData.map((result, i) => {
-                      console.log(result);
-
                       return (
                           <LinkNoDecoration
                               key={`resultCard-${i}`}
