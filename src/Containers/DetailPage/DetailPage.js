@@ -22,10 +22,17 @@ const DetailPage = props => {
 
     let detailData = {};
 
-    let dataAccess = [];
-    let coverage = [];
-    let relatedDatasets = [];
-    let attributions = [];
+    const createGridArray = fields => {
+        let returnArray = [];
+        fields.map(field => {
+            field.content
+                ? returnArray.push({ title: field.title, content: field.content })
+                : field.required && returnArray.push({ title: field.title, content: "Not specified" });
+            return returnArray;
+        });
+        return returnArray;
+    };
+
     return (
         <React.Fragment>
             {data && (detailData = data.hdrDataModelID.data) && (
@@ -50,48 +57,51 @@ const DetailPage = props => {
                         <StyledHeading>Data Access</StyledHeading>
                         <TinySpace />
                         <StyledCard>
-                            {
-                                ((dataAccess = [
+                            <InfoDetailGrid
+                                contents={createGridArray([
                                     {
                                         title: "Access request cost",
-                                        content: detailData.accessRequestCost || "Not specified"
-                                    }
-                                ]),
-                                detailData.dataController &&
-                                    dataAccess.push({ title: "Data controller", content: detailData.dataController }),
-                                detailData.dataProcessor &&
-                                    dataAccess.push({ title: "Data processor", content: detailData.dataProcessor }),
-                                detailData.accessRights &&
-                                    dataAccess.push({ title: "Access rights", content: detailData.accessRights }))
-                            }
-                            <InfoDetailGrid contents={dataAccess}></InfoDetailGrid>
+                                        content: detailData.accessRequestCost,
+                                        required: true
+                                    },
+                                    {
+                                        title: "Data controller",
+                                        content: detailData.dataController,
+                                        required: false
+                                    },
+                                    { title: "Data processor", content: detailData.dataProcessor, required: false },
+                                    { title: "Access rights", content: detailData.accessRights, required: false }
+                                ])}
+                            ></InfoDetailGrid>
                         </StyledCard>
                         <StyledHeading>Coverage</StyledHeading>
                         <TinySpace />
                         <StyledCard>
-                            {
-                                ((coverage = [
+                            <InfoDetailGrid
+                                contents={createGridArray([
                                     {
                                         title: "Jurisdiction",
-                                        content: detailData.jurisdiction || "Not specified"
+                                        content: detailData.jurisdiction,
+                                        required: true
                                     },
                                     {
                                         title: "Geographic coverage",
-                                        content: detailData.geographicCoverage || "Not specified"
+                                        content: detailData.geographicCoverage,
+                                        required: true
                                     },
                                     {
                                         title: "Dataset start date",
-                                        content: detailData.datasetStartDate || "Not specified"
+                                        content: detailData.datasetStartDate,
+                                        required: true
                                     },
                                     {
                                         title: "Dataset end date",
-                                        content: detailData.datasetEndDate || "Not specified"
-                                    }
-                                ]),
-                                detailData.periodicity &&
-                                    coverage.push({ title: "Periodicity", content: detailData.periodicity }))
-                            }
-                            <InfoDetailGrid contents={coverage}></InfoDetailGrid>
+                                        content: detailData.datasetEndDate,
+                                        required: true
+                                    },
+                                    { title: "Periodicity", content: detailData.periodicity, required: false }
+                                ])}
+                            ></InfoDetailGrid>
                         </StyledCard>
                         <StyledHeading>Demographics</StyledHeading>
                         <TinySpace />
@@ -120,42 +130,42 @@ const DetailPage = props => {
                         </StyledCard>
                         {(detailData.group || detailData.linkedDataset || detailData.derivedDatasets) && (
                             <React.Fragment>
-                                {
-                                    (detailData.group &&
-                                        relatedDatasets.push({ title: "Group", content: detailData.group }),
-                                    detailData.linkedDataset &&
-                                        relatedDatasets.push({
-                                            title: "Linked datasets",
-                                            content: detailData.linkedDataset
-                                        }),
-                                    detailData.derivedDatasets &&
-                                        relatedDatasets.push({
-                                            title: "Derived datasets",
-                                            content: detailData.derivedDatasets
-                                        }))
-                                }
                                 <StyledHeading>Related Datasets</StyledHeading>
                                 <TinySpace />
                                 <StyledCard>
-                                    <InfoDetailGrid contents={relatedDatasets}></InfoDetailGrid>
+                                    <InfoDetailGrid
+                                        contents={createGridArray([
+                                            { title: "Group", content: detailData.group, required: false },
+                                            {
+                                                title: "Linked datasets",
+                                                content: detailData.linkedDataset,
+                                                required: false
+                                            },
+                                            {
+                                                title: "Derived datasets",
+                                                content: detailData.derivedDatasets,
+                                                required: false
+                                            }
+                                        ])}
+                                    ></InfoDetailGrid>
                                 </StyledCard>
                             </React.Fragment>
                         )}
                         {(detailData.creator || detailData.citations) && (
                             <React.Fragment>
-                                {
-                                    (detailData.creator &&
-                                        attributions.push({ title: "Creator", content: detailData.creator }),
-                                    detailData.citations &&
-                                        attributions.push({
-                                            title: "Citations",
-                                            content: detailData.citations
-                                        }))
-                                }
                                 <StyledHeading>Attributions</StyledHeading>
                                 <TinySpace />
                                 <StyledCard>
-                                    <InfoDetailGrid contents={attributions}></InfoDetailGrid>
+                                    <InfoDetailGrid
+                                        contents={createGridArray([
+                                            { title: "Creator", content: detailData.creator, required: false },
+                                            {
+                                                title: "Citations",
+                                                content: detailData.citations,
+                                                required: false
+                                            }
+                                        ])}
+                                    ></InfoDetailGrid>
                                 </StyledCard>
                             </React.Fragment>
                         )}

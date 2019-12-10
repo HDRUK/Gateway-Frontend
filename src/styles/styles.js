@@ -42,12 +42,16 @@ export const ParagraphText = styled.p`
 `;
 
 export const InfoGrid = styled.div`
-    display: flex;
+    display: inline-flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    width: 100%;
 `;
 
 export const GridItem = styled.div`
     flex-direction: column;
     padding-right: 3rem;
+    width: 30%;
 `;
 
 export const BlueText = styled.span`
