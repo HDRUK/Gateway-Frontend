@@ -1,16 +1,7 @@
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { CenterLoading, NewStyledButton } from "../../styles/carbonComponents";
-import {
-    StyledHeading,
-    SmallSpace,
-    StyledSmallText,
-    DarkText,
-    TinySpace,
-    StyledCard,
-    Arrow,
-    LinkText
-} from "../../styles/styles";
+import { StyledHeading, SmallSpace, StyledSmallText, DarkText, TinySpace, StyledCard } from "../../styles/styles";
 import PropTypes from "prop-types";
 
 import { RESULT_DETAIL } from "../../queries/queries.js";
@@ -56,14 +47,6 @@ const DetailPage = props => {
                         <TinySpace />
                         <StyledSmallText>{detailData.abstract || "Not specified"}</StyledSmallText>
                         <TinySpace />
-                        {detailData.description && (
-                            <LinkText href={detailData.description}>
-                                <StyledCard>
-                                    Link to description
-                                    <Arrow />
-                                </StyledCard>
-                            </LinkText>
-                        )}
                         <StyledHeading>Data Access</StyledHeading>
                         <TinySpace />
                         <StyledCard>

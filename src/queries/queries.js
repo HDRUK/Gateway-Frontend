@@ -103,8 +103,6 @@ export const RESULT_DETAIL = gql`
                 accessRequestDuration
                 conformsTo
                 abstract
-                description
-                description
                 accessRequestCost
                 dataController
                 dataProcessor
