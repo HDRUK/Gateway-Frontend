@@ -51,7 +51,7 @@ export const InfoGrid = styled.div`
 export const GridItem = styled.div`
     flex-direction: column;
     padding-right: 3rem;
-    width: 30%;
+    padding-bottom: 0.5rem;
 `;
 
 export const BlueText = styled.span`
