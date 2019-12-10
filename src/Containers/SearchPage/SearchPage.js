@@ -83,6 +83,7 @@ const resultsData = (
                               <DarkText>
                                   <ResultCard
                                       title={result.title || "Title Unknown"}
+                                      publisher={result.publisher || "Not specified"}
                                       description={result.abstract || "Description unknown"}
                                   />
                               </DarkText>
