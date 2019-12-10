@@ -9,12 +9,13 @@ const FilterBox = () => {
     const appContext = useContext(AppContext);
     const filterKey = Object.keys(appContext.newFilterObject).find((key, i) => i === appContext.activeFilter);
     const values = appContext.newFilterObject[filterKey];
+    const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
     return (
         <React.Fragment>
             <Triangle />
             <FilterBoxContent>
-                <ParagraphText>{filterKey}</ParagraphText>
+                <ParagraphText>{filterTitle}</ParagraphText>
                 <div>
                     {Object.keys(values).map(
                         valueI => values[valueI].applied && <Tag type="blue">{values[valueI].value}</Tag>

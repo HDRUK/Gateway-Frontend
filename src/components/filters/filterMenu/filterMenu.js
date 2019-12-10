@@ -23,7 +23,6 @@ const FilterMenu = () => {
     const searchTerm = appContext.search.term;
     const newFilterObject = appContext.newFilterObject;
     const setNewFilterObject = appContext.setNewFilterObject;
-    // const filterString = appContext.filterString;
     const setFilterString = appContext.setFilterString;
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
@@ -80,7 +79,15 @@ const FilterMenu = () => {
         return (
             <AccordionElement
                 key={`filterItem-${i}`}
-                title={filterTitle}
+                title={
+                    <div>
+                        <p>{filterTitle}</p>
+                        {Object.keys(filterValues).map(
+                            valueI =>
+                                filterValues[valueI].applied && <Tag type="blue">{filterValues[valueI].value}</Tag>
+                        )}
+                    </div>
+                }
                 open={
                     filterValues && Object.keys(filterValues).length > 4 && !modalVisibility
                         ? undefined
@@ -104,27 +111,21 @@ const FilterMenu = () => {
                     (Object.keys(filterValues).length > 4 ? (
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
-                        <form>
-                            {Object.keys(filterValues).map(
-                                valueI =>
-                                    filterValues[valueI].applied && <Tag type="blue">{filterValues[valueI].value}</Tag>
-                            )}
+                        <div>
                             {Object.keys(filterValues).map((valueIndex, i) => {
                                 return (
-                                    <React.Fragment>
-                                        <Filter
-                                            key={`resultCard-${i}`}
-                                            title={filterValues[valueIndex].value}
-                                            onChange={() => appContext.checkFilters(filterKey, valueIndex)}
-                                        />
-                                    </React.Fragment>
+                                    <Filter
+                                        key={`resultCard-${i}`}
+                                        title={filterValues[valueIndex].value}
+                                        onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                                    />
                                 );
                             })}
 
                             <FilterButton kind="primary" onClick={() => appContext.applyFilter(filterKey)}>
                                 Apply
                             </FilterButton>
-                        </form>
+                        </div>
                     ))}
             </AccordionElement>
         );
