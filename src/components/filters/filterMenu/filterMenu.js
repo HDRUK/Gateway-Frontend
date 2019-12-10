@@ -21,8 +21,8 @@ const FilterMenu = () => {
     const activeFilter = appContext.activeFilter;
     const modalVisibility = appContext.state.modalVisibility;
     const searchTerm = appContext.search.term;
-    const newFilterObject = appContext.newFilterObject;
-    const setNewFilterObject = appContext.setNewFilterObject;
+    const filterObject = appContext.filterObject;
+    const setFilterObject = appContext.setFilterObject;
     const setFilterString = appContext.setFilterString;
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
@@ -52,16 +52,16 @@ const FilterMenu = () => {
                     };
                 });
             });
-            appContext.setNewFilterObject(newFilterObject);
+            setFilterObject(newFilterObject);
         }
-    }, [data]);
+    }, [data, setFilterObject]);
 
     useEffect(() => {
         let finalFilterString = "";
         let filterApplied = false;
-        Object.keys(newFilterObject).forEach(filterKey => {
+        Object.keys(filterObject).forEach(filterKey => {
             let filterString = "";
-            const valueState = newFilterObject[filterKey];
+            const valueState = filterObject[filterKey];
             Object.keys(valueState).forEach(valueKey => {
                 if (valueState[valueKey].applied) {
                     filterString += `${filterApplied ? "&" : "?"}${filterKey}=${valueState[valueKey].value}`;
@@ -71,7 +71,7 @@ const FilterMenu = () => {
             finalFilterString += filterString;
         });
         setFilterString(finalFilterString);
-    }, [newFilterObject, setNewFilterObject, setFilterString]);
+    }, [filterObject, setFilterString]);
 
     const filterElement = (filterKey, filterValues, i) => {
         const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
@@ -84,7 +84,11 @@ const FilterMenu = () => {
                         <p>{filterTitle}</p>
                         {Object.keys(filterValues).map(
                             valueI =>
-                                filterValues[valueI].applied && <Tag type="blue">{filterValues[valueI].value}</Tag>
+                                filterValues[valueI].applied && (
+                                    <Tag key={`tag-${valueI}`} type="blue">
+                                        {filterValues[valueI].value}
+                                    </Tag>
+                                )
                         )}
                     </div>
                 }
@@ -136,11 +140,11 @@ const FilterMenu = () => {
                 <CenterLoading withOverlay={false} />
             ) : (
                 <AccordionBlock>
-                    {newFilterObject && Object.keys(newFilterObject).length > 0 && (
+                    {filterObject && Object.keys(filterObject).length > 0 && (
                         <React.Fragment>
                             <FilterBlockTitle>Filter</FilterBlockTitle>
-                            {Object.keys(newFilterObject).map((filterKey, i) =>
-                                filterElement(filterKey, newFilterObject[filterKey], i)
+                            {Object.keys(filterObject).map((filterKey, i) =>
+                                filterElement(filterKey, filterObject[filterKey], i)
                             )}
                         </React.Fragment>
                     )}

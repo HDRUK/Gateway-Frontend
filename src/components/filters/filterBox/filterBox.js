@@ -6,8 +6,8 @@ import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
-    const filterKey = Object.keys(appContext.newFilterObject).find((key, i) => i === appContext.activeFilter);
-    const values = appContext.newFilterObject[filterKey];
+    const filterKey = Object.keys(appContext.filterObject).find((key, i) => i === appContext.activeFilter);
+    const values = appContext.filterObject[filterKey];
     const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
     return (

@@ -108,7 +108,6 @@ const SearchPage = () => {
     const offSet = searchData.offSet;
     const limit = appContext.state.resultsLimit;
     const filterString = appContext.filterString;
-    const filterObject = appContext.newFilterObject;
 
     const clearSearchData = appContext.clearSearchData;
     const setOffSet = appContext.setOffSet;

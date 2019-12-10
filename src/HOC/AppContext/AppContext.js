@@ -108,18 +108,17 @@ const AppContextProvider = props => {
 
     const itemRef = React.createRef();
 
-    const [filterObject, setFilterObject] = useState([]);
-    const [newFilterObject, setNewFilterObject] = useState({});
+    const [filterObject, setFilterObject] = useState({});
     const [filterString, setFilterString] = useState("");
     const [prevFilterString, setPrevFilterString] = useState("");
 
     const checkFilters = (filter, valueIndex) => {
-        const filterValue = newFilterObject[filter][valueIndex];
+        const filterValue = filterObject[filter][valueIndex];
 
-        setNewFilterObject({
-            ...newFilterObject,
+        setFilterObject({
+            ...filterObject,
             [filter]: {
-                ...newFilterObject[filter],
+                ...filterObject[filter],
                 [valueIndex]: {
                     ...filterValue,
                     checked: !filterValue.checked
@@ -129,13 +128,13 @@ const AppContextProvider = props => {
     };
 
     const applyFilter = filter => {
-        const filterValues = Object.keys(newFilterObject[filter]).map(valueIndex => ({
-            ...newFilterObject[filter][valueIndex],
-            applied: newFilterObject[filter][valueIndex].checked
+        const filterValues = Object.keys(filterObject[filter]).map(valueIndex => ({
+            ...filterObject[filter][valueIndex],
+            applied: filterObject[filter][valueIndex].checked
         }));
 
-        setNewFilterObject({
-            ...newFilterObject,
+        setFilterObject({
+            ...filterObject,
             [filter]: {
                 ...filterValues
             }
@@ -143,12 +142,12 @@ const AppContextProvider = props => {
     };
 
     const removeFilter = (filter, valueIndex) => {
-        const filterValue = newFilterObject[filter][valueIndex];
+        const filterValue = filterObject[filter][valueIndex];
 
-        setNewFilterObject({
-            ...newFilterObject,
+        setFilterObject({
+            ...filterObject,
             [filter]: {
-                ...newFilterObject[filter],
+                ...filterObject[filter],
                 [valueIndex]: {
                     ...filterValue,
                     checked: false,
@@ -298,8 +297,6 @@ const AppContextProvider = props => {
                 checkAuthenticated,
                 removeSavedSearchData,
                 updateSearchAuditLogId,
-                newFilterObject,
-                setNewFilterObject,
                 filterString,
                 setFilterString,
                 prevFilterString,
