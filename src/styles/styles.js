@@ -345,7 +345,7 @@ export const FilterBlock = styled.div`
     overflow-x: none;
     overflow-y: auto;
     /* flex-direction: column; */
-    max-height: 12rem;
+    max-height: 8rem;
     > div {
         margin-top: 0 !important;
     }

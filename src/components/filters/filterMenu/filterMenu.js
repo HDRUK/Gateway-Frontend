@@ -112,21 +112,14 @@ const FilterMenu = () => {
                         activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
                     ) : (
                         <div>
-                            {Object.keys(filterValues).map((valueIndex, i) => {
-                                console.log(
-                                    "checked",
-                                    filterValues[valueIndex].value,
-                                    filterValues[valueIndex].checked
-                                );
-                                return (
-                                    <Filter
-                                        key={`resultCard-${i}`}
-                                        title={filterValues[valueIndex].value}
-                                        defaultChecked={filterValues[valueIndex].checked}
-                                        onChange={() => appContext.checkFilters(filterKey, valueIndex)}
-                                    />
-                                );
-                            })}
+                            {Object.keys(filterValues).map((valueIndex, i) => (
+                                <Filter
+                                    key={`resultCard-${i}`}
+                                    title={filterValues[valueIndex].value}
+                                    defaultChecked={filterValues[valueIndex].checked}
+                                    onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                                />
+                            ))}
 
                             <FilterButton kind="primary" onClick={() => appContext.applyFilter(filterKey)}>
                                 Apply

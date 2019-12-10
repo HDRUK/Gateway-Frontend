@@ -108,6 +108,7 @@ const SearchPage = () => {
     const offSet = searchData.offSet;
     const limit = appContext.state.resultsLimit;
     const filterString = appContext.filterString;
+    const filterObject = appContext.newFilterObject;
 
     const clearSearchData = appContext.clearSearchData;
     const setOffSet = appContext.setOffSet;
@@ -154,7 +155,6 @@ const SearchPage = () => {
                 });
             } else if (filterString !== null && filterString !== appContext.prevFilterString) {
                 appContext.setPrevFilterString(filterString);
-                console.log("filterString", filterString);
                 clearSearchData();
                 getItemsSearch({
                     variables: {
