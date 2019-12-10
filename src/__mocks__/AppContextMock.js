@@ -9,8 +9,6 @@ const context = {
         resultsLimit: 10
     },
 
-    filters: [],
-
     newsItems: {
         newsItemOne: {
             image: "TestImage",
@@ -33,78 +31,9 @@ const context = {
     authenticated: "true",
     userId: "test",
 
-    filterObject: [
-        {
-            id: 0,
-            title: "Date created"
-        },
-        {
-            id: 1,
-            title: "Classifier",
-            values: [
-                {
-                    id: 0,
-                    title: "First classifier"
-                },
-                {
-                    id: 1,
-                    title: "Second classifier"
-                },
-                {
-                    id: 2,
-                    title: "Third classifier"
-                },
-                {
-                    id: 3,
-                    title: "Fourth classifier"
-                },
-                {
-                    id: 4,
-                    title: "Fifth classifier"
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "Test Item",
-            values: [
-                {
-                    id: 0,
-                    title: "First test"
-                },
-                {
-                    id: 1,
-                    title: "Second test"
-                },
-                {
-                    id: 2,
-                    title: "Third test"
-                },
-                {
-                    id: 3,
-                    title: "Fourth test"
-                },
-                {
-                    id: 4,
-                    title: "Fifth test"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Data model type",
-            values: [
-                {
-                    id: 0,
-                    title: "First type"
-                },
-                {
-                    id: 1,
-                    title: "Second type"
-                }
-            ]
-        }
-    ],
+    filterString: "",
+    prevFilterString: "",
+    filterObject: {},
 
     images: {
         logoHDR: "test"
@@ -138,7 +67,14 @@ const context = {
     setSearchResultId: jest.fn(),
     setSearch: jest.fn(),
     removeSavedSearchData: jest.fn(),
-    useDatasetCount: jest.fn()
+    useDatasetCount: jest.fn(),
+    filterString: jest.fn(),
+    setFilterString: jest.fn(),
+    prevFilterString: jest.fn(),
+    setPrevFilterString: jest.fn(),
+    applyFilter: jest.fn(),
+    checkFilters: jest.fn(),
+    removeFilter: jest.fn()
 };
 
 export default context;
