@@ -25,12 +25,12 @@ export const StyledButton = styled(Button)`
     height: 54px;
 `;
 export const FilterButton = styled(Button)`
-    width: calc(125% + 2rem + 2px);
+    width: calc(100% + 4.6rem);
     margin-left: -1rem;
     min-height: 1rem;
-    height: 32px;
-    padding: 0px 0px 0px 10px;
-    bottom: -1.8rem;
+    height: 2rem;
+    padding: 0px 0px 0px 0.635rem;
+    bottom: -1.75rem;
     margin-top: -1rem;
 `;
 

@@ -48,7 +48,6 @@ const AppContextProvider = props => {
     };
 
     const [activeFilter, setActiveFilter] = useState(null);
-    const [filters, setFilters] = useState([]);
 
     const [search, setSearch] = useState({
         term: null,
@@ -143,6 +142,22 @@ const AppContextProvider = props => {
         });
     };
 
+    const removeFilter = (filter, valueIndex) => {
+        const filterValue = newFilterObject[filter][valueIndex];
+
+        setNewFilterObject({
+            ...newFilterObject,
+            [filter]: {
+                ...newFilterObject[filter],
+                [valueIndex]: {
+                    ...filterValue,
+                    checked: false,
+                    applied: false
+                }
+            }
+        });
+    };
+
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
@@ -229,14 +244,6 @@ const AppContextProvider = props => {
         });
     };
 
-    const addFilter = id => {
-        setFilters([...filters, id]);
-    };
-
-    const removeFilter = id => {
-        setFilters(filters.filter(f => f !== id));
-    };
-
     const openFilterBox = () => {
         setState({
             ...state,
@@ -273,8 +280,6 @@ const AppContextProvider = props => {
                 setFilterId,
                 itemRef,
                 activeFilter,
-                addFilter,
-                removeFilter,
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
@@ -300,7 +305,8 @@ const AppContextProvider = props => {
                 prevFilterString,
                 setPrevFilterString,
                 applyFilter,
-                checkFilters
+                checkFilters,
+                removeFilter
             }}
         >
             {props.children}

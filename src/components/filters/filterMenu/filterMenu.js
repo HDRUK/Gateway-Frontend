@@ -94,7 +94,7 @@ const FilterMenu = () => {
                         : activeFilter === i
                 }
                 modal={filterValues && Object.keys(filterValues).length > 4 ? "true" : "false"}
-                onHeadingClick={() => {
+                onHeadingClick={e => {
                     if (filterValues && Object.keys(filterValues).length > 4) {
                         if (!modalVisibility) {
                             appContext.openFilterBox();
@@ -113,10 +113,16 @@ const FilterMenu = () => {
                     ) : (
                         <div>
                             {Object.keys(filterValues).map((valueIndex, i) => {
+                                console.log(
+                                    "checked",
+                                    filterValues[valueIndex].value,
+                                    filterValues[valueIndex].checked
+                                );
                                 return (
                                     <Filter
                                         key={`resultCard-${i}`}
                                         title={filterValues[valueIndex].value}
+                                        defaultChecked={filterValues[valueIndex].checked}
                                         onChange={() => appContext.checkFilters(filterKey, valueIndex)}
                                     />
                                 );
