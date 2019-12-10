@@ -15,11 +15,11 @@ import { StyledButton } from "../../styles/carbonComponents.js";
 const heading = number => {
     if (number) {
         return {
-            headingText: `Enter to access our ${number} datasets`
+            headingText: `Enter to discover our ${number} datasets`
         };
     }
     return {
-        headingText: `Enter to access our datasets`
+        headingText: `Enter to discover our datasets`
     };
 };
 
