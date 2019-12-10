@@ -5,9 +5,9 @@ import {
     // DateSelector,
     // DateInput,
     FilterButton,
-    CenterLoading
+    CenterLoading,
+    CustomTag
 } from "../../../styles/carbonComponents.js";
-import { Tag } from "carbon-components-react";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
 
@@ -82,12 +82,17 @@ const FilterMenu = () => {
                 title={
                     <div>
                         <p>{filterTitle}</p>
+                        {filterValues &&
+                            Object.keys(filterValues).length > 4 &&
+                            (activeFilter === i && modalVisibility && (
+                                <div id="filter-expanded" ref={appContext.itemRef} />
+                            ))}
                         {Object.keys(filterValues).map(
                             valueI =>
                                 filterValues[valueI].applied && (
-                                    <Tag key={`tag-${valueI}`} type="blue">
+                                    <CustomTag key={`tag-${valueI}`} type="blue">
                                         {filterValues[valueI].value}
-                                    </Tag>
+                                    </CustomTag>
                                 )
                         )}
                     </div>
@@ -112,9 +117,7 @@ const FilterMenu = () => {
                 }}
             >
                 {filterValues &&
-                    (Object.keys(filterValues).length > 4 ? (
-                        activeFilter === i && modalVisibility && <div id="filter-expanded" ref={appContext.itemRef} />
-                    ) : (
+                    (Object.keys(filterValues).length <= 4 && (
                         <div>
                             {Object.keys(filterValues).map((valueIndex, i) => (
                                 <Filter

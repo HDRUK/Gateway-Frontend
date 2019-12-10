@@ -13,7 +13,8 @@ import {
     DatePicker,
     DatePickerInput,
     Loading,
-    InlineLoading
+    InlineLoading,
+    Tag
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -128,4 +129,9 @@ export const SaveSearchButton = styled(Button)`
             outline-color: ${colorTheme.darkBlue};
         }
     }
+`;
+
+export const CustomTag = styled(Tag)`
+    height: unset;
+    min-height: 1.5rem;
 `;
