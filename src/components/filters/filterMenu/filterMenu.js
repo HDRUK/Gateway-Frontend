@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useCallback } from "react";
 import {
     AccordionBlock,
     AccordionElement,
@@ -24,6 +24,7 @@ const FilterMenu = () => {
     const filterObject = appContext.filterObject;
     const setFilterObject = appContext.setFilterObject;
     const setFilterString = appContext.setFilterString;
+    const setFilterLocation = useCallback(() => appContext.setFilterLocation(appContext.itemRef), [appContext]);
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
         notifyOnNetworkStatusChange: true
@@ -73,6 +74,14 @@ const FilterMenu = () => {
         setFilterString(finalFilterString);
     }, [filterObject, setFilterString]);
 
+    useEffect(() => {
+        if (modalVisibility) {
+            document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
+        }
+        return () =>
+            document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
+    }, [modalVisibility, setFilterLocation]);
+
     const filterElement = (filterKey, filterValues, i) => {
         const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
@@ -103,7 +112,7 @@ const FilterMenu = () => {
                         : activeFilter === i
                 }
                 modal={filterValues && Object.keys(filterValues).length > 4 ? "true" : "false"}
-                onHeadingClick={e => {
+                onHeadingClick={() => {
                     if (filterValues && Object.keys(filterValues).length > 4) {
                         if (!modalVisibility) {
                             appContext.openFilterBox();

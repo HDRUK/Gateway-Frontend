@@ -10,8 +10,6 @@ const MenuFilterWrapper = () => {
 
     return (
         <React.Fragment>
-            {!modalVisibility && <div />}
-
             {modalVisibility && (
                 <FilterDiv
                     location={appContext.state.filterLocation + appContext.state.windowScroll}

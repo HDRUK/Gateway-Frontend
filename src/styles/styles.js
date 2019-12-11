@@ -337,6 +337,7 @@ export const ButtonSet = styled.div`
 
 export const FilterBoxContent = styled.div`
     padding: 10px;
+    max-width: 26.875rem;
 `;
 
 export const FilterBlock = styled.div`

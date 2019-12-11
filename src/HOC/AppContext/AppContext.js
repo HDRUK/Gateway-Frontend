@@ -106,7 +106,7 @@ const AppContextProvider = props => {
         });
     };
 
-    const itemRef = React.createRef();
+    const [itemRef] = useState(React.createRef());
 
     const [filterObject, setFilterObject] = useState({});
     const [filterString, setFilterString] = useState("");
@@ -211,19 +211,21 @@ const AppContextProvider = props => {
         });
     };
 
-    const setFilterLocation = () => {
-        outsideRange(window.scrollY, state.windowScroll, 10) &&
-            setState({
-                ...state,
-                windowScroll: window.scrollY
-            });
-        itemRef.current &&
-            outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11) &&
+    const setFilterLocation = React.useCallback(() => {
+        if (itemRef.current && outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11)) {
             setState({
                 ...state,
                 filterLocation: itemRef.current.getBoundingClientRect().y
             });
-    };
+        }
+
+        if (outsideRange(window.scrollY, state.windowScroll, 10)) {
+            setState({
+                ...state,
+                windowScroll: window.scrollY
+            });
+        }
+    }, [itemRef, state]);
 
     const setFilterId = filterId => {
         setActiveFilter(filterId);
@@ -248,7 +250,6 @@ const AppContextProvider = props => {
             ...state,
             modalVisibility: true
         });
-        document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
     };
 
     const closeFilterBox = () => {
@@ -256,7 +257,6 @@ const AppContextProvider = props => {
             ...state,
             modalVisibility: false
         });
-        document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
     return (

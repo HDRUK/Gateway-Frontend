@@ -99,6 +99,7 @@ export const MainSideNav = styled(SideNav)`
     background-color: #b5bab8;
     font-size: 1.2rem;
     overflow: auto;
+    overflow-x: hidden;
     z-index: 1;
 `;
 
