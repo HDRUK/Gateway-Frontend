@@ -11,6 +11,7 @@ import LandingPage from "./Containers/LandingPage/LandingPage";
 import AboutPage from "./Containers/AboutPage/AboutPage";
 import SearchPage from "./Containers/SearchPage/SearchPage";
 import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
+import RequestPage from "./Containers/RequestPage/RequestPage";
 import NotFound from "./Containers/NotFound/NotFound";
 
 import Header from "./components/header/header";
@@ -67,7 +68,7 @@ const App = () => {
                                     </Route>
                                     <Route exact path="/request-access">
                                         <Content nav>
-                                            <div>/request</div>
+                                            <RequestPage />
                                         </Content>
                                     </Route>
                                     <Route exact path="/detail/:id">

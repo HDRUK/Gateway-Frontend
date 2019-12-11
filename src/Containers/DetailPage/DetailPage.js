@@ -8,7 +8,8 @@ import {
     DarkText,
     TinySpace,
     StyledCard,
-    StyledSmallBoldText
+    StyledSmallBoldText,
+    LinkNoDecoration
 } from "../../styles/styles";
 import PropTypes from "prop-types";
 
@@ -62,9 +63,9 @@ const DetailPage = props => {
                         <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
                         {appContext.authenticated === "true" ? (
-                            <a href="/request-access">
+                            <LinkNoDecoration to="/request-access">
                                 <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
-                            </a>
+                            </LinkNoDecoration>
                         ) : (
                             <NewStyledButton kind="primary" onClick={() => setModalOpen(true)}>
                                 {textItems.buttonText}
