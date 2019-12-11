@@ -14,6 +14,15 @@ import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 import { useLazyQuery } from "@apollo/react-hooks";
 import { GET_FILTER_VALUES } from "../../../queries/queries.js";
 
+export const filterChangesCheck = (filterKey, filterObject) => {
+    const values = filterObject[filterKey];
+    const changes = Object.keys(values).map(valueIndex => {
+        const value = values[valueIndex];
+        return value.checked !== value.applied ? true : false;
+    });
+    return changes.find(change => (change ? true : false));
+};
+
 const FilterMenu = () => {
     const appContext = useContext(AppContext);
     const activeFilter = appContext.activeFilter;
@@ -135,7 +144,11 @@ const FilterMenu = () => {
                                 />
                             ))}
 
-                            <FilterButton kind="primary" onClick={() => appContext.applyFilter(filterKey)}>
+                            <FilterButton
+                                kind="primary"
+                                onClick={() => appContext.applyFilter(filterKey)}
+                                disabled={!filterChangesCheck(filterKey, filterObject)}
+                            >
                                 Apply
                             </FilterButton>
                         </div>

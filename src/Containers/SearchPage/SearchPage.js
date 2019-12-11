@@ -155,6 +155,17 @@ const SearchPage = () => {
             } else if (filterString !== null && filterString !== appContext.prevFilterString) {
                 appContext.setPrevFilterString(filterString);
                 clearSearchData();
+                searchAuditLogSave({
+                    variables: {
+                        userId: appContext.userId,
+                        searchTerm: searchTerm,
+                        endPoint: "",
+                        offSet: 0,
+                        recordLimit: limit,
+                        sort: { applied: "Alphabetical", value: "Up" },
+                        filters: null
+                    }
+                });
                 getItemsSearch({
                     variables: {
                         recordLimit: limit,

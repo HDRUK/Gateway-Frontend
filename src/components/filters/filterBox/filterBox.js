@@ -3,6 +3,7 @@ import { StyledButton } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
+import { filterChangesCheck } from "../filterMenu/filterMenu";
 
 const textItems = {
     apply: "Apply",
@@ -41,6 +42,7 @@ const FilterBox = () => {
                         appContext.applyFilter(filterKey);
                         appContext.closeFilterBox();
                     }}
+                    disabled={!filterChangesCheck(filterKey, appContext.filterObject)}
                 >
                     {textItems.apply}
                 </StyledButton>
