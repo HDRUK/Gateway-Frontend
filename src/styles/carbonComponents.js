@@ -14,7 +14,9 @@ import {
     DatePickerInput,
     Loading,
     InlineLoading,
-    Modal
+    Modal,
+    Form,
+    TextInput
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -140,6 +142,11 @@ export const NewStyledButton = styled(Button)`
     :hover {
         background-color: #249172;
     }
+`;
+
+export const StyledForm = styled(Form)``;
+export const StyledTextInput = styled(TextInput)`
+    border: none;
 `;
 
 export const StyledModal = styled(Modal)`

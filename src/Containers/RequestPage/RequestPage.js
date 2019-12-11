@@ -1,5 +1,6 @@
 import React from "react";
 import { LightText, StyledSmallBoldText, SmallSpace } from "../../styles/styles";
+import { StyledForm, StyledTextInput } from "../../styles/carbonComponents";
 
 const textItems = {
     heading: "Request access for",
@@ -28,7 +29,11 @@ const RequestPage = () => {
             <StyledSmallBoldText>
                 <LightText>{textItems.heading.toUpperCase()}</LightText>
             </StyledSmallBoldText>
-            <StyledSmallBoldText>{textItems.aimHeader}</StyledSmallBoldText>
+            <SmallSpace></SmallSpace>
+            <StyledForm>
+                <StyledSmallBoldText>{textItems.aimHeader}</StyledSmallBoldText>
+                <StyledTextInput labelText={textItems.aimHelpText}></StyledTextInput>
+            </StyledForm>
         </SmallSpace>
     );
 };
