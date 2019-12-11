@@ -140,6 +140,21 @@ const SearchPage = () => {
         }
     };
 
+    const formatFilterObjectForSave = filterObject => {
+        let finalArray = [];
+        Object.keys(filterObject)
+            .map(filterIndex => {
+                return Object.keys(filterObject[filterIndex])
+                    .filter(valueIndex => filterObject[filterIndex][valueIndex].applied)
+                    .map(valueIndex => ({
+                        type: filterIndex,
+                        value: filterObject[filterIndex][valueIndex].value
+                    }));
+            })
+            .forEach(array => (finalArray = [...finalArray, ...array]));
+        return finalArray;
+    };
+
     useEffect(() => {
         if (searchTerm !== null) {
             if (searchTerm !== previousTerm) {
@@ -164,7 +179,7 @@ const SearchPage = () => {
                         offSet: 0,
                         recordLimit: limit,
                         sort: { applied: "Alphabetical", value: "Up" },
-                        filters: null
+                        filters: formatFilterObjectForSave(appContext.filterObject)
                     }
                 });
                 getItemsSearch({
