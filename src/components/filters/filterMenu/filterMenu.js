@@ -171,7 +171,7 @@ const FilterMenu = () => {
                             )}
                         </React.Fragment>
                     )}
-                    {error && <div>Error :(</div>}
+                    {error && <div>Failed to load filters</div>}
                 </AccordionBlock>
             )}
         </React.Fragment>
