@@ -442,17 +442,6 @@ export const StyledSmallText = styled.p`
     line-height: 1.1rem;
 `;
 
-export const Arrow = styled.div`
-    position: absolute;
-    right: 1.5rem;
-    display: inline-block;
-    width: 0.7rem;
-    height: 0.7rem;
-    border: 0.125rem solid #000000;
-    border-width: 0.06125rem 0.06125rem 0 0;
-    transform: rotate(45deg);
-`;
-
 export const StyledLine = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 1rem 0;

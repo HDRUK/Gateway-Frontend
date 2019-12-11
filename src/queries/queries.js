@@ -120,6 +120,7 @@ export const RESULT_DETAIL = gql`
                 derivedDatasets
                 creator
                 citations
+                contactPoint
             }
         }
     }

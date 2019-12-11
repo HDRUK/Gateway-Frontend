@@ -65,6 +65,11 @@ const App = () => {
                                             <div>/help</div>
                                         </Content>
                                     </Route>
+                                    <Route exact path="/request-access">
+                                        <Content nav>
+                                            <div>/request</div>
+                                        </Content>
+                                    </Route>
                                     <Route exact path="/detail/:id">
                                         <Content nav>
                                             <DetailPage />

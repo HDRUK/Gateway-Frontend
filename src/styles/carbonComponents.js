@@ -13,7 +13,8 @@ import {
     DatePicker,
     DatePickerInput,
     Loading,
-    InlineLoading
+    InlineLoading,
+    Modal
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -138,5 +139,46 @@ export const NewStyledButton = styled(Button)`
     background-color: #2fbb93;
     :hover {
         background-color: #249172;
+    }
+`;
+
+export const StyledModal = styled(Modal)`
+    .bx--modal-container {
+        @media (min-width: 60rem) {
+            width: 35%;
+            max-width: 768px;
+            max-height: 90%;
+            height: auto;
+            border-radius: 0.2rem;
+        }
+    }
+    .bx--btn--primary {
+        background-color: #2fbb93;
+        right: 0;
+        :hover {
+            background-color: #249172;
+        }
+    }
+    .bx--btn--secondary {
+        background-color: #f4f4f4;
+        border-color: #2fbb93;
+        border-width: 1px;
+        color: #2fbb93;
+        :hover {
+            border-color: #249172;
+            color: #249172;
+        }
+    }
+    .bx--modal-footer {
+        background-color: transparent;
+    }
+    .bx--modal-footer button.bx--btn {
+        height: 0.6rem;
+        padding: 0rem 1rem 0rem 1rem;
+        font-weight: 700;
+        position: absolute;
+        flex: 0;
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
 `;
