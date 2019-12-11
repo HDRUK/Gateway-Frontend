@@ -115,16 +115,17 @@ const AppContextProvider = props => {
     const checkFilters = (filter, valueIndex) => {
         const filterValue = filterObject[filter][valueIndex];
 
-        setFilterObject({
-            ...filterObject,
-            [filter]: {
-                ...filterObject[filter],
-                [valueIndex]: {
-                    ...filterValue,
-                    checked: !filterValue.checked
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterObject[filter],
+                    [valueIndex]: {
+                        ...filterValue,
+                        checked: !filterValue.checked
+                    }
                 }
-            }
-        });
+            })
+        );
     };
 
     const applyFilter = filter => {
@@ -133,28 +134,30 @@ const AppContextProvider = props => {
             applied: filterObject[filter][valueIndex].checked
         }));
 
-        setFilterObject({
-            ...filterObject,
-            [filter]: {
-                ...filterValues
-            }
-        });
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterValues
+                }
+            })
+        );
     };
 
     const removeFilter = (filter, valueIndex) => {
         const filterValue = filterObject[filter][valueIndex];
 
-        setFilterObject({
-            ...filterObject,
-            [filter]: {
-                ...filterObject[filter],
-                [valueIndex]: {
-                    ...filterValue,
-                    checked: false,
-                    applied: false
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterObject[filter],
+                    [valueIndex]: {
+                        ...filterValue,
+                        checked: false,
+                        applied: false
+                    }
                 }
-            }
-        });
+            })
+        );
     };
 
     const insertSearchData = (length, newData) => {
