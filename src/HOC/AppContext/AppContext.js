@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
+import nhs_logo from "../../assets/nhs_logo.png";
+import ibm_logo_black from "../../assets/ibm_logo_black.png";
+import oxford_logo from "../../assets/oxford_logo.png";
 import { useQuery } from "@apollo/react-hooks";
 
 import { DATASET_COUNT } from "../../queries/queries.js";
@@ -88,7 +91,10 @@ const AppContextProvider = props => {
     };
 
     const images = {
-        logoHDR: hdruk_logo_black
+        logoHDR: hdruk_logo_black,
+        logoNHS: nhs_logo,
+        logoIBM: ibm_logo_black,
+        logoOXF: oxford_logo
     };
 
     const textItems = { searchHeader: "What health data do you need?" };
