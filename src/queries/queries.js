@@ -101,22 +101,30 @@ export const RESULT_DETAIL = gql`
             count
             data {
                 id
-                domainType
-                label
-                aliases
-                description
-                author
-                organisation
-                editable
-                documentationVersion
-                lastUpdated
-                classifiers {
-                    id
-                    label
-                    lastUpdated
-                }
-                type
-                finalised
+                title
+                releaseDate
+                publisher
+                license
+                accessRequestDuration
+                conformsTo
+                abstract
+                accessRequestCost
+                dataController
+                dataProcessor
+                accessRights
+                jurisdiction
+                geographicCoverage
+                datasetStartDate
+                datasetEndDate
+                periodicity
+                statisticalPopulation
+                ageBand
+                physicalSampleAvailability
+                group
+                linkedDataset
+                derivedDatasets
+                creator
+                citations
             }
         }
     }

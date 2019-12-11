@@ -48,6 +48,7 @@ const AppContextProvider = props => {
     };
 
     const [activeFilter, setActiveFilter] = useState(null);
+    const [detailData, setDetailData] = useState([]);
 
     const [search, setSearch] = useState({
         term: null,
@@ -306,7 +307,9 @@ const AppContextProvider = props => {
                 setPrevFilterString,
                 applyFilter,
                 checkFilters,
-                removeFilter
+                removeFilter,
+                detailData,
+                setDetailData
             }}
         >
             {props.children}

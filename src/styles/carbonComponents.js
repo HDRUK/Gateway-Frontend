@@ -136,3 +136,13 @@ export const CustomTag = styled(Tag)`
     height: unset;
     min-height: 1.5rem;
 `;
+
+//NEW STYLES
+export const NewStyledButton = styled(Button)`
+    height: 2rem;
+    padding: calc(0.875rem - 3px) 30px calc(0.875rem - 3px) 30px;
+    background-color: #2fbb93;
+    :hover {
+        background-color: #249172;
+    }
+`;
