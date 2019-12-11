@@ -33,6 +33,14 @@ const RequestPage = () => {
             <StyledForm>
                 <StyledSmallBoldText>{textItems.aimHeader}</StyledSmallBoldText>
                 <StyledTextInput labelText={textItems.aimHelpText}></StyledTextInput>
+                <StyledSmallBoldText>{textItems.datasetHeader}</StyledSmallBoldText>
+                <StyledTextInput labelText={textItems.datasetHelpText}></StyledTextInput>
+                <StyledSmallBoldText>{textItems.requirementsHeader}</StyledSmallBoldText>
+                <StyledTextInput labelText={textItems.requirementsHelpText}></StyledTextInput>
+                <StyledSmallBoldText>{textItems.startDate}</StyledSmallBoldText>
+                <StyledTextInput labelText={false}></StyledTextInput>
+                <StyledSmallBoldText>{textItems.ico}</StyledSmallBoldText>
+                <StyledTextInput labelText={false}></StyledTextInput>
             </StyledForm>
         </SmallSpace>
     );
