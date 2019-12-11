@@ -17,7 +17,7 @@ const DetailPage = props => {
         variables: { ID: appContext.state.searchResultId },
         skip: appContext.state.searchResultId === null
     });
-    if (loading) return <CenterLoading />;
+    if (loading) return <CenterLoading withOverlay={false} />;
     if (error) return <div>Error :(</div>;
 
     let detailData = {};
