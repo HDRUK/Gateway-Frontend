@@ -1,7 +1,6 @@
 import React from "react";
 
 import { PageWrapper, contentWrapper, ParagraphText, DarkText, MediumSpace } from "../../styles/styles.js";
-import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     para1:
