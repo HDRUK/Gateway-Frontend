@@ -211,7 +211,7 @@ const AppContextProvider = props => {
         });
     };
 
-    const setFilterLocation = React.useCallback(() => {
+    const setFilterLocation = () => {
         if (itemRef.current && outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11)) {
             setState({
                 ...state,
@@ -225,7 +225,7 @@ const AppContextProvider = props => {
                 windowScroll: window.scrollY
             });
         }
-    }, [itemRef, state]);
+    };
 
     const setFilterId = filterId => {
         setActiveFilter(filterId);

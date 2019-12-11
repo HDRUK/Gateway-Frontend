@@ -4,6 +4,11 @@ import Filter from "../filter/filter.js";
 import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
+const textItems = {
+    apply: "Apply",
+    cancel: "Cancel"
+};
+
 const FilterBox = () => {
     const appContext = useContext(AppContext);
     const filterKey = Object.keys(appContext.filterObject).find((key, i) => i === appContext.activeFilter);
@@ -28,7 +33,7 @@ const FilterBox = () => {
             </FilterBoxContent>
             <ButtonSet>
                 <StyledButton kind="secondary" onClick={appContext.closeFilterBox}>
-                    Cancel
+                    {textItems.cancel}
                 </StyledButton>
                 <StyledButton
                     kind="primary"
@@ -37,7 +42,7 @@ const FilterBox = () => {
                         appContext.closeFilterBox();
                     }}
                 >
-                    Apply
+                    {textItems.apply}
                 </StyledButton>
             </ButtonSet>
         </React.Fragment>
