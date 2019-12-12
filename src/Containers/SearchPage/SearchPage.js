@@ -155,6 +155,20 @@ const SearchPage = () => {
         return finalArray;
     };
 
+    const runGetItemsSearch = () => {
+        getItemsSearch({
+            variables: {
+                recordLimit: limit,
+                recordOffset: 0,
+                searchTerm: searchTerm,
+                filterItems: [filterString],
+                sortField: selectedSort.current
+            },
+            fetchPolicy: "cache-and-network",
+            notifyOnNetworkStatusChange: true
+        });
+    };
+
     useEffect(() => {
         if (searchTerm !== null) {
             if (searchTerm !== previousTerm) {
@@ -163,11 +177,7 @@ const SearchPage = () => {
                     ...appContext.search,
                     previousTerm: searchTerm
                 });
-                getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
-                });
+                runGetItemsSearch();
             } else if (filterString !== null && filterString !== appContext.prevFilterString) {
                 // This is run when the user applies a filter
                 appContext.setPrevFilterString(filterString);
@@ -183,31 +193,10 @@ const SearchPage = () => {
                         filters: formatFilterObjectForSave(appContext.filterObject)
                     }
                 });
-                getItemsSearch({
-                    variables: {
-                        recordLimit: limit,
-                        recordOffset: 0,
-                        searchTerm: searchTerm,
-                        filterItems: [filterString],
-                        sortField: selectedSort.current
-                    },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
-                });
+                runGetItemsSearch();
             } else if (!error && !loading && !data && searchData.length === 0) {
                 // This is run when the user returns to this search having already run it once to refresh
-                console.log("FILTER STRING: ", filterString);
-                getItemsSearch({
-                    variables: {
-                        recordLimit: limit,
-                        recordOffset: 0,
-                        searchTerm: searchTerm,
-                        filterItems: [filterString],
-                        sortField: selectedSort.current
-                    },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
-                });
+                runGetItemsSearch();
             } else if (selectedSort.current !== selectedSort.previous) {
                 // This is run when the user changes the selected sort field
                 appContext.setSelectedSort({
@@ -215,17 +204,7 @@ const SearchPage = () => {
                     previous: selectedSort.current
                 });
                 clearSearchData();
-                getItemsSearch({
-                    variables: {
-                        recordLimit: limit,
-                        recordOffset: 0,
-                        searchTerm: searchTerm,
-                        filterItems: [filterString],
-                        sortField: selectedSort.current
-                    },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
-                });
+                runGetItemsSearch();
             }
         }
     });
