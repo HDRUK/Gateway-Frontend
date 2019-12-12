@@ -39,8 +39,11 @@ const AppContextProvider = props => {
     };
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
-    const [userId, setUserId] = useState(localStorage.getItem("userId"));
-    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    // const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [userId, setUserId] = useState("TimTestLocal");
+
+    // const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    const [authenticated, setAuthenticated] = useState("true");
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -114,6 +117,22 @@ const AppContextProvider = props => {
     };
 
     const [itemRef] = useState(React.createRef());
+
+    const [sortItems] = useState([
+        {
+            id: "title",
+            label: "Title",
+            default: true
+        },
+        {
+            id: "releaseDate",
+            label: "Release Date"
+        }
+    ]);
+    const [selectedSort, setSelectedSort] = useState({
+        current: "title",
+        previous: "title"
+    });
 
     const [filterObject, setFilterObject] = useState({});
     const [filterString, setFilterString] = useState("");
@@ -202,6 +221,7 @@ const AppContextProvider = props => {
     };
 
     const returnSearchResults = (value, searchSaved = false) => {
+        // TODO: Implement filters & sort
         !state.searchPageState &&
             setState({
                 ...state,
@@ -315,7 +335,10 @@ const AppContextProvider = props => {
                 checkFilters,
                 removeFilter,
                 detailData,
-                setDetailData
+                setDetailData,
+                sortItems,
+                selectedSort,
+                setSelectedSort
             }}
         >
             {props.children}

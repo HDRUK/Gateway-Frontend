@@ -108,6 +108,7 @@ const SearchPage = () => {
     const dataLength = searchData ? searchData.length : "0";
     const offSet = searchData.offSet;
     const limit = appContext.state.resultsLimit;
+    const selectedSort = appContext.selectedSort;
     const filterString = appContext.filterString;
 
     const clearSearchData = appContext.clearSearchData;
@@ -131,7 +132,7 @@ const SearchPage = () => {
                     endPoint: "",
                     offSet: 0,
                     recordLimit: limit,
-                    sort: { applied: "Alphabetical", value: "Up" },
+                    sort: { applied: selectedSort.current, value: "Up" },
                     filters: null
                 }
             });
@@ -158,17 +159,18 @@ const SearchPage = () => {
     useEffect(() => {
         if (searchTerm !== null) {
             if (searchTerm !== previousTerm) {
+                // This is the inital search when use changes the search term
                 appContext.setSearch({
                     ...appContext.search,
                     previousTerm: searchTerm
                 });
-
                 getItemsSearch({
                     variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
             } else if (filterString !== null && filterString !== appContext.prevFilterString) {
+                // This is run when the user applies a filter
                 appContext.setPrevFilterString(filterString);
                 clearSearchData();
                 searchAuditLogSave({
@@ -178,7 +180,7 @@ const SearchPage = () => {
                         endPoint: "",
                         offSet: 0,
                         recordLimit: limit,
-                        sort: { applied: "Alphabetical", value: "Up" },
+                        sort: { applied: selectedSort.current, value: "Up" },
                         filters: formatFilterObjectForSave(appContext.filterObject)
                     }
                 });
@@ -187,15 +189,40 @@ const SearchPage = () => {
                         recordLimit: limit,
                         recordOffset: 0,
                         searchTerm: searchTerm,
-                        filterItems: [filterString]
+                        filterItems: [filterString],
+                        sortField: selectedSort.current
                     },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });
-            }
-            if (!error && !loading && !data && searchData.length === 0) {
+            } else if (!error && !loading && !data && searchData.length === 0) {
+                // This is run when the user returns to this search having already run it once to refresh
                 getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
+                    variables: {
+                        recordLimit: limit,
+                        recordOffset: 0,
+                        searchTerm: searchTerm,
+                        filterItems: [filterString],
+                        sortField: selectedSort.current
+                    },
+                    fetchPolicy: "cache-and-network",
+                    notifyOnNetworkStatusChange: true
+                });
+            } else if (selectedSort.current !== selectedSort.previous) {
+                // This is run when the user changes the selected sort field
+                appContext.setSelectedSort({
+                    current: selectedSort.current,
+                    previous: selectedSort.current
+                });
+                clearSearchData();
+                getItemsSearch({
+                    variables: {
+                        recordLimit: limit,
+                        recordOffset: 0,
+                        searchTerm: searchTerm,
+                        filterItems: [filterString],
+                        sortField: selectedSort.current
+                    },
                     fetchPolicy: "cache-and-network",
                     notifyOnNetworkStatusChange: true
                 });

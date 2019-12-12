@@ -9,12 +9,19 @@ export const DATASET_COUNT = gql`
 `;
 
 export const CUSTOM_SEARCH = gql`
-    query HdrCustomSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!, $filterItems: [String]) {
+    query HdrCustomSearch(
+        $recordLimit: Int!
+        $recordOffset: Int!
+        $searchTerm: String!
+        $filterItems: [String]
+        $sortField: String
+    ) {
         hdrCustomSearch(
             recordLimit: $recordLimit
             recordOffset: $recordOffset
             searchTerm: $searchTerm
             filterItems: $filterItems
+            sortField: $sortField
         ) {
             status
             message

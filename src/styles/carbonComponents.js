@@ -92,7 +92,9 @@ export const CheckboxItem = styled(Checkbox)`
 
 export const SearchBar = styled(Search)``;
 
-export const DropdownFilter = styled(Dropdown)``;
+export const DropdownFilter = styled(Dropdown)`
+    min-width: 15.625rem;
+`;
 
 export const DateSelector = styled(DatePicker)`
     flex-direction: column;
