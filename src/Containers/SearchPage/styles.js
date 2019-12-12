@@ -25,20 +25,6 @@ export const Results = styled.div`
     pointer-events: ${p => (p.invisible ? "none" : "unset")};
 `;
 
-export const ResultsCounter = styled.div`
-    display: inline-block;
-    line-height: 2.5rem;
-`;
-
-export const SortDiv = styled.div`
-    display: inline-block;
-    float: right;
-`;
-
-export const SearchInfo = styled.div`
-    padding: 0 1rem 0.5rem 1rem;
-`;
-
 export const SearchResultsWrapper = styled(ResultsWrapper)`
     max-height: calc(100vh - 25.75rem);
 `;

@@ -95,7 +95,7 @@ const SavedSearchCard = props => {
                     {loading && <RightSmallInlineLoading />}
                 </DeleteSearchButton>
                 {/* TODO: Send filters & sort to runSearch */}
-                <Link to={`/search`} onClick={() => runSearch(searchesData.detail)}>
+                <Link to={`/search`} onClick={() => runSearch(searchesData.detail, true)}>
                     <SavedSearchButton kind="primary" size="small">
                         {textItems.runSearch}
                     </SavedSearchButton>
