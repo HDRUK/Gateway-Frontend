@@ -32,7 +32,10 @@ const textItems = {
 
 const RequestPage = () => {
     const [datasetRequired, setDatasetRequired] = useState(true);
+    const [aimInvalid, setAimInvalid] = useState(false);
     const [datasetInvalid, setDatasetInvalid] = useState(false);
+    const [requirementsInvalid, setRequirementsInvalid] = useState(false);
+    const [aimInput, setAimInput] = useState("");
     const [datasetInput, setDatasetInput] = useState("");
     const [requirementsInput, setRequirementsInput] = useState("");
 
@@ -47,13 +50,27 @@ const RequestPage = () => {
                 onSubmit={e => {
                     e.preventDefault();
                     datasetRequired && datasetInput === "" ? setDatasetInvalid(true) : setDatasetInvalid(false);
+                    aimInput === "" ? setAimInvalid(true) : setAimInvalid(false);
+                    requirementsRequired && requirementsInput === ""
+                        ? setRequirementsInvalid(true)
+                        : setRequirementsInvalid(false);
                 }}
             >
                 <StyledSmallBoldText>
                     {textItems.aimHeader}
                     <RedText>*</RedText>
                 </StyledSmallBoldText>
-                <StyledTextArea cols={100} id="aim" labelText={textItems.aimHelpText}></StyledTextArea>
+                <StyledTextArea
+                    invalid={aimInvalid}
+                    cols={100}
+                    id="aim"
+                    labelText={textItems.aimHelpText}
+                    value={aimInput}
+                    onChange={event => {
+                        setAimInput(event.target.value);
+                        setAimInvalid(false);
+                    }}
+                ></StyledTextArea>
                 <TinySpace />
                 <StyledSmallBoldText>
                     {textItems.datasetHeader}
@@ -74,6 +91,7 @@ const RequestPage = () => {
                     value={datasetInput}
                     onChange={event => {
                         setDatasetInput(event.target.value);
+                        setDatasetInvalid(false);
                     }}
                 ></StyledTextArea>
                 <TinySpace />
@@ -88,6 +106,7 @@ const RequestPage = () => {
                     onChange={value => (value ? setRequirementsRequired(false) : setRequirementsRequired(true))}
                 />
                 <StyledTextArea
+                    invalid={requirementsInvalid}
                     cols={100}
                     id="requirements"
                     labelText={false}
@@ -95,6 +114,7 @@ const RequestPage = () => {
                     value={requirementsInput}
                     onChange={event => {
                         setRequirementsInput(event.target.value);
+                        setRequirementsInvalid(false);
                     }}
                 ></StyledTextArea>
                 <TinySpace />
