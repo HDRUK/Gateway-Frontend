@@ -124,7 +124,6 @@ const SearchPage = () => {
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             // TODO: Add filters to the audit log save
-            // TODO: Implement sort functionality
             searchAuditLogSave({
                 variables: {
                     userId: appContext.userId,
@@ -197,6 +196,7 @@ const SearchPage = () => {
                 });
             } else if (!error && !loading && !data && searchData.length === 0) {
                 // This is run when the user returns to this search having already run it once to refresh
+                console.log("FILTER STRING: ", filterString);
                 getItemsSearch({
                     variables: {
                         recordLimit: limit,

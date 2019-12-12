@@ -1,6 +1,11 @@
 import React from "react";
 import { create } from "react-test-renderer";
+
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import context from "../../__mocks__/AppContextMock.js";
+
 import Sort from "./sort.js";
+
 import { DropdownFilter } from "../../styles/carbonComponents.js";
 import { LabelText, FloatRight } from "../../styles/styles.js";
 
@@ -10,17 +15,22 @@ describe("<Sort> ", () => {
     const textItems = { labelText: "Sort by:" };
     const items = [
         {
-            id: "first-item",
-            label: "Item 1"
+            id: "title",
+            label: "Title",
+            default: true
         },
         {
-            id: "second-item",
-            label: "Item 2"
+            id: "releaseDate",
+            label: "Release Date"
         }
     ];
 
     beforeEach(() => {
-        renderedComponent = create(<Sort />);
+        renderedComponent = create(
+            <AppContext.Provider value={context}>
+                <Sort />
+            </AppContext.Provider>
+        );
         renderedOutput = renderedComponent.root;
     });
 

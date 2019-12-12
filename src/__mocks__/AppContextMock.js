@@ -31,6 +31,22 @@ const context = {
     authenticated: "true",
     userId: "test",
 
+    sortItems: [
+        {
+            id: "title",
+            label: "Title",
+            default: true
+        },
+        {
+            id: "releaseDate",
+            label: "Release Date"
+        }
+    ],
+    selectedSort: {
+        current: "title",
+        previous: "title"
+    },
+
     filterString: "",
     prevFilterString: "",
     filterObject: {},
@@ -74,7 +90,8 @@ const context = {
     setPrevFilterString: jest.fn(),
     applyFilter: jest.fn(),
     checkFilters: jest.fn(),
-    removeFilter: jest.fn()
+    removeFilter: jest.fn(),
+    setSelectedSort: jest.fn()
 };
 
 export default context;

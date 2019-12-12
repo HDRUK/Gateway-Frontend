@@ -3,7 +3,7 @@ import { DropdownFilter } from "../../styles/carbonComponents.js";
 import { LabelText, FloatRight } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-const textItems = { labelText: "Sort by: " };
+const textItems = { labelText: "Sort by:" };
 const Sort = () => {
     const appContext = useContext(AppContext);
     const sortItems = appContext.sortItems;
