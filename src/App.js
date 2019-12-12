@@ -8,7 +8,8 @@ import AppContext from "./HOC/AppContext/AppContext.js";
 import ErrorBoundary from "./HOC/ErrorBoundary/ErrorBoundary";
 
 import LandingPage from "./Containers/LandingPage/LandingPage";
-import AboutPage from "./Containers/AboutPage/AboutPage";
+import InnovationPage from "./Containers/InnovationPage/InnovationPage";
+import GuidelinesPage from "./Containers/GuidelinesPage/GuidelinesPage";
 import SearchPage from "./Containers/SearchPage/SearchPage";
 import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
 import NotFound from "./Containers/NotFound/NotFound";
@@ -50,19 +51,14 @@ const App = () => {
                                             <MySearchesPage />
                                         </Content>
                                     </Route>
-                                    <Route exact path="/browse">
+                                    <Route exact path="/innovation">
                                         <Content nav>
-                                            <div>/browse</div>
+                                            <InnovationPage />
                                         </Content>
                                     </Route>
-                                    <Route exact path="/about">
+                                    <Route exact path="/guidelines">
                                         <Content nav>
-                                            <AboutPage />
-                                        </Content>
-                                    </Route>
-                                    <Route exact path="/help">
-                                        <Content nav>
-                                            <div>/help</div>
+                                            <GuidelinesPage />
                                         </Content>
                                     </Route>
                                     <Route exact path="/detail/:id">

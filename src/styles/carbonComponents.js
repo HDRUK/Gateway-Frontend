@@ -14,12 +14,19 @@ import {
     DatePickerInput,
     Loading,
     InlineLoading,
-    Tag
+    Tag,
+    Tabs,
+    Tab
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
 import { colorTheme } from "./styles.js";
 
+// HDR Imported carbon components ..
+export const HDRTabs = Tabs;
+export const HDRTab = Tab;
+
+// Styled carbon components
 export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;

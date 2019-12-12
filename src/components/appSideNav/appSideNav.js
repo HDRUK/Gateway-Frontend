@@ -10,9 +10,9 @@ import SaveSearch from "../../components/saveSearch/saveSearch.js";
 const sideNavText = {
     search: "Search",
     mySearches: "My searches",
-    browse: "Browse",
     about: "About",
-    help: "Help",
+    aboutIn: " ~ Innovation Gateway",
+    aboutGuide: " ~ Guidelines",
     company: "UK Government"
 };
 
@@ -27,16 +27,15 @@ const routes = [
         text: sideNavText.mySearches
     },
     {
-        path: "/browse",
-        text: sideNavText.browse
-    },
-    {
-        path: "/about",
         text: sideNavText.about
     },
     {
-        path: "/help",
-        text: sideNavText.help
+        path: "/innovation",
+        text: sideNavText.aboutIn
+    },
+    {
+        path: "/guidelines",
+        text: sideNavText.aboutGuide
     }
 ];
 
