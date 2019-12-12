@@ -16,7 +16,10 @@ import {
     InlineLoading,
     Modal,
     Form,
-    TextInput
+    TextInput,
+    FormGroup,
+    FormLabel,
+    TextArea
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
 import "../carbon-components.css";
@@ -148,6 +151,12 @@ export const StyledForm = styled(Form)``;
 export const StyledTextInput = styled(TextInput)`
     border: none;
 `;
+export const StyledTextArea = styled(TextArea)`
+    border: none;
+    :disabled {
+        color: #c6c6c6;
+    }
+`;
 
 export const StyledModal = styled(Modal)`
     .bx--modal-container {
@@ -189,3 +198,7 @@ export const StyledModal = styled(Modal)`
         margin-right: 2rem;
     }
 `;
+
+export const StyledFormGroup = styled(FormGroup)``;
+
+export const StyledFormLabel = styled(FormLabel)``;

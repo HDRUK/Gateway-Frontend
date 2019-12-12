@@ -57,7 +57,7 @@ const AppSideNav = props => {
                                 <SideNavLink>{route.text}</SideNavLink>
                             </LinkNoDecoration>
                         ) : (
-                            <React.Fragment />
+                            <React.Fragment key="no-route" />
                         )
                     )}
                 </NavItems>

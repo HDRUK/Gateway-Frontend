@@ -447,3 +447,7 @@ export const StyledLine = styled.div`
     margin: 1rem 0 1rem 0;
     background-color: #dadada;
 `;
+
+export const RedText = styled.span`
+    color: #e02020;
+`;

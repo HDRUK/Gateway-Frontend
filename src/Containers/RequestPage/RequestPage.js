@@ -1,6 +1,13 @@
-import React from "react";
-import { LightText, StyledSmallBoldText, SmallSpace } from "../../styles/styles";
-import { StyledForm, StyledTextInput } from "../../styles/carbonComponents";
+import React, { useState } from "react";
+import { LightText, StyledSmallBoldText, SmallSpace, TinySpace, RedText } from "../../styles/styles";
+import {
+    StyledForm,
+    StyledTextInput,
+    NewStyledButton,
+    CheckboxItem,
+    StyledFormLabel,
+    StyledTextArea
+} from "../../styles/carbonComponents";
 
 const textItems = {
     heading: "Request access for",
@@ -24,23 +31,90 @@ const textItems = {
 };
 
 const RequestPage = () => {
+    const [datasetRequired, setDatasetRequired] = useState(true);
+    const [datasetInvalid, setDatasetInvalid] = useState(false);
+    const [datasetInput, setDatasetInput] = useState("");
+    const [requirementsInput, setRequirementsInput] = useState("");
+
+    const [requirementsRequired, setRequirementsRequired] = useState(true);
     return (
         <SmallSpace>
             <StyledSmallBoldText>
                 <LightText>{textItems.heading.toUpperCase()}</LightText>
             </StyledSmallBoldText>
             <SmallSpace></SmallSpace>
-            <StyledForm>
-                <StyledSmallBoldText>{textItems.aimHeader}</StyledSmallBoldText>
-                <StyledTextInput labelText={textItems.aimHelpText}></StyledTextInput>
-                <StyledSmallBoldText>{textItems.datasetHeader}</StyledSmallBoldText>
-                <StyledTextInput labelText={textItems.datasetHelpText}></StyledTextInput>
-                <StyledSmallBoldText>{textItems.requirementsHeader}</StyledSmallBoldText>
-                <StyledTextInput labelText={textItems.requirementsHelpText}></StyledTextInput>
+            <StyledForm
+                onSubmit={e => {
+                    e.preventDefault();
+                    datasetRequired && datasetInput === "" ? setDatasetInvalid(true) : setDatasetInvalid(false);
+                }}
+            >
+                <StyledSmallBoldText>
+                    {textItems.aimHeader}
+                    <RedText>*</RedText>
+                </StyledSmallBoldText>
+                <StyledTextArea cols={100} id="aim" labelText={textItems.aimHelpText}></StyledTextArea>
+                <TinySpace />
+                <StyledSmallBoldText>
+                    {textItems.datasetHeader}
+                    <RedText>*</RedText>
+                </StyledSmallBoldText>
+                <StyledFormLabel>{textItems.datasetHelpText}</StyledFormLabel>
+                <CheckboxItem
+                    id="dataset-checkbox"
+                    labelText={textItems.datasetCheckbox}
+                    onChange={value => (value ? setDatasetRequired(false) : setDatasetRequired(true))}
+                />
+                <StyledTextArea
+                    cols={100}
+                    id="dataset"
+                    invalid={datasetInvalid}
+                    labelText={false}
+                    disabled={!datasetRequired}
+                    value={datasetInput}
+                    onChange={event => {
+                        setDatasetInput(event.target.value);
+                    }}
+                ></StyledTextArea>
+                <TinySpace />
+                <StyledSmallBoldText>
+                    {textItems.requirementsHeader}
+                    <RedText>*</RedText>
+                </StyledSmallBoldText>
+                <StyledFormLabel>{textItems.requirementsHelpText}</StyledFormLabel>
+                <CheckboxItem
+                    id="requirements-checkbox"
+                    labelText={textItems.requirementsCheckbox}
+                    onChange={value => (value ? setRequirementsRequired(false) : setRequirementsRequired(true))}
+                />
+                <StyledTextArea
+                    cols={100}
+                    id="requirements"
+                    labelText={false}
+                    disabled={!requirementsRequired}
+                    value={requirementsInput}
+                    onChange={event => {
+                        setRequirementsInput(event.target.value);
+                    }}
+                ></StyledTextArea>
+                <TinySpace />
                 <StyledSmallBoldText>{textItems.startDate}</StyledSmallBoldText>
-                <StyledTextInput labelText={false}></StyledTextInput>
+                <StyledTextInput id="start-date" labelText={false}></StyledTextInput>
                 <StyledSmallBoldText>{textItems.ico}</StyledSmallBoldText>
-                <StyledTextInput labelText={false}></StyledTextInput>
+                <StyledTextInput id="ico" labelText={false}></StyledTextInput>
+                <TinySpace />
+                <StyledSmallBoldText>{textItems.benefitsHeader}</StyledSmallBoldText>
+                <StyledTextArea cols={100} id="research" labelText={textItems.benefitsHelpText}></StyledTextArea>
+                <TinySpace />
+                <StyledSmallBoldText>{textItems.evidenceHeader}</StyledSmallBoldText>
+                <StyledTextArea cols={100} id="evidence" labelText={textItems.evidenceHelpText}></StyledTextArea>
+                <TinySpace />
+                <StyledSmallBoldText>{textItems.contact}</StyledSmallBoldText>
+                <StyledTextInput id="contact" labelText={false}></StyledTextInput>
+                <TinySpace />
+                <NewStyledButton kind="primary" type="submit">
+                    {textItems.button}
+                </NewStyledButton>
             </StyledForm>
         </SmallSpace>
     );
