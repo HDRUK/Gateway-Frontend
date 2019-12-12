@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
@@ -25,6 +25,12 @@ import DetailPage from "./Containers/DetailPage/DetailPage";
 import LoginCallback from "./components/loginCallback/loginCallback";
 
 const App = () => {
+    useEffect(() => {
+        document.title =
+            process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT !== "production"
+                ? `${process.env.REACT_APP_ENVIRONMENT} - Health Data Gateway`
+                : "Health Data Gateway";
+    });
     return (
         <ErrorBoundary>
             <Apollo>
