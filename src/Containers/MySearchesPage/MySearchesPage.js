@@ -32,7 +32,13 @@ const MySearchesPage = () => {
     const [selectedSort, setSelectedSort] = useState(sortItems.find(item => item.default).id);
 
     const { data, loading, error, refetch } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, {
-        variables: { userId: userId }
+        variables: {
+            userId: userId,
+            sortField: {
+                applied: "created_on",
+                value: selectedSort === "oldest" ? "DESC" : "ASC"
+            }
+        }
     });
 
     useEffect(() => {
@@ -47,10 +53,10 @@ const MySearchesPage = () => {
         refetch();
     });
 
-    if (loading) {
+    if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    // if (error) return <div>{mySearchesPageText.errorMessage}</div>;
+    if (error) return <div>{mySearchesPageText.errorMessage}</div>;
 
     const results =
         savedSearchesData.data && savedSearchesData.data.length > 0 ? (
@@ -79,7 +85,13 @@ const MySearchesPage = () => {
                     </FloatRight>
                 </SortDiv>
             </SearchInfo>
-            <ResultsWrapper>{results}</ResultsWrapper>
+            <ResultsWrapper>
+                {loading ? (
+                    <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
+                ) : (
+                    results
+                )}
+            </ResultsWrapper>
         </div>
     );
 };
