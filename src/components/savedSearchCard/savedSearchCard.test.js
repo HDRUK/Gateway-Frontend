@@ -55,7 +55,7 @@ describe("<SavedSearchCard> ", () => {
                 ],
                 sort: {
                     applied: "Alphabetical",
-                    value: "Up"
+                    value: "ASC"
                 }
             }
         ];

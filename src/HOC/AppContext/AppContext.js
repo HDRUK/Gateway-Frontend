@@ -217,8 +217,14 @@ const AppContextProvider = props => {
         });
     };
 
-    const returnSearchResults = (value, searchSaved = false) => {
-        // TODO: Implement filters & sort
+    const returnSearchResults = (value, searchSaved = false, filters = [], sort = {}) => {
+        console.log("filters", filters, "sort", sort);
+        // setFilterObject();
+        sort &&
+            setSelectedSort({
+                current: sort.applied,
+                previous: sort.applied
+            });
         !state.searchPageState &&
             setState({
                 ...state,

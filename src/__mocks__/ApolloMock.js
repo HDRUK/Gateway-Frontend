@@ -87,7 +87,7 @@ const mocks = [
                             ],
                             sort: {
                                 applied: "Alphabetical",
-                                value: "Up"
+                                value: "ASC"
                             }
                         },
                         {
@@ -141,7 +141,7 @@ const mocks = [
                             ],
                             sort: {
                                 applied: "Alphabetical",
-                                value: "Up"
+                                value: "ASC"
                             }
                         },
                         {

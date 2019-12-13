@@ -84,7 +84,6 @@ const SavedSearchCard = props => {
                 )}
             </ContentDiv>
             <ButtonDiv>
-                {/* TODO: Replace delete button styling with styling from save search button */}
                 <DeleteSearchButton
                     kind="tertiary"
                     size="small"
@@ -95,7 +94,11 @@ const SavedSearchCard = props => {
                     {loading && <RightSmallInlineLoading />}
                 </DeleteSearchButton>
                 {/* TODO: Send filters & sort to runSearch */}
-                <Link to={`/search`} onClick={() => runSearch(searchesData.detail, true)}>
+                {console.log("searchesData", searchesData)}
+                <Link
+                    to={`/search`}
+                    onClick={() => runSearch(searchesData.detail, true, searchesData.filters, searchesData.sort)}
+                >
                     <SavedSearchButton kind="primary" size="small">
                         {textItems.runSearch}
                     </SavedSearchButton>
