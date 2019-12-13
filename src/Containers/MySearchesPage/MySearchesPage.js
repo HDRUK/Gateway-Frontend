@@ -56,7 +56,7 @@ const MySearchesPage = () => {
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <div>{mySearchesPageText.errorMessage}</div>;
+    if (error) return <ResultsWrapper>{mySearchesPageText.errorMessage}</ResultsWrapper>;
 
     const results =
         savedSearchesData.data && savedSearchesData.data.length > 0 ? (
@@ -70,7 +70,7 @@ const MySearchesPage = () => {
     return (
         <div>
             <SearchInfo>
-                <ResultsCounter>You have {savedSearchesData.data.length} saved searches</ResultsCounter>
+                {!loading && <ResultsCounter>You have {savedSearchesData.data.length} saved searches</ResultsCounter>}
                 <SortDiv>
                     <FloatRight>
                         <LabelText>Sort by:</LabelText>

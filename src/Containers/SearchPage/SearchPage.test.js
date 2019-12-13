@@ -2,16 +2,8 @@ import React from "react";
 import { create, act } from "react-test-renderer";
 import SearchPage from "./SearchPage.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
-import {
-    SearchHeading,
-    SearchBarWrapper,
-    Results,
-    SearchInfo,
-    ResultsCounter,
-    SortDiv,
-    SearchResultsWrapper
-} from "./styles.js";
-import { Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
+import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "./styles.js";
+import { Line, SearchInfo, ResultsCounter, SortDiv } from "../../styles/styles.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
