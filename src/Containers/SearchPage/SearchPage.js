@@ -116,7 +116,6 @@ const SearchPage = () => {
 
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            // TODO: Add filters to the audit log save
             searchAuditLogSave({
                 variables: {
                     userId: appContext.userId,

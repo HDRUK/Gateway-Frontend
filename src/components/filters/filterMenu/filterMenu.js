@@ -42,7 +42,7 @@ const FilterMenu = () => {
     });
 
     useEffect(() => {
-        if (searchTerm !== null) {
+        if (searchTerm !== null && !called) {
             called ? refetch() : getFilterValues();
         }
     }, [searchTerm, called, refetch, getFilterValues]);
@@ -50,6 +50,7 @@ const FilterMenu = () => {
     useEffect(() => {
         if (data) {
             let newFilterObject = {};
+            // TODO: Should this code be moved to appContext returnSearchResults filter processing
             data.hdrFilterValues.data.forEach(filter => {
                 newFilterObject[filter.fieldName] = {};
                 filter.fieldValues.forEach((value, i) => {
