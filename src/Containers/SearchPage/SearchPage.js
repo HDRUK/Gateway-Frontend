@@ -127,6 +127,7 @@ const SearchPage = () => {
                     filters: appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : null
                 }
             });
+            // TODO: Include filters & sort in the returnSearchResults call!
             returnSearchResults(e.target.value, false);
             clearSearchData();
         }

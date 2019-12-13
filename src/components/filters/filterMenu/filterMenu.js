@@ -42,7 +42,7 @@ const FilterMenu = () => {
     });
 
     useEffect(() => {
-        if (searchTerm !== null && !called) {
+        if (searchTerm !== null) {
             called ? refetch() : getFilterValues();
         }
     }, [searchTerm, called, refetch, getFilterValues]);
@@ -67,7 +67,7 @@ const FilterMenu = () => {
 
             setFilterObject(newFilterObject);
         }
-    }, [data, setFilterObject]);
+    }, [data, setFilterObject, filterObject]);
 
     useEffect(() => {
         let finalFilterString = "";
