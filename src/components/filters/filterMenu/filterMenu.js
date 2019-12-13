@@ -42,7 +42,7 @@ const FilterMenu = () => {
     });
 
     useEffect(() => {
-        if (searchTerm !== null && !called) {
+        if (searchTerm !== null) {
             called ? refetch() : getFilterValues();
         }
     }, [searchTerm, called, refetch, getFilterValues]);
@@ -53,13 +53,17 @@ const FilterMenu = () => {
             data.hdrFilterValues.data.forEach(filter => {
                 newFilterObject[filter.fieldName] = {};
                 filter.fieldValues.forEach((value, i) => {
+                    const appliedFilter =
+                        filterObject[filter.fieldName] &&
+                        Object.values(filterObject[filter.fieldName]).find(filterValue => filterValue.value === value);
                     newFilterObject[filter.fieldName][i] = {
                         value,
-                        checked: false,
-                        applied: false
+                        checked: (appliedFilter && appliedFilter.checked) || false,
+                        applied: (appliedFilter && appliedFilter.applied) || false
                     };
                 });
             });
+
             setFilterObject(newFilterObject);
         }
     }, [data, setFilterObject]);
@@ -139,7 +143,7 @@ const FilterMenu = () => {
                                 <Filter
                                     key={`resultCard-${i}`}
                                     title={filterValues[valueIndex].value}
-                                    defaultChecked={filterValues[valueIndex].checked}
+                                    checked={filterValues[valueIndex].checked}
                                     onChange={() => appContext.checkFilters(filterKey, valueIndex)}
                                 />
                             ))}
@@ -163,6 +167,7 @@ const FilterMenu = () => {
                 <CenterLoading withOverlay={false} />
             ) : (
                 <AccordionBlock>
+                    {console.log("filterObject", filterObject)}
                     {filterObject && Object.keys(filterObject).length > 0 && (
                         <React.Fragment>
                             <FilterBlockTitle>Filter</FilterBlockTitle>

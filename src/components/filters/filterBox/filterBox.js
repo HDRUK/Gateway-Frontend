@@ -26,7 +26,7 @@ const FilterBox = () => {
                         <Filter
                             key={`resultCard-${i}`}
                             title={values[valueIndex].value}
-                            defaultChecked={values[valueIndex].checked}
+                            checked={values[valueIndex].checked}
                             onChange={() => appContext.checkFilters(filterKey, valueIndex)}
                         />
                     ))}

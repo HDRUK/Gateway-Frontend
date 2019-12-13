@@ -218,8 +218,20 @@ const AppContextProvider = props => {
     };
 
     const returnSearchResults = (value, searchSaved = false, filters = [], sort = {}) => {
-        console.log("filters", filters, "sort", sort);
-        // setFilterObject();
+        const newFilterObjects = {};
+        filters &&
+            filters.forEach((filter, i) => {
+                newFilterObjects[filter.type] = {
+                    ...newFilterObjects[filter.type],
+                    [i]: { value: filter.value, checked: true, applied: true }
+                };
+            });
+
+        setFilterObject({
+            ...newFilterObjects
+        });
+
+        setFilterString(filters ? `?${filters.map(filter => `${filter.type}=${filter.value}`).join("&")}` : "");
         sort &&
             setSelectedSort({
                 current: sort.applied,

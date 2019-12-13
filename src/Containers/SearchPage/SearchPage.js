@@ -117,7 +117,6 @@ const SearchPage = () => {
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             // TODO: Add filters to the audit log save
-            console.log("selectedSort", selectedSort);
             searchAuditLogSave({
                 variables: {
                     userId: appContext.userId,
@@ -126,7 +125,7 @@ const SearchPage = () => {
                     offSet: 0,
                     recordLimit: limit,
                     sort: { applied: selectedSort.current, value: "ASC" },
-                    filters: null
+                    filters: appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : null
                 }
             });
             returnSearchResults(e.target.value, false);
