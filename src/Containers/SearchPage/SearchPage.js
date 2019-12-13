@@ -104,6 +104,7 @@ const SearchPage = () => {
     const filterString = appContext.filterString;
 
     const clearSearchData = appContext.clearSearchData;
+    const setSearchSaved = appContext.setSearchSaved;
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
@@ -175,6 +176,7 @@ const SearchPage = () => {
                 // This is run when the user applies a filter
                 appContext.setPrevFilterString(filterString);
                 clearSearchData();
+                setSearchSaved(false);
                 searchAuditLogSave({
                     variables: {
                         userId: appContext.userId,
@@ -197,6 +199,18 @@ const SearchPage = () => {
                     previous: selectedSort.current
                 });
                 clearSearchData();
+                setSearchSaved(false);
+                searchAuditLogSave({
+                    variables: {
+                        userId: appContext.userId,
+                        searchTerm: searchTerm,
+                        endPoint: "",
+                        offSet: 0,
+                        recordLimit: limit,
+                        sort: { applied: selectedSort.current, value: "ASC" },
+                        filters: formatFilterObjectForSave(appContext.filterObject)
+                    }
+                });
                 runGetItemsSearch();
             }
         }
