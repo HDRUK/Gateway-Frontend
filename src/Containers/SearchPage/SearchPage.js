@@ -63,7 +63,10 @@ const resultsData = (
     const processedData = (data && data.data) || [];
 
     return (
-        <SearchResultsWrapper onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}>
+        <SearchResultsWrapper
+            visible={searchTerm !== null}
+            onScroll={e => handleScroll(e, onLoadMore, offSet, setOffSet, dataLength, loading)}
+        >
             {processedData.length > 0
                 ? processedData.map((result, i) => {
                       return (

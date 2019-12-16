@@ -102,6 +102,10 @@ export const LargeSpace = styled.div`
     padding: 5rem;
 `;
 
+export const HorizontalLargeSpace = styled.div`
+    padding: 0 5rem;
+`;
+
 export const SmallHeading = styled.p`
     font-size: 1.125rem;
     font-weight: 700;
@@ -113,7 +117,7 @@ export const SmallText = styled.p`
 `;
 
 export const TinyText = styled.span`
-    font-size: 0.6rem;
+    font-size: 0.75rem;
     font-weight: 700;
 `;
 
@@ -292,13 +296,24 @@ export const HeaderImage = styled(Logo)`
 
 export const AppWrapper = styled.div`
     min-width: 48rem;
-    max-width: 90rem;
+    max-width: 100%;
     margin: 0 auto 0;
 `;
 
 export const PageWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 90rem;
+    margin: 0 auto 0;
+    min-height: calc(100vh - 36rem);
+`;
+
+export const WidthWrapper = styled(PageWrapper)`
+    height: unset;
+    min-height: unset;
 `;
 
 export const FloatRight = styled.div`
@@ -378,7 +393,8 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    max-height: calc(100vh - 17rem);
+    height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "32rem")};
+    max-height: calc(100vh - 12.65rem);
     overflow: scroll;
     padding: 0.25rem 1rem 0 1rem;
 `;
