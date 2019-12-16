@@ -45,7 +45,6 @@ export const ParagraphBullets = styled(UnorderedList)`
 `;
 
 export const AccordionBlock = styled(Accordion)`
-    background-color: #d8d8d8;
     width: 90%;
     align-self: center;
     margin: 1rem 0;
@@ -53,7 +52,6 @@ export const AccordionBlock = styled(Accordion)`
 
 export const AccordionElement = styled(AccordionItem)`
     position: relative;
-    border-color: #8d8d8d;
     ${props =>
         props.modal === "true" &&
         props.open &&
@@ -68,11 +66,12 @@ export const AccordionElement = styled(AccordionItem)`
 `;
 
 export const HeaderWrapper = styled(Header)`
-    background-color: ${p => p.theme.colors.darkText};
-    color: white;
     height: 4rem;
     max-width: 100%;
     position: unset;
+    background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
+    border-bottom: 0;
+    color: white;
 `;
 
 export const SideNavText = styled(SideNavLinkText)`
@@ -103,7 +102,8 @@ export const DateInput = styled(DatePickerInput)``;
 export const MainSideNav = styled(SideNav)`
     display: inline-flex;
     position: absolute;
-    background-color: #b5bab8;
+    background-color: ${p => p.theme.colors.white};
+    border-right: 0.0625rem solid ${p => p.theme.colors.border};
     font-size: 1.2rem;
     overflow: auto;
     overflow-x: hidden;

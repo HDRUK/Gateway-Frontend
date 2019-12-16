@@ -6,11 +6,7 @@ import PropTypes from "prop-types";
 const Content = props => (
     <React.Fragment>
         {props.nav && <AppSideNav filter={props.filter} />}
-        <ContentWrapper nav={props.nav}>
-            <SideStripeLeft />
-            <SideStripeRight />
-            {props.children}
-        </ContentWrapper>
+        <ContentWrapper nav={props.nav}>{props.children}</ContentWrapper>
     </React.Fragment>
 );
 

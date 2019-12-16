@@ -135,7 +135,7 @@ export const LabelText = styled.p`
 export const Line = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 0.5rem 0;
-    background-color: black;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const NavPadding = styled.div`
@@ -146,7 +146,7 @@ export const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
     left: 1rem;
-    background-color: ${p => p.theme.colors.primary};
+    background-color: ${p => p.theme.colors.border};
     height: 1px;
     margin: 1rem 0rem 2rem 0rem;
 `;
@@ -170,7 +170,7 @@ export const SideStripeRight = styled(SideStripe)`
 
 export const ContentWrapper = styled.div`
     position: relative;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 0.5rem 0 0.5rem;
     background-color: ${p => p.theme.colors.white};
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
@@ -292,7 +292,7 @@ export const HeaderImage = styled(Logo)`
 
 export const AppWrapper = styled.div`
     min-width: 48rem;
-    max-width: 66rem;
+    max-width: 90rem;
     margin: 0 auto 0;
 `;
 
@@ -448,5 +448,5 @@ export const Arrow = styled.div`
 export const StyledLine = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 1rem 0;
-    background-color: #dadada;
+    background-color: ${p => p.theme.colors.border};
 `;
