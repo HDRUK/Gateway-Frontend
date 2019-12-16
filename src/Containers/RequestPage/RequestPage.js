@@ -7,11 +7,12 @@ import {
     CheckboxItem,
     StyledFormLabel,
     StyledTextArea,
-    CenterLoading
+    CenterLoading,
+    RightSmallInlineLoading
 } from "../../styles/carbonComponents";
 import axios from "axios";
 import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
@@ -43,10 +44,12 @@ const RequestPage = props => {
     const [datasetInvalid, setDatasetInvalid] = useState(false);
     const [requirementsInvalid, setRequirementsInvalid] = useState(false);
 
+    const [redirect, setRedirect] = useState(false);
+
+    const [requestLoading, setRequestLoading] = useState(false);
+
     const [formInput, setFormInput] = useState({});
     const [requirementsRequired, setRequirementsRequired] = useState(true);
-
-    const [formInvalid] = useState(datasetInvalid || aimInvalid || requirementsInvalid ? true : false);
 
     appContext.useDetailData(props.match.params.id);
 
@@ -61,21 +64,30 @@ const RequestPage = props => {
         setFormInput({});
     };
 
+    const renderRedirect = () => {
+        if (redirect) {
+            return <Redirect to={`/detail/${detailData.id}`} />;
+        }
+    };
+
     const handleSubmit = () => {
+        setRequestLoading(true);
         // const messageHtml = renderEmail(<MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>);
 
         axios({
             method: "POST",
             url: "/send",
             data: {
-                sender: appContext.userEmail,
-                recipient: detailData.data.contactPoint,
+                // sender: appContext.userEmail,
+                sender: "",
+                // recipient: detailData.contactPoint,
+                recipient: "",
                 title: detailData.title,
                 messageHtml: JSON.stringify(formInput)
             }
         }).then(response => {
             if (response.data.msg === "success") {
-                alert("Email sent, awesome!");
+                setRedirect(true);
                 resetForm();
             } else if (response.data.msg === "fail") {
                 alert("Oops, something went wrong. Try again");
@@ -90,6 +102,7 @@ const RequestPage = props => {
             </StyledSmallBoldText>
             <StyledHeading>{detailData.title}</StyledHeading>
             <SmallSpace></SmallSpace>
+            {renderRedirect()}
             <StyledForm
                 onSubmit={e => {
                     e.preventDefault();
@@ -98,7 +111,10 @@ const RequestPage = props => {
                     requirementsRequired && !formInput.requirements
                         ? setRequirementsInvalid(true)
                         : setRequirementsInvalid(false);
-                    !formInvalid && handleSubmit();
+                    ((datasetRequired && formInput.dataset) || !datasetRequired) &&
+                        ((requirementsRequired && formInput.requirements) || !requirementsRequired) &&
+                        formInput.aim &&
+                        handleSubmit();
                 }}
             >
                 <StyledSmallBoldText>
@@ -181,7 +197,7 @@ const RequestPage = props => {
                 <StyledTextInput id="contact" labelText={false}></StyledTextInput>
                 <TinySpace />
                 <NewStyledButton kind="primary" type="submit">
-                    {textItems.button}
+                    {requestLoading ? <RightSmallInlineLoading /> : textItems.button}
                 </NewStyledButton>
             </StyledForm>
         </SmallSpace>
