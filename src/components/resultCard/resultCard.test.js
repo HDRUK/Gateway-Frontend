@@ -1,7 +1,8 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import ResultCard from "./resultCard";
-import { Line, SmallHeading, SmallText, Card, Preview } from "../../styles/styles.js";
+import { SmallHeading, SmallText, StyledCard, Preview } from "../../styles/styles.js";
+import InfoDetailGrid from "../infoDetailGrid/infoDetailGrid.js";
 import { TitleBox, Arrow } from "./styles.js";
 
 const text = {
@@ -19,7 +20,7 @@ describe("<ResultCard> ", () => {
     });
 
     it("should check the correct components are rendered", () => {
-        const card = renderedOutput.findAllByType(Card);
+        const card = renderedOutput.findAllByType(StyledCard);
         expect(card).toHaveLength(1);
 
         const cardChilren = card[0].props.children;
@@ -30,7 +31,7 @@ describe("<ResultCard> ", () => {
 
         expect(titleBox.type).toBe(TitleBox);
         expect(arrow.type).toBe(Arrow);
-        expect(line.type).toBe(Line);
+        expect(line.type).toBe(InfoDetailGrid);
         expect(descriptionPreview.type).toBe(Preview);
 
         const titlePreview = titleBox.props.children;

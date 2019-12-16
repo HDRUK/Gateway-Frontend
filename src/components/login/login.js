@@ -1,34 +1,67 @@
 import React, { useContext } from "react";
-import { Heading, DarkText, CenterBlock, SmallSpace, MediumSpace, LargeSpace } from "../../styles/styles.js";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
+
+import {
+    Heading,
+    DarkText,
+    CenterBlock,
+    SmallSpace,
+    MediumSpace,
+    LargeSpace,
+    LinkNoDecoration
+} from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
-import { Link } from "react-router-dom";
 
-import { AppContext } from "../../HOC/AppContext/AppContext";
-
-const textItems = {
-    headingText: "Log in to access our datasets",
-    loginButton: "Log in",
-    continueButton: "Continue without logging in"
+const heading = number => {
+    if (number) {
+        return {
+            headingText: `Enter to discover our ${number} datasets`
+        };
+    }
+    return {
+        headingText: `Enter to discover our datasets`
+    };
 };
 
+const textItems = {
+    loginButton: "Log in",
+    logoutButton: "Log out",
+    continueButton: "Continue without logging in",
+    loggedInContinueButton: "Continue"
+};
 const Login = () => {
-    const appcontext = useContext(AppContext);
-    const loginUser = appcontext.loginUser;
+    const appContext = useContext(AppContext);
+    appContext.useDatasetCount();
+    const datasetCount = appContext.state.datasetCount;
 
     return (
         <CenterBlock>
             <DarkText>
-                <Heading>{textItems.headingText}</Heading>
+                <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
-                <CenterBlock>
-                    <StyledButton kind="primary" onClick={loginUser}>
-                        {textItems.loginButton}
-                    </StyledButton>
-                    <SmallSpace />
-                    <Link to="/search">
-                        <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
-                    </Link>
-                </CenterBlock>
+
+                {appContext.authenticated === "true" ? (
+                    <CenterBlock>
+                        <a href="/logout">
+                            <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
+                        </a>
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.loggedInContinueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                ) : (
+                    <CenterBlock>
+                        <a href="/login">
+                            <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
+                        </a>
+                        <SmallSpace />
+                        <LinkNoDecoration to="/search">
+                            <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                        </LinkNoDecoration>
+                    </CenterBlock>
+                )}
+
                 <LargeSpace />
             </DarkText>
         </CenterBlock>

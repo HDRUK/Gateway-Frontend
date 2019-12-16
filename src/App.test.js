@@ -6,6 +6,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
+
+import ErrorBoundary from "./HOC/ErrorBoundary/ErrorBoundary";
+
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
 import Header from "./components/header/header.js";
 import Content from "./components/content/content.js";
@@ -21,7 +24,8 @@ describe("<App> ", () => {
     });
 
     it("should check the correct components are rendered", () => {
-        const apollo = renderedOutput.findByType(Apollo);
+        const errorboundary = renderedOutput.findByType(ErrorBoundary);
+        const apollo = errorboundary.findByType(Apollo);
         const appContext = apollo.findByType(AppContext);
         const appWrapper = appContext.findByType(AppWrapper);
         const browserRouter = appWrapper.findByType(BrowserRouter);

@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DropdownFilter } from "../../styles/carbonComponents.js";
 import { LabelText, FloatRight } from "../../styles/styles.js";
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-const sortText = { labelText: "Sort by:" };
-const items = [
-    {
-        id: "first-item",
-        label: "Item 1"
-    },
-    {
-        id: "second-item",
-        label: "Item 2"
-    }
-];
+const textItems = { labelText: "Sort by:" };
 const Sort = () => {
+    const appContext = useContext(AppContext);
+    const sortItems = appContext.sortItems;
+    const currentSelectedSort =
+        appContext.selectedSort.current || appContext.sortItems.find(sortItem => sortItem.default).id;
+
+    const handleChange = event => {
+        appContext.setSelectedSort({
+            current: event.selectedItem.id,
+            previous: currentSelectedSort
+        });
+    };
+
     return (
         <FloatRight>
-            <LabelText>{sortText.labelText}</LabelText>
-            <DropdownFilter id="sort" label="sort" type="default" items={items} initialSelectedItem={items[0]} />
+            <LabelText>{textItems.labelText}</LabelText>
+            <DropdownFilter
+                id="sort"
+                label="sort"
+                type="default"
+                items={sortItems}
+                initialSelectedItem={sortItems.find(item => item.id === currentSelectedSort)}
+                onChange={e => handleChange(e)}
+            />
         </FloatRight>
     );
 };

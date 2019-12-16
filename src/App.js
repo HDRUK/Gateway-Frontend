@@ -1,21 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Apollo from "./HOC/Apollo/Apollo.js";
 import AppContext from "./HOC/AppContext/AppContext.js";
+import ErrorBoundary from "./HOC/ErrorBoundary/ErrorBoundary";
 import StyleWrapper from "./HOC/StyleWrapper/StyleWrapper.js";
-import LandingPage from "./Containers/LandingPage/LandingPage.js";
-import AboutPage from "./Containers/AboutPage/AboutPage.js";
-import SearchPage from "./Containers/SearchPage/SearchPage.js";
-import Header from "./components/header/header.js";
-import Footer from "./components/footer/footer.js";
-import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper.js";
-import Content from "./components/content/content.js";
-import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
-class App extends React.Component {
-    render() {
-        return (
+import LandingPage from "./Containers/LandingPage/LandingPage";
+import InnovationPage from "./Containers/InnovationPage/InnovationPage";
+import GuidelinesPage from "./Containers/GuidelinesPage/GuidelinesPage";
+import SearchPage from "./Containers/SearchPage/SearchPage";
+import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
+import NotFound from "./Containers/NotFound/NotFound";
+import DetailPage from "./Containers/DetailPage/DetailPage";
+
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper";
+import Content from "./components/content/content";
+import LoginCallback from "./components/loginCallback/loginCallback";
+
+import { PageWrapper, AppWrapper } from "./styles/styles";
+
+const App = () => {
+    useEffect(() => {
+        document.title =
+            process.env.REACT_APP_ENVIRONMENT && process.env.REACT_APP_ENVIRONMENT !== "production"
+                ? `${process.env.REACT_APP_ENVIRONMENT} - Health Data Gateway`
+                : "Health Data Gateway";
+    });
+    return (
+        <ErrorBoundary>
             <Apollo>
                 <AppContext>
                     <StyleWrapper>
@@ -29,30 +44,40 @@ class App extends React.Component {
                                                 <LandingPage />
                                             </Content>
                                         </Route>
-                                        <Route path="/search">
+                                        <Route exact path="/search">
                                             <Content nav filter>
                                                 <MenuFilterWrapper />
                                                 <SearchPage />
                                             </Content>
                                         </Route>
-                                        <Route path="/my-searches">
+                                        <Route exact path="/my-searches">
                                             <Content nav>
-                                                <div>/my-searches</div>
+                                                <MySearchesPage />
                                             </Content>
                                         </Route>
-                                        <Route path="/browse">
+                                        <Route exact path="/innovation">
                                             <Content nav>
-                                                <div>/browse</div>
+                                                <InnovationPage />
                                             </Content>
                                         </Route>
-                                        <Route path="/about">
+                                        <Route exact path="/guidelines">
                                             <Content nav>
-                                                <AboutPage />
+                                                <GuidelinesPage />
                                             </Content>
                                         </Route>
-                                        <Route path="/help">
+                                        <Route exact path="/detail/:id">
                                             <Content nav>
-                                                <div>/help</div>
+                                                <DetailPage />
+                                            </Content>
+                                        </Route>
+                                        <Route
+                                            exact
+                                            path="/logincallback/"
+                                            render={props => <LoginCallback {...props} />}
+                                        />
+                                        <Route path="*">
+                                            <Content nav>
+                                                <NotFound />
                                             </Content>
                                         </Route>
                                     </Switch>
@@ -63,8 +88,8 @@ class App extends React.Component {
                     </StyleWrapper>
                 </AppContext>
             </Apollo>
-        );
-    }
-}
+        </ErrorBoundary>
+    );
+};
 
 export default App;

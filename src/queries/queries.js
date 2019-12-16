@@ -1,15 +1,159 @@
-import { gql } from "apollo-boost";
+import gql from "graphql-tag";
 
-export const CATALOGUE_ITEMS_SEARCH = gql`
-    query HdrCatalogueItemsSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
-        hdrCatalogueItemsSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
+export const DATASET_COUNT = gql`
+    {
+        hdrDataModelSearch {
+            count
+        }
+    }
+`;
+
+export const CUSTOM_SEARCH = gql`
+    query HdrCustomSearch(
+        $recordLimit: Int!
+        $recordOffset: Int!
+        $searchTerm: String!
+        $filterItems: [String]
+        $sortField: String
+    ) {
+        hdrCustomSearch(
+            recordLimit: $recordLimit
+            recordOffset: $recordOffset
+            searchTerm: $searchTerm
+            filterItems: $filterItems
+            sortField: $sortField
+        ) {
             status
             message
             count
             data {
                 id
-                description
-                label
+                title
+                abstract
+                releaseDate
+                publisher
+            }
+        }
+    }
+`;
+
+export const SEARCH_AUDIT_LOG_SAVE = gql`
+    mutation SearchAuditLogSave(
+        $userId: String
+        $searchTerm: String!
+        $endPoint: String!
+        $offSet: Int!
+        $recordLimit: Int!
+        $sort: SortInput!
+        $filters: [FilterInput]
+    ) {
+        searchAuditLogSave(
+            userId: $userId
+            searchTerm: $searchTerm
+            endPoint: $endPoint
+            offSet: $offSet
+            recordLimit: $recordLimit
+            sort: $sort
+            filters: $filters
+        ) {
+            status
+            message
+            data {
+                id
+            }
+        }
+    }
+`;
+
+export const SEARCH_SAVE = gql`
+    mutation SearchSave($searchAuditId: String!, $userId: String!, $name: String) {
+        searchSave(searchAuditId: $searchAuditId, userId: $userId, name: $name) {
+            status
+            message
+        }
+    }
+`;
+
+export const GET_SEARCH_SAVED_BY_USER_ID = gql`
+    query GetSearchSavedByUserId($userId: String!) {
+        getSearchSavedByUserID(userId: $userId) {
+            status
+            message
+            data {
+                id
+                detail
+                endPoint
+                recordLimit
+                recordOffset
+                createdOn
+                name
+                filters {
+                    type
+                    value
+                }
+                sort {
+                    applied
+                    value
+                }
+            }
+        }
+    }
+`;
+
+export const RESULT_DETAIL = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                title
+                releaseDate
+                publisher
+                license
+                accessRequestDuration
+                conformsTo
+                abstract
+                accessRequestCost
+                dataController
+                dataProcessor
+                accessRights
+                jurisdiction
+                geographicCoverage
+                datasetStartDate
+                datasetEndDate
+                periodicity
+                statisticalPopulation
+                ageBand
+                physicalSampleAvailability
+                group
+                linkedDataset
+                derivedDatasets
+                creator
+                citations
+            }
+        }
+    }
+`;
+
+export const DELETE_SAVED_SEARCH = gql`
+    mutation SearchDelete($ID: String!) {
+        searchDelete(searchSavedId: $ID) {
+            status
+            message
+        }
+    }
+`;
+
+export const GET_FILTER_VALUES = gql`
+    query GetFilterValues {
+        hdrFilterValues {
+            status
+            message
+            data {
+                fieldName
+                fieldValues
             }
         }
     }

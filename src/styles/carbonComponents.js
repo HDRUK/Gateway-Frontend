@@ -12,22 +12,33 @@ import {
     Checkbox,
     DatePicker,
     DatePickerInput,
-    Loading
+    Loading,
+    InlineLoading,
+    Tag,
+    Tabs,
+    Tab
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
+import "../carbon-components.css";
+import { colorTheme } from "./styles.js";
 
+// HDR Imported carbon components ..
+export const HDRTabs = Tabs;
+export const HDRTab = Tab;
+
+// Styled carbon components
 export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;
     height: 54px;
 `;
 export const FilterButton = styled(Button)`
-    width: calc(125% + 2rem + 2px);
+    width: calc(100% + 4.6rem);
     margin-left: -1rem;
     min-height: 1rem;
-    height: 32px;
-    padding: 0px 0px 0px 10px;
-    bottom: -1.8rem;
+    height: 2rem;
+    padding: 0px 0px 0px 0.635rem;
+    bottom: -1.75rem;
     margin-top: -1rem;
 `;
 
@@ -81,7 +92,9 @@ export const CheckboxItem = styled(Checkbox)`
 
 export const SearchBar = styled(Search)``;
 
-export const DropdownFilter = styled(Dropdown)``;
+export const DropdownFilter = styled(Dropdown)`
+    min-width: 15.625rem;
+`;
 
 export const DateSelector = styled(DatePicker)`
     flex-direction: column;
@@ -95,9 +108,50 @@ export const MainSideNav = styled(SideNav)`
     background-color: #b5bab8;
     font-size: 1.2rem;
     overflow: auto;
+    overflow-x: hidden;
     z-index: 1;
 `;
 
 export const CenterLoading = styled(Loading)`
     margin: 0 auto 0;
+`;
+
+export const RightSmallInlineLoading = styled(InlineLoading)`
+    width: unset;
+    float: right;
+    font-size: 0.5rem;
+`;
+
+export const SaveSearchButton = styled(Button)`
+    width: 90%;
+    margin: 0.5rem auto 0;
+    padding: 0 1rem 0 1rem;
+
+    :disabled {
+        background-color: ${colorTheme.darkBlue};
+        border-color: ${colorTheme.darkBlue};
+        color: ${colorTheme.white};
+
+        :hover {
+            background-color: ${colorTheme.darkBlue};
+            border-color: ${colorTheme.darkBlue};
+            color: ${colorTheme.white};
+            outline-color: ${colorTheme.darkBlue};
+        }
+    }
+`;
+
+export const CustomTag = styled(Tag)`
+    height: unset;
+    min-height: 1.5rem;
+`;
+
+//NEW STYLES
+export const NewStyledButton = styled(Button)`
+    height: 2rem;
+    padding: calc(0.875rem - 3px) 30px calc(0.875rem - 3px) 30px;
+    background-color: #2fbb93;
+    :hover {
+        background-color: #249172;
+    }
 `;

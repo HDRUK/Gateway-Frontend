@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
+import nhs_logo from "../../assets/nhs_logo.png";
+import ibm_logo_black from "../../assets/ibm_logo_black.png";
+import oxford_logo from "../../assets/oxford_logo.png";
+import { useQuery } from "@apollo/react-hooks";
+
+import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -14,21 +20,54 @@ const AppContextProvider = props => {
     const [state, setState] = useState({
         counter: 0,
         searchPageState: false,
+        resultsLimit: 10,
         modalVisibility: false,
         filterLocation: 0,
-        windowScroll: 0
+        windowScroll: 0,
+        datasetCount: null,
+        searchResultId: null
     });
+
+    const checkAuthenticated = () => {
+        if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
+            localStorage.setItem("authenticated", "false");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        } else {
+            localStorage.setItem("authenticated", "true");
+            setAuthenticated(localStorage.getItem("authenticated"));
+        }
+    };
+
+    const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+
+    const setUser = (userId, userEmail, token) => {
+        localStorage.setItem("userId", userId);
+        localStorage.setItem("userEmail", userEmail);
+        localStorage.setItem("token", token);
+        setUserId(localStorage.getItem("userId"));
+        setUserEmail(localStorage.getItem("userEmail"));
+    };
 
     const [activeFilter, setActiveFilter] = useState(null);
-    const [filters, setFilters] = useState([]);
+    const [detailData, setDetailData] = useState([]);
 
     const [search, setSearch] = useState({
-        term: null
+        term: null,
+        previousTerm: null,
+        latestSearchAuditLogId: null
     });
 
+    const [searchSaved, setSearchSaved] = useState(false);
+
     const [searchData, setSearchData] = useState({
-        offSet: 10,
+        offSet: 0,
         length: 0,
+        data: []
+    });
+
+    const [savedSearchesData, setSavedSearchesData] = useState({
         data: []
     });
 
@@ -51,7 +90,10 @@ const AppContextProvider = props => {
     };
 
     const images = {
-        logoHDR: hdruk_logo_black
+        logoHDR: hdruk_logo_black,
+        logoNHS: nhs_logo,
+        logoIBM: ibm_logo_black,
+        logoOXF: oxford_logo
     };
 
     const textItems = { searchHeader: "What health data do you need?" };
@@ -65,122 +107,162 @@ const AppContextProvider = props => {
     const clearSearchData = () => {
         setSearchData({
             ...searchData,
-            offSet: 10,
+            offSet: 0,
             length: 0,
             data: []
         });
     };
 
-    const itemRef = React.createRef();
+    const [itemRef] = useState(React.createRef());
 
-    const filterObject = [
+    const [sortItems] = useState([
         {
-            id: 0,
-            title: "Date created"
+            id: "title",
+            label: "Title",
+            default: true
         },
         {
-            id: 1,
-            title: "Classifier",
-            values: [
-                {
-                    id: 0,
-                    title: "First classifier"
-                },
-                {
-                    id: 1,
-                    title: "Second classifier"
-                },
-                {
-                    id: 2,
-                    title: "Third classifier"
-                },
-                {
-                    id: 3,
-                    title: "Fourth classifier"
-                },
-                {
-                    id: 4,
-                    title: "Fifth classifier"
-                }
-            ]
-        },
-        {
-            id: 2,
-            title: "Test Item",
-            values: [
-                {
-                    id: 0,
-                    title: "First test"
-                },
-                {
-                    id: 1,
-                    title: "Second test"
-                },
-                {
-                    id: 2,
-                    title: "Third test"
-                },
-                {
-                    id: 3,
-                    title: "Fourth test"
-                },
-                {
-                    id: 4,
-                    title: "Fifth test"
-                }
-            ]
-        },
-        {
-            id: 3,
-            title: "Data model type",
-            values: [
-                {
-                    id: 0,
-                    title: "First type"
-                },
-                {
-                    id: 1,
-                    title: "Second type"
-                }
-            ]
+            id: "releaseDate",
+            label: "Release Date"
         }
-    ];
+    ]);
+    const [selectedSort, setSelectedSort] = useState({
+        current: "title",
+        previous: "title"
+    });
+
+    const [filterObject, setFilterObject] = useState({});
+    const [filterString, setFilterString] = useState("");
+    const [prevFilterString, setPrevFilterString] = useState("");
+
+    const checkFilters = (filter, valueIndex) => {
+        const filterValue = filterObject[filter][valueIndex];
+
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterObject[filter],
+                    [valueIndex]: {
+                        ...filterValue,
+                        checked: !filterValue.checked
+                    }
+                }
+            })
+        );
+    };
+
+    const applyFilter = filter => {
+        const filterValues = Object.keys(filterObject[filter]).map(valueIndex => ({
+            ...filterObject[filter][valueIndex],
+            applied: filterObject[filter][valueIndex].checked
+        }));
+
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterValues
+                }
+            })
+        );
+    };
+
+    const removeFilter = (filter, valueIndex) => {
+        const filterValue = filterObject[filter][valueIndex];
+
+        setFilterObject(
+            Object.assign({}, filterObject, {
+                [filter]: {
+                    ...filterObject[filter],
+                    [valueIndex]: {
+                        ...filterValue,
+                        checked: false,
+                        applied: false
+                    }
+                }
+            })
+        );
+    };
 
     const insertSearchData = (length, newData) => {
+        const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
             ...searchData,
             length,
-            data: [...searchData.data, ...newData]
+            offSet: newOffset < 10 ? 0 : newOffset - 10,
+            data: [...newData]
         });
     };
 
-    const returnSearchResults = value => {
+    const insertSavedSearchesData = newData => {
+        setSavedSearchesData({
+            ...savedSearchesData,
+            data: [...newData]
+        });
+    };
+
+    const useDatasetCount = () => {
+        const { loading, error, data } = useQuery(DATASET_COUNT);
+        if (loading || error) return null;
+        data.hdrDataModelSearch.count !== state.datasetCount &&
+            setState({
+                ...state,
+                datasetCount: data.hdrDataModelSearch.count
+            });
+    };
+
+    const removeSavedSearchData = id => {
+        const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
+        setSavedSearchesData({
+            data: [...newSavedSearchesData]
+        });
+    };
+
+    const returnSearchResults = (value, searchSaved = false) => {
+        // TODO: Implement filters & sort
         !state.searchPageState &&
             setState({
                 ...state,
                 searchPageState: true
             });
         setSearch({
+            ...search,
             term: value
+        });
+        setSearchSaved(searchSaved);
+    };
+
+    const updateSearchAuditLogId = id => {
+        setSearch({
+            ...search,
+            latestSearchAuditLogId: id
         });
     };
 
     const setFilterLocation = () => {
-        outsideRange(window.scrollY, state.windowScroll, 10) &&
-            setState({
-                ...state,
-                windowScroll: window.scrollY
-            });
-        itemRef.current &&
-            outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11) &&
+        if (itemRef.current && outsideRange(itemRef.current.getBoundingClientRect().y, state.filterLocation, 11)) {
             setState({
                 ...state,
                 filterLocation: itemRef.current.getBoundingClientRect().y
             });
+        }
+
+        if (outsideRange(window.scrollY, state.windowScroll, 10)) {
+            setState({
+                ...state,
+                windowScroll: window.scrollY
+            });
+        }
     };
 
     const setFilterId = filterId => {
         setActiveFilter(filterId);
+    };
+
+    const setSearchResultId = id => {
+        setState({
+            ...state,
+            searchResultId: id
+        });
     };
 
     const counterFunc = () => {
@@ -190,20 +272,11 @@ const AppContextProvider = props => {
         });
     };
 
-    const addFilter = id => {
-        setFilters([...filters, id]);
-    };
-
-    const removeFilter = id => {
-        setFilters(filters.filter(f => f !== id));
-    };
-
     const openFilterBox = () => {
         setState({
             ...state,
             modalVisibility: true
         });
-        document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
     };
 
     const closeFilterBox = () => {
@@ -211,18 +284,8 @@ const AppContextProvider = props => {
             ...state,
             modalVisibility: false
         });
-        document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
     };
 
-    const loginUser = () => {
-        fetch("/login")
-            .then(res => {
-                console.log("RES ", res.status);
-            })
-            .catch(err => {
-                console.log("ERROR ", err);
-            });
-    };
     return (
         <AppContext.Provider
             value={{
@@ -233,6 +296,7 @@ const AppContextProvider = props => {
                 textItems,
                 returnSearchResults,
                 search,
+                setSearch,
                 searchData,
                 setSearchData,
                 clearSearchData,
@@ -242,12 +306,36 @@ const AppContextProvider = props => {
                 setFilterId,
                 itemRef,
                 activeFilter,
-                addFilter,
-                removeFilter,
                 openFilterBox,
                 closeFilterBox,
                 filterObject,
-                loginUser
+                setFilterObject,
+                searchSaved,
+                setSearchSaved,
+                setSearchResultId,
+                useDatasetCount,
+                userId,
+                savedSearchesData,
+                insertSavedSearchesData,
+                userEmail,
+                authenticated,
+                setUser,
+                setAuthenticated,
+                checkAuthenticated,
+                removeSavedSearchData,
+                updateSearchAuditLogId,
+                filterString,
+                setFilterString,
+                prevFilterString,
+                setPrevFilterString,
+                applyFilter,
+                checkFilters,
+                removeFilter,
+                detailData,
+                setDetailData,
+                sortItems,
+                selectedSort,
+                setSelectedSort
             }}
         >
             {props.children}

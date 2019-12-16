@@ -9,7 +9,7 @@ RUN npm install
 COPY . .  
   
 # App port
-EXPOSE 8080  
+EXPOSE 8080/tcp  
 
 # Add environment variables 
 ENV REACT_APP_GRAPH_QL_ENDPOINT=${endpoint}
