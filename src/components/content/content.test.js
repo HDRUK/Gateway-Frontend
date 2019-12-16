@@ -2,7 +2,7 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Content from "./content.js";
 import { MemoryRouter } from "react-router-dom";
-import { SideStripeLeft, SideStripeRight, ContentWrapper } from "../../styles/styles.js";
+import { ContentWrapper } from "../../styles/styles.js";
 import AppSideNav from "../appSideNav/appSideNav.js";
 
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
@@ -25,8 +25,6 @@ describe("Render content with no props", () => {
     describe("when the header is rendered", () => {
         it("should render the correct components", () => {
             const wrapper = renderedOutput.findByType(ContentWrapper);
-            wrapper.findByType(SideStripeLeft);
-            wrapper.findByType(SideStripeRight);
         });
     });
 });

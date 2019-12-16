@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import AppSideNav from "./appSideNav.js";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents.js";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
@@ -51,7 +52,9 @@ describe("<AppSideNav> ", () => {
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
                     <MemoryRouter initialEntries={["/search"]}>
-                        <AppSideNav filter={false} />
+                        <StyleWrapper>
+                            <AppSideNav filter={false} />
+                        </StyleWrapper>
                     </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>
@@ -96,7 +99,9 @@ describe("<AppSideNav> with filters", () => {
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
                     <MemoryRouter initialEntries={["/search"]}>
-                        <AppSideNav filter={true} />
+                        <StyleWrapper>
+                            <AppSideNav filter={true} />
+                        </StyleWrapper>
                     </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>
