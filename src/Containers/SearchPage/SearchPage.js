@@ -129,10 +129,6 @@ const SearchPage = () => {
         return finalArray;
     };
 
-    // const formatFilterObjectAsArray = filterObject => {
-
-    // }
-
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
             const filterArray = appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : [];
@@ -147,7 +143,6 @@ const SearchPage = () => {
                     filters: filterArray
                 }
             });
-            // TODO: Include filters & sort in the returnSearchResults call!
             returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
             clearSearchData();
         }

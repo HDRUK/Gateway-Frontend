@@ -1,5 +1,5 @@
 import React from "react";
-import { SideStripeLeft, SideStripeRight, ContentWrapper } from "../../styles/styles.js";
+import { ContentWrapper } from "../../styles/styles.js";
 import AppSideNav from "../appSideNav/appSideNav.js";
 import PropTypes from "prop-types";
 

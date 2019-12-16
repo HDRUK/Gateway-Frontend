@@ -67,6 +67,8 @@ const FilterMenu = () => {
 
             setFilterObject(newFilterObject);
         }
+        // We don't want this effect to run everytime filterObject is updated, therefore not including in dependencies.
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, setFilterObject]);
 
     useEffect(() => {
