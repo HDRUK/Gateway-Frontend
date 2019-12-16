@@ -2,7 +2,7 @@ import React from "react";
 
 import {
     PageWrapper,
-    contentWrapper,
+    ContentWrapper,
     ParagraphText,
     DarkText,
     SmallSpace,
@@ -38,7 +38,7 @@ const textItems = {
 const GuidelinesBeforeRequest = () => {
     return (
         <PageWrapper>
-            <contentWrapper>
+            <ContentWrapper>
                 <DarkText>
                     <ParagraphText>{textItems.para1}</ParagraphText>
                     <SmallSpace />
@@ -80,7 +80,7 @@ const GuidelinesBeforeRequest = () => {
                     </ParagraphText>
                     <MediumSpace />
                 </DarkText>
-            </contentWrapper>
+            </ContentWrapper>
         </PageWrapper>
     );
 };
