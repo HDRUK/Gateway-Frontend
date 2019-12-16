@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { WidthWrapper, Logo } from "../../styles/styles.js";
 
 export const FooterWrapper = styled.div`
-    height: 32rem;
+    height: ${p => p.theme.sizes.footer}rem;
     background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
     color: white;
-    padding-top: 12rem;
+    padding-top: 4rem;
     padding-bottom: 1rem;
     font-size: 1.1rem;
     position: relative;

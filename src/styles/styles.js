@@ -391,7 +391,7 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "32rem")};
+    height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "calc(100vh - 28.55rem)")};
     max-height: calc(100vh - 12.65rem);
     overflow-x: hidden;
     overflow-y: scroll;
