@@ -4,7 +4,7 @@ import { Logo } from "../../styles/styles.js";
 export const FooterWrapper = styled.div`
     height: 12rem;
     padding-bottom: 1rem;
-    background-color: rgb(60, 60, 59);
+    background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
     color: white;
     padding-left: 7rem;
     font-size: 1.1rem;

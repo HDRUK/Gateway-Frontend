@@ -1,17 +1,6 @@
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import "../carbon-components.css";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
-
-export const colorTheme = {
-    white: "#ffffff",
-    lightText: "#979797",
-    darkText: "#3c3c3b",
-    blueText: "#0f62fe",
-    darkBlue: "#002d9c",
-    labelText: "#161616",
-    error: "#da1e28"
-};
 
 export const Heading = styled.h1`
     font-size: 2.25rem;
@@ -23,7 +12,7 @@ export const ParagraphHeading = styled.h2`
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1.7rem;
-    color: #3c3c3b;
+    color: ${p => p.theme.text.primary};
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
@@ -38,7 +27,7 @@ export const ParagraphText = styled.p`
     font-size: 1.4rem;
     font-weight: 100;
     line-height: 1.7rem;
-    color: ${colorTheme.darkText};
+    color: ${p => p.theme.colors.darkText};
 `;
 
 export const InfoGrid = styled.div`
@@ -55,15 +44,15 @@ export const GridItem = styled.div`
 `;
 
 export const BlueText = styled.span`
-    color: ${colorTheme.blueText};
+    color: ${p => p.theme.colors.blueText};
 `;
 
 export const LightText = styled.span`
-    color: ${colorTheme.lightText};
+    color: ${p => p.theme.colors.lightText};
 `;
 
 export const DarkText = styled.span`
-    color: ${colorTheme.darkText};
+    color: ${p => p.theme.colors.darkText};
 `;
 
 export const BoldInlineText = styled.p`
@@ -137,7 +126,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: ${colorTheme.labelText};
+    color: ${p => p.theme.text.label};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
@@ -146,7 +135,7 @@ export const LabelText = styled.p`
 export const Line = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 0.5rem 0;
-    background-color: black;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const NavPadding = styled.div`
@@ -157,23 +146,9 @@ export const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
     left: 1rem;
-    background-color: #525252;
+    background-color: ${p => p.theme.colors.border};
     height: 1px;
     margin: 1rem 0rem 2rem 0rem;
-`;
-
-export const SelectedFilter = styled.div`
-    height: 24px;
-    border-radius: 18px;
-    background-color: #d5d9e0;
-    display: inline-flex;
-`;
-
-export const CloseButton = styled.button`
-    margin-left: 10px;
-    background: none;
-    border: none;
-    padding-bottom: 5px;
 `;
 
 export const SideStripe = styled.div`
@@ -195,8 +170,8 @@ export const SideStripeRight = styled(SideStripe)`
 
 export const ContentWrapper = styled.div`
     position: relative;
-    padding: 1rem 1rem 0 1rem;
-    background-color: #ffffff;
+    padding: 1rem 0.5rem 0 0.5rem;
+    background-color: ${p => p.theme.colors.white};
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
@@ -217,7 +192,7 @@ export const SocialMediaLogo = styled.div`
     display: inline-block;
     max-width: 2rem;
     max-height: 2rem;
-    fill: #ffffff;
+    fill: ${p => p.theme.colors.white};
     margin-right: 0.5rem;
 `;
 export const NewsTileWrapper = styled.div`
@@ -317,7 +292,7 @@ export const HeaderImage = styled(Logo)`
 
 export const AppWrapper = styled.div`
     min-width: 48rem;
-    max-width: 66rem;
+    max-width: 90rem;
     margin: 0 auto 0;
 `;
 
@@ -335,7 +310,7 @@ export const Card = styled.div`
     position: relative;
     min-height: 4rem;
     margin-bottom: 1rem;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.5);
     border-radius: 0.25rem;
     padding: 1rem;
@@ -356,13 +331,16 @@ export const ButtonSet = styled.div`
 
 export const FilterBoxContent = styled.div`
     padding: 10px;
+    max-width: 26.875rem;
 `;
 
 export const FilterBlock = styled.div`
-    flex-wrap: wrap;
-    display: inline-flex;
-    flex-direction: column;
-    max-height: 7rem;
+    /* flex-wrap: wrap; */
+    display: inline-block;
+    overflow-x: none;
+    overflow-y: auto;
+    /* flex-direction: column; */
+    max-height: 8rem;
     > div {
         margin-top: 0 !important;
     }
@@ -408,7 +386,21 @@ export const ResultsWrapper = styled.div`
 export const NavErrorText = styled.div`
     padding: 0.25rem 1rem;
     font-size: 0.75rem;
-    color: ${colorTheme.error};
+    color: ${p => p.theme.colors.error};
+`;
+
+export const SearchInfo = styled.div`
+    padding: 0 1rem 0.5rem 1rem;
+`;
+
+export const ResultsCounter = styled.div`
+    display: inline-block;
+    line-height: 2.5rem;
+`;
+
+export const SortDiv = styled.div`
+    display: inline-block;
+    float: right;
 `;
 
 //NEW STYLES
@@ -416,7 +408,7 @@ export const NavErrorText = styled.div`
 export const StyledCard = styled.div`
     position: relative;
     margin-bottom: 1rem;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     border-radius: 0.2rem 0.2rem 0 0;
     box-shadow: 0 0rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;
@@ -445,7 +437,7 @@ export const StyledSmallText = styled.p`
 export const StyledLine = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 1rem 0;
-    background-color: #dadada;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const RedText = styled.span`

@@ -19,24 +19,30 @@ import {
     TextInput,
     FormGroup,
     FormLabel,
-    TextArea
+    TextArea,
+    Tag,
+    Tabs,
+    Tab
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
-import "../carbon-components.css";
-import { colorTheme } from "./styles.js";
 
+// HDR Imported carbon components ..
+export const HDRTabs = Tabs;
+export const HDRTab = Tab;
+
+// Styled carbon components
 export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;
     height: 54px;
 `;
 export const FilterButton = styled(Button)`
-    width: calc(125% + 2rem + 2px);
+    width: calc(100% + 4.6rem);
     margin-left: -1rem;
     min-height: 1rem;
-    height: 32px;
-    padding: 0px 0px 0px 10px;
-    bottom: -1.8rem;
+    height: 2rem;
+    padding: 0px 0px 0px 0.635rem;
+    bottom: -1.75rem;
     margin-top: -1rem;
 `;
 
@@ -45,7 +51,6 @@ export const ParagraphBullets = styled(UnorderedList)`
 `;
 
 export const AccordionBlock = styled(Accordion)`
-    background-color: #d8d8d8;
     width: 90%;
     align-self: center;
     margin: 1rem 0;
@@ -53,7 +58,6 @@ export const AccordionBlock = styled(Accordion)`
 
 export const AccordionElement = styled(AccordionItem)`
     position: relative;
-    border-color: #8d8d8d;
     ${props =>
         props.modal === "true" &&
         props.open &&
@@ -68,11 +72,12 @@ export const AccordionElement = styled(AccordionItem)`
 `;
 
 export const HeaderWrapper = styled(Header)`
-    background-color: #3c3c3b;
-    color: white;
     height: 4rem;
     max-width: 100%;
     position: unset;
+    background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
+    border-bottom: 0;
+    color: white;
 `;
 
 export const SideNavText = styled(SideNavLinkText)`
@@ -90,7 +95,9 @@ export const CheckboxItem = styled(Checkbox)`
 
 export const SearchBar = styled(Search)``;
 
-export const DropdownFilter = styled(Dropdown)``;
+export const DropdownFilter = styled(Dropdown)`
+    min-width: 15.625rem;
+`;
 
 export const DateSelector = styled(DatePicker)`
     flex-direction: column;
@@ -101,9 +108,11 @@ export const DateInput = styled(DatePickerInput)``;
 export const MainSideNav = styled(SideNav)`
     display: inline-flex;
     position: absolute;
-    background-color: #b5bab8;
+    background-color: ${p => p.theme.colors.white};
+    border-right: 0.0625rem solid ${p => p.theme.colors.border};
     font-size: 1.2rem;
     overflow: auto;
+    overflow-x: hidden;
     z-index: 1;
 `;
 
@@ -123,27 +132,31 @@ export const SaveSearchButton = styled(Button)`
     padding: 0 1rem 0 1rem;
 
     :disabled {
-        background-color: ${colorTheme.darkBlue};
-        border-color: ${colorTheme.darkBlue};
-        color: ${colorTheme.white};
+        background-color: ${p => p.theme.colors.darkBlue};
+        border-color: ${p => p.theme.colors.darkBlue};
+        color: ${p => p.theme.colors.white};
 
         :hover {
-            background-color: ${colorTheme.darkBlue};
-            border-color: ${colorTheme.darkBlue};
-            color: ${colorTheme.white};
-            outline-color: ${colorTheme.darkBlue};
+            background-color: ${p => p.theme.colors.darkBlue};
+            border-color: ${p => p.theme.colors.darkBlue};
+            color: ${p => p.theme.colors.white};
+            outline-color: ${p => p.theme.colors.darkBlue};
         }
     }
 `;
 
-//NEW STYLES
+export const CustomTag = styled(Tag)`
+    height: unset;
+    min-height: 1.5rem;
+`;
 
+//NEW STYLES
 export const NewStyledButton = styled(Button)`
     height: 2rem;
     padding: calc(0.875rem - 3px) 30px calc(0.875rem - 3px) 30px;
-    background-color: #2fbb93;
+    background-color: ${p => p.theme.colors.primaryButton};
     :hover {
-        background-color: #249172;
+        background-color: ${p => p.theme.colors.primaryHover};
     }
 `;
 

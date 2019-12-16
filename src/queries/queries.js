@@ -9,8 +9,20 @@ export const DATASET_COUNT = gql`
 `;
 
 export const CUSTOM_SEARCH = gql`
-    query HdrCustomSearch($recordLimit: Int!, $recordOffset: Int!, $searchTerm: String!) {
-        hdrCustomSearch(recordLimit: $recordLimit, recordOffset: $recordOffset, searchTerm: $searchTerm) {
+    query HdrCustomSearch(
+        $recordLimit: Int!
+        $recordOffset: Int!
+        $searchTerm: String!
+        $filterItems: [String]
+        $sortField: String
+    ) {
+        hdrCustomSearch(
+            recordLimit: $recordLimit
+            recordOffset: $recordOffset
+            searchTerm: $searchTerm
+            filterItems: $filterItems
+            sortField: $sortField
+        ) {
             status
             message
             count
@@ -63,8 +75,8 @@ export const SEARCH_SAVE = gql`
 `;
 
 export const GET_SEARCH_SAVED_BY_USER_ID = gql`
-    query GetSearchSavedByUserId($userId: String!) {
-        getSearchSavedByUserID(userId: $userId) {
+    query GetSearchSavedByUserId($userId: String!, $sortField: SortInput) {
+        getSearchSavedByUserID(userId: $userId, sortField: $sortField) {
             status
             message
             data {
@@ -131,6 +143,19 @@ export const DELETE_SAVED_SEARCH = gql`
         searchDelete(searchSavedId: $ID) {
             status
             message
+        }
+    }
+`;
+
+export const GET_FILTER_VALUES = gql`
+    query GetFilterValues {
+        hdrFilterValues {
+            status
+            message
+            data {
+                fieldName
+                fieldValues
+            }
         }
     }
 `;

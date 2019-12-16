@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import "../carbon-components.css";
 import museoFont100 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded100.otf";
 import museoFont300 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded300.otf";
 import museoFont500 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded500.otf";
@@ -6,7 +7,7 @@ import museoFont700 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded
 import museoFont900 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded900.otf";
 import museoFont1000 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounded1000.otf";
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Museo Sans Rounded 100';
         font-style: normal;
@@ -46,12 +47,11 @@ const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
-        background-color: #3c3c3b;
+        background-color: ${p => p.theme.colors.white};
         font-family: "Museo Sans Rounded 300";
         letter-spacing: 0.67px !important;
-        
     }
   
 `;
 
-export default GlobalStyle;
+export default GlobalStyles;

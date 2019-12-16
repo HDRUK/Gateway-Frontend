@@ -3,6 +3,7 @@ import { create } from "react-test-renderer";
 
 import { MemoryRouter } from "react-router-dom";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
@@ -55,7 +56,7 @@ describe("<SavedSearchCard> ", () => {
                 ],
                 sort: {
                     applied: "Alphabetical",
-                    value: "Up"
+                    value: "ASC"
                 }
             }
         ];
@@ -64,9 +65,11 @@ describe("<SavedSearchCard> ", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <MemoryRouter>
-                        <SavedSearchCard savedSearchIndex={0} />
-                    </MemoryRouter>
+                    <StyleWrapper>
+                        <MemoryRouter>
+                            <SavedSearchCard savedSearchIndex={0} />
+                        </MemoryRouter>
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );

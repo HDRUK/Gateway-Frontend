@@ -6,6 +6,8 @@ import { MemoryRouter } from "react-router-dom";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
+
 import Login from "../../components/login/login.js";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
@@ -47,9 +49,11 @@ describe("<LandingPage> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <MemoryRouter>
-                    <LandingPage />
-                </MemoryRouter>
+                <StyleWrapper>
+                    <MemoryRouter>
+                        <LandingPage />
+                    </MemoryRouter>
+                </StyleWrapper>
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;

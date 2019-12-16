@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import AppSideNav from "./appSideNav.js";
 import { MainSideNav, NavItems } from "../../styles/carbonComponents.js";
 import FilterMenu from "../filters/filterMenu/filterMenu.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
@@ -14,9 +15,9 @@ import SaveSearch from "../saveSearch/saveSearch.js";
 const sideNavText = {
     search: "Search",
     mySearches: "My searches",
-    browse: "Browse",
     about: "About",
-    help: "Help",
+    aboutIn: " ~ Innovation Gateway",
+    aboutGuide: " ~ Guidelines",
     company: "UK Government"
 };
 
@@ -30,16 +31,15 @@ const routes = [
         text: sideNavText.mySearches
     },
     {
-        path: "/browse",
-        text: sideNavText.browse
-    },
-    {
-        path: "/about",
         text: sideNavText.about
     },
     {
-        path: "/help",
-        text: sideNavText.help
+        path: "/innovation",
+        text: sideNavText.aboutIn
+    },
+    {
+        path: "/guidelines",
+        text: sideNavText.aboutGuide
     }
 ];
 
@@ -52,7 +52,9 @@ describe("<AppSideNav> ", () => {
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
                     <MemoryRouter initialEntries={["/search"]}>
-                        <AppSideNav filter={false} />
+                        <StyleWrapper>
+                            <AppSideNav filter={false} />
+                        </StyleWrapper>
                     </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>
@@ -97,7 +99,9 @@ describe("<AppSideNav> with filters", () => {
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
                     <MemoryRouter initialEntries={["/search"]}>
-                        <AppSideNav filter={true} />
+                        <StyleWrapper>
+                            <AppSideNav filter={true} />
+                        </StyleWrapper>
                     </MemoryRouter>
                 </AppContext.Provider>
             </MockedProvider>

@@ -3,6 +3,7 @@ import { create } from "react-test-renderer";
 import ResultCard from "./resultCard";
 import { SmallHeading, SmallText, StyledCard, Preview } from "../../styles/styles.js";
 import InfoDetailGrid from "../infoDetailGrid/infoDetailGrid.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { TitleBox, Arrow } from "./styles.js";
 
 const text = {
@@ -15,7 +16,11 @@ describe("<ResultCard> ", () => {
     let renderedOutput;
 
     beforeEach(() => {
-        renderedComponent = create(<ResultCard title={text.title} description={text.description} />);
+        renderedComponent = create(
+            <StyleWrapper>
+                <ResultCard title={text.title} description={text.description} />
+            </StyleWrapper>
+        );
         renderedOutput = renderedComponent.root;
     });
 

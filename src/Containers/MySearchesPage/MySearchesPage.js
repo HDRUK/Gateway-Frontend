@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { CenterLoading } from "../../styles/carbonComponents";
-import { ResultsWrapper } from "../../styles/styles.js";
+import { CenterLoading, DropdownFilter } from "../../styles/carbonComponents";
+import { ResultsWrapper, SearchInfo, ResultsCounter, SortDiv, LabelText, FloatRight } from "../../styles/styles.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
 import { useQuery } from "@apollo/react-hooks";
@@ -17,8 +17,28 @@ const MySearchesPage = () => {
     const userId = appContext.userId;
     const savedSearchesData = appContext.savedSearchesData;
 
+    const sortItems = [
+        {
+            id: "newest",
+            label: "Newest",
+            default: true
+        },
+        {
+            id: "oldest",
+            label: "Oldest"
+        }
+    ];
+
+    const [selectedSort, setSelectedSort] = useState(sortItems.find(item => item.default).id);
+
     const { data, loading, error, refetch } = useQuery(GET_SEARCH_SAVED_BY_USER_ID, {
-        variables: { userId: userId }
+        variables: {
+            userId: userId,
+            sortField: {
+                applied: "created_on",
+                value: selectedSort === "oldest" ? "DESC" : "ASC"
+            }
+        }
     });
 
     useEffect(() => {
@@ -33,10 +53,10 @@ const MySearchesPage = () => {
         refetch();
     });
 
-    if (loading) {
+    if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <div>{mySearchesPageText.errorMessage}</div>;
+    if (error) return <ResultsWrapper>{mySearchesPageText.errorMessage}</ResultsWrapper>;
 
     const results =
         savedSearchesData.data && savedSearchesData.data.length > 0 ? (
@@ -47,7 +67,33 @@ const MySearchesPage = () => {
             <p>{mySearchesPageText.noResultsMessage}</p>
         );
 
-    return <ResultsWrapper>{results}</ResultsWrapper>;
+    return (
+        <div>
+            <SearchInfo>
+                {!loading && <ResultsCounter>You have {savedSearchesData.data.length} saved searches</ResultsCounter>}
+                <SortDiv>
+                    <FloatRight>
+                        <LabelText>Sort by:</LabelText>
+                        <DropdownFilter
+                            id="sortSavedSearches"
+                            label="Sort Saved Searches"
+                            type="default"
+                            items={sortItems}
+                            initialSelectedItem={sortItems.find(item => item.id === selectedSort)}
+                            onChange={e => setSelectedSort(e.selectedItem.id)}
+                        />
+                    </FloatRight>
+                </SortDiv>
+            </SearchInfo>
+            <ResultsWrapper>
+                {loading ? (
+                    <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
+                ) : (
+                    results
+                )}
+            </ResultsWrapper>
+        </div>
+    );
 };
 
 export default MySearchesPage;

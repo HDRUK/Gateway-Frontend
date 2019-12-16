@@ -2,6 +2,7 @@ import React from "react";
 import { create } from "react-test-renderer";
 import { MemoryRouter, Link } from "react-router-dom";
 import Header from "./header.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { InvertedHeaderHeading, HeaderImage } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import hdr_logo_white from "../../assets/hdruk_logo_white.png";
@@ -16,7 +17,9 @@ describe("<Header> ", () => {
         renderedComponent = create(
             <MemoryRouter>
                 <AppContext.Provider value={context}>
-                    <Header image={hdr_logo_white} headerText="Title" />
+                    <StyleWrapper>
+                        <Header image={hdr_logo_white} headerText="Title" />
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MemoryRouter>
         );

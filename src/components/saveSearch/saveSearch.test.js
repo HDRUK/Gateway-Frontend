@@ -8,6 +8,8 @@ import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
 
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
+
 import { Modal, TextInput } from "carbon-components-react";
 import { SaveSearchButton, RightSmallInlineLoading } from "../../styles/carbonComponents.js";
 
@@ -38,7 +40,9 @@ describe("<SaveSearch> ", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock}>
                 <AppContext.Provider value={context}>
-                    <SaveSearch />
+                    <StyleWrapper>
+                        <SaveSearch />
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );

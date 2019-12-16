@@ -46,10 +46,6 @@ const SaveSearch = () => {
         userId: appContext.userId
     };
 
-    if (appContext.filters && appContext.filters.length > 0) {
-        saveVariables.filters = appContext.filters;
-    }
-
     const closeModal = () => {
         setModalOpen(false);
         setRename("");

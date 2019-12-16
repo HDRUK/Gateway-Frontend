@@ -34,6 +34,8 @@ export const ButtonDiv = styled.div`
 
 export const SavedSearchTitle = styled(SmallHeading)`
     margin: 1rem 0 0.5rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 export const CardLoadingBox = styled.div`
@@ -43,7 +45,7 @@ export const CardLoadingBox = styled.div`
     width: 100%;
     height: 100%;
     opacity: 0.7;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     z-index: 1;
 `;
 

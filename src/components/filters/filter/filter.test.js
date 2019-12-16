@@ -23,14 +23,4 @@ describe("<Filter> ", () => {
         const checkboxItems = renderedOutput.findAllByType(CheckboxItem);
         expect(checkboxItems).toHaveLength(1);
     });
-    it("should call the add filter function when triggered", () => {
-        const checkboxItem = renderedOutput.findByType(CheckboxItem);
-        checkboxItem.props.onChange(true, "test");
-        expect(context.addFilter).toHaveBeenCalled();
-    });
-    it("should call the remove filter function when triggered", () => {
-        const checkboxItem = renderedOutput.findByType(CheckboxItem);
-        checkboxItem.props.onChange(false, "test");
-        expect(context.removeFilter).toHaveBeenCalled();
-    });
 });

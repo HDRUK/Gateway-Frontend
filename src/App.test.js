@@ -14,8 +14,6 @@ import Header from "./components/header/header.js";
 import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
-import GlobalStyle from "./styles/globalStyles.js";
-
 describe("<App> ", () => {
     let renderedComponent;
     let renderedOutput;
@@ -31,7 +29,6 @@ describe("<App> ", () => {
         const appContext = apollo.findByType(AppContext);
         const appWrapper = appContext.findByType(AppWrapper);
         const browserRouter = appWrapper.findByType(BrowserRouter);
-        browserRouter.findByType(GlobalStyle);
         browserRouter.findByType(Header);
         const pageWrapper = browserRouter.findByType(PageWrapper);
         const switches = pageWrapper.findByType(Switch);

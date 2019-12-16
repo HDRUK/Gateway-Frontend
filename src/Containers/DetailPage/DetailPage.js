@@ -46,7 +46,7 @@ const DetailPage = props => {
 
     const detailData = appContext.detailData.data;
     if (appContext.detailData.status === "loading") {
-        return <CenterLoading />;
+        return <CenterLoading withOverlay={false} />;
     } else if (appContext.detailData.status === "error") {
         return <div>Unable to load</div>;
     }

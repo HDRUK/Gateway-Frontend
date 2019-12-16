@@ -3,24 +3,49 @@ import { StyledButton } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
+import { filterChangesCheck } from "../filterMenu/filterMenu";
+
+const textItems = {
+    apply: "Apply",
+    cancel: "Cancel"
+};
 
 const FilterBox = () => {
     const appContext = useContext(AppContext);
-    const filters = appContext.filterObject.find(filter => filter.id === appContext.activeFilter);
+    const filterKey = Object.keys(appContext.filterObject).find((key, i) => i === appContext.activeFilter);
+    const values = appContext.filterObject[filterKey];
+    const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
+
     return (
         <React.Fragment>
             <Triangle />
             <FilterBoxContent>
-                <ParagraphText>{filters.title}</ParagraphText>
+                <ParagraphText>{filterTitle}</ParagraphText>
                 <FilterBlock>
-                    {filters.values.map((filter, i) => (
-                        <Filter key={`resultCard-${i}`} title={filter.title} />
+                    {Object.keys(values).map((valueIndex, i) => (
+                        <Filter
+                            key={`resultCard-${i}`}
+                            title={values[valueIndex].value}
+                            checked={values[valueIndex].checked}
+                            onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                        />
                     ))}
                 </FilterBlock>
             </FilterBoxContent>
             <ButtonSet>
-                <StyledButton kind="secondary">Cancel</StyledButton>
-                <StyledButton kind="primary">Apply</StyledButton>
+                <StyledButton kind="secondary" onClick={appContext.closeFilterBox}>
+                    {textItems.cancel}
+                </StyledButton>
+                <StyledButton
+                    kind="primary"
+                    onClick={() => {
+                        appContext.applyFilter(filterKey);
+                        appContext.closeFilterBox();
+                    }}
+                    disabled={!filterChangesCheck(filterKey, appContext.filterObject)}
+                >
+                    {textItems.apply}
+                </StyledButton>
             </ButtonSet>
         </React.Fragment>
     );

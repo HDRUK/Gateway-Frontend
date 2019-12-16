@@ -1,16 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
-import {
-    SearchHeading,
-    SearchBarWrapper,
-    Results,
-    SearchInfo,
-    ResultsCounter,
-    SortDiv,
-    SearchResultsWrapper
-} from "./styles.js";
+import { Bold, Line, LinkNoDecoration, DarkText, SearchInfo, SortDiv, ResultsCounter } from "../../styles/styles.js";
+import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
@@ -108,8 +100,11 @@ const SearchPage = () => {
     const dataLength = searchData ? searchData.length : "0";
     const offSet = searchData.offSet;
     const limit = appContext.state.resultsLimit;
+    const selectedSort = appContext.selectedSort;
+    const filterString = appContext.filterString;
 
     const clearSearchData = appContext.clearSearchData;
+    const setSearchSaved = appContext.setSearchSaved;
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
@@ -119,10 +114,24 @@ const SearchPage = () => {
         }
     });
 
+    const formatFilterObjectForSave = filterObject => {
+        let finalArray = [];
+        Object.keys(filterObject)
+            .map(filterIndex => {
+                return Object.keys(filterObject[filterIndex])
+                    .filter(valueIndex => filterObject[filterIndex][valueIndex].applied)
+                    .map(valueIndex => ({
+                        type: filterIndex,
+                        value: filterObject[filterIndex][valueIndex].value
+                    }));
+            })
+            .forEach(array => (finalArray = [...finalArray, ...array]));
+        return finalArray;
+    };
+
     const onSearch = e => {
         if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            // TODO: Add filters to the audit log save
-            // TODO: Implement sort functionality
+            const filterArray = appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : [];
             searchAuditLogSave({
                 variables: {
                     userId: appContext.userId,
@@ -130,35 +139,78 @@ const SearchPage = () => {
                     endPoint: "",
                     offSet: 0,
                     recordLimit: limit,
-                    sort: { applied: "Alphabetical", value: "Up" },
-                    filters: null
+                    sort: { applied: selectedSort.current, value: "ASC" },
+                    filters: filterArray
                 }
             });
-            returnSearchResults(e.target.value, false);
+            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
             clearSearchData();
         }
+    };
+
+    const runGetItemsSearch = () => {
+        getItemsSearch({
+            variables: {
+                recordLimit: limit,
+                recordOffset: 0,
+                searchTerm: searchTerm,
+                filterItems: [filterString],
+                sortField: selectedSort.current
+            },
+            fetchPolicy: "cache-and-network",
+            notifyOnNetworkStatusChange: true
+        });
     };
 
     useEffect(() => {
         if (searchTerm !== null) {
             if (searchTerm !== previousTerm) {
+                // This is the inital search when use changes the search term
                 appContext.setSearch({
                     ...appContext.search,
                     previousTerm: searchTerm
                 });
-
-                getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
+                runGetItemsSearch();
+            } else if (filterString !== null && filterString !== appContext.prevFilterString) {
+                // This is run when the user applies a filter
+                appContext.setPrevFilterString(filterString);
+                clearSearchData();
+                setSearchSaved(false);
+                searchAuditLogSave({
+                    variables: {
+                        userId: appContext.userId,
+                        searchTerm: searchTerm,
+                        endPoint: "",
+                        offSet: 0,
+                        recordLimit: limit,
+                        sort: { applied: selectedSort.current, value: "ASC" },
+                        filters: formatFilterObjectForSave(appContext.filterObject)
+                    }
                 });
-            }
-            if (!error && !loading && !data && searchData.length === 0) {
-                getItemsSearch({
-                    variables: { recordLimit: limit, recordOffset: 0, searchTerm: searchTerm },
-                    fetchPolicy: "cache-and-network",
-                    notifyOnNetworkStatusChange: true
+                runGetItemsSearch();
+            } else if (!error && !loading && !data && searchData.length === 0) {
+                // This is run when the user returns to this search having already run it once to refresh
+                runGetItemsSearch();
+            } else if (selectedSort.current !== selectedSort.previous) {
+                // This is run when the user changes the selected sort field
+                appContext.setSelectedSort({
+                    current: selectedSort.current,
+                    previous: selectedSort.current
                 });
+                clearSearchData();
+                setSearchSaved(false);
+                searchAuditLogSave({
+                    variables: {
+                        userId: appContext.userId,
+                        searchTerm: searchTerm,
+                        endPoint: "",
+                        offSet: 0,
+                        recordLimit: limit,
+                        sort: { applied: selectedSort.current, value: "ASC" },
+                        filters: formatFilterObjectForSave(appContext.filterObject)
+                    }
+                });
+                runGetItemsSearch();
             }
         }
     });

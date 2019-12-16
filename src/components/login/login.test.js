@@ -13,6 +13,8 @@ import {
 } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
 
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
+
 import { AppContext } from "../../HOC/AppContext/AppContext";
 import context from "../../__mocks__/AppContextMock.js";
 
@@ -32,7 +34,9 @@ describe("<Login> ", () => {
         renderedComponent = create(
             <MemoryRouter>
                 <AppContext.Provider value={context}>
-                    <Login />
+                    <StyleWrapper>
+                        <Login />
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MemoryRouter>
         );
