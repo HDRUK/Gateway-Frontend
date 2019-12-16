@@ -399,6 +399,20 @@ export const NavErrorText = styled.div`
     color: ${colorTheme.error};
 `;
 
+export const SearchInfo = styled.div`
+    padding: 0 1rem 0.5rem 1rem;
+`;
+
+export const ResultsCounter = styled.div`
+    display: inline-block;
+    line-height: 2.5rem;
+`;
+
+export const SortDiv = styled.div`
+    display: inline-block;
+    float: right;
+`;
+
 //NEW STYLES
 
 export const StyledCard = styled.div`

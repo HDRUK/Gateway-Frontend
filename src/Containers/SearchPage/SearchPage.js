@@ -1,16 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line, LinkNoDecoration, DarkText } from "../../styles/styles.js";
-import {
-    SearchHeading,
-    SearchBarWrapper,
-    Results,
-    SearchInfo,
-    ResultsCounter,
-    SortDiv,
-    SearchResultsWrapper
-} from "./styles.js";
+import { Bold, Line, LinkNoDecoration, DarkText, SearchInfo, SortDiv, ResultsCounter } from "../../styles/styles.js";
+import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
@@ -112,6 +104,7 @@ const SearchPage = () => {
     const filterString = appContext.filterString;
 
     const clearSearchData = appContext.clearSearchData;
+    const setSearchSaved = appContext.setSearchSaved;
     const setOffSet = appContext.setOffSet;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
@@ -120,25 +113,6 @@ const SearchPage = () => {
             appContext.updateSearchAuditLogId(data.searchAuditLogSave.data.id);
         }
     });
-
-    const onSearch = e => {
-        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            // TODO: Add filters to the audit log save
-            searchAuditLogSave({
-                variables: {
-                    userId: appContext.userId,
-                    searchTerm: e.target.value,
-                    endPoint: "",
-                    offSet: 0,
-                    recordLimit: limit,
-                    sort: { applied: selectedSort.current, value: "Up" },
-                    filters: null
-                }
-            });
-            returnSearchResults(e.target.value, false);
-            clearSearchData();
-        }
-    };
 
     const formatFilterObjectForSave = filterObject => {
         let finalArray = [];
@@ -153,6 +127,30 @@ const SearchPage = () => {
             })
             .forEach(array => (finalArray = [...finalArray, ...array]));
         return finalArray;
+    };
+
+    // const formatFilterObjectAsArray = filterObject => {
+
+    // }
+
+    const onSearch = e => {
+        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
+            const filterArray = appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : [];
+            searchAuditLogSave({
+                variables: {
+                    userId: appContext.userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: limit,
+                    sort: { applied: selectedSort.current, value: "ASC" },
+                    filters: filterArray
+                }
+            });
+            // TODO: Include filters & sort in the returnSearchResults call!
+            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
+            clearSearchData();
+        }
     };
 
     const runGetItemsSearch = () => {
@@ -182,6 +180,7 @@ const SearchPage = () => {
                 // This is run when the user applies a filter
                 appContext.setPrevFilterString(filterString);
                 clearSearchData();
+                setSearchSaved(false);
                 searchAuditLogSave({
                     variables: {
                         userId: appContext.userId,
@@ -189,7 +188,7 @@ const SearchPage = () => {
                         endPoint: "",
                         offSet: 0,
                         recordLimit: limit,
-                        sort: { applied: selectedSort.current, value: "Up" },
+                        sort: { applied: selectedSort.current, value: "ASC" },
                         filters: formatFilterObjectForSave(appContext.filterObject)
                     }
                 });
@@ -204,6 +203,18 @@ const SearchPage = () => {
                     previous: selectedSort.current
                 });
                 clearSearchData();
+                setSearchSaved(false);
+                searchAuditLogSave({
+                    variables: {
+                        userId: appContext.userId,
+                        searchTerm: searchTerm,
+                        endPoint: "",
+                        offSet: 0,
+                        recordLimit: limit,
+                        sort: { applied: selectedSort.current, value: "ASC" },
+                        filters: formatFilterObjectForSave(appContext.filterObject)
+                    }
+                });
                 runGetItemsSearch();
             }
         }

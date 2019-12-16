@@ -75,8 +75,8 @@ export const SEARCH_SAVE = gql`
 `;
 
 export const GET_SEARCH_SAVED_BY_USER_ID = gql`
-    query GetSearchSavedByUserId($userId: String!) {
-        getSearchSavedByUserID(userId: $userId) {
+    query GetSearchSavedByUserId($userId: String!, $sortField: SortInput) {
+        getSearchSavedByUserID(userId: $userId, sortField: $sortField) {
             status
             message
             data {

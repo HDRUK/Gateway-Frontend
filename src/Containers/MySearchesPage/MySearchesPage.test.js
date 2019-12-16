@@ -63,7 +63,7 @@ describe("<MySearchesPage> rendered after data loaded", () => {
                 ],
                 sort: {
                     applied: "Alphabetical",
-                    value: "Up"
+                    value: "ASC"
                 }
             },
             {

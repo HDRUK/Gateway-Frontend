@@ -34,6 +34,8 @@ export const ButtonDiv = styled.div`
 
 export const SavedSearchTitle = styled(SmallHeading)`
     margin: 1rem 0 0.5rem 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `;
 
 export const CardLoadingBox = styled.div`
