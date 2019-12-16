@@ -3,6 +3,7 @@ import { create } from "react-test-renderer";
 
 import NotFound from "./NotFound";
 
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { SmallSpace, DarkText } from "../../styles/styles";
 
 describe("<NotFound> rendered", () => {
@@ -10,7 +11,11 @@ describe("<NotFound> rendered", () => {
     let renderedOutput;
 
     beforeAll(() => {
-        renderedComponent = create(<NotFound />);
+        renderedComponent = create(
+            <StyleWrapper>
+                <NotFound />
+            </StyleWrapper>
+        );
         renderedOutput = renderedComponent.root;
     });
 

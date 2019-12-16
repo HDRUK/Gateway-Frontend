@@ -2,6 +2,7 @@ import React from "react";
 import { create, act } from "react-test-renderer";
 import { MemoryRouter } from "react-router-dom";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
@@ -22,9 +23,11 @@ describe("<MySearchesPage> rendered before a search", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <MemoryRouter>
-                        <MySearchesPage />
-                    </MemoryRouter>
+                    <StyleWrapper>
+                        <MemoryRouter>
+                            <MySearchesPage />
+                        </MemoryRouter>
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );
@@ -90,9 +93,11 @@ describe("<MySearchesPage> rendered after data loaded", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <MemoryRouter>
-                        <MySearchesPage />
-                    </MemoryRouter>
+                    <StyleWrapper>
+                        <MemoryRouter>
+                            <MySearchesPage />
+                        </MemoryRouter>
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );

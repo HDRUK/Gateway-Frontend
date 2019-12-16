@@ -2,16 +2,6 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
-export const colorTheme = {
-    white: "#ffffff",
-    lightText: "#979797",
-    darkText: "#3c3c3b",
-    blueText: "#0f62fe",
-    darkBlue: "#002d9c",
-    labelText: "#161616",
-    error: "#da1e28"
-};
-
 export const Heading = styled.h1`
     font-size: 2.25rem;
     font-weight: 100;
@@ -37,7 +27,7 @@ export const ParagraphText = styled.p`
     font-size: 1.4rem;
     font-weight: 100;
     line-height: 1.7rem;
-    color: ${colorTheme.darkText};
+    color: ${p => p.theme.colors.darkText};
 `;
 
 export const InfoGrid = styled.div`
@@ -54,15 +44,15 @@ export const GridItem = styled.div`
 `;
 
 export const BlueText = styled.span`
-    color: ${colorTheme.blueText};
+    color: ${p => p.theme.colors.blueText};
 `;
 
 export const LightText = styled.span`
-    color: ${colorTheme.lightText};
+    color: ${p => p.theme.colors.lightText};
 `;
 
 export const DarkText = styled.span`
-    color: ${colorTheme.darkText};
+    color: ${p => p.theme.colors.darkText};
 `;
 
 export const BoldInlineText = styled.p`
@@ -136,7 +126,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: ${colorTheme.labelText};
+    color: ${p => p.theme.text.label};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
@@ -156,7 +146,7 @@ export const MenuLine = styled.div`
     position: relative;
     width: calc(100% - 3rem);
     left: 1rem;
-    background-color: #525252;
+    background-color: ${p => p.theme.colors.primary};
     height: 1px;
     margin: 1rem 0rem 2rem 0rem;
 `;
@@ -181,7 +171,7 @@ export const SideStripeRight = styled(SideStripe)`
 export const ContentWrapper = styled.div`
     position: relative;
     padding: 1rem 1rem 0 1rem;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     display: inline-block;
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
@@ -202,7 +192,7 @@ export const SocialMediaLogo = styled.div`
     display: inline-block;
     max-width: 2rem;
     max-height: 2rem;
-    fill: #ffffff;
+    fill: ${p => p.theme.colors.white};
     margin-right: 0.5rem;
 `;
 export const NewsTileWrapper = styled.div`
@@ -320,7 +310,7 @@ export const Card = styled.div`
     position: relative;
     min-height: 4rem;
     margin-bottom: 1rem;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.5);
     border-radius: 0.25rem;
     padding: 1rem;
@@ -396,7 +386,7 @@ export const ResultsWrapper = styled.div`
 export const NavErrorText = styled.div`
     padding: 0.25rem 1rem;
     font-size: 0.75rem;
-    color: ${colorTheme.error};
+    color: ${p => p.theme.colors.error};
 `;
 
 export const SearchInfo = styled.div`
@@ -418,7 +408,7 @@ export const SortDiv = styled.div`
 export const StyledCard = styled.div`
     position: relative;
     margin-bottom: 1rem;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     border-radius: 0.2rem 0.2rem 0 0;
     box-shadow: 0 0rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;

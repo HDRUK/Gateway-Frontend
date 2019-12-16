@@ -2,6 +2,7 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Footer from "./footer.js";
 
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
 import { FooterWrapper, FooterBlock, FooterText, FooterImage } from "./styles.js";
 import { SocialMediaLogo, TinyText } from "../../styles/styles.js";
@@ -25,7 +26,11 @@ describe("<Footer> ", () => {
     let renderedOutput;
 
     beforeEach(() => {
-        renderedComponent = create(<Footer />);
+        renderedComponent = create(
+            <StyleWrapper>
+                <Footer />
+            </StyleWrapper>
+        );
         renderedOutput = renderedComponent.root;
     });
 

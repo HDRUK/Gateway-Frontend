@@ -1,6 +1,7 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import Search from "./search";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { ParagraphHeading, CenterBlock, LargeSpace, SmallSpace } from "../../styles/styles.js";
 import { SearchBar } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
@@ -13,7 +14,9 @@ describe("<Search> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <Search identifier="searchHeader" />
+                <StyleWrapper>
+                    <Search identifier="searchHeader" />
+                </StyleWrapper>
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;

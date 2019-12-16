@@ -3,6 +3,7 @@ import { create } from "react-test-renderer";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 
 import Sort from "./sort.js";
 
@@ -28,7 +29,9 @@ describe("<Sort> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <Sort />
+                <StyleWrapper>
+                    <Sort />
+                </StyleWrapper>
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;

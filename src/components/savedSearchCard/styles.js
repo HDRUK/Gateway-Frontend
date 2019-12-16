@@ -45,7 +45,7 @@ export const CardLoadingBox = styled.div`
     width: 100%;
     height: 100%;
     opacity: 0.7;
-    background-color: #ffffff;
+    background-color: ${p => p.theme.colors.white};
     z-index: 1;
 `;
 

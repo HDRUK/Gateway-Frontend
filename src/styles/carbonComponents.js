@@ -19,8 +19,6 @@ import {
     Tab
 } from "carbon-components-react";
 import styled, { css } from "styled-components";
-import "../carbon-components.css";
-import { colorTheme } from "./styles.js";
 
 // HDR Imported carbon components ..
 export const HDRTabs = Tabs;
@@ -70,7 +68,7 @@ export const AccordionElement = styled(AccordionItem)`
 `;
 
 export const HeaderWrapper = styled(Header)`
-    background-color: #3c3c3b;
+    background-color: ${p => p.theme.colors.darkText};
     color: white;
     height: 4rem;
     max-width: 100%;
@@ -128,15 +126,15 @@ export const SaveSearchButton = styled(Button)`
     padding: 0 1rem 0 1rem;
 
     :disabled {
-        background-color: ${colorTheme.darkBlue};
-        border-color: ${colorTheme.darkBlue};
-        color: ${colorTheme.white};
+        background-color: ${p => p.theme.colors.darkBlue};
+        border-color: ${p => p.theme.colors.darkBlue};
+        color: ${p => p.theme.colors.white};
 
         :hover {
-            background-color: ${colorTheme.darkBlue};
-            border-color: ${colorTheme.darkBlue};
-            color: ${colorTheme.white};
-            outline-color: ${colorTheme.darkBlue};
+            background-color: ${p => p.theme.colors.darkBlue};
+            border-color: ${p => p.theme.colors.darkBlue};
+            color: ${p => p.theme.colors.white};
+            outline-color: ${p => p.theme.colors.darkBlue};
         }
     }
 `;

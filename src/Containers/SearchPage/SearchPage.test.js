@@ -6,6 +6,7 @@ import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "
 import { Line, SearchInfo, ResultsCounter, SortDiv } from "../../styles/styles.js";
 import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import context from "../../__mocks__/AppContextMock.js";
 import { MockedProvider } from "@apollo/react-testing";
 import apolloMock from "../../__mocks__/ApolloMock.js";
@@ -27,7 +28,9 @@ describe("<SearchPage> rendered before a search", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <SearchPage />
+                    <StyleWrapper>
+                        <SearchPage />
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );
@@ -124,9 +127,11 @@ describe("<SearchPage> rendered after a search", () => {
         renderedComponent = create(
             <MockedProvider mocks={apolloMock} addTypename={false}>
                 <AppContext.Provider value={context}>
-                    <MemoryRouter>
-                        <SearchPage />
-                    </MemoryRouter>
+                    <StyleWrapper>
+                        <MemoryRouter>
+                            <SearchPage />
+                        </MemoryRouter>
+                    </StyleWrapper>
                 </AppContext.Provider>
             </MockedProvider>
         );
