@@ -19,6 +19,8 @@ const theme = {
     colors: {
         primary: "#3DB28C",
         primarySolid: "#2FA376",
+        primaryButton: "#2FBB93",
+        primaryHover: "#249172",
         primaryLight: "#E2EFEA",
         secondary: "#475DA7",
         white: "#ffffff",
