@@ -350,11 +350,9 @@ export const FilterBoxContent = styled.div`
 `;
 
 export const FilterBlock = styled.div`
-    /* flex-wrap: wrap; */
     display: inline-block;
-    overflow-x: none;
+    overflow-x: hidden;
     overflow-y: auto;
-    /* flex-direction: column; */
     max-height: 8rem;
     > div {
         margin-top: 0 !important;
@@ -395,7 +393,8 @@ export const ResultsWrapper = styled.div`
     min-height: 32rem;
     height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "32rem")};
     max-height: calc(100vh - 12.65rem);
-    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: scroll;
     padding: 0.25rem 1rem 0 1rem;
 `;
 
