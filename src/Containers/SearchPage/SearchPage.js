@@ -114,25 +114,6 @@ const SearchPage = () => {
         }
     });
 
-    const onSearch = e => {
-        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            searchAuditLogSave({
-                variables: {
-                    userId: appContext.userId,
-                    searchTerm: e.target.value,
-                    endPoint: "",
-                    offSet: 0,
-                    recordLimit: limit,
-                    sort: { applied: selectedSort.current, value: "ASC" },
-                    filters: appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : null
-                }
-            });
-            // TODO: Include filters & sort in the returnSearchResults call!
-            returnSearchResults(e.target.value, false);
-            clearSearchData();
-        }
-    };
-
     const formatFilterObjectForSave = filterObject => {
         let finalArray = [];
         Object.keys(filterObject)
@@ -146,6 +127,30 @@ const SearchPage = () => {
             })
             .forEach(array => (finalArray = [...finalArray, ...array]));
         return finalArray;
+    };
+
+    // const formatFilterObjectAsArray = filterObject => {
+
+    // }
+
+    const onSearch = e => {
+        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
+            const filterArray = appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : [];
+            searchAuditLogSave({
+                variables: {
+                    userId: appContext.userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: limit,
+                    sort: { applied: selectedSort.current, value: "ASC" },
+                    filters: filterArray
+                }
+            });
+            // TODO: Include filters & sort in the returnSearchResults call!
+            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
+            clearSearchData();
+        }
     };
 
     const runGetItemsSearch = () => {

@@ -67,7 +67,7 @@ const FilterMenu = () => {
 
             setFilterObject(newFilterObject);
         }
-    }, [data, setFilterObject, filterObject]);
+    }, [data, setFilterObject]);
 
     useEffect(() => {
         let finalFilterString = "";
@@ -168,7 +168,6 @@ const FilterMenu = () => {
                 <CenterLoading withOverlay={false} />
             ) : (
                 <AccordionBlock>
-                    {console.log("filterObject", filterObject)}
                     {filterObject && Object.keys(filterObject).length > 0 && (
                         <React.Fragment>
                             <FilterBlockTitle>Filter</FilterBlockTitle>
