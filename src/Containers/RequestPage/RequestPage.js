@@ -8,6 +8,7 @@ import {
     StyledFormLabel,
     StyledTextArea
 } from "../../styles/carbonComponents";
+import axios from "axios";
 
 const textItems = {
     heading: "Request access for",
@@ -35,11 +36,36 @@ const RequestPage = () => {
     const [aimInvalid, setAimInvalid] = useState(false);
     const [datasetInvalid, setDatasetInvalid] = useState(false);
     const [requirementsInvalid, setRequirementsInvalid] = useState(false);
-    const [aimInput, setAimInput] = useState("");
-    const [datasetInput, setDatasetInput] = useState("");
-    const [requirementsInput, setRequirementsInput] = useState("");
 
+    const [formInput, setFormInput] = useState({});
     const [requirementsRequired, setRequirementsRequired] = useState(true);
+
+    const [formInvalid] = useState(datasetInvalid || aimInvalid || requirementsInvalid ? true : false);
+
+    const handleSubmit = () => {
+        // const messageHtml = renderEmail(<MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>);
+
+        axios({
+            method: "POST",
+            url: "http://localhost:5003/send",
+            data: {
+                name: "",
+                email: "",
+                messageHtml: "heelo"
+            }
+        }).then(response => {
+            if (response.data.msg === "success") {
+                alert("Email sent, awesome!");
+                this.resetForm();
+            } else if (response.data.msg === "fail") {
+                alert("Oops, something went wrong. Try again");
+            }
+        });
+    };
+    const resetForm = () => {
+        setFormInput({});
+    };
+
     return (
         <SmallSpace>
             <StyledSmallBoldText>
@@ -49,11 +75,12 @@ const RequestPage = () => {
             <StyledForm
                 onSubmit={e => {
                     e.preventDefault();
-                    datasetRequired && datasetInput === "" ? setDatasetInvalid(true) : setDatasetInvalid(false);
-                    aimInput === "" ? setAimInvalid(true) : setAimInvalid(false);
-                    requirementsRequired && requirementsInput === ""
+                    datasetRequired && !formInput.dataset ? setDatasetInvalid(true) : setDatasetInvalid(false);
+                    !formInput.aim ? setAimInvalid(true) : setAimInvalid(false);
+                    requirementsRequired && !formInput.requirements
                         ? setRequirementsInvalid(true)
                         : setRequirementsInvalid(false);
+                    !formInvalid && handleSubmit();
                 }}
             >
                 <StyledSmallBoldText>
@@ -65,9 +92,12 @@ const RequestPage = () => {
                     cols={100}
                     id="aim"
                     labelText={textItems.aimHelpText}
-                    value={aimInput}
+                    value={formInput.aim || ""}
                     onChange={event => {
-                        setAimInput(event.target.value);
+                        setFormInput({
+                            ...formInput,
+                            aim: event.target.value
+                        });
                         setAimInvalid(false);
                     }}
                 ></StyledTextArea>
@@ -88,9 +118,9 @@ const RequestPage = () => {
                     invalid={datasetInvalid}
                     labelText={false}
                     disabled={!datasetRequired}
-                    value={datasetInput}
+                    value={formInput.dataset || ""}
                     onChange={event => {
-                        setDatasetInput(event.target.value);
+                        setFormInput({ ...formInput, dataset: event.target.value });
                         setDatasetInvalid(false);
                     }}
                 ></StyledTextArea>
@@ -111,9 +141,9 @@ const RequestPage = () => {
                     id="requirements"
                     labelText={false}
                     disabled={!requirementsRequired}
-                    value={requirementsInput}
+                    value={formInput.requirements || ""}
                     onChange={event => {
-                        setRequirementsInput(event.target.value);
+                        setFormInput({ ...formInput, requirements: event.target.value });
                         setRequirementsInvalid(false);
                     }}
                 ></StyledTextArea>
