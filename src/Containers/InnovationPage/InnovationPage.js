@@ -3,15 +3,7 @@ import React from "react";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 
-import {
-    PageWrapper,
-    contentWrapper,
-    Heading,
-    ParagraphHeading,
-    DarkText,
-    SmallSpace,
-    ParagraphText
-} from "../../styles/styles.js";
+import { ContentWrapper, Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText } from "../../styles/styles.js";
 
 const textItems = {
     mainHeading: "About the Innovation Gateway",
@@ -22,23 +14,21 @@ const textItems = {
 
 const InnovationPage = () => {
     return (
-        <PageWrapper>
-            <contentWrapper>
-                <DarkText>
-                    <Heading>{textItems.mainHeading}</Heading>
-                    <SmallSpace />
-                    <ParagraphHeading>{textItems.subHeading}</ParagraphHeading>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.mainText}</ParagraphText>
-                </DarkText>
+        <ContentWrapper>
+            <DarkText>
+                <Heading>{textItems.mainHeading}</Heading>
                 <SmallSpace />
-                <ImageBlock>
-                    <Image identifier="logoNHS" />
-                    <Image identifier="logoOXF" />
-                    <Image identifier="logoIBM" />
-                </ImageBlock>
-            </contentWrapper>
-        </PageWrapper>
+                <ParagraphHeading>{textItems.subHeading}</ParagraphHeading>
+                <SmallSpace />
+                <ParagraphText>{textItems.mainText}</ParagraphText>
+            </DarkText>
+            <SmallSpace />
+            <ImageBlock>
+                <Image identifier="logoNHS" />
+                <Image identifier="logoOXF" />
+                <Image identifier="logoIBM" />
+            </ImageBlock>
+        </ContentWrapper>
     );
 };
 
