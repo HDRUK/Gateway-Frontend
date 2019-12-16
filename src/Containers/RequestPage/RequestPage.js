@@ -78,8 +78,7 @@ const RequestPage = props => {
             method: "POST",
             url: "/send",
             data: {
-                // sender: appContext.userEmail,
-                sender: "",
+                sender: appContext.userEmail,
                 // recipient: detailData.contactPoint,
                 recipient: "",
                 title: detailData.title,
