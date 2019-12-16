@@ -11,7 +11,7 @@ import MySearchesPage from "./MySearchesPage.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
 import { CenterLoading } from "../../styles/carbonComponents";
-import { ResultsWrapper } from "../../styles/styles.js";
+import { SavedSearchesWrapper } from "./styles.js";
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -106,7 +106,7 @@ describe("<MySearchesPage> rendered after data loaded", () => {
 
     it("should render the results", async () => {
         await act(async () => await wait(1000));
-        const resultsWrapper = renderedOutput.findAllByType(ResultsWrapper);
+        const resultsWrapper = renderedOutput.findAllByType(SavedSearchesWrapper);
         expect(resultsWrapper).toHaveLength(1);
 
         const resultsCards = resultsWrapper[0].props.children;
