@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
 import { useQuery } from "@apollo/react-hooks";
 
-import { DATASET_COUNT } from "../../queries/queries.js";
+import { DATASET_COUNT, RESULT_DETAIL } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -47,9 +47,14 @@ const AppContextProvider = props => {
         setUserEmail(localStorage.getItem("userEmail"));
     };
 
+    const [detailData, setDetailData] = useState({ status: "error", data: {} });
     const [activeFilter, setActiveFilter] = useState(null);
     const [filters, setFilters] = useState([]);
-    const [detailData, setDetailData] = useState([]);
+
+    const [accessRequested, setAccessRequested] = useState([]);
+    const setNewAccessRequest = id => {
+        setAccessRequested([...accessRequested, id]);
+    };
 
     const [search, setSearch] = useState({
         term: null,
@@ -210,6 +215,19 @@ const AppContextProvider = props => {
             });
     };
 
+    const useDetailData = id => {
+        const { loading, error, data } = useQuery(RESULT_DETAIL, {
+            variables: { ID: id },
+            skip: id === null
+        });
+        loading
+            ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
+            : error
+            ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
+            : data.hdrDataModelID.data !== detailData.data &&
+              setDetailData({ status: "ok", data: data.hdrDataModelID.data });
+    };
+
     const removeSavedSearchData = id => {
         const newSavedSearchesData = savedSearchesData.data.filter(search => search.id !== id);
         setSavedSearchesData({
@@ -251,15 +269,15 @@ const AppContextProvider = props => {
             });
     };
 
-    const setFilterId = filterId => {
-        setActiveFilter(filterId);
-    };
-
     const setSearchResultId = id => {
         setState({
             ...state,
             searchResultId: id
         });
+    };
+
+    const setFilterId = filterId => {
+        setActiveFilter(filterId);
     };
 
     const counterFunc = () => {
@@ -333,7 +351,9 @@ const AppContextProvider = props => {
                 removeSavedSearchData,
                 updateSearchAuditLogId,
                 detailData,
-                setDetailData
+                setDetailData,
+                useDetailData,
+                setNewAccessRequest
             }}
         >
             {props.children}

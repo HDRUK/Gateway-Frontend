@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useQuery } from "@apollo/react-hooks";
 import { CenterLoading, NewStyledButton, StyledModal } from "../../styles/carbonComponents";
 import {
     StyledHeading,
@@ -12,8 +11,6 @@ import {
     LinkNoDecoration
 } from "../../styles/styles";
 import PropTypes from "prop-types";
-
-import { RESULT_DETAIL } from "../../queries/queries.js";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { withRouter } from "react-router-dom";
@@ -31,18 +28,8 @@ const textItems = {
 
 const DetailPage = props => {
     const appContext = useContext(AppContext);
-    props.match.params.id !== appContext.state.searchResultId && appContext.setSearchResultId(props.match.params.id);
 
     const [modalOpen, setModalOpen] = useState(false);
-
-    const { loading, error, data } = useQuery(RESULT_DETAIL, {
-        variables: { ID: appContext.state.searchResultId },
-        skip: appContext.state.searchResultId === null
-    });
-    if (loading) return <CenterLoading />;
-    if (error) return <div>Error :(</div>;
-
-    let detailData = {};
 
     const createGridArray = fields => {
         let returnArray = [];
@@ -55,15 +42,29 @@ const DetailPage = props => {
         return returnArray;
     };
 
+    appContext.useDetailData(props.match.params.id);
+
+    const detailData = appContext.detailData.data;
+    if (appContext.detailData.status === "loading") {
+        return <CenterLoading />;
+    } else if (appContext.detailData.status === "error") {
+        return <div>Unable to load</div>;
+    }
+
+    const searchResultId = appContext.setSearchResultId;
+
     return (
         <React.Fragment>
-            {data && (detailData = data.hdrDataModelID.data) && (
+            {detailData !== {} && (
                 <SmallSpace>
                     <DarkText>
                         <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
                         {appContext.authenticated === "true" ? (
-                            <LinkNoDecoration to="/request-access">
+                            <LinkNoDecoration
+                                to={`/request-access/${detailData.id}`}
+                                onClick={() => searchResultId(detailData.id)}
+                            >
                                 <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
                             </LinkNoDecoration>
                         ) : (

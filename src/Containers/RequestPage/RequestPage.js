@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import { LightText, StyledSmallBoldText, SmallSpace, TinySpace, RedText } from "../../styles/styles";
+import React, { useState, useContext } from "react";
+import { LightText, StyledSmallBoldText, SmallSpace, TinySpace, RedText, StyledHeading } from "../../styles/styles";
 import {
     StyledForm,
     StyledTextInput,
     NewStyledButton,
     CheckboxItem,
     StyledFormLabel,
-    StyledTextArea
+    StyledTextArea,
+    CenterLoading
 } from "../../styles/carbonComponents";
 import axios from "axios";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+
+import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const textItems = {
     heading: "Request access for",
@@ -31,7 +36,8 @@ const textItems = {
     button: "Send Enquiry"
 };
 
-const RequestPage = () => {
+const RequestPage = props => {
+    const appContext = useContext(AppContext);
     const [datasetRequired, setDatasetRequired] = useState(true);
     const [aimInvalid, setAimInvalid] = useState(false);
     const [datasetInvalid, setDatasetInvalid] = useState(false);
@@ -42,28 +48,39 @@ const RequestPage = () => {
 
     const [formInvalid] = useState(datasetInvalid || aimInvalid || requirementsInvalid ? true : false);
 
+    appContext.useDetailData(props.match.params.id);
+
+    const detailData = appContext.detailData.data;
+    if (appContext.detailData.status === "loading") {
+        return <CenterLoading />;
+    } else if (appContext.detailData.status === "error") {
+        return <div>Unable to load</div>;
+    }
+
+    const resetForm = () => {
+        setFormInput({});
+    };
+
     const handleSubmit = () => {
         // const messageHtml = renderEmail(<MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>);
 
         axios({
             method: "POST",
-            url: "http://localhost:5003/send",
+            url: "/send",
             data: {
-                name: "",
-                email: "",
-                messageHtml: "heelo"
+                sender: appContext.userEmail,
+                recipient: detailData.data.contactPoint,
+                title: detailData.title,
+                messageHtml: JSON.stringify(formInput)
             }
         }).then(response => {
             if (response.data.msg === "success") {
                 alert("Email sent, awesome!");
-                this.resetForm();
+                resetForm();
             } else if (response.data.msg === "fail") {
                 alert("Oops, something went wrong. Try again");
             }
         });
-    };
-    const resetForm = () => {
-        setFormInput({});
     };
 
     return (
@@ -71,6 +88,7 @@ const RequestPage = () => {
             <StyledSmallBoldText>
                 <LightText>{textItems.heading.toUpperCase()}</LightText>
             </StyledSmallBoldText>
+            <StyledHeading>{detailData.title}</StyledHeading>
             <SmallSpace></SmallSpace>
             <StyledForm
                 onSubmit={e => {
@@ -170,4 +188,8 @@ const RequestPage = () => {
     );
 };
 
-export default RequestPage;
+RequestPage.propTypes = {
+    match: PropTypes.object
+};
+
+export default withRouter(RequestPage);

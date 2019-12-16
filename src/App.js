@@ -66,7 +66,7 @@ const App = () => {
                                             <div>/help</div>
                                         </Content>
                                     </Route>
-                                    <Route exact path="/request-access">
+                                    <Route exact path="/request-access/:id">
                                         <Content nav>
                                             <RequestPage />
                                         </Content>
