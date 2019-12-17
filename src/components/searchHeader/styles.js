@@ -8,8 +8,8 @@ export const SearchHeaderImage = styled.img`
 `;
 
 export const SearchHeaderWrapper = styled.div`
-    height: 5rem;
-    max-height: 5rem;
+    height: ${p => p.theme.sizes.searchHeader}rem;
+    max-height: ${p => p.theme.sizes.searchHeader}rem;
     overflow: hidden;
     padding: 0 2rem;
     border-bottom: 0.0625rem solid ${p => p.theme.colors.border};

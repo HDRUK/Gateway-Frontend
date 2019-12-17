@@ -3,7 +3,7 @@ import { HeaderNavigation } from "carbon-components-react";
 
 export const NavigationWrapper = styled.div`
     width: 100%;
-    height: 3.125rem;
+    height: ${p => p.theme.sizes.navigation}rem;
     border-bottom: 0.0625rem solid ${p => p.theme.colors.border};
 `;
 

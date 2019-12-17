@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { MainSideNav, NavItems } from "../../styles/carbonComponents";
-import PropTypes from "prop-types";
+// import { MainSideNav, NavItems } from "../../styles/carbonComponents";
+// import PropTypes from "prop-types";
 import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding, WidthWrapper } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { NavigationWrapper, NavigationItem, NavigationHeader } from "./styles.js";

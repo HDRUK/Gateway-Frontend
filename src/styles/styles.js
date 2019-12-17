@@ -350,6 +350,7 @@ export const FilterBoxContent = styled.div`
 `;
 
 export const FilterBlock = styled.div`
+    width: 100%;
     display: inline-block;
     overflow-x: hidden;
     overflow-y: auto;

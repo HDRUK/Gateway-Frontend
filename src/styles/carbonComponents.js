@@ -67,7 +67,7 @@ export const AccordionElement = styled(AccordionItem)`
 `;
 
 export const HeaderWrapper = styled(Header)`
-    height: 1.875rem;
+    height: ${p => p.theme.sizes.header}rem;
     max-width: 100%;
     position: unset;
     background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
