@@ -14,7 +14,7 @@ const textItems = {
 
 const InnovationPage = () => {
     return (
-        <ContentWrapper>
+        <>
             <DarkText>
                 <Heading>{textItems.mainHeading}</Heading>
                 <SmallSpace />
@@ -28,7 +28,7 @@ const InnovationPage = () => {
                 <Image identifier="logoOXF" />
                 <Image identifier="logoIBM" />
             </ImageBlock>
-        </ContentWrapper>
+        </>
     );
 };
 

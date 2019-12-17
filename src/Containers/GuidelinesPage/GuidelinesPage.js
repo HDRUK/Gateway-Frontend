@@ -13,7 +13,7 @@ const textItems = {
 };
 const GuidelinesPage = () => {
     return (
-        <ContentWrapper>
+        <>
             <Heading>{textItems.mainHeading}</Heading>
             <SmallSpace />
             <HDRTabs>
@@ -34,7 +34,7 @@ const GuidelinesPage = () => {
                     <GuidelinesLinking />
                 </HDRTab>
             </HDRTabs>
-        </ContentWrapper>
+        </>
     );
 };
 
