@@ -327,7 +327,7 @@ export const Card = styled.div`
     margin-bottom: 1rem;
     background-color: ${p => p.theme.colors.white};
     box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.5);
-    border-radius: 0.25rem;
+    border-radius: 0.125rem;
     padding: 1rem;
     overflow: hidden;
 `;
@@ -424,12 +424,11 @@ export const StyledCard = styled.div`
     position: relative;
     margin-bottom: 1rem;
     background-color: ${p => p.theme.colors.white};
-    border-radius: 0.2rem 0.2rem 0 0;
     box-shadow: 0 0rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;
     overflow: hidden;
     border-bottom-width: 0.05rem;
-    border-color: #3db28c;
+    border-color: ${p => p.theme.colors.primary};
     border-style: solid;
 `;
 export const StyledHeading = styled.h1`

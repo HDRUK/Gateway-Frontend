@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { InvertedHeaderHeading, HeaderImage, HorizontalLargeSpace, WidthWrapper } from "../../styles/styles.js";
+import { InvertedHeaderHeading, HorizontalLargeSpace, WidthWrapper } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
-import { Link } from "react-router-dom";
+import { LinkNoDecoration } from "../../styles/styles.js";
 
 const headerText = {
     header: "Innovation Gateway"
@@ -10,7 +10,6 @@ const headerText = {
 
 const AppHeader = () => {
     const appContext = useContext(AppContext);
-
     const useDatasetCount = appContext.useDatasetCount;
 
     useDatasetCount();
@@ -18,12 +17,14 @@ const AppHeader = () => {
     return (
         <HeaderWrapper aria-label="HDR UK Innovation Gateway">
             <WidthWrapper>
-                <Link to="/">
-                    <HeaderImage />
-                </Link>
-                <InvertedHeaderHeading>{headerText.header}</InvertedHeaderHeading>
+                <LinkNoDecoration to="/">
+                    <InvertedHeaderHeading>{headerText.header}</InvertedHeaderHeading>
+                </LinkNoDecoration>
                 <HorizontalLargeSpace />
-                <InvertedHeaderHeading>{appContext.state.datasetCount}</InvertedHeaderHeading>
+                {appContext.state.datasetCount && (
+                    <InvertedHeaderHeading>{appContext.state.datasetCount} datasets available</InvertedHeaderHeading>
+                )}
+                <InvertedHeaderHeading>{appContext.userEmail}</InvertedHeaderHeading>
             </WidthWrapper>
         </HeaderWrapper>
     );

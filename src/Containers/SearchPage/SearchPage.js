@@ -58,7 +58,10 @@ const resultsData = (
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <SearchResultsWrapper visible={searchTerm !== null}>{searchPageText.error.queryError}</SearchResultsWrapper>;
+    if (error)
+        return (
+            <SearchResultsWrapper visible={searchTerm !== null}>{searchPageText.error.queryError}</SearchResultsWrapper>
+        );
 
     const processedData = (data && data.data) || [];
 

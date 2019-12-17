@@ -15,6 +15,8 @@ import NotFound from "./Containers/NotFound/NotFound";
 import DetailPage from "./Containers/DetailPage/DetailPage";
 
 import Header from "./components/header/header";
+import Navigation from "./components/navigation/navigation.js";
+import SearchHeader from "./components/searchHeader/searchHeader.js";
 import Footer from "./components/footer/footer";
 import MenuFilterWrapper from "./components/filters/menuFilterWrapper/menuFilterWrapper";
 import Content from "./components/content/content";
@@ -37,6 +39,8 @@ const App = () => {
                         <AppWrapper>
                             <BrowserRouter>
                                 <Header />
+                                <SearchHeader />
+                                <Navigation />
                                 <PageWrapper>
                                     <Switch>
                                         <Route exact path="/">
