@@ -6,7 +6,7 @@ import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
 import { useQuery } from "@apollo/react-hooks";
 
-import { DATASET_COUNT, RESULT_DETAIL } from "../../queries/queries.js";
+import { DATASET_COUNT, RESULT_DETAIL, GET_ACCESS_REQUESTS_BY_USER_ID, REQUEST_ACCESS } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
