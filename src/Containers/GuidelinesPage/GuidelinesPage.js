@@ -5,7 +5,7 @@ import GuidelinesBeforeRequest from "../../components/guidelines/beforeRequest";
 import GuidelinesRequest from "../../components/guidelines/request";
 import GuidelinesLinking from "../../components/guidelines/linking";
 
-import { ContentWrapper, Heading, SmallSpace } from "../../styles/styles.js";
+import { Heading, SmallSpace } from "../../styles/styles.js";
 import { HDRTabs, HDRTab } from "../../styles/carbonComponents";
 
 const textItems = {

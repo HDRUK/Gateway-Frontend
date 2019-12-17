@@ -3,7 +3,7 @@ import React from "react";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 
-import { ContentWrapper, Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText } from "../../styles/styles.js";
+import { Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText } from "../../styles/styles.js";
 
 const textItems = {
     mainHeading: "About the Innovation Gateway",

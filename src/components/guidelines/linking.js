@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PageWrapper, contentWrapper, ParagraphText, DarkText, MediumSpace } from "../../styles/styles.js";
+import { ParagraphText, DarkText, MediumSpace } from "../../styles/styles.js";
 
 const textItems = {
     para1:
@@ -8,14 +8,10 @@ const textItems = {
 };
 const GuidelinesLinking = () => {
     return (
-        <PageWrapper>
-            <contentWrapper>
-                <DarkText>
-                    <ParagraphText>{textItems.para1}</ParagraphText>
-                    <MediumSpace />
-                </DarkText>
-            </contentWrapper>
-        </PageWrapper>
+        <DarkText>
+            <ParagraphText>{textItems.para1}</ParagraphText>
+            <MediumSpace />
+        </DarkText>
     );
 };
 

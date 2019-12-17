@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-    PageWrapper,
-    contentWrapper,
-    ParagraphText,
-    DarkText,
-    SmallSpace,
-    MediumSpace,
-    NewListItem
-} from "../../styles/styles.js";
+import { ParagraphText, DarkText, SmallSpace, MediumSpace, NewListItem } from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
@@ -31,31 +23,27 @@ const textItems = {
 };
 const GuidelinesGeneral = () => {
     return (
-        <PageWrapper>
-            <contentWrapper>
-                <DarkText>
-                    <ParagraphText>{textItems.para1}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para2}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphBullets>
-                        <NewListItem>{textItems.bullet1}</NewListItem>
-                        <NewListItem>{textItems.bullet2}</NewListItem>
-                        <NewListItem>{textItems.bullet3}</NewListItem>
-                        <NewListItem>{textItems.bullet4}</NewListItem>
-                        <NewListItem>{textItems.bullet5}</NewListItem>
-                        <NewListItem>{textItems.bullet6}</NewListItem>
-                    </ParagraphBullets>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para3}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para4}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para5}</ParagraphText>
-                    <MediumSpace />
-                </DarkText>
-            </contentWrapper>
-        </PageWrapper>
+        <DarkText>
+            <ParagraphText>{textItems.para1}</ParagraphText>
+            <SmallSpace />
+            <ParagraphText>{textItems.para2}</ParagraphText>
+            <SmallSpace />
+            <ParagraphBullets>
+                <NewListItem>{textItems.bullet1}</NewListItem>
+                <NewListItem>{textItems.bullet2}</NewListItem>
+                <NewListItem>{textItems.bullet3}</NewListItem>
+                <NewListItem>{textItems.bullet4}</NewListItem>
+                <NewListItem>{textItems.bullet5}</NewListItem>
+                <NewListItem>{textItems.bullet6}</NewListItem>
+            </ParagraphBullets>
+            <SmallSpace />
+            <ParagraphText>{textItems.para3}</ParagraphText>
+            <SmallSpace />
+            <ParagraphText>{textItems.para4}</ParagraphText>
+            <SmallSpace />
+            <ParagraphText>{textItems.para5}</ParagraphText>
+            <MediumSpace />
+        </DarkText>
     );
 };
 

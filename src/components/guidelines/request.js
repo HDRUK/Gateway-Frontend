@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-    PageWrapper,
-    contentWrapper,
-    ParagraphText,
-    DarkText,
-    SmallSpace,
-    MediumSpace,
-    NewListItem
-} from "../../styles/styles.js";
+import { ParagraphText, DarkText, SmallSpace, MediumSpace, NewListItem } from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
@@ -30,37 +22,33 @@ const textItems = {
 };
 const GuidelinesRequest = () => {
     return (
-        <PageWrapper>
-            <contentWrapper>
-                <DarkText>
-                    <ParagraphText>{textItems.para1}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para2}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphBullets>
-                        <NewListItem>{textItems.bullet1}</NewListItem>
-                        <SmallSpace />
-                        <NewListItem>
-                            {textItems.bullet2}
-                            <a href={textItems.bullet2Link} target="_blank" rel="noopener noreferrer">
-                                ({textItems.bullet2Link})
-                            </a>
-                        </NewListItem>
-                        <SmallSpace />
-                        <NewListItem>{textItems.bullet3}</NewListItem>
-                        <SmallSpace />
-                        <NewListItem>{textItems.bullet4}</NewListItem>
-                        <SmallSpace />
-                        <NewListItem>{textItems.bullet5}</NewListItem>
-                        <SmallSpace />
-                        <NewListItem>{textItems.bullet6}</NewListItem>
-                    </ParagraphBullets>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para3}</ParagraphText>
-                    <MediumSpace />
-                </DarkText>
-            </contentWrapper>
-        </PageWrapper>
+        <DarkText>
+            <ParagraphText>{textItems.para1}</ParagraphText>
+            <SmallSpace />
+            <ParagraphText>{textItems.para2}</ParagraphText>
+            <SmallSpace />
+            <ParagraphBullets>
+                <NewListItem>{textItems.bullet1}</NewListItem>
+                <SmallSpace />
+                <NewListItem>
+                    {textItems.bullet2}
+                    <a href={textItems.bullet2Link} target="_blank" rel="noopener noreferrer">
+                        ({textItems.bullet2Link})
+                    </a>
+                </NewListItem>
+                <SmallSpace />
+                <NewListItem>{textItems.bullet3}</NewListItem>
+                <SmallSpace />
+                <NewListItem>{textItems.bullet4}</NewListItem>
+                <SmallSpace />
+                <NewListItem>{textItems.bullet5}</NewListItem>
+                <SmallSpace />
+                <NewListItem>{textItems.bullet6}</NewListItem>
+            </ParagraphBullets>
+            <SmallSpace />
+            <ParagraphText>{textItems.para3}</ParagraphText>
+            <MediumSpace />
+        </DarkText>
     );
 };
 
