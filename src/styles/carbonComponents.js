@@ -54,6 +54,7 @@ export const AccordionBlock = styled(Accordion)`
     width: 90%;
     align-self: center;
     margin: 1rem 0;
+    padding-bottom: 1rem;
 `;
 
 export const AccordionElement = styled(AccordionItem)`
@@ -111,7 +112,7 @@ export const MainSideNav = styled(SideNav)`
     background-color: ${p => p.theme.colors.white};
     border-right: 0.0625rem solid ${p => p.theme.colors.border};
     font-size: 1.2rem;
-    overflow: auto;
+    overflow-y: auto;
     overflow-x: hidden;
     z-index: 1;
 `;

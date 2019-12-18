@@ -1,6 +1,6 @@
 import React from "react";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
-import { FooterWrapper, FooterBlock, FooterText, FooterImage } from "./styles.js";
+import { FooterWrapper, FooterContent, FooterBlock, FooterText, FooterImage } from "./styles.js";
 import { SocialMediaLogo, TinyText } from "../../styles/styles.js";
 
 const footerText = {
@@ -19,29 +19,31 @@ const links = {
 
 const Footer = () => (
     <FooterWrapper>
-        <FooterBlock>
-            <FooterImage />
-        </FooterBlock>
-        <FooterBlock>
-            <FooterText>{footerText.followUs}</FooterText>
-            <SocialMediaLogo>
-                <a href={links.twitter} target="_blank" rel="noopener noreferrer">
-                    <LogoTwitter32 />
-                </a>
-            </SocialMediaLogo>
-            <SocialMediaLogo>
-                <a href={links.linkedIn} target="_blank" rel="noopener noreferrer">
-                    <LogoLinkedin32 />
-                </a>
-            </SocialMediaLogo>
-        </FooterBlock>
-        <FooterBlock>
-            <FooterText>{footerText.visitHDRWebsite}</FooterText>
-            <FooterText>{footerText.contactUs}</FooterText>
-            <FooterText>{footerText.accessibilityStatement}</FooterText>
-            <FooterText>{footerText.termsAndConditions}</FooterText>
-        </FooterBlock>
-        <TinyText>{footerText.copyright}</TinyText>
+        <FooterContent>
+            <FooterBlock>
+                <FooterImage />
+            </FooterBlock>
+            <FooterBlock>
+                <FooterText>{footerText.followUs}</FooterText>
+                <SocialMediaLogo>
+                    <a href={links.twitter} target="_blank" rel="noopener noreferrer">
+                        <LogoTwitter32 />
+                    </a>
+                </SocialMediaLogo>
+                <SocialMediaLogo>
+                    <a href={links.linkedIn} target="_blank" rel="noopener noreferrer">
+                        <LogoLinkedin32 />
+                    </a>
+                </SocialMediaLogo>
+            </FooterBlock>
+            <FooterBlock>
+                <FooterText>{footerText.visitHDRWebsite}</FooterText>
+                <FooterText>{footerText.contactUs}</FooterText>
+                <FooterText>{footerText.accessibilityStatement}</FooterText>
+                <FooterText>{footerText.termsAndConditions}</FooterText>
+            </FooterBlock>
+            <TinyText>{footerText.copyright}</TinyText>
+        </FooterContent>
     </FooterWrapper>
 );
 

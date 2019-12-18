@@ -1,23 +1,36 @@
 import styled from "styled-components";
-import { Logo } from "../../styles/styles.js";
+import { WidthWrapper, Logo } from "../../styles/styles.js";
 
 export const FooterWrapper = styled.div`
-    height: 12rem;
-    padding-bottom: 1rem;
+    height: ${p => p.theme.sizes.footer}rem;
     background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
     color: white;
-    padding-left: 7rem;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
     font-size: 1.1rem;
     position: relative;
+`;
+
+export const FooterContent = styled(WidthWrapper)`
+    display: block;
+    margin: 0 auto 0;
+    max-width: 62rem;
+    padding: 0 2rem;
 `;
 
 export const FooterBlock = styled.div`
     display: inline-block;
     box-sizing: border-box;
     width: 33.33%;
-    height: 90%;
+    height: 100%;
     vertical-align: top;
-    padding: 3rem 5rem 0 0;
+    padding: 0 4rem 0 0;
+    line-height: 1.1875rem;
+
+    :last-of-type {
+        padding-right: 0;
+        padding-left: 4rem;
+    }
 `;
 
 export const FooterText = styled.div`

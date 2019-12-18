@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { CenterLoading, DropdownFilter } from "../../styles/carbonComponents";
-import { ResultsWrapper, SearchInfo, ResultsCounter, SortDiv, LabelText, FloatRight } from "../../styles/styles.js";
+import { SearchInfo, ResultsCounter, SortDiv, LabelText, FloatRight } from "../../styles/styles.js";
+import { SavedSearchesWrapper } from "./styles.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
 import { useQuery } from "@apollo/react-hooks";
@@ -56,7 +57,7 @@ const MySearchesPage = () => {
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
-    if (error) return <ResultsWrapper>{mySearchesPageText.errorMessage}</ResultsWrapper>;
+    if (error) return <SavedSearchesWrapper>{mySearchesPageText.errorMessage}</SavedSearchesWrapper>;
 
     const results =
         savedSearchesData.data && savedSearchesData.data.length > 0 ? (
@@ -85,13 +86,13 @@ const MySearchesPage = () => {
                     </FloatRight>
                 </SortDiv>
             </SearchInfo>
-            <ResultsWrapper>
+            <SavedSearchesWrapper visible={data !== null}>
                 {loading ? (
                     <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />
                 ) : (
                     results
                 )}
-            </ResultsWrapper>
+            </SavedSearchesWrapper>
         </div>
     );
 };

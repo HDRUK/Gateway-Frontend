@@ -25,6 +25,4 @@ export const Results = styled.div`
     pointer-events: ${p => (p.invisible ? "none" : "unset")};
 `;
 
-export const SearchResultsWrapper = styled(ResultsWrapper)`
-    max-height: calc(100vh - 25.75rem);
-`;
+export const SearchResultsWrapper = styled(ResultsWrapper)``;

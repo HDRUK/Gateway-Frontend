@@ -36,6 +36,9 @@ const theme = {
         primary: "#3c3c3b",
         label: "#161616",
         bold: 600
+    },
+    sizes: {
+        footer: 16
     }
 };
 

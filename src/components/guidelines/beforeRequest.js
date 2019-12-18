@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-    PageWrapper,
-    ContentWrapper,
-    ParagraphText,
-    DarkText,
-    SmallSpace,
-    MediumSpace,
-    ParagraphHeading
-} from "../../styles/styles.js";
+import { ParagraphText, DarkText, SmallSpace, MediumSpace, ParagraphHeading } from "../../styles/styles.js";
 
 const textItems = {
     para1:
@@ -37,51 +29,47 @@ const textItems = {
 };
 const GuidelinesBeforeRequest = () => {
     return (
-        <PageWrapper>
-            <ContentWrapper>
-                <DarkText>
-                    <ParagraphText>{textItems.para1}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphHeading>{textItems.para2Title}</ParagraphHeading>
-                    <SmallSpace />
-                    <ParagraphText>
-                        {textItems.para2}
-                        <a href={textItems.para2Link} target="_blank" rel="noopener noreferrer">
-                            ({textItems.para2Link})
-                        </a>
-                        {textItems.para2a}
-                        <a href={textItems.para2aLink} target="_blank" rel="noopener noreferrer">
-                            ({textItems.para2aLink})
-                        </a>
-                    </ParagraphText>
-                    <SmallSpace />
-                    <ParagraphHeading>{textItems.para3Title}</ParagraphHeading>
-                    <SmallSpace />
-                    <ParagraphText>{textItems.para3}</ParagraphText>
-                    <SmallSpace />
-                    <ParagraphHeading>{textItems.para4Title}</ParagraphHeading>
-                    <SmallSpace />
-                    <ParagraphText>
-                        {textItems.para4}
-                        <a href={textItems.para4Link} target="_blank" rel="noopener noreferrer">
-                            ({textItems.para4Link})
-                        </a>
-                        {textItems.para4a}
-                        <a href={textItems.para4aLink} target="_blank" rel="noopener noreferrer">
-                            ({textItems.para4aLink})
-                        </a>
-                    </ParagraphText>
-                    <SmallSpace />
-                    <ParagraphText>
-                        {textItems.para5}
-                        <a href={textItems.para5Link} target="_blank" rel="noopener noreferrer">
-                            ({textItems.para5Link})
-                        </a>
-                    </ParagraphText>
-                    <MediumSpace />
-                </DarkText>
-            </ContentWrapper>
-        </PageWrapper>
+        <DarkText>
+            <ParagraphText>{textItems.para1}</ParagraphText>
+            <SmallSpace />
+            <ParagraphHeading>{textItems.para2Title}</ParagraphHeading>
+            <SmallSpace />
+            <ParagraphText>
+                {textItems.para2}
+                <a href={textItems.para2Link} target="_blank" rel="noopener noreferrer">
+                    ({textItems.para2Link})
+                </a>
+                {textItems.para2a}
+                <a href={textItems.para2aLink} target="_blank" rel="noopener noreferrer">
+                    ({textItems.para2aLink})
+                </a>
+            </ParagraphText>
+            <SmallSpace />
+            <ParagraphHeading>{textItems.para3Title}</ParagraphHeading>
+            <SmallSpace />
+            <ParagraphText>{textItems.para3}</ParagraphText>
+            <SmallSpace />
+            <ParagraphHeading>{textItems.para4Title}</ParagraphHeading>
+            <SmallSpace />
+            <ParagraphText>
+                {textItems.para4}
+                <a href={textItems.para4Link} target="_blank" rel="noopener noreferrer">
+                    ({textItems.para4Link})
+                </a>
+                {textItems.para4a}
+                <a href={textItems.para4aLink} target="_blank" rel="noopener noreferrer">
+                    ({textItems.para4aLink})
+                </a>
+            </ParagraphText>
+            <SmallSpace />
+            <ParagraphText>
+                {textItems.para5}
+                <a href={textItems.para5Link} target="_blank" rel="noopener noreferrer">
+                    ({textItems.para5Link})
+                </a>
+            </ParagraphText>
+            <MediumSpace />
+        </DarkText>
     );
 };
 
