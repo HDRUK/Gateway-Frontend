@@ -190,7 +190,7 @@ export const ContentWrapper = styled.div`
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
     height: calc(100% - 15rem);
-    min-height: calc(100vh - 20rem);
+    min-height: calc(100vh - 26rem);
     vertical-align: top;
 `;
 
@@ -402,7 +402,7 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "calc(100vh - 28.55rem)")};
+    height: ${p => (p.visible ? "calc(100vh - 18.65rem)" : "calc(100vh - 34.55rem)")};
     max-height: calc(100vh - 12.65rem);
     overflow-x: hidden;
     overflow-y: scroll;
