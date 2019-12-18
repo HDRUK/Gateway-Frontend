@@ -4,8 +4,8 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
-import { useQuery } from "@apollo/react-hooks";
-
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 import { DATASET_COUNT } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
@@ -183,6 +183,56 @@ const AppContextProvider = props => {
         );
     };
 
+    // *****************************
+    // *** ON SEARCH DEVELOPMENT ***
+    // *****************************
+
+    const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
+        onCompleted: data => {
+            updateSearchAuditLogId(data.searchAuditLogSave.data.id);
+        }
+    });
+
+    const formatFilterObjectForSave = filterObject => {
+        let finalArray = [];
+        Object.keys(filterObject)
+            .map(filterIndex => {
+                return Object.keys(filterObject[filterIndex])
+                    .filter(valueIndex => filterObject[filterIndex][valueIndex].applied)
+                    .map(valueIndex => ({
+                        type: filterIndex,
+                        value: filterObject[filterIndex][valueIndex].value
+                    }));
+            })
+            .forEach(array => (finalArray = [...finalArray, ...array]));
+        return finalArray;
+    };
+
+    const handleSearch = e => {
+        if (e && e.key === "Enter" && e.target.value !== search.term) {
+            const filterArray = filterObject ? formatFilterObjectForSave(filterObject) : [];
+            searchAuditLogSave({
+                variables: {
+                    userId: userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: state.resultsLimit,
+                    sort: { applied: selectedSort.current, value: "ASC" },
+                    filters: filterArray
+                }
+            });
+            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
+            clearSearchData();
+            return true;
+        }
+        return false;
+    };
+
+    // *****************************
+    // *** ON SEARCH DEVELOPMENT ***
+    // *****************************
+
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
         setSearchData({
@@ -353,7 +403,10 @@ const AppContextProvider = props => {
                 setDetailData,
                 sortItems,
                 selectedSort,
-                setSelectedSort
+                setSelectedSort,
+                handleSearch,
+                searchAuditLogSave,
+                formatFilterObjectForSave
             }}
         >
             {props.children}

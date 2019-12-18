@@ -1,33 +1,43 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar } from "../../styles/carbonComponents";
-import { LinkNoDecoration, WidthWrapper } from "../../styles/styles.js";
+import { WidthWrapper } from "../../styles/styles.js";
 import { SearchHeaderWrapper, SearchBarWrapper, SearchHeaderImage } from "./styles";
 import hdruk_black from "../../assets/hdruk_black.png";
+import { Redirect } from "react-router-dom";
 
 const textItems = {
     search: "Search"
 };
 
-const SearchHeader = () => {
+const SearchHeader = props => {
     const appContext = useContext(AppContext);
-    const pageState = appContext.state.searchPageState;
+    // const pageState = appContext.state.searchPageState;
     const searchTerm = appContext.search.term;
+    const [redirect, setRedirect] = useState(false);
 
-    const onSearch = () => {
-        console.log("SEARCH");
+    const handleSearch = e => {
+        const handledSearch = appContext.handleSearch(e);
+        handledSearch && !redirect && setRedirect(true);
     };
+
+    useEffect(() => {
+        props.location.pathname === "/search" && setRedirect(false);
+    }, [props.location.pathname, searchTerm]);
+
+    const SearchRedirect = () => <Redirect to="/search" />;
 
     return (
         <SearchHeaderWrapper>
             <WidthWrapper>
                 <SearchHeaderImage src={hdruk_black} />
                 <SearchBarWrapper main={false}>
+                    {redirect && <SearchRedirect />}
                     <SearchBar
                         defaultValue={searchTerm}
                         labelText={textItems.search}
                         light
-                        onKeyPress={onSearch}
+                        onKeyPress={e => handleSearch(e)}
                         placeHolderText={`${textItems.search}...`}
                     />
                 </SearchBarWrapper>

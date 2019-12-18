@@ -1,8 +1,5 @@
-import React, { useContext } from "react";
-// import { MainSideNav, NavItems } from "../../styles/carbonComponents";
-// import PropTypes from "prop-types";
-import { SmallHeading, SmallText, Line, LinkNoDecoration, NavPadding, WidthWrapper } from "../../styles/styles.js";
-import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import React from "react";
+import { LinkNoDecoration, WidthWrapper } from "../../styles/styles.js";
 import { NavigationWrapper, NavigationItem, NavigationHeader } from "./styles.js";
 
 const sideNavText = {
@@ -24,6 +21,7 @@ const routes = [
         text: sideNavText.mySearches
     },
     {
+        path: "/innovation",
         text: sideNavText.about
     },
     {
@@ -36,15 +34,16 @@ const routes = [
     }
 ];
 
-const Navigation = () => {
-    const appContext = useContext(AppContext);
+const Navigation = props => {
     return (
         <NavigationWrapper>
             <WidthWrapper>
                 <NavigationHeader aria-label="Site navigation">
-                    {routes.map(route => (
-                        <LinkNoDecoration to={route.path} key={`route${route.path}`}>
-                            <NavigationItem>{route.text}</NavigationItem>
+                    {routes.map((route, i) => (
+                        <LinkNoDecoration to={route.path} key={`route-${i}`}>
+                            <NavigationItem active={props.location.pathname === route.path}>
+                                {route.text}
+                            </NavigationItem>
                         </LinkNoDecoration>
                     ))}
                 </NavigationHeader>

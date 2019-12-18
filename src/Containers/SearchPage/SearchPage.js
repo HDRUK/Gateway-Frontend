@@ -1,14 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { SearchBar, CenterLoading } from "../../styles/carbonComponents";
-import { Bold, Line, LinkNoDecoration, DarkText, SearchInfo, SortDiv, ResultsCounter } from "../../styles/styles.js";
-import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "./styles.js";
+import { CenterLoading } from "../../styles/carbonComponents";
+import { Bold, LinkNoDecoration, DarkText, SearchInfo, SortDiv, ResultsCounter } from "../../styles/styles.js";
+import { Results, SearchResultsWrapper } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
 
-import { useLazyQuery, useMutation } from "@apollo/react-hooks";
+import { useLazyQuery } from "@apollo/react-hooks";
 import { CUSTOM_SEARCH } from "../../queries/queries.js";
-import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 
 const searchPageText = {
     search: "Search",
@@ -97,8 +96,6 @@ const resultsData = (
 const SearchPage = () => {
     const appContext = useContext(AppContext);
     const pageState = appContext.state.searchPageState;
-    const returnSearchResults = appContext.returnSearchResults;
-
     const searchResultId = appContext.setSearchResultId;
     const searchTerm = appContext.search.term;
     const previousTerm = appContext.search.previousTerm;
@@ -108,51 +105,13 @@ const SearchPage = () => {
     const limit = appContext.state.resultsLimit;
     const selectedSort = appContext.selectedSort;
     const filterString = appContext.filterString;
-
     const clearSearchData = appContext.clearSearchData;
     const setSearchSaved = appContext.setSearchSaved;
     const setOffSet = appContext.setOffSet;
+    const searchAuditLogSave = appContext.searchAuditLogSave;
+    const formatFilterObjectForSave = appContext.formatFilterObjectForSave;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
-    const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
-        onCompleted: data => {
-            appContext.updateSearchAuditLogId(data.searchAuditLogSave.data.id);
-        }
-    });
-
-    const formatFilterObjectForSave = filterObject => {
-        let finalArray = [];
-        Object.keys(filterObject)
-            .map(filterIndex => {
-                return Object.keys(filterObject[filterIndex])
-                    .filter(valueIndex => filterObject[filterIndex][valueIndex].applied)
-                    .map(valueIndex => ({
-                        type: filterIndex,
-                        value: filterObject[filterIndex][valueIndex].value
-                    }));
-            })
-            .forEach(array => (finalArray = [...finalArray, ...array]));
-        return finalArray;
-    };
-
-    const onSearch = e => {
-        if (e && e.key === "Enter" && e.target.value !== searchTerm) {
-            const filterArray = appContext.filterObject ? formatFilterObjectForSave(appContext.filterObject) : [];
-            searchAuditLogSave({
-                variables: {
-                    userId: appContext.userId,
-                    searchTerm: e.target.value,
-                    endPoint: "",
-                    offSet: 0,
-                    recordLimit: limit,
-                    sort: { applied: selectedSort.current, value: "ASC" },
-                    filters: filterArray
-                }
-            });
-            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
-            clearSearchData();
-        }
-    };
 
     const runGetItemsSearch = () => {
         getItemsSearch({
@@ -239,35 +198,28 @@ const SearchPage = () => {
         loading || networkStatus === 3 || (searchData.data.length === offSet && offSet < searchData.length);
 
     return (
-        <div>
-            <SearchHeading invisible={pageState}>{searchPageText.searchTitle}</SearchHeading>
-            <SearchBarWrapper main={!pageState}>
-                <SearchBar defaultValue={searchTerm} labelText={searchPageText.search} onKeyPress={onSearch} />
-            </SearchBarWrapper>
-            <Results invisible={!pageState}>
-                <SearchInfo>
-                    <Line />
-                    <ResultsCounter>
-                        <Bold>{dataLength}</Bold> {searchPageText.results}
-                    </ResultsCounter>
-                    <SortDiv>
-                        <Sort />
-                    </SortDiv>
-                </SearchInfo>
-                {resultsData(
-                    searchTerm,
-                    searchData,
-                    limit,
-                    offSet,
-                    setOffSet,
-                    dataLength,
-                    fetchMore,
-                    joinedLoading,
-                    error,
-                    searchResultId
-                )}
-            </Results>
-        </div>
+        <Results invisible={!pageState}>
+            <SearchInfo>
+                <ResultsCounter>
+                    <Bold>{dataLength}</Bold> {searchPageText.results}
+                </ResultsCounter>
+                <SortDiv>
+                    <Sort />
+                </SortDiv>
+            </SearchInfo>
+            {resultsData(
+                searchTerm,
+                searchData,
+                limit,
+                offSet,
+                setOffSet,
+                dataLength,
+                fetchMore,
+                joinedLoading,
+                error,
+                searchResultId
+            )}
+        </Results>
     );
 };
 

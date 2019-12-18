@@ -25,6 +25,9 @@ export const NavigationItem = styled.div`
     text-decoration: none;
     color: ${p => p.theme.text.primary};
 
+    ${p => p.active && `border-bottom: 0.25rem solid ${p.theme.colors.primarySolid}`};
+    font-weight: ${p => p.active && p.theme.text.bold};
+
     :hover,
     :active {
         border-bottom: 0.25rem solid ${p => p.theme.colors.primarySolid};
