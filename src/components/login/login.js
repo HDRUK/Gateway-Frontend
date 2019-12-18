@@ -46,7 +46,7 @@ const Login = () => {
                             <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
                         </a>
                         <SmallSpace />
-                        <LinkNoDecoration to="/search">
+                        <LinkNoDecoration to="/innovation">
                             <StyledButton kind="secondary">{textItems.loggedInContinueButton}</StyledButton>
                         </LinkNoDecoration>
                     </CenterBlock>
@@ -56,7 +56,7 @@ const Login = () => {
                             <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
                         </a>
                         <SmallSpace />
-                        <LinkNoDecoration to="/search">
+                        <LinkNoDecoration to="/innovation">
                             <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
                         </LinkNoDecoration>
                     </CenterBlock>

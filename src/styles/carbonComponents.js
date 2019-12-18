@@ -89,7 +89,9 @@ export const CheckboxItem = styled(Checkbox)`
     margin: 5px 10px 0px 0px;
 `;
 
-export const SearchBar = styled(Search)``;
+export const SearchBar = styled(Search)`
+    border-bottom-color: ${p => p.theme.colors.border};
+`;
 
 export const DropdownFilter = styled(Dropdown)`
     min-width: 15.625rem;

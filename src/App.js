@@ -38,9 +38,9 @@ const App = () => {
                     <StyleWrapper>
                         <AppWrapper>
                             <BrowserRouter>
-                                <Header />
-                                <Route path="/" component={SearchHeader} />
-                                <Route path="/" component={Navigation} />
+                                <Route path="/:path" component={Header} />
+                                <Route path="/:path" component={SearchHeader} />
+                                <Route path="/:path" component={Navigation} />
                                 <PageWrapper>
                                     <Switch>
                                         <Route exact path="/">

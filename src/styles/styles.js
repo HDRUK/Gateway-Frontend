@@ -382,18 +382,21 @@ export const Triangle = styled.div`
 `;
 
 export const FilterDiv = styled.div`
+    flex-direction: column;
+    z-index: 10;
+    left: 1rem;
+    display: inline-flex;
+    position: absolute;
+    background-color: #f4f4f4;
+    transition: opacity 0.1s;
+    opacity: 0;
     ${props =>
         props.modalVisibility &&
         props.location &&
         css`
-            flex-direction: column;
-            z-index: 10;
-            left: 1rem;
-            display: inline-flex;
-            position: absolute;
-            background-color: #f4f4f4;
-            top: ${props.location - 110}px;
-            transition: 0s;
+            opacity: 1;
+            top: ${props.location - 205}px;
+            transition: opacity 0.1s;
         `};
 `;
 

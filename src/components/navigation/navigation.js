@@ -13,10 +13,6 @@ const sideNavText = {
 
 const routes = [
     {
-        path: "/search",
-        text: sideNavText.search
-    },
-    {
         authenticationReq: true,
         path: "/my-searches",
         text: sideNavText.mySearches
