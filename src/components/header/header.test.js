@@ -3,7 +3,7 @@ import { create } from "react-test-renderer";
 import { MemoryRouter, Link } from "react-router-dom";
 import Header from "./header.js";
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
-import { InvertedHeaderHeading, HeaderImage } from "../../styles/styles.js";
+import { InvertedHeaderText, WidthWrapper } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import hdr_logo_white from "../../assets/hdruk_logo_white.png";
 import { AppContext } from "../../HOC/AppContext/AppContext";
@@ -29,7 +29,7 @@ describe("<Header> ", () => {
     describe("when the header is rendered", () => {
         it("should render the correct components", () => {
             const wrapper = renderedOutput.findByType(HeaderWrapper);
-            expect(wrapper.children[0].props["aria-label"]).toBe("HDR UK Innovation Gateway");
+            expect(wrapper.children[0].type).toBe(WidthWrapper);
 
             const link = wrapper.findByType(Link);
             link.findByType(HeaderImage);

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SearchHeaderImage = styled.img`
     max-width: 9rem;
+    height: 4rem;
     max-height: 100%;
     vertical-align: middle;
     margin: 0.5rem 1rem 0.5rem 1rem;

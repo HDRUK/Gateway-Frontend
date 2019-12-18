@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar } from "../../styles/carbonComponents";
-import { WidthWrapper } from "../../styles/styles.js";
+import { WidthWrapper, LinkNoDecoration } from "../../styles/styles.js";
 import { SearchHeaderWrapper, SearchBarWrapper, SearchHeaderImage } from "./styles";
 import gateway_logo_svg from "../../assets/gateway_main_rgb.svg";
 import { Redirect } from "react-router-dom";
@@ -32,7 +32,9 @@ const SearchHeader = props => {
     return (
         <SearchHeaderWrapper>
             <WidthWrapper>
-                <SearchHeaderImage src={gateway_logo_svg} />
+                <LinkNoDecoration to="/">
+                    <SearchHeaderImage src={gateway_logo_svg} />
+                </LinkNoDecoration>
                 <SearchBarWrapper main={false}>
                     {redirect && <SearchRedirect />}
                     <SearchBar

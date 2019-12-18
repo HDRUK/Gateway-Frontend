@@ -1,7 +1,8 @@
 import React from "react";
 import { create } from "react-test-renderer";
 import AppContextProvider from "./AppContext";
-
+import { MockedProvider } from "@apollo/react-testing";
+import apolloMock from "../../__mocks__/ApolloMock.js";
 // TODO: This test needs to be adjusted as AppContextProvider is no longer a class so getInstance() does not work
 
 describe("<AppContextProvider> ", () => {
@@ -10,9 +11,11 @@ describe("<AppContextProvider> ", () => {
 
     beforeEach(() => {
         renderedComponent = create(
-            <AppContextProvider>
-                <div>test</div>
-            </AppContextProvider>
+            <MockedProvider mocks={apolloMock} addTypename={false}>
+                <AppContextProvider>
+                    <div>test</div>
+                </AppContextProvider>
+            </MockedProvider>
         );
         // componentInstance = renderedComponent.getInstance();
     });
