@@ -458,3 +458,20 @@ export const StyledLine = styled.div`
 export const RedText = styled.span`
     color: #e02020;
 `;
+
+export const ThreeColumnForm = styled.div`
+    display: flex;
+    width: 100%;
+`;
+
+export const OneThirdFormWidth = styled.div`
+    width: 33%;
+`;
+
+export const TwoThirdFormWidth = styled.div`
+    width: 66%;
+`;
+
+export const HalfFormWidth = styled.div`
+    width: 50%;
+`;

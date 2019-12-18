@@ -102,6 +102,13 @@ export const DropdownFilter = styled(Dropdown)`
 
 export const DateSelector = styled(DatePicker)`
     flex-direction: column;
+    width: 100%;
+    .bx--date-picker-input__wrapper {
+        > input {
+            width: 100%;
+            max-width: none;
+        }
+    }
 `;
 
 export const DateInput = styled(DatePickerInput)``;

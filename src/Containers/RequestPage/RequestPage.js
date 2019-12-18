@@ -1,5 +1,16 @@
 import React, { useState, useContext } from "react";
-import { LightText, StyledSmallBoldText, SmallSpace, TinySpace, RedText, StyledHeading } from "../../styles/styles";
+import {
+    LightText,
+    StyledSmallBoldText,
+    SmallSpace,
+    TinySpace,
+    RedText,
+    StyledHeading,
+    ThreeColumnForm,
+    OneThirdFormWidth,
+    TwoThirdFormWidth,
+    HalfFormWidth
+} from "../../styles/styles";
 import {
     StyledForm,
     StyledTextInput,
@@ -8,7 +19,9 @@ import {
     StyledFormLabel,
     StyledTextArea,
     CenterLoading,
-    RightSmallInlineLoading
+    RightSmallInlineLoading,
+    DateSelector,
+    DateInput
 } from "../../styles/carbonComponents";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -70,8 +83,26 @@ const RequestPage = props => {
         }
     };
 
+    let variables = {
+        userId: appContext.userId,
+        dataModelId: detailData.id,
+        aim: formInput.aim,
+        linkedDatasets: formInput.dataset,
+        requirements: formInput.requirements,
+        startDate: formInput.startDate,
+        ico: formInput.ico,
+        benefits: formInput.benefits,
+        evidence: formInput.evidence,
+        number: formInput.number,
+        recipient: detailData.contactPoint
+    };
+
+    const saveAccessRequest = () => {
+        appContext.saveAccessRequest({ variables });
+    };
+
     const handleSubmit = () => {
-        setRequestLoading(true);
+        // setRequestLoading(true);
         // const messageHtml = renderEmail(<MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>);
 
         axios({
@@ -86,6 +117,7 @@ const RequestPage = props => {
             }
         }).then(response => {
             if (response.data.msg === "success") {
+                saveAccessRequest();
                 setRedirect(true);
                 resetForm();
             } else if (response.data.msg === "fail") {
@@ -181,19 +213,68 @@ const RequestPage = props => {
                     }}
                 ></StyledTextArea>
                 <TinySpace />
-                <StyledSmallBoldText>{textItems.startDate}</StyledSmallBoldText>
-                <StyledTextInput id="start-date" labelText={false}></StyledTextInput>
-                <StyledSmallBoldText>{textItems.ico}</StyledSmallBoldText>
-                <StyledTextInput id="ico" labelText={false}></StyledTextInput>
+                <ThreeColumnForm>
+                    <OneThirdFormWidth>
+                        <StyledSmallBoldText>{textItems.startDate}</StyledSmallBoldText>
+                        <DateSelector
+                            datePickerType="single"
+                            dateFormat="d/m/Y"
+                            value={formInput.startDate}
+                            onChange={eventOrDates => {
+                                const value = eventOrDates.target ? eventOrDates.target.value : eventOrDates[0];
+                                setFormInput({ ...formInput, startDate: value });
+                            }}
+                        >
+                            <DateInput id="start-date" labelText={false} placeholder="dd/mm/yyyy" />
+                        </DateSelector>
+                    </OneThirdFormWidth>
+                    <TinySpace />
+                    <TwoThirdFormWidth>
+                        <StyledSmallBoldText>{textItems.ico}</StyledSmallBoldText>
+                        <StyledTextInput
+                            id="ico"
+                            labelText={false}
+                            onChange={event => {
+                                setFormInput({ ...formInput, ico: event.target.value });
+                            }}
+                            value={formInput.ico || ""}
+                        ></StyledTextInput>
+                    </TwoThirdFormWidth>
+                </ThreeColumnForm>
                 <TinySpace />
                 <StyledSmallBoldText>{textItems.benefitsHeader}</StyledSmallBoldText>
-                <StyledTextArea cols={100} id="research" labelText={textItems.benefitsHelpText}></StyledTextArea>
+                <StyledTextArea
+                    cols={100}
+                    id="research"
+                    labelText={textItems.benefitsHelpText}
+                    onChange={event => {
+                        setFormInput({ ...formInput, benefits: event.target.value });
+                    }}
+                    value={formInput.benefits || ""}
+                ></StyledTextArea>
                 <TinySpace />
                 <StyledSmallBoldText>{textItems.evidenceHeader}</StyledSmallBoldText>
-                <StyledTextArea cols={100} id="evidence" labelText={textItems.evidenceHelpText}></StyledTextArea>
+                <StyledTextArea
+                    cols={100}
+                    id="evidence"
+                    labelText={textItems.evidenceHelpText}
+                    onChange={event => {
+                        setFormInput({ ...formInput, evidence: event.target.value });
+                    }}
+                    value={formInput.evidence || ""}
+                ></StyledTextArea>
                 <TinySpace />
-                <StyledSmallBoldText>{textItems.contact}</StyledSmallBoldText>
-                <StyledTextInput id="contact" labelText={false}></StyledTextInput>
+                <HalfFormWidth>
+                    <StyledSmallBoldText>{textItems.contact}</StyledSmallBoldText>
+                    <StyledTextInput
+                        id="contact"
+                        labelText={false}
+                        onChange={event => {
+                            setFormInput({ ...formInput, number: event.target.value });
+                        }}
+                        value={formInput.number || ""}
+                    ></StyledTextInput>
+                </HalfFormWidth>
                 <TinySpace />
                 <NewStyledButton kind="primary" type="submit">
                     {requestLoading ? <RightSmallInlineLoading /> : textItems.button}

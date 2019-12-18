@@ -220,7 +220,18 @@ const DetailPage = props => {
                                 </StyledCard>
                             </React.Fragment>
                         )}
-                        <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
+                        {appContext.authenticated === "true" ? (
+                            <LinkNoDecoration
+                                to={`/request-access/${detailData.id}`}
+                                onClick={() => searchResultId(detailData.id)}
+                            >
+                                <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
+                            </LinkNoDecoration>
+                        ) : (
+                            <NewStyledButton kind="primary" onClick={() => setModalOpen(true)}>
+                                {textItems.buttonText}
+                            </NewStyledButton>
+                        )}
                     </DarkText>
                 </SmallSpace>
             )}

@@ -4,7 +4,7 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import { DATASET_COUNT, RESULT_DETAIL, GET_ACCESS_REQUESTS_BY_USER_ID, REQUEST_ACCESS } from "../../queries/queries.js";
 
@@ -40,7 +40,8 @@ const AppContextProvider = props => {
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
-    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    // const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    const [authenticated, setAuthenticated] = useState("true");
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -204,6 +205,17 @@ const AppContextProvider = props => {
             data: [...newData]
         });
     };
+
+    // const useSaveAccessRequest = requestVariables => {
+    //     const { loading, error, data } = useMutation(REQUEST_ACCESS, {
+    //         variables: { requestVariables }
+    //     });
+    //     return loading || error || data.requestAccess.status;
+    // };
+
+    const [saveAccessRequest] = useMutation(REQUEST_ACCESS);
+
+    const useGetAccessRequests = () => {};
 
     const useDatasetCount = () => {
         const { loading, error, data } = useQuery(DATASET_COUNT);
@@ -373,7 +385,9 @@ const AppContextProvider = props => {
                 setNewAccessRequest,
                 sortItems,
                 selectedSort,
-                setSelectedSort
+                setSelectedSort,
+                useGetAccessRequests,
+                saveAccessRequest
             }}
         >
             {props.children}
