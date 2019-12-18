@@ -3,7 +3,7 @@ import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { SearchBar } from "../../styles/carbonComponents";
 import { WidthWrapper } from "../../styles/styles.js";
 import { SearchHeaderWrapper, SearchBarWrapper, SearchHeaderImage } from "./styles";
-import hdruk_black from "../../assets/hdruk_black.png";
+import gateway_logo_svg from "../../assets/gateway_main_rgb.svg";
 import { Redirect } from "react-router-dom";
 
 const textItems = {
@@ -30,7 +30,7 @@ const SearchHeader = props => {
     return (
         <SearchHeaderWrapper>
             <WidthWrapper>
-                <SearchHeaderImage src={hdruk_black} />
+                <SearchHeaderImage src={gateway_logo_svg} />
                 <SearchBarWrapper main={false}>
                     {redirect && <SearchRedirect />}
                     <SearchBar

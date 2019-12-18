@@ -318,7 +318,7 @@ export const PageWrapper = styled.div`
     width: 100%;
     max-width: 90rem;
     margin: 0 auto 0;
-    min-height: calc(100vh - 36rem);
+    min-height: calc(100vh - 26rem);
 `;
 
 export const WidthWrapper = styled(PageWrapper)`
@@ -402,8 +402,8 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    height: ${p => (p.visible ? "calc(100vh - 18.65rem)" : "calc(100vh - 34.55rem)")};
-    max-height: calc(100vh - 12.65rem);
+    height: ${p => (p.visible ? "calc(100vh - 14rem)" : "calc(100vh - 34.55rem)")};
+    max-height: calc(100vh - 14rem);
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 0.25rem 1rem 0 1rem;

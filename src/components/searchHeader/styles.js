@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const SearchHeaderImage = styled.img`
-    width: 10.875rem;
+    max-width: 9rem;
     max-height: 100%;
     vertical-align: middle;
-    padding: 0.5rem 0;
+    margin: 0.5rem 1rem 0.5rem 1rem;
 `;
 
 export const SearchHeaderWrapper = styled.div`
