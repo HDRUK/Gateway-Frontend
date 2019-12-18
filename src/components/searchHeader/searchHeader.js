@@ -17,8 +17,10 @@ const SearchHeader = props => {
     const [redirect, setRedirect] = useState(false);
 
     const handleSearch = e => {
-        const handledSearch = appContext.handleSearch(e);
-        handledSearch && !redirect && setRedirect(true);
+        appContext.handleSearch(e);
+        if (!redirect && e && e.key === "Enter" && props.location.pathname !== "/search") {
+            setRedirect(true);
+        }
     };
 
     useEffect(() => {
