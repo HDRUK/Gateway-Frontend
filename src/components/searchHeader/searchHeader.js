@@ -23,7 +23,13 @@ const SearchHeader = () => {
             <WidthWrapper>
                 <SearchHeaderImage src={hdruk_black} />
                 <SearchBarWrapper main={false}>
-                    <SearchBar defaultValue={searchTerm} labelText={textItems.search} light onKeyPress={onSearch} />
+                    <SearchBar
+                        defaultValue={searchTerm}
+                        labelText={textItems.search}
+                        light
+                        onKeyPress={onSearch}
+                        placeHolderText={`${textItems.search}...`}
+                    />
                 </SearchBarWrapper>
             </WidthWrapper>
         </SearchHeaderWrapper>

@@ -16,11 +16,17 @@ export const ParagraphHeading = styled.h2`
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
-    color: white;
+    color: ${p => p.theme.colors.white};
 `;
 
 export const InvertedHeaderHeading = styled(InvertedParagraphHeading)`
     font-weight: 500;
+`;
+
+export const InvertedHeaderText = styled.p`
+    color: ${p => p.theme.colors.white};
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
 `;
 
 export const ParagraphText = styled.p`
@@ -104,6 +110,10 @@ export const LargeSpace = styled.div`
 
 export const HorizontalLargeSpace = styled.div`
     padding: 0 5rem;
+`;
+
+export const HorizontalMediumSpace = styled.div`
+    padding: 0 3rem;
 `;
 
 export const SmallHeading = styled.p`

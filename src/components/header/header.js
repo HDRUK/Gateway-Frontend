@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { InvertedHeaderHeading, HorizontalLargeSpace, WidthWrapper } from "../../styles/styles.js";
+import { InvertedHeaderText, WidthWrapper } from "../../styles/styles.js";
 import { HeaderWrapper } from "../../styles/carbonComponents.js";
 import { LinkNoDecoration } from "../../styles/styles.js";
+import { HeaderAlignment, HeaderAlignmentItem, HeaderSpacer, HeaderLink } from "./styles.js";
 
 const headerText = {
-    header: "Innovation Gateway"
+    header: "Innovation Gateway",
+    login: "Login",
+    logout: "Logout"
 };
 
 const AppHeader = () => {
@@ -17,14 +20,45 @@ const AppHeader = () => {
     return (
         <HeaderWrapper aria-label="HDR UK Innovation Gateway">
             <WidthWrapper>
-                <LinkNoDecoration to="/">
-                    <InvertedHeaderHeading>{headerText.header}</InvertedHeaderHeading>
-                </LinkNoDecoration>
-                <HorizontalLargeSpace />
-                {appContext.state.datasetCount && (
-                    <InvertedHeaderHeading>{appContext.state.datasetCount} datasets available</InvertedHeaderHeading>
-                )}
-                <InvertedHeaderHeading>{appContext.userEmail}</InvertedHeaderHeading>
+                <HeaderAlignment>
+                    <HeaderAlignmentItem>
+                        <LinkNoDecoration to="/">
+                            <InvertedHeaderText>{headerText.header}</InvertedHeaderText>
+                        </LinkNoDecoration>
+                    </HeaderAlignmentItem>
+
+                    <HeaderAlignmentItem>
+                        <HeaderSpacer />
+                    </HeaderAlignmentItem>
+
+                    <HeaderAlignmentItem>
+                        {appContext.state.datasetCount && (
+                            <InvertedHeaderText>{appContext.state.datasetCount} datasets available</InvertedHeaderText>
+                        )}
+                    </HeaderAlignmentItem>
+
+                    <HeaderAlignmentItem right>
+                        {appContext.authenticated ? (
+                            <HeaderLink to="/logout">
+                                <InvertedHeaderText>{headerText.logout}</InvertedHeaderText>
+                            </HeaderLink>
+                        ) : (
+                            <HeaderLink to="/login">
+                                <InvertedHeaderText>{headerText.login}</InvertedHeaderText>
+                            </HeaderLink>
+                        )}
+                    </HeaderAlignmentItem>
+
+                    <HeaderAlignmentItem right>
+                        <HeaderSpacer />
+                    </HeaderAlignmentItem>
+
+                    {appContext.userEmail && (
+                        <HeaderAlignmentItem right>
+                            <InvertedHeaderText>{appContext.userEmail}</InvertedHeaderText>
+                        </HeaderAlignmentItem>
+                    )}
+                </HeaderAlignment>
             </WidthWrapper>
         </HeaderWrapper>
     );

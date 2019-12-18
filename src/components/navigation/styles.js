@@ -11,6 +11,10 @@ export const NavigationHeader = styled(HeaderNavigation)`
     :before {
         content: unset;
     }
+
+    @media (max-width: 66rem) {
+        display: block;
+    }
 `;
 
 export const NavigationItem = styled.div`

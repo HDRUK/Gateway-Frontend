@@ -72,6 +72,7 @@ export const HeaderWrapper = styled(Header)`
     position: unset;
     background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
     border-bottom: 0;
+    padding: 0 2rem;
     color: white;
 `;
 
