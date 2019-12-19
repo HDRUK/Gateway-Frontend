@@ -3,6 +3,7 @@ import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
+import mainImage from "../../assets/landing_page_image_1.png";
 
 import { LandingPageWrapper } from "./styles.js";
 import {
@@ -44,7 +45,7 @@ const LandingPage = () => {
                     <SmallSpace />
                 </ParagraphAndHeaderBox>
                 <SmallInlineSpace />
-                <MainImage src="" />
+                <MainImage src={mainImage} />
             </DarkText>
             <SmallSpace />
             <NewsTileGroup>

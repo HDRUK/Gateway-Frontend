@@ -60,7 +60,8 @@ export const MainImage = styled.img`
     width: 100%;
     max-width: 33rem;
     height: 18.25rem;
-    background-color: black;
+    border: 0;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const InfoGrid = styled.div`
@@ -248,15 +249,15 @@ export const NewsTileWrapper = styled.div`
     height: 18rem;
 `;
 
-export const ImageSection = styled.div`
-    height: 12rem;
-    background-color: #64696c;
+export const ImageSection = styled.img`
+    height: 16.375rem;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const TextSection = styled.div`
     box-sizing: border-box;
     height: 6rem;
-    background-color: #b5bcbd;
+    background-color: ${p => p.theme.colors.white};
     padding: 1rem;
     font-size: 0.9rem;
     font-weight: 300;

@@ -13,7 +13,8 @@ const theme = {
         darkBlue: "#002d9c",
         boldBlue: "#19163A",
         error: "#da1e28",
-        border: "#DADADA"
+        border: "#DADADA",
+        shadow: "rgba(193, 193, 193, 0.5)"
     },
     text: {
         primary: "#3c3c3b",

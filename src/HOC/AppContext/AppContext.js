@@ -4,6 +4,11 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
+import landingPageImage1 from "../../assets/landing_page_image_1.png";
+import landingPageImage2 from "../../assets/landing_page_image_2.png";
+import landingPageImage3 from "../../assets/landing_page_image_3.png";
+import landingPageImage4 from "../../assets/landing_page_image_4.png";
+
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
 import { DATASET_COUNT } from "../../queries/queries.js";
@@ -71,29 +76,33 @@ const AppContextProvider = props => {
         data: []
     });
 
-    const newsItems = {
-        newsItemOne: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        newsItemTwo: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        newsItemThree: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        }
-    };
-
     const images = {
         logoHDR: hdruk_logo_black,
         logoNHS: nhs_logo,
         logoIBM: ibm_logo_black,
-        logoOXF: oxford_logo
+        logoOXF: oxford_logo,
+        landingPageImage1,
+        newsItemOne: landingPageImage2,
+        newsItemsTwo: landingPageImage3,
+        newsItemThree: landingPageImage4
+    };
+
+    const newsItems = {
+        newsItemOne: {
+            image: images.newsItemOne,
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        newsItemTwo: {
+            image: images.newsItemsTwo,
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        newsItemThree: {
+            image: images.newsItemThree,
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        }
     };
 
     const textItems = { searchHeader: "What health data do you need?" };

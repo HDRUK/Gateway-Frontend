@@ -8,7 +8,7 @@ const Image = props => {
     const appContext = useContext(AppContext);
     const image = appContext.images[props.identifier];
 
-    return <StyledImage alt="logo" src={image}></StyledImage>;
+    return <StyledImage alt="logo" src={image} />;
 };
 
 Image.propTypes = {
