@@ -8,13 +8,22 @@ export const Heading = styled.h1`
     letter-spacing: -0.048125rem;
 `;
 
-export const ParagraphHeading = styled.h2`
+export const Heading2 = styled.h2`
     font-size: 3rem;
     font-weight: 700;
     line-height: 2.2rem;
     letter-spacing: -0.051875rem;
     text-align: left;
     color: ${p => p.theme.text.heading};
+`;
+
+export const ParagraphHeading = styled(Heading2)`
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    letter-spacing: unset;
+    text-align: left;
+    color: ${p => p.theme.colors.boldBlue};
 `;
 
 export const ParagraphHeading3 = styled.h3`

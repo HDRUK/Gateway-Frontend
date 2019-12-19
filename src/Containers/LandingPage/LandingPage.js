@@ -8,6 +8,7 @@ import mainImage from "../../assets/landing_page_image_1.png";
 
 import { LandingPageWrapper, ParagraphIcon, PartnerImage } from "./styles.js";
 import {
+    Heading2,
     ParagraphHeading,
     ParagraphHeading3,
     DarkText,
@@ -19,7 +20,8 @@ import {
     ParagraphTextHero,
     ParagraphAndHeaderBox,
     ParagraphBox,
-    MainImage
+    MainImage,
+    CenterBlock
 } from "../../styles/styles.js";
 
 import { Search32, Send32, Locked32 } from "@carbon/icons-react";
@@ -38,7 +40,8 @@ const textItems = {
         "You need to be a bona fide researcher or innovator affiliated to aknown organisation to enquire about access to the datasets. Sign in via OpenAthens to enquire about access to datasets that interest you.",
     bannerThirdTitle: "Security",
     bannerThirdPara:
-        "All data access enquires are sent to the relevant data custodian(s) for consideration.  The Innovation Gateway supports members of the UK Health Data Research Alliance, who have subscribed to the secure safeguarding of personal health data and responsible accessto this data for research and innovation."
+        "All data access enquires are sent to the relevant data custodian(s) for consideration.  The Innovation Gateway supports members of the UK Health Data Research Alliance, who have subscribed to the secure safeguarding of personal health data and responsible accessto this data for research and innovation.",
+    partnersHeading: "Alliance Members include"
 };
 
 const LandingPage = () => {
@@ -47,7 +50,7 @@ const LandingPage = () => {
             <MediumSpace />
             <DarkText>
                 <ParagraphAndHeaderBox>
-                    <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
+                    <Heading2>{textItems.landingFirstParaHeading}</Heading2>
                     <SmallSpace />
                     <ParagraphBox>
                         <ParagraphTextHero>{textItems.landingFirstPara}</ParagraphTextHero>
@@ -59,7 +62,7 @@ const LandingPage = () => {
                 <SmallInlineSpace />
                 <MainImage src={mainImage} />
             </DarkText>
-            <SmallSpace />
+            <MediumSpace />
             <ParagraphBanner>
                 <>
                     <ParagraphIcon>
@@ -100,14 +103,16 @@ const LandingPage = () => {
                     </ParagraphAndHeaderBox>
                 </>
             </ParagraphBanner>
-            <SmallSpace />
+            <MediumSpace />
             <NewsTileGroup>
                 <NewsTile identifier="newsItemOne" />
                 <NewsTile identifier="newsItemTwo" />
                 <NewsTile identifier="newsItemThree" />
             </NewsTileGroup>
-            <SmallSpace />
-            <Line />
+            <MediumSpace />
+            <CenterBlock>
+                <ParagraphHeading>{textItems.partnersHeading}</ParagraphHeading>
+            </CenterBlock>
             <SmallSpace />
             <ImageBlock>
                 <PartnerImage>

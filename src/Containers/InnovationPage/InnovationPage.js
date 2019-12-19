@@ -8,8 +8,12 @@ import { Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText } from "
 const textItems = {
     mainHeading: "About the Innovation Gateway",
     subHeading: "What is the Innovation Gateway",
-    mainText:
-        "The Health Data Research Innovation Gateway provides a common access point to discover and request access to UK health data assets. Inofrmation about these assets can be searched or browsed, and using your institutional single sign-on, you can request access to an available dataset in the catalogue"
+    paragraph1:
+        "The Health Data Research Innovation Gateway provides a common accesspoint to discover and enquire about access to UK health datasets held by members of the UK Health Data Research Alliance.  It provides detailed descriptions of these datasets, which include de-identified health information from the NHS, research institutes and charities, that is managed by individual data controllers.  You can find out more about the members of the UK Health Data Research Alliance here.",
+    paragraph2:
+        "The Innovation Gateway does not hold or store any personal health, care or personal identifiable information.",
+    paragraph3:
+        "This portal is the first phase of the Innovation Gateway’s development andhas been created with input from patients, the public, researchers and innovators working in health and care in the UK.  It will continue to be developed in partnership with these groups."
 };
 
 const InnovationPage = () => {
@@ -20,7 +24,11 @@ const InnovationPage = () => {
                 <SmallSpace />
                 <ParagraphHeading>{textItems.subHeading}</ParagraphHeading>
                 <SmallSpace />
-                <ParagraphText>{textItems.mainText}</ParagraphText>
+                <ParagraphText>{textItems.paragraph1}</ParagraphText>
+                <SmallSpace />
+                <ParagraphText>{textItems.paragraph2}</ParagraphText>
+                <SmallSpace />
+                <ParagraphText>{textItems.paragraph3}</ParagraphText>
             </DarkText>
             <SmallSpace />
             <ImageBlock>
