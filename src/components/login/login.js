@@ -44,7 +44,7 @@ const Login = () => {
                         <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
                     </LinkNoDecoration>
                     <SmallSpace />
-                    {appContext.authenticated === "true" ? (
+                    {appContext.authenticated ? (
                         <a href="/logout">
                             <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
                         </a>

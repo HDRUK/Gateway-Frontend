@@ -12,7 +12,6 @@ import {
     ParagraphHeading,
     ParagraphHeading3,
     DarkText,
-    Line,
     SmallInlineSpace,
     SmallSpace,
     MediumSpace,

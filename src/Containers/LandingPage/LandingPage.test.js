@@ -61,17 +61,14 @@ describe("<LandingPage> ", () => {
 
     it("should check the correct components are displayed", () => {
         const paragraphs = renderedOutput.findAllByType(ParagraphText);
-        const login = renderedOutput.findAllByType(Login);
         const newsTileGroup = renderedOutput.findAllByType(NewsTileGroup);
         const imageBlock = renderedOutput.findAllByType(ImageBlock);
         const paragraphHeadings = renderedOutput.findAllByType(ParagraphHeading);
-        const paragraphBullets = renderedOutput.findAllByType(ParagraphBullets);
         const darkTexts = renderedOutput.findAllByType(DarkText);
         const smallSpaces = renderedOutput.findAllByType(SmallSpace);
         const mediumSpaces = renderedOutput.findAllByType(MediumSpace);
 
-        expect(paragraphs).toHaveLength(3);
-        expect(login).toHaveLength(1);
+        expect(paragraphs).toHaveLength(4);
 
         expect(newsTileGroup).toHaveLength(1);
         const newsTiles = newsTileGroup[0].findAllByType(NewsTile);
@@ -81,10 +78,9 @@ describe("<LandingPage> ", () => {
         expect(newsTiles[2].props.identifier).toEqual("newsItemThree");
 
         expect(imageBlock).toHaveLength(1);
-        expect(paragraphHeadings).toHaveLength(4);
-        expect(paragraphHeadings[1].props.children).toEqual(textItems.newsGroupHeading);
+        expect(paragraphHeadings).toHaveLength(1);
+        expect(paragraphHeadings[0].props.children).toEqual(textItems.newsGroupHeading);
 
-        expect(paragraphBullets).toHaveLength(2);
         const newListItems = paragraphBullets[1].findAllByType(NewListItem);
         expect(newListItems).toHaveLength(3);
         expect(newListItems[0].findByType(LinkText).props.children).toEqual(textItems.firstLink);

@@ -9,11 +9,11 @@ export const ParagraphBannerItem = props => {
 const ParagraphBanner = props => {
     return (
         <Banner>
-            {props.children.map(child => (
-                <>
+            {props.children.map((child, i) => (
+                <React.Fragment key={`banner-${i}`}>
                     <BannerItem>{child}</BannerItem>
                     <SmallInlineSpace />
-                </>
+                </React.Fragment>
             ))}
         </Banner>
     );
