@@ -9,10 +9,12 @@ export const Heading = styled.h1`
 `;
 
 export const ParagraphHeading = styled.h2`
-    font-size: 1.4rem;
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 1.7rem;
-    color: ${p => p.theme.text.primary};
+    line-height: 2.2rem;
+    letter-spacing: -0.051875rem;
+    text-align: left;
+    color: ${p => p.theme.text.heading};
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
@@ -29,11 +31,36 @@ export const InvertedHeaderText = styled.p`
     line-height: 1.0625rem;
 `;
 
+export const ParagraphAndHeaderBox = styled.div`
+    display: inline-block;
+    max-width: 29rem;
+    text-align: left;
+`;
+
+export const ParagraphBox = styled.div`
+    display: inline-block;
+    max-width: 19rem;
+    text-align: left;
+`;
+
 export const ParagraphText = styled.p`
-    font-size: 1.4rem;
-    font-weight: 100;
-    line-height: 1.7rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.1875rem;
     color: ${p => p.theme.colors.darkText};
+`;
+
+export const ParagraphTextColored = styled(ParagraphText)`
+    font-weight: 500;
+    color: ${p => p.theme.text.heading};
+`;
+
+export const MainImage = styled.img`
+    display: inline-block;
+    width: 100%;
+    max-width: 33rem;
+    height: 18.25rem;
+    background-color: black;
 `;
 
 export const InfoGrid = styled.div`
@@ -95,11 +122,17 @@ export const CenterBlock = styled.div`
     justify-content: center;
 `;
 export const TinySpace = styled.div`
+    display: inline-block;
     padding: 0.5rem;
 `;
 export const SmallSpace = styled.div`
     padding: 1rem;
 `;
+
+export const SmallInlineSpace = styled(SmallSpace)`
+    display: inline-block;
+`;
+
 export const MediumSpace = styled.div`
     padding: 2rem;
 `;

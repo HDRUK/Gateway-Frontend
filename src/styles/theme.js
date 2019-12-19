@@ -17,6 +17,7 @@ const theme = {
     },
     text: {
         primary: "#3c3c3b",
+        heading: "#2FBB93",
         label: "#161616",
         bold: 600
     },
