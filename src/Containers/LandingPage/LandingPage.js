@@ -46,7 +46,7 @@ const LandingPage = () => {
                 <SmallInlineSpace />
                 <MainImage src="" />
             </DarkText>
-            <MediumSpace />
+            <SmallSpace />
             <NewsTileGroup>
                 <NewsTile identifier="newsItemOne" />
                 <NewsTile identifier="newsItemTwo" />

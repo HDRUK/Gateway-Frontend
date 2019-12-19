@@ -295,6 +295,7 @@ export const StyledImage = styled.img`
 export const NewsTileItem = styled.div`
     display: inline-block;
     margin-right: 2rem;
+    margin-top: 2rem;
 
     :last-child {
         margin-right: 0;
