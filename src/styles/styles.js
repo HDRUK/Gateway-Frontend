@@ -3,9 +3,9 @@ import styled, { css } from "styled-components";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
 export const Heading = styled.h1`
-    font-size: 2.25rem;
-    font-weight: 100;
-    line-height: 2.7rem;
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+    letter-spacing: -0.048125rem;
 `;
 
 export const ParagraphHeading = styled.h2`
@@ -140,7 +140,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: ${p => p.theme.text.label};
+    color: ${p => p.theme.text.boldBlue};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
@@ -455,6 +455,7 @@ export const StyledSmallBoldText = styled.p`
     font-size: 0.9rem;
     line-height: 1.125rem;
     font-weight: 700;
+    color: ${p => p.theme.colors.boldBlue};
 `;
 
 export const StyledSmallText = styled.p`

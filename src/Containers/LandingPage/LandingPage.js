@@ -1,5 +1,4 @@
 import React from "react";
-import Login from "../../components/login/login";
 import NewsTile from "../../components/newsTile/newsTile.js";
 import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
@@ -39,9 +38,6 @@ const LandingPage = () => {
     return (
         <LandingPageWrapper>
             <MediumSpace />
-            {/* <SmallSpace />
-            <SmallSpace /> */}
-            {/* <Login /> */}
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
                 <SmallSpace />
