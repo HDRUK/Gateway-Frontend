@@ -39,11 +39,11 @@ const AppHeader = () => {
 
                     <HeaderAlignmentItem right>
                         {appContext.authenticated ? (
-                            <HeaderLink to="/logout">
+                            <HeaderLink href="/logout">
                                 <InvertedHeaderText>{headerText.logout}</InvertedHeaderText>
                             </HeaderLink>
                         ) : (
-                            <HeaderLink to="/login">
+                            <HeaderLink href="/login">
                                 <InvertedHeaderText>{headerText.login}</InvertedHeaderText>
                             </HeaderLink>
                         )}

@@ -15,7 +15,7 @@ export const HeaderSpacer = styled.div`
     width: 6rem;
 `;
 
-export const HeaderLink = styled(LinkNoDecoration)`
+export const HeaderLink = styled.a`
     :hover {
         text-decoration: underline;
         text-decoration-color: ${p => p.theme.colors.white};

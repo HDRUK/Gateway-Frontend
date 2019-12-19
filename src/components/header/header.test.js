@@ -60,7 +60,7 @@ describe("<Header> ", () => {
             const Logout = HeaderAlignmentItems[3].props.children;
             expect(HeaderAlignmentItems[3].props.right).toBeTruthy();
             expect(Logout.type).toBe(HeaderLink);
-            expect(Logout.props.to).toBe("/logout");
+            expect(Logout.props.href).toBe("/logout");
             expect(Logout.props.children.type).toBe(InvertedHeaderText);
             expect(Logout.props.children.props.children).toBe(headerText.logout);
 
