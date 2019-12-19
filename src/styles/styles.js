@@ -286,19 +286,17 @@ export const ReadMore = styled.a`
 `;
 
 export const ImageBlockWrapper = styled.div`
-    height: 4rem;
-    padding-top: 0.6875rem;
+    text-align: left;
+    margin: 0 auto 0;
 `;
 
 export const SmallImage = styled.div`
-    display: inline-flex;
-    max-height: 2.625rem;
-    max-width: 8rem;
-    margin-right: 2rem;
-    vertical-align: center;
+    display: inline-block;
+    vertical-align: top;
 `;
 
 export const StyledImage = styled.img`
+    width: inherit;
     max-width: inherit;
 `;
 

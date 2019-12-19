@@ -6,7 +6,7 @@ import Image from "../../components/image/image.js";
 import ParagraphBanner from "../../components/paragraphBanner/paragraphBanner.js";
 import mainImage from "../../assets/landing_page_image_1.png";
 
-import { LandingPageWrapper, ParagraphIcon } from "./styles.js";
+import { LandingPageWrapper, ParagraphIcon, PartnerImage } from "./styles.js";
 import {
     ParagraphHeading,
     ParagraphHeading3,
@@ -110,9 +110,54 @@ const LandingPage = () => {
             <Line />
             <SmallSpace />
             <ImageBlock>
-                <Image identifier="logoHDR" />
-                <Image identifier="logoHDR" />
-                <Image identifier="logoHDR" />
+                <PartnerImage>
+                    <Image identifier="partnerLogo1" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo2" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo3" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo4" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo5" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo6" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo7" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo8" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo9" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo10" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo11" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo12" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo13" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo14" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo15" />
+                </PartnerImage>
+                <PartnerImage>
+                    <Image identifier="partnerLogo16" />
+                </PartnerImage>
             </ImageBlock>
         </LandingPageWrapper>
     );
