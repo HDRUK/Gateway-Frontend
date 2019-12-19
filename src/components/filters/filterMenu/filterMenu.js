@@ -172,7 +172,7 @@ const FilterMenu = () => {
                 <AccordionBlock>
                     {filterObject && Object.keys(filterObject).length > 0 && (
                         <React.Fragment>
-                            <FilterBlockTitle>Filter</FilterBlockTitle>
+                            <FilterBlockTitle>Filters</FilterBlockTitle>
                             {Object.keys(filterObject).map((filterKey, i) =>
                                 filterElement(filterKey, filterObject[filterKey], i)
                             )}

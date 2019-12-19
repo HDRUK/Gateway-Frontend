@@ -29,7 +29,6 @@ describe("<App> ", () => {
         const appContext = apollo.findByType(AppContext);
         const appWrapper = appContext.findByType(AppWrapper);
         const browserRouter = appWrapper.findByType(BrowserRouter);
-        browserRouter.findByType(Header);
         const pageWrapper = browserRouter.findByType(PageWrapper);
         const switches = pageWrapper.findByType(Switch);
         const routes = switches.findAllByType(Route);
