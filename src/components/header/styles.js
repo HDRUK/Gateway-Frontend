@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { LinkNoDecoration } from "../../styles/styles.js";
 
 export const HeaderAlignment = styled.div`
     width: 100%;
