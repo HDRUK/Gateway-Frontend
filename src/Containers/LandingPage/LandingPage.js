@@ -39,9 +39,9 @@ const LandingPage = () => {
     return (
         <LandingPageWrapper>
             <MediumSpace />
-            <SmallSpace />
-            <SmallSpace />
-            <Login />
+            {/* <SmallSpace />
+            <SmallSpace /> */}
+            {/* <Login /> */}
             <DarkText>
                 <ParagraphHeading>{textItems.landingFirstParaHeading}</ParagraphHeading>
                 <SmallSpace />
