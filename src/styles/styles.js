@@ -17,6 +17,15 @@ export const ParagraphHeading = styled.h2`
     color: ${p => p.theme.text.heading};
 `;
 
+export const ParagraphHeading3 = styled.h3`
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.2rem;
+    letter-spacing: -0.035rem;
+    text-align: left;
+    color: ${p => p.theme.text.heading};
+`;
+
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
     color: ${p => p.theme.colors.white};
 `;
@@ -50,7 +59,7 @@ export const ParagraphText = styled.p`
     color: ${p => p.theme.colors.darkText};
 `;
 
-export const ParagraphTextColored = styled(ParagraphText)`
+export const ParagraphTextHero = styled(ParagraphText)`
     font-weight: 500;
     color: ${p => p.theme.text.heading};
 `;
