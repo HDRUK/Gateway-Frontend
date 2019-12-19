@@ -31,16 +31,16 @@ const AppContextProvider = props => {
     const checkAuthenticated = () => {
         if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
             localStorage.setItem("authenticated", "false");
-            setAuthenticated(localStorage.getItem("authenticated"));
+            setAuthenticated(localStorage.getItem("authenticated") === "true" ? true : false);
         } else {
             localStorage.setItem("authenticated", "true");
-            setAuthenticated(localStorage.getItem("authenticated"));
+            setAuthenticated(localStorage.getItem("authenticated") === "true" ? true : false);
         }
     };
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
-    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated") === "true" ? true : false);
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
