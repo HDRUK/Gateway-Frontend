@@ -17,7 +17,7 @@ const loginText = {
     continueButton: "Continue as a guest",
     loggedInContinueButton: "Continue",
     description:
-        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets but will not be able to enquire about access.",
+        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets.",
     headingText: "Explore & Discover our health datasets from across the UK."
 };
 
