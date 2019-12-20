@@ -12,7 +12,7 @@ const AppSideNav = props => {
             <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
                 {props.filter && (
                     <React.Fragment>
-                        {appContext.authenticated === "true" && <SaveSearch />}
+                        {appContext.authenticated && <SaveSearch />}
                         <FilterMenu />
                     </React.Fragment>
                 )}

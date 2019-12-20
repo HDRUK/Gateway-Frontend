@@ -40,7 +40,7 @@ const Login = () => {
                 <Heading>{heading(datasetCount).headingText}</Heading>
                 <MediumSpace />
 
-                {appContext.authenticated === "true" ? (
+                {appContext.authenticated ? (
                     <CenterBlock>
                         <a href="/logout">
                             <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
