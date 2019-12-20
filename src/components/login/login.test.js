@@ -73,7 +73,7 @@ describe("<Login> ", () => {
             expect(buttons[2].props.href).toBe("/logout");
 
             expect(buttons[0].props.children.type).toBe(StyledButton);
-            expect(buttons[0].props.children.props.children).toBe(loginText.continueButton);
+            expect(buttons[0].props.children.props.children).toBe(loginText.loggedInContinueButton);
             expect(buttons[0].props.children.props.kind).toBe("secondary");
 
             const button = buttons[2].props.children;

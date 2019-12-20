@@ -41,7 +41,9 @@ const Login = () => {
                 <TinySpace />
                 <CenterBlock>
                     <LinkNoDecoration to="/innovation">
-                        <StyledButton kind="secondary">{textItems.continueButton}</StyledButton>
+                        <StyledButton kind="secondary">
+                            {appContext.authenticated ? textItems.loggedInContinueButton : textItems.continueButton}
+                        </StyledButton>
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (

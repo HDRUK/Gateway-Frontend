@@ -14,14 +14,10 @@ import ImageBlock from "../../components/imageBlock/imageBlock.js";
 
 import {
     ParagraphAndHeaderBox,
-    ParagraphHeading,
     DarkText,
-    NewListItem,
-    LinkText,
     SmallInlineSpace,
     SmallSpace,
     MediumSpace,
-    ParagraphText,
     MainImage,
     CenterBlock
 } from "../../styles/styles.js";
