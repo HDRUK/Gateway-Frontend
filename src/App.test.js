@@ -10,7 +10,6 @@ import AppContext from "./HOC/AppContext/AppContext.js";
 import ErrorBoundary from "./HOC/ErrorBoundary/ErrorBoundary";
 
 import LandingPage from "./Containers/LandingPage/LandingPage.js";
-import Header from "./components/header/header.js";
 import Content from "./components/content/content.js";
 import { PageWrapper, AppWrapper } from "./styles/styles.js";
 
@@ -29,7 +28,6 @@ describe("<App> ", () => {
         const appContext = apollo.findByType(AppContext);
         const appWrapper = appContext.findByType(AppWrapper);
         const browserRouter = appWrapper.findByType(BrowserRouter);
-        browserRouter.findByType(Header);
         const pageWrapper = browserRouter.findByType(PageWrapper);
         const switches = pageWrapper.findByType(Switch);
         const routes = switches.findAllByType(Route);

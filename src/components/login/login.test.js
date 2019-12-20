@@ -47,7 +47,7 @@ describe("<Login> ", () => {
         it("should have the correct destination for the continue button", () => {
             const link = renderedOutput.findAllByType(LinkNoDecoration);
             const continueDestination = link[0].props.to;
-            expect(continueDestination).toBe("/search");
+            expect(continueDestination).toBe("/innovation");
         });
         it("should render the correct components", () => {
             const centerBlocks = renderedOutput.findAllByType(CenterBlock);
@@ -70,7 +70,7 @@ describe("<Login> ", () => {
 
             expect(centerBlock2Content[1].type).toEqual(SmallSpace);
             expect(centerBlock2Content[2].type).toEqual(LinkNoDecoration);
-            expect(centerBlock2Content[2].props.to).toEqual("/search");
+            expect(centerBlock2Content[2].props.to).toEqual("/innovation");
 
             const secondaryButton = centerBlock2Content[2].props.children;
             expect(secondaryButton.type).toEqual(StyledButton);

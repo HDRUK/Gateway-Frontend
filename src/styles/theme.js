@@ -38,6 +38,9 @@ const theme = {
         bold: 600
     },
     sizes: {
+        header: 1.875,
+        searchHeader: 5,
+        navigation: 3.125,
         footer: 16
     }
 };

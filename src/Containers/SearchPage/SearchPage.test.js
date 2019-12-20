@@ -37,22 +37,22 @@ describe("<SearchPage> rendered before a search", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    it("should render the search heading", () => {
-        const searchHeading = renderedOutput.findAllByType(SearchHeading);
-        expect(searchHeading).toHaveLength(1);
-        expect(searchHeading[0].props.invisible).toBe(false);
-        expect(searchHeading[0].props.children).toBe(searchPageText.searchTitle);
-    });
+    // it("should render the search heading", () => {
+    //     const searchHeading = renderedOutput.findAllByType(SearchHeading);
+    //     expect(searchHeading).toHaveLength(1);
+    //     expect(searchHeading[0].props.invisible).toBe(false);
+    //     expect(searchHeading[0].props.children).toBe(searchPageText.searchTitle);
+    // });
 
-    it("should render the search bar with wrapper", () => {
-        const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
-        expect(searchBarWrapper).toHaveLength(1);
-        expect(searchBarWrapper[0].props.main).toBe(true);
+    // it("should render the search bar with wrapper", () => {
+    //     const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
+    //     expect(searchBarWrapper).toHaveLength(1);
+    //     expect(searchBarWrapper[0].props.main).toBe(true);
 
-        const searchBar = searchBarWrapper[0].props.children;
-        expect(searchBar.type).toBe(SearchBar);
-        expect(searchBar.props.labelText).toBe("Search");
-    });
+    //     const searchBar = searchBarWrapper[0].props.children;
+    //     expect(searchBar.type).toBe(SearchBar);
+    //     expect(searchBar.props.labelText).toBe("Search");
+    // });
 
     it("should render the results as invisible", () => {
         const results = renderedOutput.findAllByType(Results);
@@ -139,22 +139,6 @@ describe("<SearchPage> rendered after a search", () => {
         act(() => wait(0));
     });
 
-    it("should render search heading as invisible", () => {
-        const searchHeading = renderedOutput.findAllByType(SearchHeading);
-        expect(searchHeading).toHaveLength(1);
-        expect(searchHeading[0].props.invisible).toBe(true);
-    });
-
-    it("should render the search bar with wrapper", () => {
-        const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
-        expect(searchBarWrapper).toHaveLength(1);
-        expect(searchBarWrapper[0].props.main).toBe(false);
-
-        const searchBar = searchBarWrapper[0].props.children;
-        expect(searchBar.type).toBe(SearchBar);
-        expect(searchBar.props.labelText).toBe("Search");
-    });
-
     it("should render the results", async () => {
         const results = renderedOutput.findAllByType(Results);
         expect(results).toHaveLength(1);
@@ -163,12 +147,11 @@ describe("<SearchPage> rendered after a search", () => {
         const searchInfo = results[0].props.children[0];
         expect(searchInfo.type).toBe(SearchInfo);
         const searchInfoComponents = searchInfo.props.children;
-        expect(searchInfoComponents[0].type).toEqual(Line);
-        expect(searchInfoComponents[1].type).toEqual(ResultsCounter);
-        const resultsCounterText = searchInfoComponents[1].props.children;
+        expect(searchInfoComponents[0].type).toEqual(ResultsCounter);
+        const resultsCounterText = searchInfoComponents[0].props.children;
         expect(resultsCounterText[0].props.children).toEqual(context.searchData.length);
         expect(resultsCounterText[2]).toEqual(searchPageText.results);
-        expect(searchInfoComponents[2].type).toEqual(SortDiv);
+        expect(searchInfoComponents[1].type).toEqual(SortDiv);
 
         const searchResultsWrapper = results[0].props.children[1];
         expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);

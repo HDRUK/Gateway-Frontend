@@ -10,7 +10,8 @@ import {
     DATASET_COUNT,
     RESULT_DETAIL,
     GET_ACCESS_REQUESTS_BY_USER_ID,
-    REQUEST_ACCESS
+    REQUEST_ACCESS,
+    SEARCH_AUDIT_LOG_SAVE
     // RESULT_DETAIL_SHORT
 } from "../../queries/queries.js";
 
@@ -37,19 +38,16 @@ const AppContextProvider = props => {
     const checkAuthenticated = () => {
         if (localStorage.getItem("userId") === "" || localStorage.getItem("userId") === undefined) {
             localStorage.setItem("authenticated", "false");
-            setAuthenticated(localStorage.getItem("authenticated"));
+            setAuthenticated(localStorage.getItem("authenticated") === "true" ? true : false);
         } else {
             localStorage.setItem("authenticated", "true");
-            setAuthenticated(localStorage.getItem("authenticated"));
+            setAuthenticated(localStorage.getItem("authenticated") === "true" ? true : false);
         }
     };
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
-    // const [userId, setUserId] = useState(localStorage.getItem("userId"));
-
-    const [userId, setUserId] = useState("2ekfvq9mu1b130im5n8sn1r2ic");
-    // const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
-    const [authenticated, setAuthenticated] = useState("true");
+    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated") === "true" ? true : false);
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -199,6 +197,56 @@ const AppContextProvider = props => {
             })
         );
     };
+
+    // *****************************
+    // *** ON SEARCH DEVELOPMENT ***
+    // *****************************
+
+    const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
+        onCompleted: data => {
+            updateSearchAuditLogId(data.searchAuditLogSave.data.id);
+        }
+    });
+
+    const formatFilterObjectForSave = filterObject => {
+        let finalArray = [];
+        Object.keys(filterObject)
+            .map(filterIndex => {
+                return Object.keys(filterObject[filterIndex])
+                    .filter(valueIndex => filterObject[filterIndex][valueIndex].applied)
+                    .map(valueIndex => ({
+                        type: filterIndex,
+                        value: filterObject[filterIndex][valueIndex].value
+                    }));
+            })
+            .forEach(array => (finalArray = [...finalArray, ...array]));
+        return finalArray;
+    };
+
+    const handleSearch = e => {
+        if (e && e.key === "Enter" && e.target.value !== search.term) {
+            const filterArray = filterObject ? formatFilterObjectForSave(filterObject) : [];
+            searchAuditLogSave({
+                variables: {
+                    userId: userId,
+                    searchTerm: e.target.value,
+                    endPoint: "",
+                    offSet: 0,
+                    recordLimit: state.resultsLimit,
+                    sort: { applied: selectedSort.current, value: "ASC" },
+                    filters: filterArray
+                }
+            });
+            returnSearchResults(e.target.value, false, filterArray, { applied: selectedSort.current });
+            clearSearchData();
+            return true;
+        }
+        return false;
+    };
+
+    // *****************************
+    // *** ON SEARCH DEVELOPMENT ***
+    // *****************************
 
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
@@ -433,9 +481,12 @@ const AppContextProvider = props => {
                 selectedSort,
                 setSelectedSort,
                 useGetAccessRequests,
-                saveAccessRequest
+                saveAccessRequest,
                 // getDetailDataShort,
                 // detailShort
+                handleSearch,
+                searchAuditLogSave,
+                formatFilterObjectForSave
             }}
         >
             {props.children}

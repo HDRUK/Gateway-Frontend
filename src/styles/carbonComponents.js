@@ -73,11 +73,12 @@ export const AccordionElement = styled(AccordionItem)`
 `;
 
 export const HeaderWrapper = styled(Header)`
-    height: 4rem;
+    height: ${p => p.theme.sizes.header}rem;
     max-width: 100%;
     position: unset;
     background: linear-gradient(135deg, ${p => p.theme.colors.primary}, ${p => p.theme.colors.secondary});
     border-bottom: 0;
+    padding: 0 2rem;
     color: white;
 `;
 
@@ -94,7 +95,9 @@ export const CheckboxItem = styled(Checkbox)`
     margin: 5px 10px 0px 0px;
 `;
 
-export const SearchBar = styled(Search)``;
+export const SearchBar = styled(Search)`
+    border-bottom-color: ${p => p.theme.colors.border};
+`;
 
 export const DropdownFilter = styled(Dropdown)`
     min-width: 15.625rem;

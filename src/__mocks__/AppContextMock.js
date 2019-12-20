@@ -6,6 +6,7 @@ const context = {
         filterLocation: 0,
         windowScroll: 0,
         searchResultId: null,
+        datasetCount: null,
         resultsLimit: 10
     },
 

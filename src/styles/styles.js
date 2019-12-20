@@ -16,11 +16,17 @@ export const ParagraphHeading = styled.h2`
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
-    color: white;
+    color: ${p => p.theme.colors.white};
 `;
 
 export const InvertedHeaderHeading = styled(InvertedParagraphHeading)`
     font-weight: 500;
+`;
+
+export const InvertedHeaderText = styled.p`
+    color: ${p => p.theme.colors.white};
+    font-size: 0.875rem;
+    line-height: 1.0625rem;
 `;
 
 export const ParagraphText = styled.p`
@@ -106,6 +112,10 @@ export const HorizontalLargeSpace = styled.div`
     padding: 0 5rem;
 `;
 
+export const HorizontalMediumSpace = styled.div`
+    padding: 0 3rem;
+`;
+
 export const SmallHeading = styled.p`
     font-size: 1.125rem;
     font-weight: 700;
@@ -180,7 +190,7 @@ export const ContentWrapper = styled.div`
     width: ${p => (p.nav ? "calc(100% - 16rem)" : "100%")};
     left: ${p => (p.nav ? "16rem" : "0")};
     height: calc(100% - 15rem);
-    min-height: calc(100vh - 20rem);
+    min-height: calc(100vh - 26rem);
     vertical-align: top;
 `;
 
@@ -308,7 +318,7 @@ export const PageWrapper = styled.div`
     width: 100%;
     max-width: 90rem;
     margin: 0 auto 0;
-    min-height: calc(100vh - 36rem);
+    min-height: calc(100vh - 26rem);
 `;
 
 export const WidthWrapper = styled(PageWrapper)`
@@ -327,7 +337,7 @@ export const Card = styled.div`
     margin-bottom: 1rem;
     background-color: ${p => p.theme.colors.white};
     box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.5);
-    border-radius: 0.25rem;
+    border-radius: 0.125rem;
     padding: 1rem;
     overflow: hidden;
 `;
@@ -350,6 +360,7 @@ export const FilterBoxContent = styled.div`
 `;
 
 export const FilterBlock = styled.div`
+    width: 100%;
     display: inline-block;
     overflow-x: hidden;
     overflow-y: auto;
@@ -371,18 +382,21 @@ export const Triangle = styled.div`
 `;
 
 export const FilterDiv = styled.div`
+    flex-direction: column;
+    z-index: 10;
+    left: 1rem;
+    display: inline-flex;
+    position: absolute;
+    background-color: #f4f4f4;
+    transition: opacity 0.1s;
+    opacity: 0;
     ${props =>
         props.modalVisibility &&
         props.location &&
         css`
-            flex-direction: column;
-            z-index: 10;
-            left: 1rem;
-            display: inline-flex;
-            position: absolute;
-            background-color: #f4f4f4;
-            top: ${props.location - 110}px;
-            transition: 0s;
+            opacity: 1;
+            top: ${props.location - 205}px;
+            transition: opacity 0.1s;
         `};
 `;
 
@@ -391,8 +405,8 @@ export const ResultsWrapper = styled.div`
     width: 100%;
     height: 100%;
     min-height: 32rem;
-    height: ${p => (p.visible ? "calc(100vh - 12.65rem)" : "calc(100vh - 28.55rem)")};
-    max-height: calc(100vh - 12.65rem);
+    height: ${p => (p.visible ? "calc(100vh - 14rem)" : "calc(100vh - 34.55rem)")};
+    max-height: calc(100vh - 14rem);
     overflow-x: hidden;
     overflow-y: scroll;
     padding: 0.25rem 1rem 0 1rem;
@@ -424,12 +438,11 @@ export const StyledCard = styled.div`
     position: relative;
     margin-bottom: 1rem;
     background-color: ${p => p.theme.colors.white};
-    border-radius: 0.2rem 0.2rem 0 0;
     box-shadow: 0 0rem 0.2rem 0 rgba(0, 0, 0, 0.2);
     padding: 1rem;
     overflow: hidden;
     border-bottom-width: 0.05rem;
-    border-color: #3db28c;
+    border-color: ${p => p.theme.colors.primary};
     border-style: solid;
 `;
 export const StyledHeading = styled.h1`
