@@ -26,6 +26,7 @@ import {
 import axios from "axios";
 import PropTypes from "prop-types";
 import { Redirect, withRouter } from "react-router-dom";
+import { renderEmail } from "react-html-email";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
@@ -87,8 +88,8 @@ const RequestPage = props => {
         userId: appContext.userId,
         dataModelId: detailData.id,
         aim: formInput.aim,
-        linkedDatasets: formInput.dataset,
-        requirements: formInput.requirements,
+        linkedDatasets: formInput.dataset || "No linked datasets",
+        requirements: formInput.requirements || "Requirements unknown",
         startDate: formInput.startDate,
         ico: formInput.ico,
         benefits: formInput.benefits,
@@ -103,7 +104,18 @@ const RequestPage = props => {
 
     const handleSubmit = () => {
         // setRequestLoading(true);
-        // const messageHtml = renderEmail(<MyEmail name={this.state.name}> {this.state.feedback}</MyEmail>);
+        const messageHtml = renderEmail(
+            <div>
+                <p> {`Aim: ${formInput.aim}`}</p>
+                <p> {`Linked Datasets: ${formInput.datasets || "No linked datasets"}`}</p>
+                <p> {`Requirements: ${formInput.requirements || "Requirements unknown"}`}</p>
+                {formInput.startDate && <p>{`Proposed project start date: ${formInput.startDate}`}</p>}
+                {formInput.ico && <p>{`ICO Registration: ${formInput.ico}`}</p>}
+                {formInput.benefits && <p>{`Research benefits: ${formInput.benefits}`}</p>}
+                {formInput.evidence && <p>{`Ethical processing evidence: ${formInput.evidence}`}</p>}
+                {formInput.number && <p>{`Contact number: ${formInput.number}`}</p>}
+            </div>
+        );
 
         axios({
             method: "POST",
@@ -113,7 +125,7 @@ const RequestPage = props => {
                 // recipient: detailData.contactPoint,
                 recipient: "",
                 title: detailData.title,
-                messageHtml: JSON.stringify(formInput)
+                messageHtml: messageHtml
             }
         }).then(response => {
             if (response.data.msg === "success") {
