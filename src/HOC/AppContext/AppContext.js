@@ -4,6 +4,27 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
+import landingPageImage1 from "../../assets/landing_page_image_1.png";
+import landingPageImage2 from "../../assets/landing_page_image_2.png";
+import landingPageImage3 from "../../assets/landing_page_image_3.png";
+import landingPageImage4 from "../../assets/landing_page_image_4.png";
+import partnerLogo1 from "../../assets/alliance_logos/1200px-University_Hospitals_Birmingham_NHS_Foundation_Trust_logo.svg.png";
+import partnerLogo2 from "../../assets/alliance_logos/NHS Scotland.jpg";
+import partnerLogo3 from "../../assets/alliance_logos/NHS Digital logo_RGB-01.jpg";
+import partnerLogo4 from "../../assets/alliance_logos/Barts Health NHS Trust (RGB BLUE).jpg";
+import partnerLogo5 from "../../assets/alliance_logos/NHS LOGO 4col.jpg";
+import partnerLogo6 from "../../assets/alliance_logos/Cystic Fibrosis Trust RGB_Y (3).png";
+import partnerLogo7 from "../../assets/alliance_logos/Genomics-England-logo_colour-HI-RES.jpg";
+import partnerLogo8 from "../../assets/alliance_logos/H&SClogo.jpg";
+import partnerLogo9 from "../../assets/alliance_logos/PHE small logo high res.jpg";
+import partnerLogo10 from "../../assets/alliance_logos/HQIP_logo_for web.jpg";
+import partnerLogo11 from "../../assets/alliance_logos/1200px-NHS_England_logo.svg.png";
+import partnerLogo12 from "../../assets/alliance_logos/CPRD logo.jpg";
+import partnerLogo13 from "../../assets/alliance_logos/Chief Scientist Office.jpg";
+import partnerLogo14 from "../../assets/alliance_logos/The Brain Tumour Charity Logo in Device Centered - RGB Main.png";
+import partnerLogo15 from "../../assets/alliance_logos/NHSX.png";
+import partnerLogo16 from "../../assets/alliance_logos/RSC logo.JPG";
+
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import {
@@ -86,29 +107,52 @@ const AppContextProvider = props => {
         data: []
     });
 
-    const newsItems = {
-        newsItemOne: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        newsItemTwo: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        },
-        newsItemThree: {
-            image: "",
-            description: "HDR release news of new partners in exciting new digital project",
-            readMore: "http://localhost:3000"
-        }
-    };
-
     const images = {
         logoHDR: hdruk_logo_black,
         logoNHS: nhs_logo,
         logoIBM: ibm_logo_black,
-        logoOXF: oxford_logo
+        logoOXF: oxford_logo,
+        landingPageImage1,
+        newsItemOne: landingPageImage2,
+        newsItemsTwo: landingPageImage3,
+        newsItemThree: landingPageImage4,
+        partnerLogo1,
+        partnerLogo2,
+        partnerLogo3,
+        partnerLogo4,
+        partnerLogo5,
+        partnerLogo6,
+        partnerLogo7,
+        partnerLogo8,
+        partnerLogo9,
+        partnerLogo10,
+        partnerLogo11,
+        partnerLogo12,
+        partnerLogo13,
+        partnerLogo14,
+        partnerLogo15,
+        partnerLogo16
+    };
+
+    const newsItems = {
+        newsItemOne: {
+            image: images.newsItemOne,
+            title: "What is health data science?",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        newsItemTwo: {
+            image: images.newsItemsTwo,
+            title: "Work with us",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        },
+        newsItemThree: {
+            image: images.newsItemThree,
+            title: "Better care",
+            description: "HDR release news of new partners in exciting new digital project",
+            readMore: "http://localhost:3000"
+        }
     };
 
     const textItems = { searchHeader: "What health data do you need?" };

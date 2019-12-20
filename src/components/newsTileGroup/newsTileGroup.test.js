@@ -4,6 +4,7 @@ import NewsTileGroup from "./newsTileGroup";
 import { NewsTileItem } from "../../styles/styles.js";
 import NewsTile from "../newsTile/newsTile";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
+import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import context from "../../__mocks__/AppContextMock.js";
 
 describe("<NewsTileGroup> ", () => {
@@ -13,10 +14,12 @@ describe("<NewsTileGroup> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <AppContext.Provider value={context}>
-                <NewsTileGroup>
-                    <NewsTile identifier="newsItemOne" />
-                    <NewsTile identifier="newsItemTwo" />
-                </NewsTileGroup>
+                <StyleWrapper>
+                    <NewsTileGroup>
+                        <NewsTile identifier="newsItemOne" />
+                        <NewsTile identifier="newsItemTwo" />
+                    </NewsTileGroup>
+                </StyleWrapper>
             </AppContext.Provider>
         );
         renderedOutput = renderedComponent.root;

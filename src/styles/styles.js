@@ -3,16 +3,36 @@ import styled, { css } from "styled-components";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
 export const Heading = styled.h1`
-    font-size: 2.25rem;
-    font-weight: 100;
-    line-height: 2.7rem;
+    font-size: 2.75rem;
+    line-height: 3.25rem;
+    letter-spacing: -0.048125rem;
 `;
 
-export const ParagraphHeading = styled.h2`
-    font-size: 1.4rem;
+export const Heading2 = styled.h2`
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 1.7rem;
-    color: ${p => p.theme.text.primary};
+    line-height: 2.2rem;
+    letter-spacing: -0.051875rem;
+    text-align: left;
+    color: ${p => p.theme.text.heading};
+`;
+
+export const ParagraphHeading = styled(Heading2)`
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    letter-spacing: unset;
+    text-align: left;
+    color: ${p => p.theme.colors.boldBlue};
+`;
+
+export const ParagraphHeading3 = styled.h3`
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 2.2rem;
+    letter-spacing: -0.035rem;
+    text-align: left;
+    color: ${p => p.theme.text.heading};
 `;
 
 export const InvertedParagraphHeading = styled(ParagraphHeading)`
@@ -29,11 +49,37 @@ export const InvertedHeaderText = styled.p`
     line-height: 1.0625rem;
 `;
 
+export const ParagraphAndHeaderBox = styled.div`
+    display: inline-block;
+    max-width: 29rem;
+    text-align: left;
+`;
+
+export const ParagraphBox = styled.div`
+    display: inline-block;
+    max-width: 19rem;
+    text-align: left;
+`;
+
 export const ParagraphText = styled.p`
-    font-size: 1.4rem;
-    font-weight: 100;
-    line-height: 1.7rem;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.1875rem;
     color: ${p => p.theme.colors.darkText};
+`;
+
+export const ParagraphTextHero = styled(ParagraphText)`
+    font-weight: 500;
+    color: ${p => p.theme.text.heading};
+`;
+
+export const MainImage = styled.img`
+    display: inline-block;
+    width: 100%;
+    max-width: 33rem;
+    height: 18.25rem;
+    border: 0;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const InfoGrid = styled.div`
@@ -95,11 +141,17 @@ export const CenterBlock = styled.div`
     justify-content: center;
 `;
 export const TinySpace = styled.div`
+    display: inline-block;
     padding: 0.5rem;
 `;
 export const SmallSpace = styled.div`
     padding: 1rem;
 `;
+
+export const SmallInlineSpace = styled(SmallSpace)`
+    display: inline-block;
+`;
+
 export const MediumSpace = styled.div`
     padding: 2rem;
 `;
@@ -140,7 +192,7 @@ export const LabelText = styled.p`
     font-weight: 400;
     line-height: 1.125rem;
     letter-spacing: 0.16px;
-    color: ${p => p.theme.text.label};
+    color: ${p => p.theme.text.boldBlue};
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
@@ -215,15 +267,15 @@ export const NewsTileWrapper = styled.div`
     height: 18rem;
 `;
 
-export const ImageSection = styled.div`
-    height: 12rem;
-    background-color: #64696c;
+export const ImageSection = styled.img`
+    height: 16.375rem;
+    background-color: ${p => p.theme.colors.border};
 `;
 
 export const TextSection = styled.div`
     box-sizing: border-box;
     height: 6rem;
-    background-color: #b5bcbd;
+    background-color: ${p => p.theme.colors.white};
     padding: 1rem;
     font-size: 0.9rem;
     font-weight: 300;
@@ -243,25 +295,24 @@ export const ReadMore = styled.a`
 `;
 
 export const ImageBlockWrapper = styled.div`
-    height: 4rem;
-    padding-top: 0.6875rem;
+    text-align: left;
+    margin: 0 auto 0;
 `;
 
 export const SmallImage = styled.div`
-    display: inline-flex;
-    max-height: 2.625rem;
-    max-width: 8rem;
-    margin-right: 2rem;
-    vertical-align: center;
+    display: inline-block;
+    vertical-align: top;
 `;
 
 export const StyledImage = styled.img`
+    width: inherit;
     max-width: inherit;
 `;
 
 export const NewsTileItem = styled.div`
     display: inline-block;
     margin-right: 2rem;
+    margin-top: 2rem;
 
     :last-child {
         margin-right: 0;
@@ -455,6 +506,7 @@ export const StyledSmallBoldText = styled.p`
     font-size: 0.9rem;
     line-height: 1.125rem;
     font-weight: 700;
+    color: ${p => p.theme.colors.boldBlue};
 `;
 
 export const StyledSmallText = styled.p`

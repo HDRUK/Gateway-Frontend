@@ -2,15 +2,8 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Login from "./Login";
 import { MemoryRouter } from "react-router-dom";
-import {
-    CenterBlock,
-    DarkText,
-    Heading,
-    MediumSpace,
-    SmallSpace,
-    LargeSpace,
-    LinkNoDecoration
-} from "../../styles/styles.js";
+import { CenterBlock, Heading, SmallSpace, LinkNoDecoration, TinySpace } from "../../styles/styles.js";
+import { LoginWrapper } from "./styles";
 import { StyledButton } from "../../styles/carbonComponents.js";
 
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
@@ -19,11 +12,13 @@ import { AppContext } from "../../HOC/AppContext/AppContext";
 import context from "../../__mocks__/AppContextMock.js";
 
 const loginText = {
-    headingText: "Enter to discover our datasets",
-    loginButton: "Log in",
-    logoutButton: "Log out",
-    continueButton: "Continue without logging in",
-    loggedInContinueButton: "Continue"
+    loginButton: "Login via OpenAthens",
+    logoutButton: "Logout",
+    continueButton: "Continue as a guest",
+    loggedInContinueButton: "Continue",
+    description:
+        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets.",
+    headingText: "Explore & Discover our health datasets from across the UK."
 };
 
 describe("<Login> ", () => {
@@ -50,32 +45,41 @@ describe("<Login> ", () => {
             expect(continueDestination).toBe("/innovation");
         });
         it("should render the correct components", () => {
-            const centerBlocks = renderedOutput.findAllByType(CenterBlock);
-            const darkText = centerBlocks[0].findByType(DarkText);
-            const darkTextChildren = darkText.props.children;
-            expect(darkTextChildren).toHaveLength(4);
-            expect(darkTextChildren[0].type).toEqual(Heading);
-            expect(darkTextChildren[1].type).toEqual(MediumSpace);
-            expect(darkTextChildren[2].type).toEqual(CenterBlock);
-            expect(darkTextChildren[3].type).toEqual(LargeSpace);
+            const centerBlock = renderedOutput.findByType(CenterBlock);
+            const loginWrapper = centerBlock.props.children;
+            expect(loginWrapper.type).toBe(LoginWrapper);
 
-            expect(darkTextChildren[0].props.children).toEqual(loginText.headingText);
+            const loginWrapperChildren = loginWrapper.props.children;
 
-            const centerBlock2Content = darkTextChildren[2].props.children;
-            expect(centerBlock2Content).toHaveLength(3);
-            expect(centerBlock2Content[0].type).toBe("a");
-            const primaryButton = centerBlock2Content[0].props.children;
-            expect(primaryButton.props.kind).toEqual("primary");
-            expect(primaryButton.props.children).toEqual(loginText.logoutButton);
+            expect(loginWrapperChildren).toHaveLength(5);
+            expect(loginWrapperChildren[0].type).toEqual(Heading);
+            expect(loginWrapperChildren[1].type).toEqual(TinySpace);
+            expect(loginWrapperChildren[2].type).toEqual(CenterBlock);
+            expect(loginWrapperChildren[3].type).toEqual(TinySpace);
+            expect(loginWrapperChildren[4].type).toEqual(CenterBlock);
 
-            expect(centerBlock2Content[1].type).toEqual(SmallSpace);
-            expect(centerBlock2Content[2].type).toEqual(LinkNoDecoration);
-            expect(centerBlock2Content[2].props.to).toEqual("/innovation");
+            expect(loginWrapperChildren[0].props.children).toEqual(loginText.headingText);
 
-            const secondaryButton = centerBlock2Content[2].props.children;
-            expect(secondaryButton.type).toEqual(StyledButton);
-            expect(secondaryButton.props.kind).toEqual("secondary");
-            expect(secondaryButton.props.children).toEqual(loginText.loggedInContinueButton);
+            const description = loginWrapperChildren[2].props.children;
+            expect(description.type).toBe("p");
+            expect(description.props.children).toBe(loginText.description);
+
+            const buttons = loginWrapperChildren[4].props.children;
+            expect(buttons).toHaveLength(3);
+
+            expect(buttons[0].type).toBe(LinkNoDecoration);
+            expect(buttons[1].type).toBe(SmallSpace);
+            expect(buttons[2].type).toBe("a");
+            expect(buttons[2].props.href).toBe("/logout");
+
+            expect(buttons[0].props.children.type).toBe(StyledButton);
+            expect(buttons[0].props.children.props.children).toBe(loginText.loggedInContinueButton);
+            expect(buttons[0].props.children.props.kind).toBe("secondary");
+
+            const button = buttons[2].props.children;
+            expect(button.type).toBe(StyledButton);
+            expect(button.props.kind).toBe("primary");
+            expect(button.props.children).toBe(loginText.logoutButton);
         });
     });
 });
