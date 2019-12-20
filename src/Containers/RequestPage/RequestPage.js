@@ -154,7 +154,7 @@ const RequestPage = props => {
                 </StyledSmallBoldText>
                 <StyledTextArea
                     invalid={aimInvalid}
-                    cols={100}
+                    cols={500}
                     id="aim"
                     labelText={textItems.aimHelpText}
                     value={formInput.aim || ""}
@@ -178,7 +178,7 @@ const RequestPage = props => {
                     onChange={value => (value ? setDatasetRequired(false) : setDatasetRequired(true))}
                 />
                 <StyledTextArea
-                    cols={100}
+                    cols={500}
                     id="dataset"
                     invalid={datasetInvalid}
                     labelText={false}
@@ -202,7 +202,7 @@ const RequestPage = props => {
                 />
                 <StyledTextArea
                     invalid={requirementsInvalid}
-                    cols={100}
+                    cols={500}
                     id="requirements"
                     labelText={false}
                     disabled={!requirementsRequired}
@@ -244,7 +244,7 @@ const RequestPage = props => {
                 <TinySpace />
                 <StyledSmallBoldText>{textItems.benefitsHeader}</StyledSmallBoldText>
                 <StyledTextArea
-                    cols={100}
+                    cols={500}
                     id="research"
                     labelText={textItems.benefitsHelpText}
                     onChange={event => {
@@ -255,7 +255,7 @@ const RequestPage = props => {
                 <TinySpace />
                 <StyledSmallBoldText>{textItems.evidenceHeader}</StyledSmallBoldText>
                 <StyledTextArea
-                    cols={100}
+                    cols={500}
                     id="evidence"
                     labelText={textItems.evidenceHelpText}
                     onChange={event => {

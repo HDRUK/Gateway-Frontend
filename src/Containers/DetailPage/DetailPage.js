@@ -60,7 +60,7 @@ const DetailPage = props => {
                     <DarkText>
                         <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
-                        {appContext.authenticated === "true" ? (
+                        {appContext.authenticated ? (
                             <LinkNoDecoration
                                 to={`/request-access/${detailData.id}`}
                                 onClick={() => searchResultId(detailData.id)}
@@ -220,7 +220,7 @@ const DetailPage = props => {
                                 </StyledCard>
                             </React.Fragment>
                         )}
-                        {appContext.authenticated === "true" ? (
+                        {appContext.authenticated ? (
                             <LinkNoDecoration
                                 to={`/request-access/${detailData.id}`}
                                 onClick={() => searchResultId(detailData.id)}
