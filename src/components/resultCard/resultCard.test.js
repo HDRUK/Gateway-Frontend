@@ -8,7 +8,8 @@ import { TitleBox, Arrow } from "./styles.js";
 
 const text = {
     title: "Title",
-    description: "Description"
+    description: "Description",
+    detail: ["test", "test"]
 };
 
 describe("<ResultCard> ", () => {
@@ -18,7 +19,7 @@ describe("<ResultCard> ", () => {
     beforeEach(() => {
         renderedComponent = create(
             <StyleWrapper>
-                <ResultCard title={text.title} description={text.description} />
+                <ResultCard title={text.title} description={text.description} detail={text.detail} />
             </StyleWrapper>
         );
         renderedOutput = renderedComponent.root;
