@@ -19,7 +19,7 @@ import {
     StyledFormLabel,
     StyledTextArea,
     CenterLoading,
-    RightSmallInlineLoading,
+    // RightSmallInlineLoading,
     DateSelector,
     DateInput
 } from "../../styles/carbonComponents";
@@ -59,7 +59,7 @@ const RequestPage = props => {
 
     const [redirect, setRedirect] = useState(false);
 
-    const [requestLoading, setRequestLoading] = useState(false);
+    // const [requestLoading, setRequestLoading] = useState(false);
 
     const [formInput, setFormInput] = useState({});
     const [requirementsRequired, setRequirementsRequired] = useState(true);
@@ -277,7 +277,8 @@ const RequestPage = props => {
                 </HalfFormWidth>
                 <TinySpace />
                 <NewStyledButton kind="primary" type="submit">
-                    {requestLoading ? <RightSmallInlineLoading /> : textItems.button}
+                    {/* {requestLoading ? <RightSmallInlineLoading /> : textItems.button} */}
+                    {textItems.button}
                 </NewStyledButton>
             </StyledForm>
         </SmallSpace>

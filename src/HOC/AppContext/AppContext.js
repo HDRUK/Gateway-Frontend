@@ -4,14 +4,14 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
-import { useQuery, useMutation, useLazyQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import {
     DATASET_COUNT,
     RESULT_DETAIL,
     GET_ACCESS_REQUESTS_BY_USER_ID,
-    REQUEST_ACCESS,
-    RESULT_DETAIL_SHORT
+    REQUEST_ACCESS
+    // RESULT_DETAIL_SHORT
 } from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
@@ -45,9 +45,11 @@ const AppContextProvider = props => {
     };
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
-    const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    // const [userId, setUserId] = useState(localStorage.getItem("userId"));
 
-    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    const [userId, setUserId] = useState("2ekfvq9mu1b130im5n8sn1r2ic");
+    // const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
+    const [authenticated, setAuthenticated] = useState("true");
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -59,7 +61,7 @@ const AppContextProvider = props => {
 
     const [detailData, setDetailData] = useState({ status: "error", data: {} });
 
-    const [detailShort, setDetailShort] = useState([]);
+    // const [detailShort, setDetailShort] = useState([]);
     const [accessRequests, setAccessRequests] = useState({ status: "error", data: {}, refetch: null });
     const [activeFilter, setActiveFilter] = useState(null);
 
@@ -260,14 +262,14 @@ const AppContextProvider = props => {
     //         skip: id === null
     //     });
 
-        // loading
-        // ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
-        // : error
-        // ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
-        // : data &&
-        //   data.hdrDataModelID.data !== detailData.data &&
-        //   setDetailData({ status: "ok", data: data.hdrDataModelID.data });
-    };
+    // loading
+    // ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
+    // : error
+    // ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
+    // : data &&
+    //   data.hdrDataModelID.data !== detailData.data &&
+    //   setDetailData({ status: "ok", data: data.hdrDataModelID.data });
+    // };
 
     const useDetailData = id => {
         const { loading, error, data } = useQuery(RESULT_DETAIL, {
@@ -431,9 +433,9 @@ const AppContextProvider = props => {
                 selectedSort,
                 setSelectedSort,
                 useGetAccessRequests,
-                saveAccessRequest,
-                getDetailDataShort,
-                detailShort
+                saveAccessRequest
+                // getDetailDataShort,
+                // detailShort
             }}
         >
             {props.children}
