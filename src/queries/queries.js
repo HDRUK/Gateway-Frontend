@@ -194,6 +194,21 @@ export const RESULT_DETAIL = gql`
     }
 `;
 
+export const RESULT_DETAIL_SHORT = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                title
+                abstract
+            }
+        }
+    }
+`;
+
 export const DELETE_SAVED_SEARCH = gql`
     mutation SearchDelete($ID: String!) {
         searchDelete(searchSavedId: $ID) {

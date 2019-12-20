@@ -4,9 +4,15 @@ import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
 import ibm_logo_black from "../../assets/ibm_logo_black.png";
 import oxford_logo from "../../assets/oxford_logo.png";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation, useLazyQuery } from "@apollo/react-hooks";
 
-import { DATASET_COUNT, RESULT_DETAIL, GET_ACCESS_REQUESTS_BY_USER_ID, REQUEST_ACCESS } from "../../queries/queries.js";
+import {
+    DATASET_COUNT,
+    RESULT_DETAIL,
+    GET_ACCESS_REQUESTS_BY_USER_ID,
+    REQUEST_ACCESS,
+    RESULT_DETAIL_SHORT
+} from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -40,8 +46,8 @@ const AppContextProvider = props => {
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
-    // const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
-    const [authenticated, setAuthenticated] = useState("true");
+
+    const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated"));
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -52,6 +58,9 @@ const AppContextProvider = props => {
     };
 
     const [detailData, setDetailData] = useState({ status: "error", data: {} });
+
+    const [detailShort, setDetailShort] = useState([]);
+    const [accessRequests, setAccessRequests] = useState({ status: "error", data: {}, refetch: null });
     const [activeFilter, setActiveFilter] = useState(null);
 
     const [accessRequested, setAccessRequested] = useState([]);
@@ -206,16 +215,27 @@ const AppContextProvider = props => {
         });
     };
 
-    // const useSaveAccessRequest = requestVariables => {
-    //     const { loading, error, data } = useMutation(REQUEST_ACCESS, {
-    //         variables: { requestVariables }
-    //     });
-    //     return loading || error || data.requestAccess.status;
-    // };
-
     const [saveAccessRequest] = useMutation(REQUEST_ACCESS);
 
-    const useGetAccessRequests = () => {};
+    const useGetAccessRequests = (userId, selectedSort) => {
+        const { data, loading, error, refetch } = useQuery(GET_ACCESS_REQUESTS_BY_USER_ID, {
+            variables: {
+                userId: userId,
+                sortField: {
+                    applied: "created_on",
+                    value: selectedSort === "oldest" ? "DESC" : "ASC"
+                }
+            }
+        });
+        loading
+            ? accessRequests.status !== "loading" &&
+              setAccessRequests({ status: "loading", data: {}, refetch: refetch || null })
+            : error
+            ? accessRequests.status !== "error" &&
+              setAccessRequests({ status: "error", data: {}, refetch: refetch || null })
+            : data.getAccessRequestsByUserID.data !== accessRequests.data &&
+              setAccessRequests({ status: "ok", data: data.getAccessRequestsByUserID.data, refetch: refetch || null });
+    };
 
     const useDatasetCount = () => {
         const { loading, error, data } = useQuery(DATASET_COUNT);
@@ -225,6 +245,28 @@ const AppContextProvider = props => {
                 ...state,
                 datasetCount: data.hdrDataModelSearch.count
             });
+    };
+
+    // const [getDetailShort, { loading, error, data }] = useLazyQuery(RESULT_DETAIL_SHORT, {
+    //     onCompleted: data => {
+    //         console.log(data);
+    //         setDetailShort([...detailShort, data]);
+    //     }
+    // });
+
+    // const getDetailDataShort = id => {
+    //     getDetailShort({
+    //         variables: { ID: id },
+    //         skip: id === null
+    //     });
+
+        // loading
+        // ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
+        // : error
+        // ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
+        // : data &&
+        //   data.hdrDataModelID.data !== detailData.data &&
+        //   setDetailData({ status: "ok", data: data.hdrDataModelID.data });
     };
 
     const useDetailData = id => {
@@ -382,12 +424,16 @@ const AppContextProvider = props => {
                 detailData,
                 setDetailData,
                 useDetailData,
+                accessRequests,
+                setAccessRequests,
                 setNewAccessRequest,
                 sortItems,
                 selectedSort,
                 setSelectedSort,
                 useGetAccessRequests,
-                saveAccessRequest
+                saveAccessRequest,
+                getDetailDataShort,
+                detailShort
             }}
         >
             {props.children}

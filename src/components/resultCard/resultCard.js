@@ -13,7 +13,9 @@ const ResultCard = props => {
                 </Preview>
             </TitleBox>
             <Arrow />
-            <InfoDetailGrid contents={[{ title: "Publisher", content: props.publisher }]}></InfoDetailGrid>
+            <InfoDetailGrid
+                contents={[{ title: props.detail[0].toUpperCase(), content: props.detail[1] }]}
+            ></InfoDetailGrid>
             <Preview>
                 <SmallText>{props.description}</SmallText>
             </Preview>
@@ -24,7 +26,7 @@ const ResultCard = props => {
 ResultCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    publisher: PropTypes.string.isRequired
+    detail: PropTypes.array.isRequired
 };
 
 export default ResultCard;

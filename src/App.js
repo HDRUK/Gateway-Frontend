@@ -11,6 +11,7 @@ import InnovationPage from "./Containers/InnovationPage/InnovationPage";
 import GuidelinesPage from "./Containers/GuidelinesPage/GuidelinesPage";
 import SearchPage from "./Containers/SearchPage/SearchPage";
 import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
+import MyAccessRequestsPage from "./Containers/MyAccessRequestsPage/MyAccessRequestsPage";
 import RequestPage from "./Containers/RequestPage/RequestPage";
 import NotFound from "./Containers/NotFound/NotFound";
 import DetailPage from "./Containers/DetailPage/DetailPage";
@@ -54,6 +55,11 @@ const App = () => {
                                         <Route exact path="/my-searches">
                                             <Content nav>
                                                 <MySearchesPage />
+                                            </Content>
+                                        </Route>
+                                        <Route exact path="/my-requests">
+                                            <Content nav>
+                                                <MyAccessRequestsPage />
                                             </Content>
                                         </Route>
                                         <Route exact path="/innovation">
