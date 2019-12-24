@@ -31,11 +31,6 @@ const InnovationPage = () => {
                 <ParagraphText>{textItems.paragraph3}</ParagraphText>
             </DarkText>
             <SmallSpace />
-            <ImageBlock>
-                <Image identifier="logoNHS" />
-                <Image identifier="logoOXF" />
-                <Image identifier="logoIBM" />
-            </ImageBlock>
         </>
     );
 };
