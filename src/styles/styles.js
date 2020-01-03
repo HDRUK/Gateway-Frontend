@@ -19,7 +19,7 @@ export const Heading2 = styled.h2`
 
 export const ParagraphHeading = styled(Heading2)`
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.2rem;
     letter-spacing: unset;
     text-align: left;
@@ -119,7 +119,7 @@ export const InlineWrappedText = styled.p`
 `;
 
 export const NewListItem = styled.li`
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     padding: 5px;
     list-style-type: disc;

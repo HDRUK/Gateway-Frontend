@@ -7,7 +7,7 @@ import { Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText } from "
 
 const textItems = {
     mainHeading: "About the Innovation Gateway",
-    subHeading: "What is the Innovation Gateway",
+    subHeading: "What is the Innovation Gateway?",
     paragraph1:
         "The Health Data Research Innovation Gateway provides a common accesspoint to discover and enquire about access to UK health datasets held by members of the UK Health Data Research Alliance.  It provides detailed descriptions of these datasets, which include de-identified health information from the NHS, research institutes and charities, that is managed by individual data controllers.  You can find out more about the members of the UK Health Data Research Alliance here.",
     paragraph2:
