@@ -141,7 +141,6 @@ export const CenterBlock = styled.div`
     justify-content: center;
 `;
 export const TinySpace = styled.div`
-    display: inline-block;
     padding: 0.5rem;
 `;
 export const SmallSpace = styled.div`
