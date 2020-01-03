@@ -540,3 +540,19 @@ export const TwoThirdFormWidth = styled.div`
 export const HalfFormWidth = styled.div`
     width: 50%;
 `;
+
+export const BetaWrapper = styled.div`
+    background-color: #e2efea;
+    width: 100%;
+    height: 3rem;
+    padding: 0.9rem;
+    display: inline-flex;
+`;
+
+export const BetaLabel = styled.p`
+    background-color: #2fbb93;
+    line-height: 1.1875rem;
+    padding: 0 0.2rem;
+    color: #ffffff;
+    font-weight: 700;
+`;

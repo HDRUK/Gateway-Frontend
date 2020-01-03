@@ -17,6 +17,7 @@ import NotFound from "./Containers/NotFound/NotFound";
 import DetailPage from "./Containers/DetailPage/DetailPage";
 
 import Header from "./components/header/header";
+import BetaBanner from "./components/betaBanner/betaBanner";
 import BigHeader from "./components/bigHeader/bigHeader";
 import Navigation from "./components/navigation/navigation.js";
 import SearchHeader from "./components/searchHeader/searchHeader.js";
@@ -43,6 +44,7 @@ const App = () => {
                             <BrowserRouter>
                                 <Route exact path="/" component={BigHeader} />
                                 <Route path="/:path" component={Header} />
+                                <Route path="/:path" component={BetaBanner} />
                                 <Route path="/:path" component={SearchHeader} />
                                 <Route path="/:path" component={Navigation} />
                                 <PageWrapper>
