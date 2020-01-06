@@ -62,12 +62,12 @@ const App = () => {
                                             </Content>
                                         </Route>
                                         <Route exact path="/innovation">
-                                            <Content nav>
+                                            <Content nav about>
                                                 <InnovationPage />
                                             </Content>
                                         </Route>
                                         <Route exact path="/guidelines">
-                                            <Content nav>
+                                            <Content nav about>
                                                 <GuidelinesPage />
                                             </Content>
                                         </Route>

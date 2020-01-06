@@ -20,15 +20,15 @@ const routes = [
     {
         path: "/innovation",
         text: sideNavText.about
-    },
-    {
-        path: "/innovation",
-        text: sideNavText.aboutIn
-    },
-    {
-        path: "/guidelines",
-        text: sideNavText.aboutGuide
     }
+    // {
+    //     path: "/innovation",
+    //     text: sideNavText.aboutIn
+    // },
+    // {
+    //     path: "/guidelines",
+    //     text: sideNavText.aboutGuide
+    // }
 ];
 
 const Navigation = props => {
