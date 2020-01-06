@@ -71,7 +71,6 @@ const SavedSearchCard = props => {
             </Modal>
             <ContentDiv>
                 <LabeledContent label={textItems.searchDate}>{searchesData.createdOn}</LabeledContent>
-                <LabeledContent label={textItems.results}>{searchesData.resultsCount || "n/a"}</LabeledContent>
                 <SavedSearchTitle>{searchesData.name || searchesData.detail}</SavedSearchTitle>
                 {!searchesData.name && searchesData.filters && searchesData.filters.length > 0 && (
                     <LabeledContent lowercase label="Filters applied">
