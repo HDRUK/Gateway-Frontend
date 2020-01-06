@@ -117,7 +117,9 @@ const FilterMenu = () => {
                                         key={`tag-${valueI}`}
                                         type="blue"
                                         filter
-                                        onClick={() => appContext.removeFilter(filterKey, valueI)}
+                                        onClick={() =>
+                                            appContext.removeFilter({ filter: filterKey, valueIndex: valueI })
+                                        }
                                     >
                                         {filterValues[valueI].value}
                                     </CustomTag>
