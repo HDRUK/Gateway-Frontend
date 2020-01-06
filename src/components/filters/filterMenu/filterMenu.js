@@ -131,12 +131,7 @@ const FilterMenu = () => {
                         : activeFilter === i
                 }
                 modal={filterValues && Object.keys(filterValues).length > 4 ? "true" : "false"}
-                onHeadingClick={e => {
-                    // e.event.target.nodeName === "path" ||
-                    //     (e.event.target.nodeName === "svg" &&
-                    //         e.event.target.attributes[2].value === "Clear filter" &&
-                    //         console.log("hi"));
-
+                onHeadingClick={() => {
                     if (filterValues && Object.keys(filterValues).length > 4) {
                         if (!modalVisibility) {
                             appContext.openFilterBox();
