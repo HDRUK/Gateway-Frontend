@@ -26,8 +26,15 @@ import partnerLogo15 from "../../assets/alliance_logos/NHSX.png";
 import partnerLogo16 from "../../assets/alliance_logos/RSC logo.JPG";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { SEARCH_AUDIT_LOG_SAVE } from "../../queries/queries.js";
-import { DATASET_COUNT } from "../../queries/queries.js";
+
+import {
+    DATASET_COUNT,
+    RESULT_DETAIL,
+    GET_ACCESS_REQUESTS_BY_USER_ID,
+    REQUEST_ACCESS,
+    SEARCH_AUDIT_LOG_SAVE
+    // RESULT_DETAIL_SHORT
+} from "../../queries/queries.js";
 
 export const AppContext = React.createContext();
 AppContext.displayName = "AppContext";
@@ -71,8 +78,16 @@ const AppContextProvider = props => {
         setUserEmail(localStorage.getItem("userEmail"));
     };
 
+    const [detailData, setDetailData] = useState({ status: "error", data: {} });
+
+    // const [detailShort, setDetailShort] = useState([]);
+    const [accessRequests, setAccessRequests] = useState({ status: "error", data: {}, refetch: null });
     const [activeFilter, setActiveFilter] = useState(null);
-    const [detailData, setDetailData] = useState([]);
+
+    const [accessRequested, setAccessRequested] = useState([]);
+    const setNewAccessRequest = id => {
+        setAccessRequested([...accessRequested, id]);
+    };
 
     const [search, setSearch] = useState({
         term: null,
@@ -294,6 +309,28 @@ const AppContextProvider = props => {
         });
     };
 
+    const [saveAccessRequest] = useMutation(REQUEST_ACCESS);
+
+    const useGetAccessRequests = (userId, selectedSort) => {
+        const { data, loading, error, refetch } = useQuery(GET_ACCESS_REQUESTS_BY_USER_ID, {
+            variables: {
+                userId: userId,
+                sortField: {
+                    applied: "created_on",
+                    value: selectedSort === "oldest" ? "DESC" : "ASC"
+                }
+            }
+        });
+        loading
+            ? accessRequests.status !== "loading" &&
+              setAccessRequests({ status: "loading", data: {}, refetch: refetch || null })
+            : error
+            ? accessRequests.status !== "error" &&
+              setAccessRequests({ status: "error", data: {}, refetch: refetch || null })
+            : data.getAccessRequestsByUserID.data !== accessRequests.data &&
+              setAccessRequests({ status: "ok", data: data.getAccessRequestsByUserID.data, refetch: refetch || null });
+    };
+
     const useDatasetCount = () => {
         const { loading, error, data } = useQuery(DATASET_COUNT);
         if (loading || error) return null;
@@ -302,6 +339,41 @@ const AppContextProvider = props => {
                 ...state,
                 datasetCount: data.hdrDataModelSearch.count
             });
+    };
+
+    // const [getDetailShort, { loading, error, data }] = useLazyQuery(RESULT_DETAIL_SHORT, {
+    //     onCompleted: data => {
+    //         console.log(data);
+    //         setDetailShort([...detailShort, data]);
+    //     }
+    // });
+
+    // const getDetailDataShort = id => {
+    //     getDetailShort({
+    //         variables: { ID: id },
+    //         skip: id === null
+    //     });
+
+    // loading
+    // ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
+    // : error
+    // ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
+    // : data &&
+    //   data.hdrDataModelID.data !== detailData.data &&
+    //   setDetailData({ status: "ok", data: data.hdrDataModelID.data });
+    // };
+
+    const useDetailData = id => {
+        const { loading, error, data } = useQuery(RESULT_DETAIL, {
+            variables: { ID: id },
+            skip: id === null
+        });
+        loading
+            ? detailData.status !== "loading" && setDetailData({ status: "loading", data: {} })
+            : error
+            ? detailData.status !== "error" && setDetailData({ status: "error", data: {} })
+            : data.hdrDataModelID.data !== detailData.data &&
+              setDetailData({ status: "ok", data: data.hdrDataModelID.data });
     };
 
     const removeSavedSearchData = id => {
@@ -366,15 +438,15 @@ const AppContextProvider = props => {
         }
     };
 
-    const setFilterId = filterId => {
-        setActiveFilter(filterId);
-    };
-
     const setSearchResultId = id => {
         setState({
             ...state,
             searchResultId: id
         });
+    };
+
+    const setFilterId = filterId => {
+        setActiveFilter(filterId);
     };
 
     const counterFunc = () => {
@@ -445,9 +517,17 @@ const AppContextProvider = props => {
                 removeFilter,
                 detailData,
                 setDetailData,
+                useDetailData,
+                accessRequests,
+                setAccessRequests,
+                setNewAccessRequest,
                 sortItems,
                 selectedSort,
                 setSelectedSort,
+                useGetAccessRequests,
+                saveAccessRequest,
+                // getDetailDataShort,
+                // detailShort
                 handleSearch,
                 searchAuditLogSave,
                 formatFilterObjectForSave

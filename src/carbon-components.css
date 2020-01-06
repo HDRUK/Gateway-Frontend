@@ -185,49 +185,49 @@ h1 {
   font-size: 2.625rem;
   font-weight: 300;
   line-height: 3.125rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 h2 {
   font-size: 2rem;
   font-weight: 400;
   line-height: 2.5rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 h3 {
   font-size: 1.75rem;
   font-weight: 400;
   line-height: 2.25rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 h4 {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.625rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 h5 {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.375rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 h6 {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 p {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
 }
 
 a {
@@ -1131,7 +1131,7 @@ em {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   background-color: #ffffff;
   line-height: 1;
@@ -1141,7 +1141,7 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   background-color: #ffffff;
   line-height: 1;
@@ -2482,7 +2482,7 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   cursor: pointer;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
@@ -2775,7 +2775,7 @@ body {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -2960,7 +2960,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -3281,7 +3281,7 @@ svg {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   top: 1.1rem;
   padding: 0.25rem;
   color: #ffffff;
@@ -3328,7 +3328,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3348,7 +3348,7 @@ svg {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   color: #393939;
   font-weight: 400;
   display: inline-block;
@@ -3361,7 +3361,7 @@ svg {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--label.bx--skeleton {
@@ -3435,7 +3435,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   margin: 0.25rem 0 0;
   max-height: 0;
   overflow: hidden;
@@ -3450,7 +3450,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
 .bx--form__helper-text {
   font-size: 0.75rem;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   color: #6f6f6f;
   z-index: 0;
   opacity: 1;
@@ -3662,7 +3662,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   margin-bottom: 0.5rem;
 }
@@ -3733,7 +3733,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #393939;
   margin-bottom: 1rem;
 }
@@ -3777,7 +3777,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   margin-left: 1rem;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -3812,7 +3812,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   padding-right: 0.5rem;
   padding-left: 1rem;
 }
@@ -3826,7 +3826,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   display: block;
   max-height: 12.5rem;
   color: #da1e28;
@@ -3956,7 +3956,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   line-height: 1.5rem;
   position: relative;
   display: -webkit-box;
@@ -4082,7 +4082,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--list-box__wrapper--inline .bx--label,
@@ -4345,7 +4345,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -4421,7 +4421,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   position: static;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4479,7 +4479,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   height: 2.5rem;
   color: #393939;
   cursor: pointer;
@@ -4737,7 +4737,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4941,7 +4941,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5018,7 +5018,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: relative;
   margin-left: 0.5rem;
 }
@@ -5190,7 +5190,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   color: #393939;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5264,7 +5264,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -5418,7 +5418,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   -webkit-appearance: none;
@@ -5506,7 +5506,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   height: 2rem;
 }
 
@@ -5514,7 +5514,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.375rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
   height: 3rem;
   padding: 0 4rem 0 3rem;
 }
@@ -5751,7 +5751,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   height: 2.5rem;
@@ -6014,7 +6014,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   background-color: #f4f4f4;
@@ -6096,7 +6096,7 @@ input:not(output):not([data-invalid]):-moz-ui-invalid {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -6353,7 +6353,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   background-color: #f4f4f4;
@@ -6403,7 +6403,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   opacity: 1;
 }
 
@@ -6412,7 +6412,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   opacity: 1;
 }
 
@@ -6421,7 +6421,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   opacity: 1;
 }
 
@@ -6430,7 +6430,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   opacity: 1;
 }
 
@@ -6546,7 +6546,7 @@ bx--text-area.bx--skeleton::placeholder {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
@@ -6818,7 +6818,7 @@ bx--text-area.bx--skeleton::placeholder {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #2FBB93;
   text-decoration: none;
   outline: none;
@@ -6860,7 +6860,7 @@ bx--text-area.bx--skeleton::placeholder {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: inline;
   color: #c6c6c6;
   font-weight: 400;
@@ -6893,7 +6893,7 @@ bx--text-area.bx--skeleton::placeholder {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   counter-reset: listitem;
 }
 
@@ -7469,7 +7469,7 @@ ul.bx--list--nested
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--table-toolbar--small {
@@ -7613,7 +7613,7 @@ ul.bx--list--nested
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.625rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
   color: #161616;
 }
 
@@ -7621,7 +7621,7 @@ ul.bx--list--nested
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #393939;
 }
 
@@ -7635,7 +7635,7 @@ ul.bx--list--nested
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   background-color: #e0e0e0;
 }
 
@@ -7643,7 +7643,7 @@ ul.bx--list--nested
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   background-color: #f4f4f4;
   width: 100%;
 }
@@ -7988,7 +7988,7 @@ td,
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--data-table.bx--data-table--tall
@@ -8827,7 +8827,7 @@ th
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: table-cell;
   font-weight: 600;
   height: 2.5rem;
@@ -8845,7 +8845,7 @@ th
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   padding-top: 1rem;
   padding-right: 1rem;
   padding-bottom: 1.5rem;
@@ -9005,14 +9005,14 @@ span:before {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--snippet--inline {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   position: relative;
   display: inline;
   padding: 0;
@@ -9052,7 +9052,7 @@ span:before {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   background: #f4f4f4;
   border: 1px solid #e0e0e0;
   position: relative;
@@ -9083,7 +9083,7 @@ span:before {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   padding-right: 0.5rem;
 }
 
@@ -9102,7 +9102,7 @@ span:before {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   background: #f4f4f4;
   border: 1px solid #e0e0e0;
   position: relative;
@@ -9203,7 +9203,7 @@ pre {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   z-index: 8000;
   font-weight: 400;
   left: inherit;
@@ -9646,7 +9646,7 @@ a.bx--overflow-menu-options__btn::before {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   font-weight: 400;
@@ -9772,7 +9772,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   background-color: #f4f4f4;
@@ -10213,7 +10213,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: inherit;
   position: absolute;
   width: 75%;
@@ -10329,7 +10329,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   cursor: default;
   background: transparent;
   color: rgba(0, 0, 0, 0.54);
@@ -10817,7 +10817,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   display: block;
@@ -11008,7 +11008,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   padding: 0;
 }
 
@@ -11095,7 +11095,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   font-weight: 400;
 }
@@ -11105,7 +11105,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   height: 2.5rem;
   width: 2.5rem;
   display: -webkit-box;
@@ -11402,7 +11402,7 @@ span.flatpickr-weekday {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--dropdown__wrapper--inline .bx--label,
@@ -11521,7 +11521,7 @@ button.bx--dropdown-text:focus {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: block;
   height: 2.5rem;
   padding-top: 0.75rem;
@@ -11541,7 +11541,7 @@ button.bx--dropdown-text:focus {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   background-color: #f4f4f4;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11947,7 +11947,7 @@ button.bx--dropdown-text:focus {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   color: #393939;
   margin-bottom: 0.25rem;
 }
@@ -11956,7 +11956,7 @@ button.bx--dropdown-text:focus {
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.625rem;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
   color: #161616;
 }
 
@@ -11964,7 +11964,7 @@ button.bx--dropdown-text:focus {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   overflow-y: auto;
   margin-bottom: 3rem;
   color: #161616;
@@ -11980,7 +11980,7 @@ button.bx--dropdown-text:focus {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--modal-footer {
@@ -12246,7 +12246,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   margin: 0 0.25rem 0 0;
   line-height: 1.5rem;
 }
@@ -12255,7 +12255,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   word-break: break-word;
 }
 
@@ -12487,7 +12487,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   font-weight: 600;
   margin-top: 1rem;
   word-break: break-word;
@@ -12497,7 +12497,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #ffffff;
   margin-top: 0;
   margin-bottom: 1.5rem;
@@ -12513,7 +12513,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #ffffff;
   margin-bottom: 1rem;
 }
@@ -12527,7 +12527,7 @@ path[opacity='0'] {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -12607,7 +12607,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--tooltip button {
@@ -12691,7 +12691,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   margin-bottom: 0.5rem;
 }
 
@@ -12708,7 +12708,7 @@ path[opacity='0'] {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -12756,7 +12756,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #ffffff;
 }
 
@@ -12832,7 +12832,7 @@ path[opacity='0'] {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   border-bottom: 0.0625rem dotted #2FBB93;
 }
 
@@ -12858,7 +12858,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -13129,7 +13129,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -13430,7 +13430,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -13628,7 +13628,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -13907,7 +13907,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -14181,7 +14181,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -14458,7 +14458,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: absolute;
   z-index: 10000;
   display: -webkit-box;
@@ -14706,7 +14706,7 @@ path[opacity='0'] {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #161616;
   height: auto;
   width: 100%;
@@ -14936,7 +14936,7 @@ path[opacity='0'] {
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.125rem;
-    letter-spacing: 0.16px;
+    letter-spacing: 0.04rem;
     border-bottom: 3px solid #2FBB93;
   }
   .bx--tabs__nav-item--selected:not(.bx--tabs__nav-item--disabled) .bx--tabs__nav-link:focus,
@@ -15120,7 +15120,7 @@ a.bx--tabs__nav-link:active {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -15277,7 +15277,7 @@ a.bx--tabs__nav-link:active {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   width: 100%;
   background-color: #f4f4f4;
   display: -webkit-box;
@@ -15310,7 +15310,7 @@ a.bx--tabs__nav-link:active {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   width: auto;
   min-width: auto;
   height: 100%;
@@ -15622,7 +15622,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   margin: 0 0 0 1rem;
   width: 100%;
   text-align: left;
@@ -15647,7 +15647,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
 }
 
 .bx--accordion__item--collapsing .bx--accordion__content,
@@ -15760,7 +15760,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   line-height: 1.45;
   max-width: 5.5rem;
   margin: 0.5rem 0 0 0;
@@ -15817,7 +15817,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   min-width: 7.1875rem;
   width: 7.8125rem;
   min-height: 1.5rem;
@@ -15833,7 +15833,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   width: 9.375rem;
   height: auto;
   color: #ffffff;
@@ -15843,7 +15843,7 @@ span.bx--pagination__text {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   position: absolute;
   left: 0;
   margin-left: 1.5rem;
@@ -16008,7 +16008,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: inline;
 }
 
@@ -16208,7 +16208,7 @@ span.bx--pagination__text {
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   font-weight: 600;
   padding: 0.5rem 1.25rem;
 }
@@ -16279,7 +16279,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16317,7 +16317,7 @@ span.bx--pagination__text {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.25rem;
-  letter-spacing: 0.32px;
+  letter-spacing: 0.04rem;
   font-family: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace;
   color: #161616;
 }
@@ -16911,7 +16911,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   color: #393939;
 }
 
@@ -16992,7 +16992,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   line-height: 0;
 }
 
@@ -17022,7 +17022,7 @@ svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: inline-block;
   background: none;
   -webkit-appearance: none;
@@ -17301,7 +17301,7 @@ a.bx--header__name {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -17312,7 +17312,7 @@ a.bx--header__name {
   padding: 0 2rem 0 1rem;
   text-decoration: none;
   font-weight: 600;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.04rem;
   line-height: 20px;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -17382,7 +17382,7 @@ a.bx--header__menu-item[role='menuitem'] {
   height: 100%;
   font-size: 0.875rem;
   font-weight: 400;
-  letter-spacing: 0;
+  letter-spacing: 0.04rem;
   line-height: 1.125rem;
   text-decoration: none;
   -webkit-user-select: none;
@@ -17605,7 +17605,7 @@ a.bx--header__menu-item[role='menuitem']:focus > svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   padding: 0.5rem;
   color: #c6c6c6;
 }
@@ -17651,7 +17651,7 @@ a.bx--header__menu-item[role='menuitem']:focus > svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   padding: 0.5rem 1rem;
 }
 
@@ -17707,7 +17707,7 @@ a.bx--header__menu-item[role='menuitem']:focus > svg {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   margin-left: 0.25rem;
   font-weight: 400;
   color: #c6c6c6;
@@ -17803,7 +17803,7 @@ a.bx--header__menu-item[role='menuitem']:focus > svg {
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   display: block;
   height: 2rem;
   text-decoration: none;
@@ -17975,7 +17975,7 @@ a.bx--header__menu-item[role='menuitem']:focus > svg {
   text-overflow: ellipsis;
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.04rem;
   margin-top: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -18159,7 +18159,7 @@ a.bx--side-nav__link[role='menuitem']:not(.bx--side-nav__link--current):not([ari
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   outline: 2px solid transparent;
   outline-offset: -2px;
   padding: 0 1rem;
@@ -18317,7 +18317,7 @@ a.bx--side-nav__link,
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1.125rem;
-  letter-spacing: 0.16px;
+  letter-spacing: 0.04rem;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18345,7 +18345,7 @@ a.bx--header__menu-item[role='menuitem']
   text-overflow: ellipsis;
   color: #525252;
   font-size: 0.875rem;
-  letter-spacing: 0.1px;
+  letter-spacing: 0.04rem;
   line-height: 1.25rem;
   -webkit-user-select: none;
      -moz-user-select: none;

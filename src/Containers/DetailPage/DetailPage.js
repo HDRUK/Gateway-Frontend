@@ -1,26 +1,35 @@
-import React, { useContext } from "react";
-import { useQuery } from "@apollo/react-hooks";
-import { CenterLoading, NewStyledButton } from "../../styles/carbonComponents";
-import { StyledHeading, SmallSpace, StyledSmallText, DarkText, TinySpace, StyledCard } from "../../styles/styles";
+import React, { useContext, useState } from "react";
+import { CenterLoading, NewStyledButton, StyledModal } from "../../styles/carbonComponents";
+import {
+    StyledHeading,
+    SmallSpace,
+    StyledSmallText,
+    DarkText,
+    TinySpace,
+    StyledCard,
+    StyledSmallBoldText,
+    LinkNoDecoration
+} from "../../styles/styles";
 import PropTypes from "prop-types";
-
-import { RESULT_DETAIL } from "../../queries/queries.js";
 
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { withRouter } from "react-router-dom";
 import InfoDetailGrid from "../../components/infoDetailGrid/infoDetailGrid";
 
+const textItems = {
+    login: "Login via OpenAthens",
+    buttonText: "Request Access",
+    cancel: "Cancel",
+    modalTitle: "Access request for",
+    modalGuidelineText:
+        "You must be logged in to request access to this dataset. We currently only support log in via OpenAthens, if you do not have access to an OpenAthens login, you can contact the Data Customdian directly.",
+    contactHeading: "Contact details for Data custodian"
+};
+
 const DetailPage = props => {
     const appContext = useContext(AppContext);
-    props.match.params.id !== appContext.state.searchResultId && appContext.setSearchResultId(props.match.params.id);
-    const { loading, error, data } = useQuery(RESULT_DETAIL, {
-        variables: { ID: appContext.state.searchResultId },
-        skip: appContext.state.searchResultId === null
-    });
-    if (loading) return <CenterLoading withOverlay={false} />;
-    if (error) return <div>Error :(</div>;
 
-    let detailData = {};
+    const [modalOpen, setModalOpen] = useState(false);
 
     const createGridArray = fields => {
         let returnArray = [];
@@ -33,14 +42,56 @@ const DetailPage = props => {
         return returnArray;
     };
 
+    appContext.useDetailData(props.match.params.id);
+
+    const detailData = appContext.detailData.data;
+    if (appContext.detailData.status === "loading") {
+        return <CenterLoading withOverlay={false} />;
+    } else if (appContext.detailData.status === "error") {
+        return <div>Unable to load</div>;
+    }
+
+    const searchResultId = appContext.setSearchResultId;
+
     return (
         <React.Fragment>
-            {data && (detailData = data.hdrDataModelID.data) && (
+            {detailData !== {} && (
                 <SmallSpace>
                     <DarkText>
                         <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
-                        <NewStyledButton>Request Access</NewStyledButton>
+                        {appContext.authenticated ? (
+                            <LinkNoDecoration
+                                to={`/request-access/${detailData.id}`}
+                                onClick={() => searchResultId(detailData.id)}
+                            >
+                                <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
+                            </LinkNoDecoration>
+                        ) : (
+                            <NewStyledButton kind="primary" onClick={() => setModalOpen(true)}>
+                                {textItems.buttonText}
+                            </NewStyledButton>
+                        )}
+
+                        <StyledModal
+                            id="save-search-modal"
+                            open={modalOpen}
+                            // onRequestSubmit={submitModal}
+                            onSecondarySubmit={() => setModalOpen(false)}
+                            onRequestClose={() => setModalOpen(false)}
+                            // modalLabel={textItems.saveSearch}
+                            modalHeading={textItems.modalTitle}
+                            primaryButtonText={textItems.login}
+                            secondaryButtonText={textItems.cancel}
+                            // primaryButtonDisabled={!(searchTerm || rename) || renameInvalid}
+                            // aria-label={textItems.aria.renameAndSaveSearch}
+                        >
+                            <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
+                            <StyledSmallText>{textItems.modalGuidelineText}</StyledSmallText>
+                            <TinySpace />
+                            <StyledSmallBoldText>{textItems.contactHeading}</StyledSmallBoldText>
+                            <StyledSmallText>{detailData.contactPoint}</StyledSmallText>
+                        </StyledModal>
                         <TinySpace />
                         <InfoDetailGrid
                             contents={[
@@ -168,6 +219,18 @@ const DetailPage = props => {
                                     ></InfoDetailGrid>
                                 </StyledCard>
                             </React.Fragment>
+                        )}
+                        {appContext.authenticated ? (
+                            <LinkNoDecoration
+                                to={`/request-access/${detailData.id}`}
+                                onClick={() => searchResultId(detailData.id)}
+                            >
+                                <NewStyledButton kind="primary">{textItems.buttonText}</NewStyledButton>
+                            </LinkNoDecoration>
+                        ) : (
+                            <NewStyledButton kind="primary" onClick={() => setModalOpen(true)}>
+                                {textItems.buttonText}
+                            </NewStyledButton>
                         )}
                     </DarkText>
                 </SmallSpace>

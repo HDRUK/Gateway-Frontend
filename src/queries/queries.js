@@ -100,6 +100,62 @@ export const GET_SEARCH_SAVED_BY_USER_ID = gql`
     }
 `;
 
+export const REQUEST_ACCESS = gql`
+    mutation RequestAccess(
+        $userId: String!
+        $dataModelId: String!
+        $aim: String!
+        $linkedDatasets: String!
+        $requirements: String!
+        $startDate: String
+        $ico: String
+        $benefits: String
+        $evidence: String
+        $number: String
+        $recipient: String
+    ) {
+        requestAccess(
+            userId: $userId
+            dataModelId: $dataModelId
+            aim: $aim
+            linkedDatasets: $linkedDatasets
+            requirements: $requirements
+            startDate: $startDate
+            ico: $ico
+            benefits: $benefits
+            evidence: $evidence
+            number: $number
+            recipient: $recipient
+        ) {
+            status
+            message
+        }
+    }
+`;
+
+export const GET_ACCESS_REQUESTS_BY_USER_ID = gql`
+    query GetAccessRequestsByUserID($userId: String!, $sortField: SortInput) {
+        getAccessRequestsByUserID(userId: $userId, sortField: $sortField) {
+            status
+            message
+            data {
+                id
+                dataModelId
+                aim
+                linkedDatasets
+                requirements
+                startDate
+                ico
+                benefits
+                evidence
+                contactNumber
+                recipient
+                createdOn
+            }
+        }
+    }
+`;
+
 export const RESULT_DETAIL = gql`
     query HdrDataModelID($ID: String!) {
         hdrDataModelID(ID: $ID) {
@@ -132,6 +188,22 @@ export const RESULT_DETAIL = gql`
                 derivedDatasets
                 creator
                 citations
+                contactPoint
+            }
+        }
+    }
+`;
+
+export const RESULT_DETAIL_SHORT = gql`
+    query HdrDataModelID($ID: String!) {
+        hdrDataModelID(ID: $ID) {
+            status
+            message
+            count
+            data {
+                id
+                title
+                abstract
             }
         }
     }

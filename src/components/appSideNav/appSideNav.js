@@ -14,7 +14,7 @@ const AppSideNav = props => {
                 {props.about && <SideNavLinks />}
                 {props.filter && (
                     <React.Fragment>
-                        {appContext.authenticated === "true" && <SaveSearch />}
+                        {appContext.authenticated && <SaveSearch />}
                         <FilterMenu />
                     </React.Fragment>
                 )}

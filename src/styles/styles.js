@@ -19,7 +19,7 @@ export const Heading2 = styled.h2`
 
 export const ParagraphHeading = styled(Heading2)`
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 1.2rem;
     letter-spacing: unset;
     text-align: left;
@@ -119,7 +119,7 @@ export const InlineWrappedText = styled.p`
 `;
 
 export const NewListItem = styled.li`
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     padding: 5px;
     list-style-type: disc;
@@ -141,7 +141,6 @@ export const CenterBlock = styled.div`
     justify-content: center;
 `;
 export const TinySpace = styled.div`
-    display: inline-block;
     padding: 0.5rem;
 `;
 export const SmallSpace = styled.div`
@@ -514,19 +513,29 @@ export const StyledSmallText = styled.p`
     line-height: 1.1rem;
 `;
 
-export const Arrow = styled.div`
-    position: absolute;
-    right: 1.5rem;
-    display: inline-block;
-    width: 0.7rem;
-    height: 0.7rem;
-    border: 0.125rem solid #000000;
-    border-width: 0.06125rem 0.06125rem 0 0;
-    transform: rotate(45deg);
-`;
-
 export const StyledLine = styled.div`
     height: 0.0625rem;
     margin: 1rem 0 1rem 0;
     background-color: ${p => p.theme.colors.border};
+`;
+
+export const RedText = styled.span`
+    color: #e02020;
+`;
+
+export const ThreeColumnForm = styled.div`
+    display: flex;
+    width: 100%;
+`;
+
+export const OneThirdFormWidth = styled.div`
+    width: 33%;
+`;
+
+export const TwoThirdFormWidth = styled.div`
+    width: 66%;
+`;
+
+export const HalfFormWidth = styled.div`
+    width: 50%;
 `;

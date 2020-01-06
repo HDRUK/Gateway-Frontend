@@ -14,6 +14,12 @@ import {
     DatePickerInput,
     Loading,
     InlineLoading,
+    Modal,
+    Form,
+    TextInput,
+    FormGroup,
+    FormLabel,
+    TextArea,
     Tag,
     Tabs,
     Tab
@@ -91,6 +97,10 @@ export const CheckboxItem = styled(Checkbox)`
 
 export const SearchBar = styled(Search)`
     border-bottom-color: ${p => p.theme.colors.border};
+    && input {
+        height: 5rem;
+        font-size: 1.2rem;
+    }
 `;
 
 export const DropdownFilter = styled(Dropdown)`
@@ -99,6 +109,13 @@ export const DropdownFilter = styled(Dropdown)`
 
 export const DateSelector = styled(DatePicker)`
     flex-direction: column;
+    width: 100%;
+    .bx--date-picker-input__wrapper {
+        > input {
+            width: 100%;
+            max-width: none;
+        }
+    }
 `;
 
 export const DateInput = styled(DatePickerInput)``;
@@ -157,3 +174,59 @@ export const NewStyledButton = styled(Button)`
         background-color: ${p => p.theme.colors.primaryHover};
     }
 `;
+
+export const StyledForm = styled(Form)``;
+export const StyledTextInput = styled(TextInput)`
+    border: none;
+`;
+export const StyledTextArea = styled(TextArea)`
+    border: none;
+    :disabled {
+        color: #c6c6c6;
+    }
+`;
+
+export const StyledModal = styled(Modal)`
+    .bx--modal-container {
+        @media (min-width: 60rem) {
+            width: 35%;
+            max-width: 768px;
+            max-height: 90%;
+            height: auto;
+            border-radius: 0.2rem;
+        }
+    }
+    .bx--btn--primary {
+        background-color: #2fbb93;
+        right: 0;
+        :hover {
+            background-color: #249172;
+        }
+    }
+    .bx--btn--secondary {
+        background-color: #f4f4f4;
+        border-color: #2fbb93;
+        border-width: 1px;
+        color: #2fbb93;
+        :hover {
+            border-color: #249172;
+            color: #249172;
+        }
+    }
+    .bx--modal-footer {
+        background-color: transparent;
+    }
+    .bx--modal-footer button.bx--btn {
+        height: 0.6rem;
+        padding: 0rem 1rem 0rem 1rem;
+        font-weight: 700;
+        position: absolute;
+        flex: 0;
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+`;
+
+export const StyledFormGroup = styled(FormGroup)``;
+
+export const StyledFormLabel = styled(FormLabel)``;
