@@ -111,11 +111,6 @@ const DetailPage = props => {
                             <InfoDetailGrid
                                 contents={createGridArray([
                                     {
-                                        title: "Access request cost",
-                                        content: detailData.accessRequestCost,
-                                        required: true
-                                    },
-                                    {
                                         title: "Data controller",
                                         content: detailData.dataController,
                                         required: false

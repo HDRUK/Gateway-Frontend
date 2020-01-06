@@ -60,7 +60,9 @@ describe("<AppSideNav> with filters", () => {
     });
     it("should render AppSideNav components", () => {
         const mainSideNav = renderedOutput.findByType(MainSideNav);
-        const filterMenuFragment = mainSideNav.props.children;
+        const mainSideNavChildren = mainSideNav.props.children;
+        expect(mainSideNavChildren).toHaveLength(2);
+        const filterMenuFragment = mainSideNavChildren[1];
         expect(filterMenuFragment.type).toEqual(React.Fragment);
         const saveSearch = filterMenuFragment.props.children[0];
         expect(saveSearch.type).toEqual(SaveSearch);
