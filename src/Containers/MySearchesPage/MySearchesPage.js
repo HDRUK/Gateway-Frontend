@@ -37,7 +37,7 @@ const MySearchesPage = () => {
             userId: userId,
             sortField: {
                 applied: "created_on",
-                value: selectedSort === "oldest" ? "DESC" : "ASC"
+                value: selectedSort === "newest" ? "DESC" : "ASC"
             }
         }
     });
