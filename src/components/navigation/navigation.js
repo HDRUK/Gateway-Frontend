@@ -22,14 +22,6 @@ const routes = [
         text: sideNavText.about,
         additionalPaths: ["/guidelines"]
     }
-    // {
-    //     path: "/innovation",
-    //     text: sideNavText.aboutIn
-    // },
-    // {
-    //     path: "/guidelines",
-    //     text: sideNavText.aboutGuide
-    // }
 ];
 
 const Navigation = props => {
