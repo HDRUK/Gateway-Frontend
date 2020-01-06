@@ -44,7 +44,7 @@ const App = () => {
                             <BrowserRouter>
                                 <Route exact path="/" component={BigHeader} />
                                 <Route path="/:path" component={Header} />
-                                <Route path="/:path" component={BetaBanner} />
+                                <Route path="/" component={BetaBanner} />
                                 <Route path="/:path" component={SearchHeader} />
                                 <Route path="/:path" component={Navigation} />
                                 <PageWrapper>
