@@ -46,6 +46,19 @@ export const FilterButton = styled(Button)`
     margin-top: -1rem;
 `;
 
+export const GhostNavigationButton = styled(Button)`
+    width: 100%;
+    height: 100%;
+    color: ${p => p.theme.text.primary};
+    line-height: 1.125rem;
+    font-weight: inherit;
+    padding: 0;
+
+    :hover {
+        color: ${p => p.theme.text.primary};
+    }
+`;
+
 export const ParagraphBullets = styled(UnorderedList)`
     padding-top: 5px;
 `;

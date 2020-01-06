@@ -19,28 +19,28 @@ const routes = [
     },
     {
         path: "/innovation",
-        text: sideNavText.about
-    },
-    {
-        path: "/innovation",
-        text: sideNavText.aboutIn
-    },
-    {
-        path: "/guidelines",
-        text: sideNavText.aboutGuide
+        text: sideNavText.about,
+        additionalPaths: ["/guidelines"]
     }
 ];
 
 const Navigation = props => {
     const appContext = useContext(AppContext);
+    const pathname = props.location.pathname;
     const displayRoutes = appContext.authenticated ? routes : routes.filter(route => !route.authenticationReq);
+
     return (
         <NavigationWrapper>
             <WidthWrapper>
                 <NavigationHeader aria-label="Site navigation">
                     {displayRoutes.map((route, i) => (
                         <LinkNoDecoration to={route.path} key={`route-${i}`}>
-                            <NavigationItem active={props.location.pathname === route.path}>
+                            <NavigationItem
+                                active={
+                                    pathname === route.path ||
+                                    (route.additionalPaths && route.additionalPaths.includes(pathname))
+                                }
+                            >
                                 {route.text}
                             </NavigationItem>
                         </LinkNoDecoration>
