@@ -6,6 +6,7 @@ export const SideNavLinkItem = styled(NavLink)`
     position: relative;
     width: 100%;
     display: block;
+    text-decoration: none;
 
     &.active {
         font-weight: 700;
