@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { Button } from "carbon-components-react";
 
 export const SideNavLinkItem = styled(NavLink)`
     position: relative;
@@ -24,19 +23,6 @@ export const SideNavLinkItem = styled(NavLink)`
             border-left-width: 0.6928rem;
             margin-top: -0.4rem;
         }
-    }
-`;
-
-export const SideNavLink = styled(Button)`
-    width: 100%;
-    height: 100%;
-    color: ${p => p.theme.text.primary};
-    line-height: 1.125rem;
-    font-weight: inherit;
-    padding: 0;
-
-    :hover {
-        color: ${p => p.theme.text.primary};
     }
 `;
 

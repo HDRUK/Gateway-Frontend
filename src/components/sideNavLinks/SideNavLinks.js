@@ -1,16 +1,17 @@
 import React from "react";
-import { SideNavLinksList, SideNavLinkItem, SideNavLink } from "./styles.js";
+import { SideNavLinksList, SideNavLinkItem } from "./styles.js";
+import { GhostNavigationButton } from "../../styles/carbonComponents.js";
 
 const AboutPageNavigation = () => (
     <SideNavLinksList>
         <li>
             <SideNavLinkItem to="innovation">
-                <SideNavLink kind="ghost">Innovation Gateway</SideNavLink>
+                <GhostNavigationButton kind="ghost">Innovation Gateway</GhostNavigationButton>
             </SideNavLinkItem>
         </li>
         <li>
             <SideNavLinkItem to="guidelines">
-                <SideNavLink kind="ghost">Guidelines</SideNavLink>
+                <GhostNavigationButton kind="ghost">Guidelines</GhostNavigationButton>
             </SideNavLinkItem>
         </li>
     </SideNavLinksList>
