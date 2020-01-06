@@ -44,7 +44,10 @@ const Navigation = props => {
                     {displayRoutes.map((route, i) => (
                         <LinkNoDecoration to={route.path} key={`route-${i}`}>
                             <NavigationItem
-                                active={pathname === route.path || route.additionalPaths.includes(pathname)}
+                                active={
+                                    pathname === route.path ||
+                                    (route.additionalPaths && route.additionalPaths.includes(pathname))
+                                }
                             >
                                 {route.text}
                             </NavigationItem>
