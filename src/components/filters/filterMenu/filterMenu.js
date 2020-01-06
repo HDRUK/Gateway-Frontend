@@ -113,7 +113,12 @@ const FilterMenu = () => {
                         {Object.keys(filterValues).map(
                             valueI =>
                                 filterValues[valueI].applied && (
-                                    <CustomTag key={`tag-${valueI}`} type="blue">
+                                    <CustomTag
+                                        key={`tag-${valueI}`}
+                                        type="blue"
+                                        filter
+                                        onClick={() => appContext.removeFilter(filterKey, valueI)}
+                                    >
                                         {filterValues[valueI].value}
                                     </CustomTag>
                                 )
@@ -126,7 +131,12 @@ const FilterMenu = () => {
                         : activeFilter === i
                 }
                 modal={filterValues && Object.keys(filterValues).length > 4 ? "true" : "false"}
-                onHeadingClick={() => {
+                onHeadingClick={e => {
+                    // e.event.target.nodeName === "path" ||
+                    //     (e.event.target.nodeName === "svg" &&
+                    //         e.event.target.attributes[2].value === "Clear filter" &&
+                    //         console.log("hi"));
+
                     if (filterValues && Object.keys(filterValues).length > 4) {
                         if (!modalVisibility) {
                             appContext.openFilterBox();
