@@ -132,7 +132,7 @@ export const FilterBlockTitle = styled.li`
 `;
 
 export const LinkText = styled.a`
-    text-decoration: underline;
+    text-decoration: none;
 `;
 
 export const CenterBlock = styled.div`

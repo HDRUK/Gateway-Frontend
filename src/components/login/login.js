@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-import { Heading, CenterBlock, TinySpace, SmallSpace, LinkNoDecoration } from "../../styles/styles.js";
+import { Heading, CenterBlock, TinySpace, SmallSpace, LinkNoDecoration, LinkText } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
 import { LoginWrapper } from "./styles";
 
@@ -47,13 +47,13 @@ const Login = () => {
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (
-                        <a href="/logout">
+                        <LinkText href="/logout">
                             <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
-                        </a>
+                        </LinkText>
                     ) : (
-                        <a href="/login">
+                        <LinkText href="/login">
                             <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
-                        </a>
+                        </LinkText>
                     )}
                 </CenterBlock>
             </LoginWrapper>
