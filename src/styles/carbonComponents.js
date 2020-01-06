@@ -97,6 +97,10 @@ export const CheckboxItem = styled(Checkbox)`
 
 export const SearchBar = styled(Search)`
     border-bottom-color: ${p => p.theme.colors.border};
+    && input {
+        height: 5rem;
+        font-size: 1.2rem;
+    }
 `;
 
 export const DropdownFilter = styled(Dropdown)`

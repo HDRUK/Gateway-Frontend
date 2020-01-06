@@ -19,9 +19,7 @@ export const SearchHeaderWrapper = styled.div`
 export const SearchBarWrapper = styled.div`
     vertical-align: middle;
     width: 100%;
-    max-width: 32rem;
     padding: 0 1rem 0 1rem;
-    margin: 1rem auto 0;
     text-align: center;
     transform: translateY(${p => (p.main ? "16rem" : "0")});
     transition: 0.7s;
