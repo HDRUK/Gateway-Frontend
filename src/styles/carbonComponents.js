@@ -72,6 +72,8 @@ export const AccordionBlock = styled(Accordion)`
 
 export const AccordionElement = styled(AccordionItem)`
     position: relative;
+    border-top: none;
+    border-bottom: 0.0675rem solid ${p => p.theme.colors.border};
     ${props =>
         props.modal === "true" &&
         props.open &&
@@ -83,6 +85,10 @@ export const AccordionElement = styled(AccordionItem)`
                 transform: rotate(0deg) !important;
             }
         `}
+
+    button {
+        padding: 1rem 0;
+    }
 `;
 
 export const HeaderWrapper = styled(Header)`

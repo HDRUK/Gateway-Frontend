@@ -405,16 +405,17 @@ export const ButtonSet = styled.div`
 `;
 
 export const FilterBoxContent = styled.div`
-    padding: 10px;
+    padding: 10px 10px 0 10px;
     max-width: 26.875rem;
 `;
 
 export const FilterBlock = styled.div`
     width: 100%;
+    min-height: 10rem;
+    max-height: 20rem;
     display: inline-block;
     overflow-x: hidden;
     overflow-y: auto;
-    max-height: 8rem;
     > div {
         margin-top: 0 !important;
     }
@@ -445,7 +446,8 @@ export const FilterDiv = styled.div`
         props.location &&
         css`
             opacity: 1;
-            top: ${props.location - 205}px;
+            top: ${props.location - 230}px;
+            /* top: 1rem; */
             transition: opacity 0.1s;
         `};
 `;

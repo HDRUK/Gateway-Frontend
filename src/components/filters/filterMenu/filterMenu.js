@@ -1,13 +1,8 @@
 import React, { useContext, useEffect, useCallback } from "react";
-import {
-    AccordionBlock,
-    AccordionElement,
-    FilterButton,
-    CenterLoading,
-    CustomTag
-} from "../../../styles/carbonComponents.js";
+import { AccordionElement, FilterButton, CenterLoading, CustomTag } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
+import { ExpandingAccordionBlock } from "./styles";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
@@ -32,6 +27,10 @@ const FilterMenu = () => {
     const setFilterObject = appContext.setFilterObject;
     const setFilterString = appContext.setFilterString;
     const setFilterLocation = useCallback(() => appContext.setFilterLocation(appContext.itemRef), [appContext]);
+
+    const filterDivRef = appContext.filterDivRef.current;
+    const filterDivBox = filterDivRef && filterDivRef.parentNode.getBoundingClientRect();
+    const filterBoxHeight = filterDivBox ? filterDivBox.height : 0;
 
     const [getFilterValues, { loading, error, data, refetch, called }] = useLazyQuery(GET_FILTER_VALUES, {
         notifyOnNetworkStatusChange: true
@@ -104,12 +103,12 @@ const FilterMenu = () => {
                 key={`filterItem-${i}`}
                 title={
                     <div>
-                        <p>{filterTitle}</p>
                         {filterValues &&
                             Object.keys(filterValues).length > 4 &&
                             (activeFilter === i && modalVisibility && (
                                 <div id="filter-expanded" ref={appContext.itemRef} />
                             ))}
+                        <p>{filterTitle}</p>
                         {Object.keys(filterValues).map(
                             valueI =>
                                 filterValues[valueI].applied && (
@@ -169,7 +168,7 @@ const FilterMenu = () => {
             {loading ? (
                 <CenterLoading withOverlay={false} />
             ) : (
-                <AccordionBlock>
+                <ExpandingAccordionBlock expandheight={modalVisibility ? filterBoxHeight : undefined}>
                     {filterObject && Object.keys(filterObject).length > 0 && (
                         <React.Fragment>
                             <FilterBlockTitle>Filters</FilterBlockTitle>
@@ -179,7 +178,7 @@ const FilterMenu = () => {
                         </React.Fragment>
                     )}
                     {error && <div>Failed to load filters</div>}
-                </AccordionBlock>
+                </ExpandingAccordionBlock>
             )}
         </React.Fragment>
     );

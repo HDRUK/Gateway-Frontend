@@ -173,6 +173,7 @@ const AppContextProvider = props => {
     };
 
     const [itemRef] = useState(React.createRef());
+    const [filterDivRef] = useState(React.createRef());
 
     const [sortItems] = useState([
         {
@@ -489,6 +490,7 @@ const AppContextProvider = props => {
                 setFilterLocation,
                 setFilterId,
                 itemRef,
+                filterDivRef,
                 activeFilter,
                 openFilterBox,
                 closeFilterBox,

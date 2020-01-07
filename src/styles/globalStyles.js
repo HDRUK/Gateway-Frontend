@@ -49,7 +49,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         background-color: ${p => p.theme.colors.white};
         font-family: "Museo Sans Rounded 300";
-        letter-spacing: 0.67px !important;
+        letter-spacing: 0.011875rem !important;
     }
   
 `;

@@ -8,14 +8,14 @@ const MenuFilterWrapper = () => {
     const appContext = useContext(AppContext);
     const modalVisibility = appContext.state.modalVisibility;
 
+    const filterLocation = appContext.state.filterLocation + appContext.state.windowScroll;
+
     return (
         <React.Fragment>
             {modalVisibility && (
-                <FilterDiv
-                    location={appContext.state.filterLocation + appContext.state.windowScroll}
-                    modalVisibility={modalVisibility}
-                >
+                <FilterDiv location={filterLocation} modalVisibility={modalVisibility}>
                     <FilterBox />
+                    <div ref={appContext.filterDivRef} />
                 </FilterDiv>
             )}
         </React.Fragment>

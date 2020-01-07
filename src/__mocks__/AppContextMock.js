@@ -68,6 +68,9 @@ const context = {
     savedSearchesData: {
         data: []
     },
+    filterDivRef: {
+        current: undefined
+    },
     setOffSet: jest.fn(),
     clearSearchData: jest.fn(),
     insertSearchData: jest.fn(),
