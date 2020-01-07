@@ -10,7 +10,7 @@ const textItems = {
     cancel: "Cancel"
 };
 
-const useOutsideAlerter = (ref, context) => {
+const useCloseFilterOnBlur = (ref, context) => {
     function handleClickOutside(event) {
         if (
             context.state.modalVisibility &&
@@ -38,7 +38,7 @@ const FilterBox = () => {
     const values = appContext.filterObject[filterKey];
     const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
 
-    useOutsideAlerter(appContext.filterDivRef, appContext);
+    useCloseFilterOnBlur(appContext.filterDivRef, appContext);
 
     return (
         <React.Fragment>
