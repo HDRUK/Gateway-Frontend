@@ -93,15 +93,10 @@ describe("<SavedSearchCard> ", () => {
         expect(contentDivChildren[0].type).toBe(LabeledContent);
         expect(contentDivChildren[0].props.label).toBe(textItems.searchDate);
         expect(contentDivChildren[0].props.children).toBe("01 Nov 2019");
+        expect(contentDivChildren[1].type).toBe(SavedSearchTitle);
+        expect(contentDivChildren[1].props.children).toBe(searchName);
 
-        expect(contentDivChildren[1].type).toBe(LabeledContent);
-        expect(contentDivChildren[1].props.label).toBe(textItems.results);
-        expect(contentDivChildren[1].props.children).toBe("n/a");
-
-        expect(contentDivChildren[2].type).toBe(SavedSearchTitle);
-        expect(contentDivChildren[2].props.children).toBe(searchName);
-
-        expect(contentDivChildren[3].type).toBe(undefined);
+        expect(contentDivChildren[2].type).toBe(undefined);
 
         const buttonDiv = card[0].props.children[3];
         expect(buttonDiv.type).toBe(ButtonDiv);
