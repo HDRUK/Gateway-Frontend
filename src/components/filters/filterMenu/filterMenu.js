@@ -112,7 +112,14 @@ const FilterMenu = () => {
                         {Object.keys(filterValues).map(
                             valueI =>
                                 filterValues[valueI].applied && (
-                                    <CustomTag key={`tag-${valueI}`} type="blue">
+                                    <CustomTag
+                                        key={`tag-${valueI}`}
+                                        type="blue"
+                                        filter
+                                        onClick={() =>
+                                            appContext.removeFilter({ filter: filterKey, valueIndex: valueI })
+                                        }
+                                    >
                                         {filterValues[valueI].value}
                                     </CustomTag>
                                 )

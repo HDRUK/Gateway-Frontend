@@ -182,6 +182,21 @@ export const SaveSearchButton = styled(Button)`
 export const CustomTag = styled(Tag)`
     height: unset;
     min-height: 1.5rem;
+    background-color: #d0e2ff;
+    color: #0043ce;
+    word-break: break-word;
+
+    > svg {
+        min-width: 1rem;
+        min-height: 1rem;
+        width: 1rem;
+        height: 1rem;
+        fill: #0043ce;
+        :hover {
+            background-color: #0043ce;
+            fill: #ffffff;
+        }
+    }
 `;
 
 //NEW STYLES

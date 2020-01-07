@@ -226,7 +226,7 @@ const AppContextProvider = props => {
         );
     };
 
-    const removeFilter = (filter, valueIndex) => {
+    const removeFilter = ({ filter, valueIndex }) => {
         const filterValue = filterObject[filter][valueIndex];
 
         setFilterObject(

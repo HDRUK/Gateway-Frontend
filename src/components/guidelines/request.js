@@ -29,20 +29,15 @@ const GuidelinesRequest = () => {
             <SmallSpace />
             <ParagraphBullets>
                 <NewListItem>{textItems.bullet1}</NewListItem>
-                <SmallSpace />
                 <NewListItem>
                     {textItems.bullet2}
                     <a href={textItems.bullet2Link} target="_blank" rel="noopener noreferrer">
                         ({textItems.bullet2Link})
                     </a>
                 </NewListItem>
-                <SmallSpace />
                 <NewListItem>{textItems.bullet3}</NewListItem>
-                <SmallSpace />
                 <NewListItem>{textItems.bullet4}</NewListItem>
-                <SmallSpace />
                 <NewListItem>{textItems.bullet5}</NewListItem>
-                <SmallSpace />
                 <NewListItem>{textItems.bullet6}</NewListItem>
             </ParagraphBullets>
             <SmallSpace />

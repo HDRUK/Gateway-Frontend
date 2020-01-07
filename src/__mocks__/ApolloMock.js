@@ -63,7 +63,7 @@ const mocks = [
     {
         request: {
             query: GET_SEARCH_SAVED_BY_USER_ID,
-            variables: { userId: "test", sortField: { applied: "created_on", value: "ASC" } }
+            variables: { userId: "test", sortField: { applied: "created_on", value: "DESC" } }
         },
         result: {
             data: {
@@ -117,7 +117,7 @@ const mocks = [
     {
         request: {
             query: GET_SEARCH_SAVED_BY_USER_ID,
-            variables: { userId: "test", sortField: { applied: "created_on", value: "ASC" } }
+            variables: { userId: "test", sortField: { applied: "created_on", value: "DESC" } }
         },
         result: {
             data: {

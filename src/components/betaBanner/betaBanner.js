@@ -1,5 +1,5 @@
 import React from "react";
-import { BetaWrapper, ParagraphText, BetaLabel, SmallSpace, TinySpace } from "../../styles/styles.js";
+import { BetaWrapper, ParagraphText, BetaLabel, SmallSpace, TinySpace, WidthWrapper } from "../../styles/styles.js";
 
 const textItems = {
     firstText: "This is a new service - your ",
@@ -11,16 +11,18 @@ const link = "https://docs.google.com/forms/d/e/1FAIpQLSdPuRFdqG7f0PA3OfJORxax9M
 
 const BetaBanner = () => (
     <BetaWrapper>
-        <TinySpace></TinySpace>
-        <BetaLabel>BETA</BetaLabel>
-        <SmallSpace></SmallSpace>
-        <ParagraphText>
-            {textItems.firstText}
-            <a href={link} target="_blank" rel="noopener noreferrer">
-                {textItems.linkText}
-            </a>
-            {textItems.secondText}
-        </ParagraphText>
+        <WidthWrapper>
+            <TinySpace />
+            <BetaLabel>BETA</BetaLabel>
+            <SmallSpace />
+            <ParagraphText>
+                {textItems.firstText}
+                <a href={link} target="_blank" rel="noopener noreferrer">
+                    {textItems.linkText}
+                </a>
+                {textItems.secondText}
+            </ParagraphText>
+        </WidthWrapper>
     </BetaWrapper>
 );
 
