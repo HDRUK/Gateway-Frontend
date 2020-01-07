@@ -31,24 +31,24 @@ import { renderEmail } from "react-html-email";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const textItems = {
-    heading: "Request access for",
-    aimHeader: "Research Aim",
-    aimHelpText: "Please briefly explain the purpose of your research and why you require this dataset.",
+    heading: "Enquire About",
+    aimHeader: "Research Purpose",
+    aimHelpText: "Please briefly explain the purpose of your research and why you require access to the dataset.",
     datasetHeader: "Linked Datasets",
     datasetHelpText: "Please identify the names of any datasets you would like to link with this one.",
     datasetCheckbox: "I don't want to link any datasets.",
-    requirementsHeader: "Data Requirements",
-    requirementsHelpText: "Please explain which parts of the dataset you are interested in.",
+    requirementsHeader: "Data Field Requirements",
+    requirementsHelpText: "Please explain which fields of the dataset you are interested in.",
     requirementsCheckbox: "I don't know.",
-    startDate: "Propsed Project Start Date",
+    startDate: "Proposed Project Start Date",
     ico: "ICO Registration",
-    benefitsHeader: "Research Benefits",
+    benefitsHeader: "Research Impact",
     benefitsHelpText: "Please provide evidence of how your research will benefit the health and social care system.",
     evidenceHeader: "Ethical Processing Evidence",
     evidenceHelpText:
-        "Please provide a link(s) to relevant sources that showcase evidence of the fair processing of data by your organisation.",
+        "Please provide a link(s) to relevant sources that showcase evidence of the ethical and legally compliant processing of data by your organisation.",
     contact: "Contact Number",
-    button: "Send Enquiry"
+    button: "Submit Enquiry"
 };
 
 const RequestPage = props => {
