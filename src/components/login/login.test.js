@@ -2,7 +2,7 @@ import React from "react";
 import { create } from "react-test-renderer";
 import Login from "./Login";
 import { MemoryRouter } from "react-router-dom";
-import { CenterBlock, Heading, SmallSpace, LinkNoDecoration, TinySpace } from "../../styles/styles.js";
+import { CenterBlock, Heading, SmallSpace, LinkNoDecoration, TinySpace, LinkText } from "../../styles/styles.js";
 import { LoginWrapper } from "./styles";
 import { StyledButton } from "../../styles/carbonComponents.js";
 
@@ -17,7 +17,7 @@ const loginText = {
     continueButton: "Continue as a guest",
     loggedInContinueButton: "Continue",
     description:
-        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets.",
+        "Search and explore information about these datasets. If you have an OpenAthens account, you can log in to enquire about access to these datasets.",
     headingText: "Explore & Discover our health datasets from across the UK."
 };
 
@@ -69,7 +69,7 @@ describe("<Login> ", () => {
 
             expect(buttons[0].type).toBe(LinkNoDecoration);
             expect(buttons[1].type).toBe(SmallSpace);
-            expect(buttons[2].type).toBe("a");
+            expect(buttons[2].type).toBe(LinkText);
             expect(buttons[2].props.href).toBe("/logout");
 
             expect(buttons[0].props.children.type).toBe(StyledButton);

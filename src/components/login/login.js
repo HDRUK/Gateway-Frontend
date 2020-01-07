@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
-import { Heading, CenterBlock, TinySpace, SmallSpace, LinkNoDecoration } from "../../styles/styles.js";
+import { Heading, CenterBlock, TinySpace, SmallSpace, LinkNoDecoration, LinkText } from "../../styles/styles.js";
 import { StyledButton } from "../../styles/carbonComponents.js";
 import { LoginWrapper } from "./styles";
 
@@ -22,7 +22,7 @@ const textItems = {
     continueButton: "Continue as a guest",
     loggedInContinueButton: "Continue",
     description:
-        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets."
+        "Search and explore information about these datasets. If you have an OpenAthens account, you can log in to enquire about access to these datasets."
 };
 
 const Login = () => {
@@ -47,13 +47,13 @@ const Login = () => {
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (
-                        <a href="/logout">
+                        <LinkText href="/logout">
                             <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
-                        </a>
+                        </LinkText>
                     ) : (
-                        <a href="/login">
+                        <LinkText href="/login">
                             <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
-                        </a>
+                        </LinkText>
                     )}
                 </CenterBlock>
             </LoginWrapper>

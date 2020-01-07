@@ -61,17 +61,15 @@ describe("<LandingPage> ", () => {
     it("should check the correct components are displayed", () => {
         const landingPageWrapper = renderedOutput.findByType(LandingPageWrapper);
         const landingPageContent = landingPageWrapper.props.children;
-        expect(landingPageContent).toHaveLength(10);
+        expect(landingPageContent).toHaveLength(8);
         expect(landingPageContent[0].type).toBe(MediumSpace);
         expect(landingPageContent[1].type).toBe(DarkText);
         expect(landingPageContent[2].type).toBe(MediumSpace);
         expect(landingPageContent[3].type).toBe(ParagraphBanner);
         expect(landingPageContent[4].type).toBe(MediumSpace);
-        expect(landingPageContent[5].type).toBe(NewsTileGroup);
-        expect(landingPageContent[6].type).toBe(MediumSpace);
-        expect(landingPageContent[7].type).toBe(CenterBlock);
-        expect(landingPageContent[8].type).toBe(SmallSpace);
-        expect(landingPageContent[9].type).toBe(ImageBlock);
+        expect(landingPageContent[5].type).toBe(CenterBlock);
+        expect(landingPageContent[6].type).toBe(SmallSpace);
+        expect(landingPageContent[7].type).toBe(ImageBlock);
 
         const firstDarkTextContent = landingPageContent[1].props.children;
         expect(firstDarkTextContent).toHaveLength(3);
@@ -82,16 +80,7 @@ describe("<LandingPage> ", () => {
         const paragraphBannerContent = landingPageContent[3].props.children;
         expect(paragraphBannerContent).toHaveLength(3);
 
-        const newsTiles = landingPageContent[5].props.children;
-        expect(newsTiles).toHaveLength(3);
-        expect(newsTiles[0].type).toBe(NewsTile);
-        expect(newsTiles[1].type).toBe(NewsTile);
-        expect(newsTiles[2].type).toBe(NewsTile);
-        expect(newsTiles[0].props.identifier).toEqual("newsItemOne");
-        expect(newsTiles[1].props.identifier).toEqual("newsItemTwo");
-        expect(newsTiles[2].props.identifier).toEqual("newsItemThree");
-
-        const partnerImages = landingPageContent[9].props.children;
+        const partnerImages = landingPageContent[7].props.children;
         expect(partnerImages).toHaveLength(16);
     });
 });
