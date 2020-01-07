@@ -1,17 +1,29 @@
 import React from "react";
 
-import { ParagraphText, DarkText, SmallSpace, MediumSpace, ParagraphHeading } from "../../styles/styles.js";
+import {
+    ParagraphText,
+    DarkText,
+    SmallSpace,
+    MediumSpace,
+    ParagraphHeading,
+    NewListItem
+} from "../../styles/styles.js";
+import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     para1:
-        "Before submitting a request for data access, it will be useful for you to consider the following as you may be asked to discuss some (or all) of the following aspects with the lead data custodian:",
+        "Before submitting an enquiry for data access, you need to consider the following as this information will be required by  data custodians:",
+    para1bullet1: "Ethical Approval for proposed use",
     para2Title: "Approval from Research Ethics Committee",
     para2:
-        "The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, click here ",
+        "The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, ",
 
     para2Link: "http://www.hra-decisiontools.org.uk/ethics",
-    para2a: " Alternatively, you can find this guidance on the HRA website ",
+    para2Text: "click here. ",
+    para2a: " Alternatively, you can find this guidance on the ",
     para2aLink: "http://www.hra.nhs.uk/documents/2013/09/does-my-project-require-rec-review.pdf",
+    para2aText: "HRA website. ",
+
     para3Title: "Data Sharing Framework Contract and/or Data Sharing Agreement",
     para3:
         "Some Data Custodians require your organisation to sign a Data Sharing Framework Contract (organisation / department level) and Data Sharing Agreement (study / project level). It may be worthwhile confirming whether your organisation has already signed a Data Sharing Framework Contract with the Lead Data Custodian, and whether this includes / covers your Department. Note that only a legal entity can sign a Data Sharing Agreement. ",
@@ -31,21 +43,23 @@ const GuidelinesBeforeRequest = () => {
     return (
         <DarkText>
             <ParagraphText>{textItems.para1}</ParagraphText>
+            <ParagraphBullets>
+                <NewListItem>{textItems.para1bullet1}</NewListItem>
+            </ParagraphBullets>
             <SmallSpace />
-            <ParagraphHeading>{textItems.para2Title}</ParagraphHeading>
             <SmallSpace />
             <ParagraphText>
                 {textItems.para2}
                 <a href={textItems.para2Link} target="_blank" rel="noopener noreferrer">
-                    ({textItems.para2Link})
+                    {textItems.para2Text}
                 </a>
                 {textItems.para2a}
                 <a href={textItems.para2aLink} target="_blank" rel="noopener noreferrer">
-                    ({textItems.para2aLink})
+                    {textItems.para2aText}
                 </a>
             </ParagraphText>
             <SmallSpace />
-            <ParagraphHeading>{textItems.para3Title}</ParagraphHeading>
+            {/*  <ParagraphHeading>{textItems.para3Title}</ParagraphHeading>
             <SmallSpace />
             <ParagraphText>{textItems.para3}</ParagraphText>
             <SmallSpace />
@@ -68,7 +82,7 @@ const GuidelinesBeforeRequest = () => {
                     ({textItems.para5Link})
                 </a>
             </ParagraphText>
-            <MediumSpace />
+            <MediumSpace /> */}
         </DarkText>
     );
 };

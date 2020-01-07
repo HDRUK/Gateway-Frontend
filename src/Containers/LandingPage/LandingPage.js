@@ -1,6 +1,4 @@
 import React from "react";
-import NewsTile from "../../components/newsTile/newsTile.js";
-import NewsTileGroup from "../../components/newsTileGroup/newsTileGroup.js";
 import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 import ParagraphBanner from "../../components/paragraphBanner/paragraphBanner.js";
