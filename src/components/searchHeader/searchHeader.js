@@ -15,6 +15,7 @@ const SearchHeader = props => {
     // const pageState = appContext.state.searchPageState;
     const searchTerm = appContext.search.term;
     const [redirect, setRedirect] = useState(false);
+    const [localSearchTerm, setLocalSearchTerm] = useState("");
 
     const handleSearch = e => {
         appContext.handleSearch(e);
@@ -27,6 +28,10 @@ const SearchHeader = props => {
         props.location.pathname === "/search" && setRedirect(false);
     }, [props.location.pathname, searchTerm]);
 
+    useEffect(() => {
+        searchTerm ? setLocalSearchTerm(searchTerm) : setLocalSearchTerm("");
+    }, [searchTerm]);
+
     const SearchRedirect = () => <Redirect to="/search" />;
 
     return (
@@ -38,9 +43,10 @@ const SearchHeader = props => {
                 <SearchBarWrapper main={false}>
                     {redirect && <SearchRedirect />}
                     <SearchBar
-                        defaultValue={searchTerm}
+                        value={localSearchTerm}
                         labelText={textItems.search}
                         light
+                        onChange={e => setLocalSearchTerm(e.target.value)}
                         onKeyPress={e => handleSearch(e)}
                         placeHolderText={`${textItems.search}...`}
                     />

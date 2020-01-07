@@ -85,10 +85,6 @@ export const AccordionElement = styled(AccordionItem)`
                 transform: rotate(0deg) !important;
             }
         `}
-
-    button {
-        padding: 1rem 0;
-    }
 `;
 
 export const HeaderWrapper = styled(Header)`
