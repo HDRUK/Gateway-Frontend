@@ -135,6 +135,11 @@ export const LinkText = styled.a`
     text-decoration: none;
 `;
 
+export const WhiteLink = styled.a`
+    text-decoration: none;
+    color: #ffffff;
+`;
+
 export const CenterBlock = styled.div`
     display: flex;
     align-items: center;

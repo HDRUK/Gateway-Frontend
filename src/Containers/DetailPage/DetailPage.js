@@ -18,7 +18,7 @@ import InfoDetailGrid from "../../components/infoDetailGrid/infoDetailGrid";
 
 const textItems = {
     login: "Login via OpenAthens",
-    buttonText: "Request Access",
+    buttonText: "Make enquiry",
     cancel: "Cancel",
     modalTitle: "Access request for",
     modalGuidelineText:
