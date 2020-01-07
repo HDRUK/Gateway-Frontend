@@ -292,6 +292,7 @@ const RequestPage = props => {
                     {/* {requestLoading ? <RightSmallInlineLoading /> : textItems.button} */}
                     {textItems.button}
                 </NewStyledButton>
+                <SmallSpace />
             </StyledForm>
         </SmallSpace>
     );
