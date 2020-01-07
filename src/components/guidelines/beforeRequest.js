@@ -42,6 +42,7 @@ const GuidelinesBeforeRequest = () => {
     return (
         <DarkText>
             <ParagraphText>{textItems.para1}</ParagraphText>
+            <SmallSpace />
             <ParagraphBullets>
                 <NewListItem>{textItems.para1bullet1}</NewListItem>
             </ParagraphBullets>
@@ -56,6 +57,7 @@ const GuidelinesBeforeRequest = () => {
                     {textItems.para2aText}
                 </a>
             </ParagraphText>
+            <SmallSpace />
             <ParagraphBullets>
                 <NewListItem>{textItems.para2bullet1}</NewListItem>
                 <NewListItem>{textItems.para2bullet2}</NewListItem>
