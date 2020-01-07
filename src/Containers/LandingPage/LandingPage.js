@@ -103,12 +103,6 @@ const LandingPage = () => {
                 </>
             </ParagraphBanner>
             <MediumSpace />
-            <NewsTileGroup>
-                <NewsTile identifier="newsItemOne" />
-                <NewsTile identifier="newsItemTwo" />
-                <NewsTile identifier="newsItemThree" />
-            </NewsTileGroup>
-            <MediumSpace />
             <CenterBlock>
                 <ParagraphHeading>{textItems.partnersHeading}</ParagraphHeading>
             </CenterBlock>
