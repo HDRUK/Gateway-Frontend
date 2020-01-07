@@ -1,7 +1,7 @@
 import React from "react";
 import { LogoTwitter32, LogoLinkedin32 } from "@carbon/icons-react";
 import { FooterWrapper, FooterContent, FooterBlock, FooterText, FooterImage } from "./styles.js";
-import { SocialMediaLogo, TinyText } from "../../styles/styles.js";
+import { SocialMediaLogo, TinyText, WhiteLink } from "../../styles/styles.js";
 
 const footerText = {
     followUs: "Follow us on social media",
@@ -14,7 +14,9 @@ const footerText = {
 
 const links = {
     twitter: "https://twitter.com/HDR_UK",
-    linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/"
+    linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/",
+    hdr: "https://www.hdruk.ac.uk/",
+    contact: "support@healthdatagateway.org"
 };
 
 const Footer = () => (
@@ -37,8 +39,12 @@ const Footer = () => (
                 </SocialMediaLogo>
             </FooterBlock>
             <FooterBlock>
-                <FooterText>{footerText.visitHDRWebsite}</FooterText>
-                <FooterText>{footerText.contactUs}</FooterText>
+                <WhiteLink href={links.hdr} target="_blank" rel="noopener noreferrer">
+                    <FooterText>{footerText.visitHDRWebsite}</FooterText>
+                </WhiteLink>
+                <WhiteLink href={`mailto:${links.contact}`}>
+                    <FooterText>{footerText.contactUs}</FooterText>
+                </WhiteLink>
                 <FooterText>{footerText.accessibilityStatement}</FooterText>
                 <FooterText>{footerText.termsAndConditions}</FooterText>
             </FooterBlock>

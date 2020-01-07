@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyledButton } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
@@ -10,11 +10,35 @@ const textItems = {
     cancel: "Cancel"
 };
 
+const useCloseFilterOnBlur = (ref, context) => {
+    function handleClickOutside(event) {
+        if (
+            context.state.modalVisibility &&
+            ref.current.parentNode &&
+            !ref.current.parentNode.contains(event.target) &&
+            !context.itemRef.current.parentNode.parentNode.parentNode.parentNode.contains(event.target)
+        ) {
+            context.closeFilterBox();
+        }
+    }
+
+    useEffect(() => {
+        // Bind the event listener
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            // Unbind the event listener on clean up
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    });
+};
+
 const FilterBox = () => {
     const appContext = useContext(AppContext);
     const filterKey = Object.keys(appContext.filterObject).find((key, i) => i === appContext.activeFilter);
     const values = appContext.filterObject[filterKey];
     const filterTitle = filterKey.replace(/([A-Z])/g, " $1").replace(/^./, str => str.toUpperCase());
+
+    useCloseFilterOnBlur(appContext.filterDivRef, appContext);
 
     return (
         <React.Fragment>
