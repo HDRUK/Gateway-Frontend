@@ -22,7 +22,7 @@ const textItems = {
     continueButton: "Continue as a guest",
     loggedInContinueButton: "Continue",
     description:
-        "Log in to view and enquire about access to health datasets. If you continue without logging in, you can search and explore information about these datasets."
+        "Search and explore information about these datasets. If you have an OpenAthens account, you can log in to enquire about access to these datasets."
 };
 
 const Login = () => {
