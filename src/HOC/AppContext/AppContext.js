@@ -243,10 +243,6 @@ const AppContextProvider = props => {
         );
     };
 
-    // *****************************
-    // *** ON SEARCH DEVELOPMENT ***
-    // *****************************
-
     const [searchAuditLogSave] = useMutation(SEARCH_AUDIT_LOG_SAVE, {
         onCompleted: data => {
             updateSearchAuditLogId(data.searchAuditLogSave.data.id);
@@ -288,10 +284,6 @@ const AppContextProvider = props => {
         }
         return false;
     };
-
-    // *****************************
-    // *** ON SEARCH DEVELOPMENT ***
-    // *****************************
 
     const insertSearchData = (length, newData) => {
         const newOffset = Math.ceil(newData.length / 10) * 10;
@@ -384,7 +376,7 @@ const AppContextProvider = props => {
         });
     };
 
-    const returnSearchResults = (value, searchSaved = false, filters = [], sort = {}) => {
+    const returnSearchResults = (value, searchSavedBool = false, filters = [], sort = {}) => {
         const newFilterObjects = {};
         filters &&
             filters.forEach((filter, i) => {
@@ -413,7 +405,7 @@ const AppContextProvider = props => {
             ...search,
             term: value
         });
-        setSearchSaved(searchSaved);
+        setSearchSaved(searchSavedBool);
     };
 
     const updateSearchAuditLogId = id => {
