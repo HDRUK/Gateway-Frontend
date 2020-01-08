@@ -3,7 +3,6 @@ import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { useMutation } from "@apollo/react-hooks";
 import { SEARCH_SAVE } from "../../queries/queries.js";
 
-import { Modal, TextInput } from "carbon-components-react";
 import { SaveSearchButton } from "../../styles/carbonComponents";
 import { NavErrorText } from "../../styles/styles.js";
 import { RightSmallInlineLoading } from "../../styles/carbonComponents.js";
@@ -52,28 +51,6 @@ const SaveSearch = () => {
         renameInvalid && setRenameInvalid(false);
     };
 
-    const validateModalInput = e => {
-        setRename(e.target.value);
-        if (e.target.value.length < 100) {
-            renameInvalid && setRenameInvalid(false);
-        } else {
-            setRenameInvalid(true);
-        }
-    };
-
-    const submitModal = () => {
-        rename && (saveVariables.name = rename);
-        saveSearch({ variables: saveVariables });
-        setSearchSavedError({
-            state: false,
-            status: null,
-            message: null
-        });
-        setSearchSaved(true);
-        closeModal();
-        return true;
-    };
-
     useEffect(() => {
         if (data && data.searchSave.status === "403") {
             setSearchSavedError({
@@ -87,29 +64,6 @@ const SaveSearch = () => {
     return (
         searchTerm !== null && (
             <>
-                <Modal
-                    id="save-search-modal"
-                    open={modalOpen}
-                    onRequestSubmit={submitModal}
-                    onSecondarySubmit={closeModal}
-                    onRequestClose={closeModal}
-                    modalLabel={textItems.saveSearch}
-                    modalHeading={searchTerm}
-                    primaryButtonText={textItems.save}
-                    secondaryButtonText={textItems.cancel}
-                    primaryButtonDisabled={!(searchTerm || rename) || renameInvalid}
-                    aria-label={textItems.aria.renameAndSaveSearch}
-                >
-                    <TextInput
-                        id="save-search-rename"
-                        labelText={textItems.rename}
-                        value={rename}
-                        placeholder={searchTerm || textItems.enterTextHere}
-                        onChange={e => validateModalInput(e)}
-                        invalid={renameInvalid}
-                        invalidText={textItems.error.tooLong}
-                    />
-                </Modal>
                 <SaveSearchButton
                     onClick={() => setModalOpen(true)}
                     kind="tertiary"
