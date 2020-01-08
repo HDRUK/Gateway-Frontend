@@ -7,7 +7,7 @@ const footerText = {
     followUs: "Follow us on social media",
     visitHDRWebsite: "Visit the HDR UK Site",
     contactUs: "Contact us",
-    accessibilityStatement: "Accessibility statement",
+    privacyPolicy: "Privacy Policy",
     termsAndConditions: "Terms and conditions",
     copyright: "©HDR UK 2019. All rights reserved. | Design and development by IBM IX"
 };
@@ -16,7 +16,9 @@ const links = {
     twitter: "https://twitter.com/HDR_UK",
     linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/",
     hdr: "https://www.hdruk.ac.uk/",
-    contact: "support@healthdatagateway.org"
+    contact: "support@healthdatagateway.org",
+    terms: "https://www.hdruk.ac.uk/infrastructure/gateway/terms-and-conditions/",
+    privacy: "https://www.hdruk.ac.uk/infrastructure/gateway/privacy-policy/"
 };
 
 const Footer = () => (
@@ -45,8 +47,12 @@ const Footer = () => (
                 <WhiteLink href={`mailto:${links.contact}`}>
                     <FooterText>{footerText.contactUs}</FooterText>
                 </WhiteLink>
-                <FooterText>{footerText.accessibilityStatement}</FooterText>
-                <FooterText>{footerText.termsAndConditions}</FooterText>
+                <WhiteLink href={links.terms} target="_blank" rel="noopener noreferrer">
+                    <FooterText>{footerText.termsAndConditions}</FooterText>
+                </WhiteLink>
+                <WhiteLink href={links.privacy} target="_blank" rel="noopener noreferrer">
+                    <FooterText>{footerText.privacyPolicy}</FooterText>
+                </WhiteLink>
             </FooterBlock>
             <TinyText>{footerText.copyright}</TinyText>
         </FooterContent>

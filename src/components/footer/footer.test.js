@@ -11,14 +11,18 @@ const footerTextContent = {
     followUs: "Follow us on social media",
     visitHDRWebsite: "Visit the HDR UK Site",
     contactUs: "Contact us",
-    accessibilityStatement: "Accessibility statement",
+    privacyPolicy: "Privacy Policy",
     termsAndConditions: "Terms and conditions",
     copyright: "©HDR UK 2019. All rights reserved. | Design and development by IBM IX"
 };
 
 const links = {
     twitter: "https://twitter.com/HDR_UK",
-    linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/"
+    linkedIn: "https://www.linkedin.com/company/healthdataresearchuk/",
+    hdr: "https://www.hdruk.ac.uk/",
+    contact: "support@healthdatagateway.org",
+    terms: "https://www.hdruk.ac.uk/infrastructure/gateway/terms-and-conditions/",
+    privacy: "https://www.hdruk.ac.uk/infrastructure/gateway/privacy-policy/"
 };
 
 describe("<Footer> ", () => {
@@ -61,8 +65,8 @@ describe("<Footer> ", () => {
         expect(block3Texts).toHaveLength(4);
         expect(block3Texts[0].props.children).toEqual(footerTextContent.visitHDRWebsite);
         expect(block3Texts[1].props.children).toEqual(footerTextContent.contactUs);
-        expect(block3Texts[2].props.children).toEqual(footerTextContent.accessibilityStatement);
-        expect(block3Texts[3].props.children).toEqual(footerTextContent.termsAndConditions);
+        expect(block3Texts[2].props.children).toEqual(footerTextContent.termsAndConditions);
+        expect(block3Texts[3].props.children).toEqual(footerTextContent.privacyPolicy);
 
         const tinyText = footerWrapper.findAllByType(TinyText);
         expect(tinyText).toHaveLength(1);
