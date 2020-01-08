@@ -11,15 +11,14 @@ import {
     TwoThirdFormWidth,
     HalfFormWidth
 } from "../../styles/styles";
+import { LoadingButton, LoadingWheel } from "./styles.js";
 import {
     StyledForm,
     StyledTextInput,
-    NewStyledButton,
     CheckboxItem,
     StyledFormLabel,
     StyledTextArea,
     CenterLoading,
-    // RightSmallInlineLoading,
     DateSelector,
     DateInput
 } from "../../styles/carbonComponents";
@@ -60,7 +59,7 @@ const RequestPage = props => {
 
     const [redirect, setRedirect] = useState(false);
 
-    // const [requestLoading, setRequestLoading] = useState(false);
+    const [requestLoading, setRequestLoading] = useState(false);
 
     const [formInput, setFormInput] = useState({});
     const [requirementsRequired, setRequirementsRequired] = useState(true);
@@ -103,14 +102,15 @@ const RequestPage = props => {
     };
 
     const handleSubmit = () => {
-        // setRequestLoading(true);
+        setRequestLoading(true);
         const messageHtml = renderEmail(
             <div>
-                <p> {`Aim: ${formInput.aim}`}</p>
-                <p> {`Linked Datasets: ${formInput.datasets || "No linked datasets"}`}</p>
-                <p> {`Requirements: ${formInput.requirements || "Requirements unknown"}`}</p>
+                <p>{`An enquiry to the access the ${detailData.title} dataset has been made. Please see the full details of the enquiry below:`}</p>
+                <p> {`Research purpose: ${formInput.aim}`}</p>
+                <p> {`Linked datasets: ${formInput.datasets || "No linked datasets"}`}</p>
+                <p> {`Data field requirements: ${formInput.requirements || "Requirements unknown"}`}</p>
                 {formInput.startDate && <p>{`Proposed project start date: ${formInput.startDate}`}</p>}
-                {formInput.ico && <p>{`ICO Registration: ${formInput.ico}`}</p>}
+                {formInput.ico && <p>{`ICO registration: ${formInput.ico}`}</p>}
                 {formInput.benefits && <p>{`Research benefits: ${formInput.benefits}`}</p>}
                 {formInput.evidence && <p>{`Ethical processing evidence: ${formInput.evidence}`}</p>}
                 {formInput.number && <p>{`Contact number: ${formInput.number}`}</p>}
@@ -128,6 +128,7 @@ const RequestPage = props => {
                 messageHtml: messageHtml
             }
         }).then(response => {
+            setRequestLoading(false);
             if (response.data.msg === "success") {
                 saveAccessRequest();
                 setRedirect(true);
@@ -288,10 +289,9 @@ const RequestPage = props => {
                     ></StyledTextInput>
                 </HalfFormWidth>
                 <TinySpace />
-                <NewStyledButton kind="primary" type="submit">
-                    {/* {requestLoading ? <RightSmallInlineLoading /> : textItems.button} */}
-                    {textItems.button}
-                </NewStyledButton>
+                <LoadingButton kind="primary" type="submit">
+                    {requestLoading ? <LoadingWheel /> : textItems.button}
+                </LoadingButton>
                 <SmallSpace />
             </StyledForm>
         </SmallSpace>
