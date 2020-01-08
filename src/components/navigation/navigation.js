@@ -8,7 +8,8 @@ const sideNavText = {
     mySearches: "My searches",
     about: "About",
     aboutIn: " ~ Innovation Gateway",
-    aboutGuide: " ~ Guidelines"
+    aboutGuide: " ~ Guidelines",
+    aboutGlossary: " ~ Glossary"
 };
 
 const routes = [
@@ -20,7 +21,7 @@ const routes = [
     {
         path: "/innovation",
         text: sideNavText.about,
-        additionalPaths: ["/guidelines"]
+        additionalPaths: ["/guidelines", "/glossary"]
     }
 ];
 
