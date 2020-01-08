@@ -16,7 +16,6 @@ export const TR = styled.tr`
 
 export const TH = styled.th`
     padding: 10px 10px 10px 10px;
-    height: 1.25rem;
     text-align: left;
     border: 1px solid ${p => p.theme.text.darkText};
 `;
