@@ -9,6 +9,7 @@ import StyleWrapper from "./HOC/StyleWrapper/StyleWrapper.js";
 import LandingPage from "./Containers/LandingPage/LandingPage";
 import InnovationPage from "./Containers/InnovationPage/InnovationPage";
 import GuidelinesPage from "./Containers/GuidelinesPage/GuidelinesPage";
+import Glossary from "./Containers/Glossary/Glossary";
 import SearchPage from "./Containers/SearchPage/SearchPage";
 import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
 import MyAccessRequestsPage from "./Containers/MyAccessRequestsPage/MyAccessRequestsPage";
@@ -78,6 +79,11 @@ const App = () => {
                                         <Route exact path="/guidelines">
                                             <Content nav about>
                                                 <GuidelinesPage />
+                                            </Content>
+                                        </Route>
+                                        <Route exact path="/glossary">
+                                            <Content nav about>
+                                                <Glossary />
                                             </Content>
                                         </Route>
                                         <Route exact path="/request-access/:id">

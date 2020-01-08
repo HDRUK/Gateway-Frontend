@@ -2,6 +2,30 @@ import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import hdruk_logo_white from "../assets/hdruk_logo_white.png";
 
+export const Table = styled.table`
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid ${p => p.theme.text.darkText};
+`;
+
+export const TR = styled.tr`
+    padding: 10px 10px 10px 10px;
+    height: 1.25rem;
+    text-align: left;
+`;
+
+export const TH = styled.th`
+    padding: 10px 10px 10px 10px;
+    height: 1.25rem;
+    text-align: left;
+    border: 1px solid ${p => p.theme.text.darkText};
+`;
+export const TD = styled.td`
+    padding: 10px 10px 10px 10px;
+    text-align: left;
+    border: 1px solid ${p => p.theme.text.darkText};
+`;
+
 export const Heading = styled.h1`
     font-size: 2.75rem;
     line-height: 3.25rem;
