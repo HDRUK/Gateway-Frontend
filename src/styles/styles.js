@@ -123,6 +123,8 @@ export const BlueText = styled.span`
 `;
 
 export const LightText = styled.span`
+    font-size: 0.9rem;
+    line-height: 1.45rem;
     color: ${p => p.theme.colors.lightText};
 `;
 
@@ -223,6 +225,7 @@ export const LabelText = styled.p`
     display: inline-flex;
     justify-content: center;
     flex-direction: column;
+    padding-right: 5px;
 `;
 
 export const Line = styled.div`

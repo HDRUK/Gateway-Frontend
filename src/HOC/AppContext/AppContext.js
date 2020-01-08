@@ -178,12 +178,12 @@ const AppContextProvider = props => {
     const [sortItems] = useState([
         {
             id: "title",
-            label: "Title",
+            label: "Alphabetically by title",
             default: true
         },
         {
             id: "releaseDate",
-            label: "Release Date"
+            label: "Most recently updated"
         }
     ]);
     const [selectedSort, setSelectedSort] = useState({
