@@ -1,7 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { CenterLoading } from "../../styles/carbonComponents";
-import { Bold, LinkNoDecoration, DarkText, SearchInfo, SortDiv, ResultsCounter } from "../../styles/styles.js";
+import {
+    Bold,
+    LinkNoDecoration,
+    DarkText,
+    SearchInfo,
+    SortDiv,
+    ResultsCounter,
+    ParagraphText,
+    SmallSpace,
+    NewListItem
+} from "../../styles/styles.js";
+import { ParagraphBullets } from "../../styles/carbonComponents.js";
+
 import { Results, SearchResultsWrapper } from "./styles.js";
 import Sort from "../../components/sort/sort.js";
 import ResultCard from "../../components/resultCard/resultCard.js";
@@ -16,6 +28,16 @@ const searchPageText = {
     error: {
         queryError: "Something went wrong. Please try again."
     }
+};
+
+const noResultContent = {
+    message: "Sorry we couldn’t find any datasets matching ",
+    tipsText: "Search Tips:",
+    tipsBullet1: "Check your spelling and try again",
+    tipsBullet2: `Use alternative search terms, for example, “child health” instead of “paediatrics”`,
+    tipsBullet3: "Keep your search terms - the search service works best with shorter descriptions",
+    tipsBullet4: "Found something wrong? Contact us on ",
+    tipsBullet4LinkText: "support@healthdatagateway.org"
 };
 
 const handleScroll = ({ currentTarget }, onLoadMore, offSet, setOffSet, dataLength, loading) => {
@@ -57,12 +79,39 @@ const resultsData = (
     if (loading && !data) {
         return <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />;
     }
+
     if (error)
         return (
             <SearchResultsWrapper visible={searchTerm !== null}>{searchPageText.error.queryError}</SearchResultsWrapper>
         );
 
     const processedData = (data && data.data) || [];
+
+    if (!loading && processedData.length === 0) {
+        return (
+            <div>
+                <ParagraphText>
+                    {noResultContent.message}
+                    {searchTerm}
+                </ParagraphText>
+                <SmallSpace />
+                <ParagraphText>{noResultContent.tipsText}</ParagraphText>
+                <SmallSpace />
+                <ParagraphBullets>
+                    <NewListItem>{noResultContent.tipsBullet1}</NewListItem>
+                    <NewListItem>{noResultContent.tipsBullet2}</NewListItem>
+                    <NewListItem>{noResultContent.tipsBullet3}</NewListItem>
+                    <NewListItem>
+                        {noResultContent.tipsBullet4}
+                        <a href="mailto:support@healthdatagateway.org" target="_top">
+                            {noResultContent.tipsBullet4LinkText}
+                        </a>
+                    </NewListItem>
+                </ParagraphBullets>
+                <SmallSpace />
+            </div>
+        );
+    }
 
     return (
         <SearchResultsWrapper
@@ -87,7 +136,7 @@ const resultsData = (
                           </LinkNoDecoration>
                       );
                   })
-                : !loading && <div>No results</div>}
+                : loading && <div>Loading</div>}
             {loading && <CenterLoading active={true} withOverlay={false} description="Active loading indicator" />}
         </SearchResultsWrapper>
     );

@@ -1,10 +1,8 @@
 import React from "react";
 import { create, act } from "react-test-renderer";
 import SearchPage from "./SearchPage.js";
-import ResultCard from "../../components/resultCard/resultCard.js";
-import { SearchHeading, SearchBarWrapper, Results, SearchResultsWrapper } from "./styles.js";
-import { Line, SearchInfo, ResultsCounter, SortDiv } from "../../styles/styles.js";
-import { SearchBar, CenterLoading } from "../../styles/carbonComponents.js";
+import { Results, SearchResultsWrapper } from "./styles.js";
+import { SearchInfo, ResultsCounter, SortDiv } from "../../styles/styles.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import context from "../../__mocks__/AppContextMock.js";
@@ -37,23 +35,6 @@ describe("<SearchPage> rendered before a search", () => {
         renderedOutput = renderedComponent.root;
     });
 
-    // it("should render the search heading", () => {
-    //     const searchHeading = renderedOutput.findAllByType(SearchHeading);
-    //     expect(searchHeading).toHaveLength(1);
-    //     expect(searchHeading[0].props.invisible).toBe(false);
-    //     expect(searchHeading[0].props.children).toBe(searchPageText.searchTitle);
-    // });
-
-    // it("should render the search bar with wrapper", () => {
-    //     const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
-    //     expect(searchBarWrapper).toHaveLength(1);
-    //     expect(searchBarWrapper[0].props.main).toBe(true);
-
-    //     const searchBar = searchBarWrapper[0].props.children;
-    //     expect(searchBar.type).toBe(SearchBar);
-    //     expect(searchBar.props.labelText).toBe("Search");
-    // });
-
     it("should render the results as invisible", () => {
         const results = renderedOutput.findAllByType(Results);
         expect(results).toHaveLength(1);
@@ -61,47 +42,8 @@ describe("<SearchPage> rendered before a search", () => {
 
         const searchInfo = results[0].props.children[0];
         expect(searchInfo.type).toBe(SearchInfo);
-
-        const searchResultsWrapper = results[0].props.children[1];
-        expect(searchResultsWrapper.type).toBe(SearchResultsWrapper);
     });
 });
-
-// TODO: This test needs to be redone to factor in useEffect
-// describe("<SearchPage> rendered after a search and before data loaded", () => {
-//     let renderedComponent;
-//     let renderedOutput;
-
-//     beforeAll(() => {
-//         context.state.searchPageState = true;
-//         context.search.term = "test";
-//         context.search.previousTerm = "test";
-//         renderedComponent = create(
-//             <MockedProvider mocks={apolloMock} addTypename={false}>
-//                 <AppContext.Provider value={context}>
-//                     <SearchPage />
-//                 </AppContext.Provider>
-//             </MockedProvider>
-//         );
-//         renderedOutput = renderedComponent.root;
-//         act(() => wait(0));
-//     });
-
-//     it("should render loading state initially", async () => {
-//         const searchBarWrapper = renderedOutput.findAllByType(SearchBarWrapper);
-//         const searchBar = searchBarWrapper[0].props.children;
-//         expect(searchBar.type).toBe(SearchBar);
-//         await act(async () => searchBar.props.onKeyPress({ key: "Enter", target: { value: "test" } }));
-
-//         const results = renderedOutput.findAllByType(Results);
-//         const searchInfo = results[0].props.children[0];
-//         const searchInfoComponents = searchInfo.props.children;
-//         const resultsCounterText = searchInfoComponents[1].props.children;
-//         const loading = results[0].props.children[1].props.children[1];
-//         expect(resultsCounterText[0].props.children).toEqual(0);
-//         expect(loading.type).toEqual(CenterLoading);
-//     });
-// });
 
 describe("<SearchPage> rendered after a search", () => {
     let renderedComponent;
@@ -159,12 +101,5 @@ describe("<SearchPage> rendered after a search", () => {
         const loading = searchResultsWrapper.props.children[1];
         expect(loading).toBe(false);
         expect(resultsCards).toHaveLength(2);
-        // TODO: These tests needs to be rewritten for new result card factoring in the link to details page
-        // resultsCards.map((card, i) => {
-        //     expect(card.type).toBe(ResultCard);
-        //     expect(card.key).toBe(`resultCard-${i}`);
-        //     expect(card.props.title).toBe(context.searchData.data[i].label);
-        //     expect(card.props.description).toBe(context.searchData.data[i].description);
-        // });
     });
 });
