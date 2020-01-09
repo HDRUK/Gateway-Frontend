@@ -76,7 +76,7 @@ const DetailPage = props => {
                         <StyledModal
                             id="save-search-modal"
                             open={modalOpen}
-                            // onRequestSubmit={submitModal}
+                            onRequestSubmit={() => {(window.location.href = "/login")}}
                             onSecondarySubmit={() => setModalOpen(false)}
                             onRequestClose={() => setModalOpen(false)}
                             // modalLabel={textItems.saveSearch}
