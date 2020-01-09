@@ -17,7 +17,7 @@ const textItems = {
     para3:
         "In order to enquire about  access to datasets, you will need to have signed in using your institutional single sign-on. To sign in, click the ‘Log in’ button at the top of this page, or navigate to the top right-hand corner of each page once you have entered the Gateway.",
     para4:
-        "If you are logged in, you are able to save your search with any applied filters. To access your saved searches, navigate to ‘Search History' tab on the top left-hand corner[1]  of the screen.",
+        "If you are logged in, you are able to save your search with any applied filters. To access your saved searches, navigate to ‘Search History' tab on the top left-hand corner of the screen.",
     para5:
         "You can track the complete list of any dataset enquiries  you have made by navigating to the ‘Search History’ tab and clicking on ‘Track Data AccessEnquiries’. If you need to contact the Data Custodian, their contact details can also be found on this page."
 };

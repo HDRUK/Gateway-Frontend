@@ -49,7 +49,7 @@ const textItems = {
     sec5p1:
         "It is usually possible to opt out of sharing health data held in personal records about you. To do this, contact the organisation that holds the record (such as your GP practice or hospital). If you live in England you can opt out of your data being used for research via the NHS Digital website ",
     sec5p1link1: "https://digital.nhs.uk/services/national-data-opt-out",
-    sec51p1link1text: "https://digital.nhs.uk/services/national-data-opt-out",
+    sec5p1link1text: "https://digital.nhs.uk/services/national-data-opt-out",
 
     sec6Heading1: "Is the data identifiable?",
     sec6p1: "There is no identifiable patient data in the Innovation Gateway itself.",

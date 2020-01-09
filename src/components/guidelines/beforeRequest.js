@@ -8,7 +8,8 @@ const textItems = {
         "All requests for access will be reviewed by the data custodians in line with their information governance requirements and responsibilities under UK legislation. Access will not be provided without meeting information governance requirements.",
     para2:
         "Before submitting an enquiry for data access, you need to consider the following as this information will be required by  data custodians:",
-    para2bullet1: "Ethical Approval for proposed use",
+    para2bullet1:
+        "Specific information governance and access requirements for the given dataset: where available, this is given in the Data Access section of the dataset page.",
     para2bullet2:
         "Ethical Approval for proposed use The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, ",
 
