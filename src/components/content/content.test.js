@@ -5,6 +5,8 @@ import { MemoryRouter } from "react-router-dom";
 import { ContentWrapper } from "../../styles/styles.js";
 import AppSideNav from "../appSideNav/appSideNav.js";
 
+import { MockedProvider } from "@apollo/react-testing";
+import apolloMock from "../../__mocks__/ApolloMock.js";
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import context from "../../__mocks__/AppContextMock.js";
@@ -35,11 +37,13 @@ describe("Render content with nav prop", () => {
     beforeEach(() => {
         renderedComponent = create(
             <MemoryRouter>
-                <AppContext.Provider value={context}>
-                    <StyleWrapper>
-                        <Content nav />
-                    </StyleWrapper>
-                </AppContext.Provider>
+                <MockedProvider mocks={apolloMock} addTypename={false}>
+                    <AppContext.Provider value={context}>
+                        <StyleWrapper>
+                            <Content nav />
+                        </StyleWrapper>
+                    </AppContext.Provider>
+                </MockedProvider>
             </MemoryRouter>
         );
         renderedOutput = renderedComponent.root;

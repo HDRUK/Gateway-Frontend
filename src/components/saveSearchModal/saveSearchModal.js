@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 import { useMutation } from "@apollo/react-hooks";
 import { SEARCH_SAVE } from "../../queries/queries.js";
@@ -22,21 +22,31 @@ const textItems = {
 const SaveSearchModal = () => {
     const appContext = useContext(AppContext);
     const [saveSearch, { loading, error, data }] = useMutation(SEARCH_SAVE);
+
     const searchTerm = appContext.search.term;
     const setSearchSaved = appContext.setSearchSaved;
-    const [modalOpen, setModalOpen] = useState(false);
+
+    const modalOpen = appContext.searchSaveModalOpen;
+    const setModalOpen = appContext.setSearchSaveModalOpen;
+    const searchSavedState = appContext.searchSavedState;
+    const setSearchSavedState = appContext.setSearchSavedState;
+
     const [rename, setRename] = useState("");
     const [renameInvalid, setRenameInvalid] = useState(false);
-    const [searchSavedError, setSearchSavedError] = useState({
-        state: false,
-        status: null,
-        message: null
-    });
 
     let saveVariables = {
         searchAuditId: appContext.search.latestSearchAuditLogId,
         userId: appContext.userId
     };
+
+    useEffect(() => {
+        if (loading !== searchSavedState.loading || error !== searchSavedState.error)
+            setSearchSavedState({
+                ...searchSavedState,
+                loading,
+                error
+            });
+    }, [loading, error, searchSavedState, setSearchSavedState]);
 
     const closeModal = () => {
         setModalOpen(false);
@@ -56,7 +66,7 @@ const SaveSearchModal = () => {
     const submitModal = () => {
         rename && (saveVariables.name = rename);
         saveSearch({ variables: saveVariables });
-        setSearchSavedError({
+        setSearchSavedState({
             state: false,
             status: null,
             message: null
@@ -65,6 +75,16 @@ const SaveSearchModal = () => {
         closeModal();
         return true;
     };
+
+    useEffect(() => {
+        if (data && data.searchSave.status === "403") {
+            setSearchSavedState({
+                state: true,
+                ...data.searchSave
+            });
+            setSearchSaved(false);
+        }
+    }, [data, setSearchSaved, setSearchSavedState]);
 
     return (
         <Modal

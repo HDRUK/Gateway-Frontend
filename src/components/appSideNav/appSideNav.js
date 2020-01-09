@@ -11,15 +11,12 @@ const AppSideNav = props => {
     const appContext = useContext(AppContext);
     return (
         <div id="main-side-nav">
-            {/* TODO: Set to be authenticated */}
-            <SaveSearchModal />
+            {appContext.authenticated && <SaveSearchModal />}
             <MainSideNav expanded={true} isChildOfHeader={false} aria-label="Side navigation">
                 {props.about && <SideNavLinks />}
                 {props.filter && (
                     <React.Fragment>
-                        {/* TODO: Set to be authenticated */}
-                        {/* {appContext.authenticated && <SaveSearch />} */}
-                        <SaveSearch />
+                        {appContext.authenticated && <SaveSearch />}
                         <FilterMenu />
                     </React.Fragment>
                 )}

@@ -65,6 +65,15 @@ const context = {
         length: 0,
         data: []
     },
+    searchSaveModalOpen: false,
+    searchSaved: false,
+    searchSavedState: {
+        state: false,
+        status: null,
+        message: null,
+        loading: false,
+        error: undefined
+    },
     savedSearchesData: {
         data: []
     },
@@ -95,7 +104,10 @@ const context = {
     applyFilter: jest.fn(),
     checkFilters: jest.fn(),
     removeFilter: jest.fn(),
-    setSelectedSort: jest.fn()
+    setSelectedSort: jest.fn(),
+    setSearchSaveModalOpen: jest.fn(),
+    setSearchSaved: jest.fn(),
+    setSearchSavedState: jest.fn()
 };
 
 export default context;
