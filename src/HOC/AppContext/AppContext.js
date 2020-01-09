@@ -95,12 +95,20 @@ const AppContextProvider = props => {
         latestSearchAuditLogId: null
     });
 
-    const [searchSaved, setSearchSaved] = useState(false);
-
     const [searchData, setSearchData] = useState({
         offSet: 0,
         length: 0,
         data: []
+    });
+
+    const [searchSaveModalOpen, setSearchSaveModalOpen] = useState(false);
+    const [searchSaved, setSearchSaved] = useState(false);
+    const [searchSavedState, setSearchSavedState] = useState({
+        state: false,
+        status: null,
+        message: null,
+        loading: false,
+        error: undefined
     });
 
     const [savedSearchesData, setSavedSearchesData] = useState({
@@ -524,7 +532,11 @@ const AppContextProvider = props => {
                 // detailShort
                 handleSearch,
                 searchAuditLogSave,
-                formatFilterObjectForSave
+                formatFilterObjectForSave,
+                searchSaveModalOpen,
+                setSearchSaveModalOpen,
+                searchSavedState,
+                setSearchSavedState
             }}
         >
             {props.children}
