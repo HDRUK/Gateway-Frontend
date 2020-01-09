@@ -13,7 +13,8 @@ import Glossary from "./Containers/Glossary/Glossary";
 import FAQPage from "./Containers/FAQPage/FAQPage";
 import SearchPage from "./Containers/SearchPage/SearchPage";
 import MySearchesPage from "./Containers/MySearchesPage/MySearchesPage";
-import MyAccessRequestsPage from "./Containers/MyAccessRequestsPage/MyAccessRequestsPage";
+// This route is not currently implemented
+// import MyAccessRequestsPage from "./Containers/MyAccessRequestsPage/MyAccessRequestsPage";
 import RequestPage from "./Containers/RequestPage/RequestPage";
 import NotFound from "./Containers/NotFound/NotFound";
 import DetailPage from "./Containers/DetailPage/DetailPage";
@@ -67,11 +68,12 @@ const App = () => {
                                                 <MySearchesPage />
                                             </Content>
                                         </Route>
-                                        <Route exact path="/my-requests">
+                                        {/* This route is not currently implemented */}
+                                        {/* <Route exact path="/my-requests">
                                             <Content nav>
                                                 <MyAccessRequestsPage />
                                             </Content>
-                                        </Route>
+                                        </Route> */}
                                         <Route exact path="/innovation">
                                             <Content nav about>
                                                 <InnovationPage />

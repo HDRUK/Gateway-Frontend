@@ -41,20 +41,20 @@ const Login = () => {
                 <TinySpace />
                 <CenterBlock>
                     <LinkNoDecoration to="/innovation">
-                        <CloudButton center kind="secondary">
+                        <CloudButton center="true" kind="secondary">
                             {appContext.authenticated ? textItems.loggedInContinueButton : textItems.continueButton}
                         </CloudButton>
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (
                         <LinkText href="/logout">
-                            <StyledButton center kind="primary">
+                            <StyledButton center="true" kind="primary">
                                 {textItems.logoutButton}
                             </StyledButton>
                         </LinkText>
                     ) : (
                         <LinkText href="/login">
-                            <StyledButton center kind="primary">
+                            <StyledButton center="true" kind="primary">
                                 {textItems.loginButton}
                             </StyledButton>
                         </LinkText>

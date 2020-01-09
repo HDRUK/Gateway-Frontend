@@ -37,7 +37,7 @@ export const StyledButton = styled(Button)`
     height: 54px;
     font-weight: 700;
 
-    ${p => p.center && "justify-content: center;"}
+    ${p => p.center === "true" && "justify-content: center;"}
 `;
 
 export const CloudButton = styled(StyledButton)`
