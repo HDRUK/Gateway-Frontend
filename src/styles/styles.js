@@ -27,8 +27,13 @@ export const TD = styled.td`
 
 export const Heading = styled.h1`
     font-size: 2.75rem;
+    font-weight: 700;
     line-height: 3.25rem;
     letter-spacing: -0.048125rem;
+`;
+
+export const ThinHeading = styled(Heading)`
+    font-weight: 300;
 `;
 
 export const Heading2 = styled.h2`
