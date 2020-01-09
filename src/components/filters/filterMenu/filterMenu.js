@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useCallback } from "react";
 import { AccordionElement, FilterButton, CenterLoading, CustomTag } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
 import { FilterBlockTitle } from "../../../styles/styles.js";
-import { ExpandingAccordionBlock } from "./styles";
+import { ExpandingAccordionBlock, FilterWrapper } from "./styles";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 
@@ -147,7 +147,7 @@ const FilterMenu = () => {
             >
                 {filterValues &&
                     (Object.keys(filterValues).length <= 4 && (
-                        <div>
+                        <FilterWrapper>
                             {Object.keys(filterValues).map((valueIndex, i) => (
                                 <Filter
                                     key={`resultCard-${i}`}
@@ -164,7 +164,7 @@ const FilterMenu = () => {
                             >
                                 Apply
                             </FilterButton>
-                        </div>
+                        </FilterWrapper>
                     ))}
             </AccordionElement>
         );

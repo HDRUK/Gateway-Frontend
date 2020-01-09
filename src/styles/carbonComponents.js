@@ -35,7 +35,20 @@ export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;
     height: 54px;
+    font-weight: 700;
+
+    ${p => p.center && "justify-content: center;"}
 `;
+
+export const CloudButton = styled(StyledButton)`
+    background-color: ${p => p.theme.colors.white};
+    color: ${p => p.theme.text.heading};
+    :hover {
+        background-color: ${p => p.theme.colors.border};
+        color: ${p => p.theme.text.heading};
+    }
+`;
+
 export const FilterButton = styled(Button)`
     width: calc(100% + 4.6rem);
     margin-left: -1rem;
@@ -44,6 +57,7 @@ export const FilterButton = styled(Button)`
     padding: 0px 0px 0px 0.635rem;
     bottom: -1.75rem;
     margin-top: -1rem;
+    font-weight: 700;
 `;
 
 export const GhostNavigationButton = styled(Button)`
@@ -108,6 +122,10 @@ export const NavItems = styled(SideNavItems)`
 
 export const CheckboxItem = styled(Checkbox)`
     margin: 5px 10px 0px 0px;
+
+    :before {
+        border-radius: 0.125rem;
+    }
 `;
 
 export const SearchBar = styled(Search)`

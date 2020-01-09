@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 import { Heading, CenterBlock, TinySpace, SmallSpace, LinkNoDecoration, LinkText } from "../../styles/styles.js";
-import { StyledButton } from "../../styles/carbonComponents.js";
+import { StyledButton, CloudButton } from "../../styles/carbonComponents.js";
 import { LoginWrapper } from "./styles";
 
 const heading = number => {
@@ -41,18 +41,22 @@ const Login = () => {
                 <TinySpace />
                 <CenterBlock>
                     <LinkNoDecoration to="/innovation">
-                        <StyledButton kind="secondary">
+                        <CloudButton center kind="secondary">
                             {appContext.authenticated ? textItems.loggedInContinueButton : textItems.continueButton}
-                        </StyledButton>
+                        </CloudButton>
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (
                         <LinkText href="/logout">
-                            <StyledButton kind="primary">{textItems.logoutButton}</StyledButton>
+                            <StyledButton center kind="primary">
+                                {textItems.logoutButton}
+                            </StyledButton>
                         </LinkText>
                     ) : (
                         <LinkText href="/login">
-                            <StyledButton kind="primary">{textItems.loginButton}</StyledButton>
+                            <StyledButton center kind="primary">
+                                {textItems.loginButton}
+                            </StyledButton>
                         </LinkText>
                     )}
                 </CenterBlock>
