@@ -89,10 +89,16 @@ const FilterMenu = () => {
 
     useEffect(() => {
         if (modalVisibility) {
-            document.getElementById("main-side-nav").childNodes[1].addEventListener("scroll", setFilterLocation);
+            document
+                .getElementById("main-side-nav")
+                .getElementsByTagName("nav")[0]
+                .addEventListener("scroll", setFilterLocation);
         }
         return () =>
-            document.getElementById("main-side-nav").childNodes[1].removeEventListener("scroll", setFilterLocation);
+            document
+                .getElementById("main-side-nav")
+                .getElementsByTagName("nav")[0]
+                .removeEventListener("scroll", setFilterLocation);
     }, [modalVisibility, setFilterLocation]);
 
     const filterElement = (filterKey, filterValues, i) => {
