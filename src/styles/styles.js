@@ -27,14 +27,19 @@ export const TD = styled.td`
 
 export const Heading = styled.h1`
     font-size: 2.75rem;
+    font-weight: 700;
     line-height: 3.25rem;
     letter-spacing: -0.048125rem;
+`;
+
+export const ThinHeading = styled(Heading)`
+    font-weight: 300;
 `;
 
 export const Heading2 = styled.h2`
     font-size: 3rem;
     font-weight: 700;
-    line-height: 2.8rem;
+    line-height: 3.25rem;
     letter-spacing: -0.051875rem;
     text-align: left;
     color: ${p => p.theme.text.heading};
@@ -449,6 +454,12 @@ export const FilterBlock = styled.div`
     overflow-y: auto;
     > div {
         margin-top: 0 !important;
+    }
+`;
+
+export const FilterWrapper = styled.div`
+    .bx--checkbox-wrapper .bx--checkbox:checked + label:before {
+        background-color: ${p => p.theme.colors.primaryButton};
     }
 `;
 

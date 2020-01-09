@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, DarkText, SmallSpace, Table, TR, TH, TD } from "../../styles/styles.js";
+import { ThinHeading, DarkText, SmallSpace, Table, TR, TH, TD } from "../../styles/styles.js";
 
 const textItems = {
     mainHeading: "Key Terms Glossary"
@@ -9,7 +9,7 @@ const textItems = {
 const Glossary = () => {
     return (
         <DarkText>
-            <Heading>{textItems.mainHeading}</Heading>
+            <ThinHeading>{textItems.mainHeading}</ThinHeading>
             <SmallSpace />
             <Table>
                 <TR>

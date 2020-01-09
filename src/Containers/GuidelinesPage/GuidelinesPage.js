@@ -5,7 +5,7 @@ import GuidelinesBeforeRequest from "../../components/guidelines/beforeRequest";
 import GuidelinesRequest from "../../components/guidelines/request";
 import GuidelinesLinking from "../../components/guidelines/linking";
 
-import { Heading, SmallSpace } from "../../styles/styles.js";
+import { ThinHeading, SmallSpace } from "../../styles/styles.js";
 import { HDRTabs, HDRTab } from "../../styles/carbonComponents";
 
 const textItems = {
@@ -14,7 +14,7 @@ const textItems = {
 const GuidelinesPage = () => {
     return (
         <>
-            <Heading>{textItems.mainHeading}</Heading>
+            <ThinHeading>{textItems.mainHeading}</ThinHeading>
             <SmallSpace />
             <HDRTabs>
                 <HDRTab label="General">

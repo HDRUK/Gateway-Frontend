@@ -1,6 +1,13 @@
 import React from "react";
 
-import { Heading, ParagraphHeading, DarkText, SmallSpace, ParagraphText, NewListItem } from "../../styles/styles.js";
+import {
+    ThinHeading,
+    ParagraphHeading,
+    DarkText,
+    SmallSpace,
+    ParagraphText,
+    NewListItem
+} from "../../styles/styles.js";
 import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
@@ -55,7 +62,7 @@ const textItems = {
 const InnovationPage = () => {
     return (
         <DarkText>
-            <Heading>{textItems.mainHeading}</Heading>
+            <ThinHeading>{textItems.mainHeading}</ThinHeading>
             <SmallSpace />
             <ParagraphText>{textItems.sec1p1}</ParagraphText>
             <SmallSpace />

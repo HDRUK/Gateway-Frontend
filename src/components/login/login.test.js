@@ -4,7 +4,7 @@ import Login from "./Login";
 import { MemoryRouter } from "react-router-dom";
 import { CenterBlock, Heading, SmallSpace, LinkNoDecoration, TinySpace, LinkText } from "../../styles/styles.js";
 import { LoginWrapper } from "./styles";
-import { StyledButton } from "../../styles/carbonComponents.js";
+import { StyledButton, CloudButton } from "../../styles/carbonComponents.js";
 
 import StyleWrapper from "../../HOC/StyleWrapper/StyleWrapper.js";
 
@@ -72,14 +72,16 @@ describe("<Login> ", () => {
             expect(buttons[2].type).toBe(LinkText);
             expect(buttons[2].props.href).toBe("/logout");
 
-            expect(buttons[0].props.children.type).toBe(StyledButton);
+            expect(buttons[0].props.children.type).toBe(CloudButton);
             expect(buttons[0].props.children.props.children).toBe(loginText.loggedInContinueButton);
             expect(buttons[0].props.children.props.kind).toBe("secondary");
+            expect(buttons[0].props.children.props.center).toBeTruthy();
 
             const button = buttons[2].props.children;
             expect(button.type).toBe(StyledButton);
             expect(button.props.kind).toBe("primary");
             expect(button.props.children).toBe(loginText.logoutButton);
+            expect(button.props.center).toBeTruthy();
         });
     });
 });
