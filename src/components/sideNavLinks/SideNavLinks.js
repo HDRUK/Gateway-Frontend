@@ -21,7 +21,7 @@ const AboutPageNavigation = () => (
         </li>
         <li>
             <SideNavLinkItem to="faq">
-                <GhostNavigationButton kind="ghost">faq</GhostNavigationButton>
+                <GhostNavigationButton kind="ghost">FAQ</GhostNavigationButton>
             </SideNavLinkItem>
         </li>
     </SideNavLinksList>
