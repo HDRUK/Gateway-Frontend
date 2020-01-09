@@ -34,7 +34,7 @@ export const Heading = styled.h1`
 export const Heading2 = styled.h2`
     font-size: 3rem;
     font-weight: 700;
-    line-height: 2.8rem;
+    line-height: 3.25rem;
     letter-spacing: -0.051875rem;
     text-align: left;
     color: ${p => p.theme.text.heading};

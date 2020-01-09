@@ -9,46 +9,47 @@ import museoFont1000 from "./fonts/museo-sans-rounded-cufonfonts/MuseoSansRounde
 
 const GlobalStyles = createGlobalStyle`
     @font-face {
-        font-family: 'Museo Sans Rounded 100';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 100;
         src: url(${museoFont100}) format('truetype');
     }
     @font-face {
-        font-family: 'Museo Sans Rounded 300';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 300;
         src: url(${museoFont300}) format('truetype');
     }
     @font-face {
-        font-family: 'Museo Sans Rounded 500';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 500;
         src: url(${museoFont500}) format('truetype');
     }
     @font-face {
-        font-family: 'Museo Sans Rounded 700';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 700;
         src: url(${museoFont700}) format('truetype');
     }
     @font-face {
-        font-family: 'Museo Sans Rounded 900';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 900;
         src: url(${museoFont900}) format('truetype');
     }
     @font-face {
-        font-family: 'Museo Sans Rounded 1000';
+        font-family: 'Museo Sans Rounded';
         font-style: normal;
-        font-weight: normal;
+        font-weight: 1000;
         src: url(${museoFont1000}) format('truetype');
     }
     body {
         padding: 0;
         margin: 0;
         background-color: ${p => p.theme.colors.white};
-        font-family: "Museo Sans Rounded 300";
+        font-family: "Museo Sans Rounded";
+        font-weight: 300;
         letter-spacing: 0.011875rem !important;
     }
   
