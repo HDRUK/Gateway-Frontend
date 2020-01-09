@@ -143,15 +143,14 @@ const RequestPage = props => {
     };
 
     return (
-        <SmallSpace>
-            infoLead
+        <div>
             <StyledSmallBoldText>
                 <LightText>{textItems.heading.toUpperCase()}</LightText>
             </StyledSmallBoldText>
             <StyledHeading>{detailData.title}</StyledHeading>
-            <TinySpace />
+            <SmallSpace />
             <RedText>{textItems.infoLead}</RedText>
-            <TinySpace />
+            <SmallSpace />
             {renderRedirect()}
             <StyledForm
                 onSubmit={e => {
@@ -303,7 +302,7 @@ const RequestPage = props => {
                 <SmallSpace />
             </StyledForm>
             <SmallSpace />
-        </SmallSpace>
+        </div>
     );
 };
 
