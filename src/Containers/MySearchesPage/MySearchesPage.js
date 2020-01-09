@@ -1,7 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../HOC/AppContext/AppContext.js";
-import { CenterLoading, DropdownFilter } from "../../styles/carbonComponents";
-import { SearchInfo, ResultsCounter, SortDiv, LabelText, FloatRight } from "../../styles/styles.js";
+import { CenterLoading, DropdownFilter, ParagraphBullets } from "../../styles/carbonComponents";
+import {
+    SearchInfo,
+    ResultsCounter,
+    SortDiv,
+    LabelText,
+    FloatRight,
+    ParagraphText,
+    DarkText,
+    SmallSpace,
+    NewListItem
+} from "../../styles/styles.js";
 import { SavedSearchesWrapper } from "./styles.js";
 import SavedSearchCard from "../../components/savedSearchCard/savedSearchCard.js";
 
@@ -10,7 +20,14 @@ import { GET_SEARCH_SAVED_BY_USER_ID } from "../../queries/queries.js";
 
 const mySearchesPageText = {
     errorMessage: "Unable to load searches",
-    noResultsMessage: "No searches have been saved"
+    noResultsMessage: "Save your searches here to make finding essential datasets quicker.",
+    noResultsP1: "How to save a search:",
+    noResultsP1Bullet1: "Enter your search query into the search bar and click search or press enter;",
+    noResultsP1Bullet2: "Apply any relevant filters to your search;",
+    noResultsP1Bullet3: "Click ‘Save search’;",
+    noResultsP1Bullet4: "Name your search so you can easily recognise it later;",
+    noResultsP1Bullet5:
+        "Next time you need to find similar datasets, navigate to the ‘Saved Searches’ tab to re-run the saved search"
 };
 
 const MySearchesPage = () => {
@@ -65,7 +82,20 @@ const MySearchesPage = () => {
                 return <SavedSearchCard key={`savedSearchCard-${i}`} savedSearchIndex={i} />;
             })
         ) : (
-            <p>{mySearchesPageText.noResultsMessage}</p>
+            <DarkText>
+                <ParagraphText>{mySearchesPageText.noResultsMessage}</ParagraphText>
+                <SmallSpace />
+                <ParagraphText>{mySearchesPageText.noResultsP1}</ParagraphText>
+                <SmallSpace />
+                <ParagraphBullets>
+                    <NewListItem>{mySearchesPageText.noResultsP1Bullet1}</NewListItem>
+                    <NewListItem>{mySearchesPageText.noResultsP1Bullet2}</NewListItem>
+                    <NewListItem>{mySearchesPageText.noResultsP1Bullet3}</NewListItem>
+                    <NewListItem>{mySearchesPageText.noResultsP1Bullet4}</NewListItem>
+                    <NewListItem>{mySearchesPageText.noResultsP1Bullet5}</NewListItem>
+                </ParagraphBullets>
+                <SmallSpace />
+            </DarkText>
         );
 
     return (
