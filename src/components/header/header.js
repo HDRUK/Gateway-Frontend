@@ -33,7 +33,9 @@ const AppHeader = () => {
 
                     <HeaderAlignmentItem>
                         {appContext.state.datasetCount && (
-                            <InvertedHeaderText>{appContext.state.datasetCount} datasets available</InvertedHeaderText>
+                            <InvertedHeaderText>
+                                {`Discover & Explore ${appContext.state.datasetCount} datasets`}
+                            </InvertedHeaderText>
                         )}
                     </HeaderAlignmentItem>
 

@@ -54,8 +54,7 @@ describe("<Header> ", () => {
 
             const DataSetCount = HeaderAlignmentItems[2].props.children;
             expect(DataSetCount.type).toBe(InvertedHeaderText);
-            expect(DataSetCount.props.children[0]).toBe(1);
-            expect(DataSetCount.props.children[1]).toBe(" datasets available");
+            expect(DataSetCount.props.children).toBe("Discover & Explore 1 datasets");
 
             const Logout = HeaderAlignmentItems[3].props.children;
             expect(HeaderAlignmentItems[3].props.right).toBeTruthy();

@@ -27,10 +27,13 @@ import {
 import styled, { css } from "styled-components";
 
 // HDR Imported carbon components ..
-export const HDRTabs = Tabs;
 export const HDRTab = Tab;
 
 // Styled carbon components
+export const HDRTabs = styled(Tabs)`
+    text-align: center;
+`;
+
 export const StyledButton = styled(Button)`
     padding: 15px;
     width: 215px;
