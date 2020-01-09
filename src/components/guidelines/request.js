@@ -30,17 +30,16 @@ const textItems = {
         "The data custodian expert will be able to advise you what data sets should be requested, and whether multiple requests need to be submitted. In general, if multiple data sets are required for the same purpose, i.e. research study, you will need to complete one request which will be assessed through one process. If you require multiple data sets for different purposes, i.e. multiple research studies, you will need to complete a request for each purpose.",
     bullet1:
         "A clearly defined research study / question(such as a study protocol), research purpose and clearly defined the outputs/dissemination.",
-    bullet2:
-        "A legal basis for accessing the data, e.g. evidence of patient consent or section 251 approval (further information can be found on the page with guidance ",
-    bullet2Link: "http://www.hdf.nihr.ac.uk/getting-ready/before-submitting",
-    bullet2Text: "before submitting a request",
-    bullet2a: " )",
+    bullet2: "A legal basis for accessing the data. For example, evidence of patient consent or section 251 approval",
     bullet3: "Security arrangements, such as IG Toolkit and ISO 27001",
     bullet4: "Evidence that you are complying with the GDPR",
     bullet5:
         "Clear indication of the data being requested, including the data sets and the specific data items / elements",
     bullet6: "Confirmation who will process and manage the data and/or, if applicable, who will link the data sets",
-    bullet7: "Confirmation of the authorised data sharing agreement signatory within your organisation"
+    bullet7: "Confirmation of the authorised data sharing agreement signatory within your organisation",
+    bullet8: "Additional information about what to do to prepare for making a dataset request is available from the ",
+    bullet8Link: "http://www.hdf.nihr.ac.uk/getting-ready/before-submitting",
+    bullet8LinkText: "NHS Health Data Finder"
 };
 
 const GuidelinesRequest = () => {
@@ -64,6 +63,12 @@ const GuidelinesRequest = () => {
                 <NewListItem>{textItems.bullet5}</NewListItem>
                 <NewListItem>{textItems.bullet6}</NewListItem>
                 <NewListItem>{textItems.bullet7}</NewListItem>
+                <NewListItem>
+                    {textItems.bullet8}
+                    <a href={textItems.bullet8Link} target="_blank" rel="noopener noreferrer">
+                        ({textItems.bullet8LinkText})
+                    </a>
+                </NewListItem>
             </ParagraphBullets>
             <SmallSpace />
             <ParagraphText>{textItems.para3}</ParagraphText>

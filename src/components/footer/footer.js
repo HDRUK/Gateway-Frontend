@@ -9,7 +9,7 @@ const footerText = {
     contactUs: "Contact us",
     privacyPolicy: "Privacy Policy",
     termsAndConditions: "Terms and conditions",
-    copyright: "©HDR UK 2020. All rights reserved.X"
+    copyright: "©HDR UK 2020. All rights reserved."
 };
 
 const links = {
