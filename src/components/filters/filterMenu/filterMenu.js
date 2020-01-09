@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useCallback } from "react";
 import { AccordionElement, FilterButton, CenterLoading, CustomTag } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
-import { FilterBlockTitle } from "../../../styles/styles.js";
-import { ExpandingAccordionBlock, FilterWrapper } from "./styles";
+import { FilterBlockTitle, FilterWrapper } from "../../../styles/styles.js";
+import { ExpandingAccordionBlock } from "./styles";
 
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 

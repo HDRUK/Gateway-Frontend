@@ -457,6 +457,12 @@ export const FilterBlock = styled.div`
     }
 `;
 
+export const FilterWrapper = styled.div`
+    .bx--checkbox-wrapper .bx--checkbox:checked + label:before {
+        background-color: ${p => p.theme.colors.primaryButton};
+    }
+`;
+
 export const Triangle = styled.div`
     width: 0;
     height: 0;

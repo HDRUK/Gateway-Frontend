@@ -1,7 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { StyledButton } from "../../../styles/carbonComponents.js";
 import Filter from "../filter/filter.js";
-import { ParagraphText, ButtonSet, FilterBoxContent, Triangle, FilterBlock } from "../../../styles/styles.js";
+import {
+    ParagraphText,
+    ButtonSet,
+    FilterBoxContent,
+    Triangle,
+    FilterBlock,
+    FilterWrapper
+} from "../../../styles/styles.js";
 import { AppContext } from "../../../HOC/AppContext/AppContext.js";
 import { filterChangesCheck } from "../filterMenu/filterMenu";
 
@@ -46,14 +53,16 @@ const FilterBox = () => {
             <FilterBoxContent>
                 <ParagraphText>{filterTitle}</ParagraphText>
                 <FilterBlock>
-                    {Object.keys(values).map((valueIndex, i) => (
-                        <Filter
-                            key={`resultCard-${i}`}
-                            title={values[valueIndex].value}
-                            checked={values[valueIndex].checked}
-                            onChange={() => appContext.checkFilters(filterKey, valueIndex)}
-                        />
-                    ))}
+                    <FilterWrapper>
+                        {Object.keys(values).map((valueIndex, i) => (
+                            <Filter
+                                key={`resultCard-${i}`}
+                                title={values[valueIndex].value}
+                                checked={values[valueIndex].checked}
+                                onChange={() => appContext.checkFilters(filterKey, valueIndex)}
+                            />
+                        ))}
+                    </FilterWrapper>
                 </FilterBlock>
             </FilterBoxContent>
             <ButtonSet>

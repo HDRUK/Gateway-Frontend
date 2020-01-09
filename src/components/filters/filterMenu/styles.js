@@ -9,9 +9,3 @@ export const ExpandingAccordionBlock = styled(AccordionBlock).attrs(p => ({
     display: inline-block;
     padding-bottom: "1rem";
 `;
-
-export const FilterWrapper = styled.div`
-    .bx--checkbox-wrapper .bx--checkbox:checked + label:before {
-        background-color: ${p => p.theme.colors.primaryButton};
-    }
-`;
