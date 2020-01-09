@@ -19,6 +19,11 @@ const AboutPageNavigation = () => (
                 <GhostNavigationButton kind="ghost">Glossary</GhostNavigationButton>
             </SideNavLinkItem>
         </li>
+        <li>
+            <SideNavLinkItem to="faq">
+                <GhostNavigationButton kind="ghost">faq</GhostNavigationButton>
+            </SideNavLinkItem>
+        </li>
     </SideNavLinksList>
 );
 

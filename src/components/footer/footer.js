@@ -9,7 +9,7 @@ const footerText = {
     contactUs: "Contact us",
     privacyPolicy: "Privacy Policy",
     termsAndConditions: "Terms and conditions",
-    copyright: "©HDR UK 2019. All rights reserved. | Design and development by IBM IX"
+    copyright: "©HDR UK 2020. All rights reserved.X"
 };
 
 const links = {

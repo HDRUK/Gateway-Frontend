@@ -5,20 +5,23 @@ import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     para1:
-        "Before submitting an enquiry for data access, you need to consider the following as this information will be required by  data custodians:",
-    para1bullet1: "Ethical Approval for proposed use",
+        "All requests for access will be reviewed by the data custodians in line with their information governance requirements and responsibilities under UK legislation. Access will not be provided without meeting information governance requirements.",
     para2:
+        "Before submitting an enquiry for data access, you need to consider the following as this information will be required by  data custodians:",
+    para2bullet1: "Ethical Approval for proposed use",
+    para2bullet2:
         "The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, ",
 
-    para2Link: "http://www.hra-decisiontools.org.uk/ethics",
-    para2Text: "click here. ",
-    para2a: " Alternatively, you can find this guidance on the ",
-    para2aLink: "http://www.hra.nhs.uk/documents/2013/09/does-my-project-require-rec-review.pdf",
-    para2aText: "HRA website. ",
-    para2bullet1: "Legal basis for accessing and processing data.",
-    para2bullet2:
+    para2buller2Link: "http://www.hra-decisiontools.org.uk/ethics",
+    para2bullet2Text: "click here. ",
+    para2bullet2a: " Alternatively, you can find this guidance on the ",
+    para2bullet2aLink: "http://www.hra.nhs.uk/documents/2013/09/does-my-project-require-rec-review.pdf",
+    para2bullet2aText: "HRA website. ",
+    para2bullet2b: "which applies to England.",
+    para2bullet3: "Legal basis for accessing and processing data.",
+    para2bullet4:
         "Data Sharing Framework Contract and/or Data Sharing Agreement. Some Data Custodians require your organisation to sign a Data Sharing Framework Contract (organisation / department level) and Data Sharing Agreement (study / project level). It may be worthwhile confirming whether your organisation has already signed a Data Sharing Framework Contract with the Lead Data Custodian, and whether this includes / covers your Department. Note that only a legal entity can sign a Data Sharing Agreement.",
-    para2bullet3:
+    para2bullet5:
         "Data Security and Protection Toolkit. The Data Security and Protection Toolkit (DSPT) is an online self-assessment tool that allows organisations to measure their performance against the National Data Guardian’s 10 data security standards.",
 
     para3:
@@ -41,8 +44,9 @@ const textItems = {
 const GuidelinesBeforeRequest = () => {
     return (
         <DarkText>
-            <ParagraphText>{textItems.para1}</ParagraphText>
+            <ParagraphText>{textItems.para1a}</ParagraphText>
             <SmallSpace />
+            <ParagraphText>{textItems.para1}</ParagraphText>
             <ParagraphBullets>
                 <NewListItem>{textItems.para1bullet1}</NewListItem>
             </ParagraphBullets>

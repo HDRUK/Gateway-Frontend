@@ -5,11 +5,14 @@ import { ParagraphBullets } from "../../styles/carbonComponents.js";
 
 const textItems = {
     mainHeading: "About the Innovation Gateway",
-    sec1Heading1: "What is the Innovation Gateway?",
     sec1p1:
-        "The Health Data Research Innovation Gateway provides a common access point to discover and enquire about access to UK health datasets held by members of the UK Health Data Research Alliance.  It provides detailed information about the datasets, such as a description, size of the population, and the legal basis for access.",
+        "The Health Data Research Innovation Gateway provides a common access point to discover and enquire about access to UK health datasets for research and innovation held by members of the UK Health Data Research Alliance.  It provides detailed information about the datasets, such as a description, size of the population, and the legal basis for access. ",
     sec1p2:
-        "The datasets that are discoverable through the Innovation Gateway are from organisations in the NHS, research institutes and charities, which are part of the UK Health Data Research Alliance.  You can find out more about the members of the UK Health Data Research Alliance here.",
+        "The datasets that are discoverable through the Innovation Gateway are from organisations in the NHS, research institutes and charities, which are part of the UK Health Data Research Alliance.  You can find out more about the members of the ",
+    sec1p2link1: "http://www.ukhealthdata.org/",
+    sec1p2link1text: "UK Health Data Research Alliance here.",
+    sec1p2part2:
+        " The information on the Innovation Gateway has been provided by the relevant data custodians.  As this is phase one, there may be some spelling or grammatical errors or some information missing, and this will be continually updated.",
     sec1p3: "The Innovation Gateway does not hold or store any patient or health data.",
     sec1p4:
         "This portal is the first phase of the Innovation Gateway’s development and has been created with input from patients, the public, researchers and innovators working in health and care in the UK.  It will continue to be developed in partnership with these groups.",
@@ -54,11 +57,15 @@ const InnovationPage = () => {
         <DarkText>
             <Heading>{textItems.mainHeading}</Heading>
             <SmallSpace />
-            <ParagraphHeading>{textItems.sec1Heading1}</ParagraphHeading>
-            <SmallSpace />
             <ParagraphText>{textItems.sec1p1}</ParagraphText>
             <SmallSpace />
-            <ParagraphText>{textItems.sec1p2}</ParagraphText>
+            <ParagraphText>
+                {textItems.sec1p2}
+                <a href={textItems.sec1p2link1} target="_blank" rel="noopener noreferrer">
+                    {textItems.sec1p2link1text}
+                </a>
+                {textItems.sec1p2part2}
+            </ParagraphText>
             <SmallSpace />
             <ParagraphText>{textItems.sec1p3}</ParagraphText>
             <SmallSpace />
