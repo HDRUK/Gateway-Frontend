@@ -31,6 +31,8 @@ import { AppContext } from "../../HOC/AppContext/AppContext.js";
 
 const textItems = {
     heading: "Enquire About",
+    infoLead:
+        "If the information is available, please ensure your request is in line with the Data Access requirements for the given dataset.",
     aimHeader: "Research Purpose",
     aimHelpText: "Please briefly explain the purpose of your research and why you require access to the dataset.",
     datasetHeader: "Linked Datasets",
@@ -47,7 +49,8 @@ const textItems = {
     evidenceHelpText:
         "Please provide a link(s) to relevant sources that showcase evidence of the ethical and legally compliant processing of data by your organisation.",
     contact: "Contact Number",
-    button: "Submit Enquiry"
+    button: "Submit Enquiry",
+    infoEnd: "By submitting an enquiry you agree to Health Data Research UK’s Innovation Gateway terms and conditions."
 };
 
 const RequestPage = props => {
@@ -141,11 +144,14 @@ const RequestPage = props => {
 
     return (
         <SmallSpace>
+            infoLead
             <StyledSmallBoldText>
                 <LightText>{textItems.heading.toUpperCase()}</LightText>
             </StyledSmallBoldText>
             <StyledHeading>{detailData.title}</StyledHeading>
-            <SmallSpace></SmallSpace>
+            <TinySpace />
+            <RedText>{textItems.infoLead}</RedText>
+            <TinySpace />
             {renderRedirect()}
             <StyledForm
                 onSubmit={e => {
@@ -289,11 +295,14 @@ const RequestPage = props => {
                     ></StyledTextInput>
                 </HalfFormWidth>
                 <TinySpace />
+                <RedText>{textItems.infoEnd}</RedText>
+                <TinySpace />
                 <LoadingButton kind="primary" type="submit">
                     {requestLoading ? <LoadingWheel /> : textItems.button}
                 </LoadingButton>
                 <SmallSpace />
             </StyledForm>
+            <SmallSpace />
         </SmallSpace>
     );
 };

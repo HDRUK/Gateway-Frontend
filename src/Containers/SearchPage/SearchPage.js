@@ -36,7 +36,8 @@ const noResultContent = {
     tipsBullet1: "Check your spelling and try again",
     tipsBullet2: `Use alternative search terms, for example, “child health” instead of “paediatrics”`,
     tipsBullet3: "Keep your search terms - the search service works best with shorter descriptions",
-    tipsBullet4: "Found something wrong? Contact us on ",
+    tipsBullet4:
+        "Not all datasets that are available for health research are discoverable through the Innovation Gateway. If there is a dataset that would like to see on the Innovation Gateway, or if you have found an error, please contact us on ",
     tipsBullet4LinkText: "support@healthdatagateway.org"
 };
 
