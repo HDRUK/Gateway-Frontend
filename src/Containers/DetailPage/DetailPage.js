@@ -24,7 +24,9 @@ const textItems = {
     modalTitle: "Access request for",
     modalGuidelineText:
         "You must be logged in to request access to this dataset. We currently only support log in via OpenAthens, if you do not have access to an OpenAthens login, you can contact the Data Custodian directly.",
-    contactHeading: "Contact details for Data custodian"
+    contactHeading: "Contact details for Data custodian",
+    modalGuidelineNoEmailText:
+        "The data provider has not entered a valid email address, please use the information below to find out more information, or contact us."
 };
 
 const DetailPage = props => {
@@ -83,15 +85,19 @@ const DetailPage = props => {
                             }}
                             onSecondarySubmit={() => setModalOpen(false)}
                             onRequestClose={() => setModalOpen(false)}
-                            // modalLabel={textItems.saveSearch}
                             modalHeading={textItems.modalTitle}
                             primaryButtonText={textItems.login}
                             secondaryButtonText={textItems.cancel}
-                            // primaryButtonDisabled={!(searchTerm || rename) || renameInvalid}
-                            // aria-label={textItems.aria.renameAndSaveSearch}
+                            primaryButtonDisabled={
+                                detailData.contactPoint && detailData.contactPoint.indexOf("@") === -1
+                            }
                         >
                             <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
-                            <StyledSmallText>{textItems.modalGuidelineText}</StyledSmallText>
+                            <StyledSmallText>
+                                {detailData.contactPoint && detailData.contactPoint.indexOf("@") === -1
+                                    ? textItems.modalGuidelineNoEmailText
+                                    : textItems.modalGuidelineText}
+                            </StyledSmallText>
                             <TinySpace />
                             <StyledSmallBoldText>{textItems.contactHeading}</StyledSmallBoldText>
 
@@ -100,7 +106,7 @@ const DetailPage = props => {
                                     <a href={detailData.contactPoint} target="_blank" rel="noopener noreferrer">
                                         {detailData.contactPoint}
                                     </a>
-                                ) : detailData.contactPoint ? (
+                                ) : detailData.contactPoint && detailData.contactPoint.indexOf("@") !== -1 ? (
                                     <a href={`mailto:${detailData.contactPoint}`}>{detailData.contactPoint}</a>
                                 ) : (
                                     "No contact information available"
