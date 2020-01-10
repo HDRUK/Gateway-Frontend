@@ -7,7 +7,7 @@ const theme = {
         primaryLight: "#E2EFEA",
         secondary: "#475DA7",
         white: "#ffffff",
-        lightText: "#979797",
+        lightText: "#757575",
         darkText: "#3c3c3b",
         blueText: "#0f62fe",
         darkBlue: "#002d9c",

@@ -128,7 +128,7 @@ export const BlueText = styled.span`
 `;
 
 export const LightText = styled.span`
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     line-height: 1.45rem;
     color: ${p => p.theme.colors.lightText};
 `;
