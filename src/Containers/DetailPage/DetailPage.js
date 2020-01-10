@@ -8,7 +8,8 @@ import {
     TinySpace,
     StyledCard,
     StyledSmallBoldText,
-    LinkNoDecoration
+    LinkNoDecoration,
+    ParagraphText
 } from "../../styles/styles";
 import PropTypes from "prop-types";
 
@@ -105,7 +106,7 @@ const DetailPage = props => {
                             ]}
                         ></InfoDetailGrid>
                         <TinySpace />
-                        <StyledSmallText>{detailData.abstract || "Not specified"}</StyledSmallText>
+                        <ParagraphText>{detailData.abstract || "Not specified"}</ParagraphText>
                         <TinySpace />
                         <StyledHeading>Data Access</StyledHeading>
                         <TinySpace />
