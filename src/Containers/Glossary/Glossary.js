@@ -14,9 +14,9 @@ const Glossary = () => {
             <Table>
                 <thead>
                     <TR>
-                        <TH colspan="2">Section</TH>
-                        <TH colspan="6">Term</TH>
-                        <TH colspan="12">Definition</TH>
+                        <TH>Section</TH>
+                        <TH>Term</TH>
+                        <TH>Definition</TH>
                     </TR>
                 </thead>
                 <tbody>
@@ -52,7 +52,10 @@ const Glossary = () => {
                         </TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="6">DS: Top of page info</TD>
+                        <TD colSpan="3">Detailed Dataset Summary</TD>
+                    </TR>
+                    <TR>
+                        <TD rowSpan="6">Top of page info</TD>
                         <TD>Release date</TD>
                         <TD>Date of formal issuance of the distribution.</TD>
                     </TR>
@@ -80,7 +83,7 @@ const Glossary = () => {
                         <TD>A summary of the resource.</TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="3">DS: Data access</TD>
+                        <TD rowSpan="3">Data access</TD>
                         <TD>Access request cost</TD>
                         <TD>The total cost for having access to the dataset.</TD>
                     </TR>
@@ -99,7 +102,7 @@ const Glossary = () => {
                         </TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="4">DS: Coverage</TD>
+                        <TD rowSpan="4">Coverage</TD>
                         <TD>Jurisdiction</TD>
                         <TD>
                             A named and identified geospatial area with defined borders which is used for exercising the
@@ -119,7 +122,7 @@ const Glossary = () => {
                         <TD>The frequency at which dataset is published.</TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="2">DS: Demographics</TD>
+                        <TD rowSpan="2">Demographics</TD>
                         <TD>Statistical population</TD>
                         <TD>The primary population size and type within the dataset.</TD>
                     </TR>
@@ -128,7 +131,7 @@ const Glossary = () => {
                         <TD>The age range of the individuals included within data.</TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="1">DS: Related resources</TD>
+                        <TD rowSpan="1">Related resources</TD>
                         <TD>Physical sample availability</TD>
                         <TD>
                             Availability of physical samples associated with the dataset, description of the samples
@@ -136,7 +139,7 @@ const Glossary = () => {
                         </TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="3">DS: Related datasets</TD>
+                        <TD rowSpan="3">Related datasets</TD>
                         <TD>Group</TD>
                         <TD>Information on whether the dataset is part of a wider group.</TD>
                     </TR>
@@ -155,7 +158,7 @@ const Glossary = () => {
                         </TD>
                     </TR>
                     <TR>
-                        <TD rowSpan="2">DS: Attributions</TD>
+                        <TD rowSpan="2">Attributions</TD>
                         <TD>Creator</TD>
                         <TD>The person who created the dataset.</TD>
                     </TR>
