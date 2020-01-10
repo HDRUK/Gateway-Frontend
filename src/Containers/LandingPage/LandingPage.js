@@ -26,19 +26,23 @@ import { Search32, Send32, Locked32 } from "@carbon/icons-react";
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway?",
     landingFirstPara:
-        "Welcome to the Health Data Research Innovation Gateway – Minimum Viable Product. This is a portal to find and enquire about access to UK health datasets for research.  The Innovation Gateway provides detailed descriptions of these datasets, which you can search, browse and enquire about access.  It does not hold or store any patient or health data.",
+        "Welcome to the Health Data Research Innovation Gateway – phase one. This is a portal to find and enquire about access to UK health datasets for research.  The Innovation Gateway provides detailed descriptions of these datasets, which you can search, browse and enquire about access.  It does not hold or store any patient or health data. ",
     landingSecondPara:
-        "The Innovation Gateway is being developed by HDR UK as part of the Digital Innovation Hubs Programme. This version provides limited functionality and will be updated further.",
+        "The Innovation Gateway is being developed by Health Data Research UK as part of the Digital Innovation Hub Programme. This phase one version provides limited functionality and will be updated further. ",
     bannerFirstTitle: "Discover",
     bannerFirstPara:
         "The Innovation Gateway allows you to quickly discover and identify health related datasets.  Use a keyword search or browse to get more detailed descriptions of the datasets that interest you. You can sort, filter and search results to find what you need.",
     bannerSecondTitle: "Enquire",
     bannerSecondPara:
-        "The current version of the Innovation Gateway only supports access requests from researchers and innovators with an OpenAthens account.",
+        "The current version of the Innovation Gateway only facilitates access requests from researchers and innovators with an OpenAthens account. Other researchers are able to contact the data custodian directly.",
     bannerThirdTitle: "Security",
     bannerThirdPara:
-        "All data access requests are sent to the relevant data custodian(s) for consideration.  The Innovation Gateway supports members of the UK Health Data Research Alliance, who have subscribed to the secure safeguarding of personal health data and responsible access to this data for research and innovation, in line with existing UK legislation.",
-    partnersHeading: "Alliance Members include"
+        "All data access requests are sent to the relevant data custodian(s) for consideration. The Innovation Gateway supports members of the ",
+    bannerThirdParalink: "http://www.ukhealthdata.org/",
+    bannerThirdParalinktext: "UK Health Data Research Alliance",
+    bannerThirdParaa:
+        ", who have subscribed to the secure safeguarding of personal health data and responsible access to this data for research and innovation, in line with existing UK legislation.",
+    partnersHeading: "UK Health Data Research Alliance members include:"
 };
 
 const LandingPage = () => {
@@ -95,7 +99,13 @@ const LandingPage = () => {
                         <ParagraphHeading3>{textItems.bannerThirdTitle}</ParagraphHeading3>
                         <SmallSpace />
                         <ParagraphBox>
-                            <ParagraphText>{textItems.bannerThirdPara}</ParagraphText>
+                            <ParagraphText>
+                                {textItems.bannerThirdPara}
+                                <a href={textItems.bannerThirdParalink} target="_blank" rel="noopener noreferrer">
+                                    {textItems.bannerThirdParalinktext}
+                                </a>
+                                {textItems.bannerThirdParaa}
+                            </ParagraphText>
                         </ParagraphBox>
                     </ParagraphAndHeaderBox>
                 </>

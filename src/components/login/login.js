@@ -22,7 +22,7 @@ const textItems = {
     continueButton: "Continue as a guest",
     loggedInContinueButton: "Continue",
     description:
-        "Search and explore information about these datasets. If you have an OpenAthens account, you can log in to enquire about access to these datasets."
+        "Search and explore information about these datasets. If you have an OpenAthens account, you can log in to enquire about access to these datasets for research and innovation."
 };
 
 const Login = () => {

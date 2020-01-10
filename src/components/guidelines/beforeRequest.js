@@ -11,14 +11,14 @@ const textItems = {
     para2bullet1:
         "Specific information governance and access requirements for the given dataset: where available, this is given in the Data Access section of the dataset page.",
     para2bullet2:
-        "Ethical Approval for proposed use The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, ",
+        "Ethical Approval for proposed use. The Medical Research Council provides a decision tool to determine if your study requires approval from an NHS Research Ethics Committee. To access the tool, ",
 
     para2bullet2Link: "http://www.hra-decisiontools.org.uk/ethics",
     para2bullet2Text: "click here. ",
     para2bullet2a: " Alternatively, you can find this guidance on the ",
     para2bullet2aLink: "http://www.hra.nhs.uk/documents/2013/09/does-my-project-require-rec-review.pdf",
-    para2bullet2aText: "HRA website.",
-    para2bullet2b: " which applies to England.",
+    para2bullet2aText: "HRA website",
+    para2bullet2b: ", which applies to England.",
     para2bullet3: "Legal basis for accessing and processing data.",
     para2bullet4:
         "Data Sharing Framework Contract and/or Data Sharing Agreement. Some Data Custodians require your organisation to sign a Data Sharing Framework Contract (organisation / department level) and Data Sharing Agreement (study / project level). It may be worthwhile confirming whether your organisation has already signed a Data Sharing Framework Contract with the Lead Data Custodian, and whether this includes / covers your Department. Note that only a legal entity can sign a Data Sharing Agreement.",
@@ -87,16 +87,6 @@ const GuidelinesBeforeRequest = () => {
                 </NewListItem>
             </ParagraphBullets>
             <SmallSpace />
-            {/* <ParagraphText>
-                {textItems.para2}
-                <a href={textItems.para2Link} target="_blank" rel="noopener noreferrer">
-                    {textItems.para2Text}
-                </a>
-                {textItems.para2a}
-                <a href={textItems.para2aLink} target="_blank" rel="noopener noreferrer">
-                    {textItems.para2aText}
-                </a>
-            </ParagraphText> */}
             <ParagraphText>
                 {textItems.para3}
                 <a href={textItems.para3Link} target="_blank" rel="noopener noreferrer">

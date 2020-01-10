@@ -22,7 +22,7 @@ const textItems = {
     cancel: "Cancel",
     modalTitle: "Access request for",
     modalGuidelineText:
-        "You must be logged in to request access to this dataset. We currently only support log in via OpenAthens, if you do not have access to an OpenAthens login, you can contact the Data Customdian directly.",
+        "You must be logged in to request access to this dataset. We currently only support log in via OpenAthens, if you do not have access to an OpenAthens login, you can contact the Data Custodian directly.",
     contactHeading: "Contact details for Data custodian"
 };
 
@@ -76,7 +76,9 @@ const DetailPage = props => {
                         <StyledModal
                             id="save-search-modal"
                             open={modalOpen}
-                            onRequestSubmit={() => {(window.location.href = "/login")}}
+                            onRequestSubmit={() => {
+                                window.location.href = "/login";
+                            }}
                             onSecondarySubmit={() => setModalOpen(false)}
                             onRequestClose={() => setModalOpen(false)}
                             // modalLabel={textItems.saveSearch}

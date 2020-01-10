@@ -25,7 +25,7 @@ const textItems = {
     para1:
         "Once you have been directed to the appropriate data custodians, they will guide you through the process to submit your enquiry  for access to the health data, in line with legislation and information governance requirements. This process varies between data custodians.",
     para2:
-        "Overall, you are required to clearly demonstrate that your enquiry is being made to support the provision of health and social care, and the promotion of health. To do this, you can be expected to complete an application form and may be asked to provide the following material:[",
+        "Overall, you are required to clearly demonstrate that your enquiry is being made to support the provision of health and social care, and the promotion of health. To do this, you can be expected to complete an application form and may be asked to provide the following material",
     para3:
         "The data custodian expert will be able to advise you what data sets should be requested, and whether multiple requests need to be submitted. In general, if multiple data sets are required for the same purpose, i.e. research study, you will need to complete one request which will be assessed through one process. If you require multiple data sets for different purposes, i.e. multiple research studies, you will need to complete a request for each purpose.",
     bullet1:
@@ -51,13 +51,7 @@ const GuidelinesRequest = () => {
             <SmallSpace />
             <ParagraphBullets>
                 <NewListItem>{textItems.bullet1}</NewListItem>
-                <NewListItem>
-                    {textItems.bullet2}
-                    <a href={textItems.bullet2Link} target="_blank" rel="noopener noreferrer">
-                        ({textItems.bullet2Text})
-                    </a>
-                    {textItems.bullet2a}
-                </NewListItem>
+                <NewListItem>{textItems.bullet2}</NewListItem>
                 <NewListItem>{textItems.bullet3}</NewListItem>
                 <NewListItem>{textItems.bullet4}</NewListItem>
                 <NewListItem>{textItems.bullet5}</NewListItem>
@@ -66,7 +60,7 @@ const GuidelinesRequest = () => {
                 <NewListItem>
                     {textItems.bullet8}
                     <a href={textItems.bullet8Link} target="_blank" rel="noopener noreferrer">
-                        ({textItems.bullet8LinkText})
+                        {textItems.bullet8LinkText}
                     </a>
                 </NewListItem>
             </ParagraphBullets>
