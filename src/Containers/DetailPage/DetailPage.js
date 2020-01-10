@@ -61,7 +61,8 @@ const DetailPage = props => {
                     <DarkText>
                         <StyledHeading>{detailData.title || "Title Unknown"}</StyledHeading>
                         <TinySpace />
-                        {appContext.authenticated ? (
+                        {appContext.authenticated &&
+                        (detailData.contactPoint && detailData.contactPoint.indexOf("@") !== -1) ? (
                             <LinkNoDecoration
                                 to={`/request-access/${detailData.id}`}
                                 onClick={() => searchResultId(detailData.id)}
@@ -93,7 +94,18 @@ const DetailPage = props => {
                             <StyledSmallText>{textItems.modalGuidelineText}</StyledSmallText>
                             <TinySpace />
                             <StyledSmallBoldText>{textItems.contactHeading}</StyledSmallBoldText>
-                            <StyledSmallText>{detailData.contactPoint}</StyledSmallText>
+
+                            <StyledSmallText>
+                                {detailData.contactPoint && detailData.contactPoint.indexOf("@") === -1 ? (
+                                    <a href={detailData.contactPoint} target="_blank" rel="noopener noreferrer">
+                                        {detailData.contactPoint}
+                                    </a>
+                                ) : detailData.contactPoint ? (
+                                    <a href={`mailto:${detailData.contactPoint}`}>{detailData.contactPoint}</a>
+                                ) : (
+                                    "No contact information available"
+                                )}
+                            </StyledSmallText>
                         </StyledModal>
                         <TinySpace />
                         <InfoDetailGrid
