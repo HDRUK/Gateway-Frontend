@@ -34,10 +34,9 @@ const textItems = {
         "The Innovation Gateway allows you to quickly discover and identify health related datasets.  Use a keyword search or browse to get more detailed descriptions of the datasets that interest you. You can sort, filter and search results to find what you need.",
     bannerSecondTitle: "Enquire",
     bannerSecondPara:
-        "The current version of the Innovation Gateway only facilitates access requests from researchers and innovators with an OpenAthens account. Other researchers are able to contact the data custodian directly.",
+        "The current version of the Innovation Gateway only supports access request enquiries from researchers and innovators with an OpenAthens account. All data access request enquiries are sent to the relevant data custodian(s) for consideration.",
     bannerThirdTitle: "Security",
-    bannerThirdPara:
-        "All data access requests are sent to the relevant data custodian(s) for consideration. The Innovation Gateway supports members of the ",
+    bannerThirdPara: "The Innovation Gateway supports members of the ",
     bannerThirdParalink: "http://www.ukhealthdata.org/",
     bannerThirdParalinktext: "UK Health Data Research Alliance",
     bannerThirdParaa:
