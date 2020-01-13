@@ -7,7 +7,8 @@ const textItems = {
     secondText: " will help us improve it."
 };
 
-const link = "https://docs.google.com/forms/d/e/1FAIpQLSdPuRFdqG7f0PA3OfJORxax9Mgk7I0H3c4ocHPlGFvuCExdhw/viewform";
+// const link = "https://docs.google.com/forms/d/e/1FAIpQLSdPuRFdqG7f0PA3OfJORxax9Mgk7I0H3c4ocHPlGFvuCExdhw/viewform";
+const link = "http://help.healthdatagateway.org";
 
 const BetaBanner = () => (
     <BetaWrapper>
