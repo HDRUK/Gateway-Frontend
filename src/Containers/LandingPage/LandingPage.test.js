@@ -61,7 +61,7 @@ describe("<LandingPage> ", () => {
     it("should check the correct components are displayed", () => {
         const landingPageWrapper = renderedOutput.findByType(LandingPageWrapper);
         const landingPageContent = landingPageWrapper.props.children;
-        expect(landingPageContent).toHaveLength(8);
+        expect(landingPageContent).toHaveLength(9);
         expect(landingPageContent[0].type).toBe(MediumSpace);
         expect(landingPageContent[1].type).toBe(DarkText);
         expect(landingPageContent[2].type).toBe(MediumSpace);
