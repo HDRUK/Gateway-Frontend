@@ -3,6 +3,7 @@ import ImageBlock from "../../components/imageBlock/imageBlock.js";
 import Image from "../../components/image/image.js";
 import ParagraphBanner from "../../components/paragraphBanner/paragraphBanner.js";
 import mainImage from "../../assets/landing_page_image_1.png";
+import CookieConsent from "react-cookie-consent";
 
 import { LandingPageWrapper, ParagraphIcon, PartnerImage } from "./styles.js";
 import {
@@ -47,6 +48,21 @@ const textItems = {
 const LandingPage = () => {
     return (
         <LandingPageWrapper>
+            <CookieConsent
+                location="bottom"
+                buttonText="Accept"
+                enableDeclineButton
+                declineButtonText="Dismiss"
+                flipButtons
+                cookieName="myAwesomeCookieName2"
+                style={{ background: "#475DA7", height: "3.125", fontsize: "25pt" }}
+                buttonStyle={{ background: "#2FBB93", color: "#ffffff" }}
+                declineButtonStyle={{ background: "#ffffff", color: "#2FBB93" }}
+                expires={150}
+                debug={true}
+            >
+                This website uses cookies to enhance the user experience.
+            </CookieConsent>
             <MediumSpace />
             <DarkText>
                 <ParagraphAndHeaderBox>
