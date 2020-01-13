@@ -26,7 +26,7 @@ const textItems = {
         "You must be logged in to request access to this dataset. We currently only support log in via OpenAthens, if you do not have access to an OpenAthens login, you can contact the Data Custodian directly.",
     contactHeading: "Contact details for Data custodian",
     modalGuidelineNoEmailText:
-        "The data provider has not entered a valid email address, please use the information below to find out more information, or contact us."
+        "This dataset does not currently support Access Request Enquiries directly through the Gateway. Details of how to request access are given below:"
 };
 
 const DetailPage = props => {
@@ -78,7 +78,7 @@ const DetailPage = props => {
                         )}
 
                         <StyledModal
-                            id="save-search-modal"
+                            id="access-request-modal"
                             open={modalOpen}
                             onRequestSubmit={() => {
                                 window.location.href = "/login";
