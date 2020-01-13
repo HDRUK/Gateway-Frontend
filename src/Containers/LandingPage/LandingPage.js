@@ -176,7 +176,6 @@ const LandingPage = () => {
                 buttonStyle={{ background: "#2FBB93", color: "#ffffff" }}
                 declineButtonStyle={{ background: "#ffffff", color: "#2FBB93" }}
                 expires={150}
-                debug={true}
             >
                 This website uses cookies to enhance the user experience.
             </CookieConsent>
