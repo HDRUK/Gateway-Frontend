@@ -40,6 +40,7 @@ export const CUSTOM_SEARCH = gql`
 export const SEARCH_AUDIT_LOG_SAVE = gql`
     mutation SearchAuditLogSave(
         $userId: String
+        $sessionId: String
         $searchTerm: String!
         $endPoint: String!
         $offSet: Int!
@@ -49,6 +50,7 @@ export const SEARCH_AUDIT_LOG_SAVE = gql`
     ) {
         searchAuditLogSave(
             userId: $userId
+            sessionId: $sessionId
             searchTerm: $searchTerm
             endPoint: $endPoint
             offSet: $offSet

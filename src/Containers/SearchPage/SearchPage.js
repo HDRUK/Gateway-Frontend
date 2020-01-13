@@ -160,6 +160,7 @@ const SearchPage = () => {
     const setOffSet = appContext.setOffSet;
     const searchAuditLogSave = appContext.searchAuditLogSave;
     const formatFilterObjectForSave = appContext.formatFilterObjectForSave;
+    const sessionId = appContext.sessionId;
 
     const [getItemsSearch, { error, loading, data, fetchMore, networkStatus }] = useLazyQuery(CUSTOM_SEARCH);
 
@@ -194,6 +195,7 @@ const SearchPage = () => {
                 searchAuditLogSave({
                     variables: {
                         userId: appContext.userId,
+                        sessionId,
                         searchTerm: searchTerm,
                         endPoint: "",
                         offSet: 0,
@@ -217,6 +219,7 @@ const SearchPage = () => {
                 searchAuditLogSave({
                     variables: {
                         userId: appContext.userId,
+                        sessionId,
                         searchTerm: searchTerm,
                         endPoint: "",
                         offSet: 0,

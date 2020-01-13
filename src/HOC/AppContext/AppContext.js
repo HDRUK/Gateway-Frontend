@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import hdruk_logo_black from "../../assets/hdruk_black.png";
 import nhs_logo from "../../assets/nhs_logo.png";
@@ -26,6 +26,8 @@ import partnerLogo15 from "../../assets/alliance_logos/NHSX.png";
 import partnerLogo16 from "../../assets/alliance_logos/RSC logo.JPG";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
+
+import { useCookies } from "react-cookie";
 
 import {
     DATASET_COUNT,
@@ -66,9 +68,16 @@ const AppContextProvider = props => {
         }
     };
 
+    const [cookies] = useCookies(["sessionID"]);
+
     const [userEmail, setUserEmail] = useState(localStorage.getItem("userEmail"));
     const [userId, setUserId] = useState(localStorage.getItem("userId"));
+    const [sessionId, setSessionId] = useState(cookies.sessionID);
     const [authenticated, setAuthenticated] = useState(localStorage.getItem("authenticated") === "true" ? true : false);
+
+    useEffect(() => {
+        setSessionId(cookies.sessionID);
+    }, [cookies.sessionID, setSessionId]);
 
     const setUser = (userId, userEmail, token) => {
         localStorage.setItem("userId", userId);
@@ -277,7 +286,8 @@ const AppContextProvider = props => {
             const filterArray = filterObject ? formatFilterObjectForSave(filterObject) : [];
             searchAuditLogSave({
                 variables: {
-                    userId: userId,
+                    userId,
+                    sessionId,
                     searchTerm: e.target.value,
                     endPoint: "",
                     offSet: 0,
@@ -536,7 +546,8 @@ const AppContextProvider = props => {
                 searchSaveModalOpen,
                 setSearchSaveModalOpen,
                 searchSavedState,
-                setSearchSavedState
+                setSearchSavedState,
+                sessionId
             }}
         >
             {props.children}
