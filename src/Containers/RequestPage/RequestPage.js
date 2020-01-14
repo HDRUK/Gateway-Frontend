@@ -136,8 +136,8 @@ const RequestPage = props => {
                 saveAccessRequest();
                 setRedirect(true);
                 resetForm();
-            } else if (response.data.msg === "fail") {
-                alert("Oops, something went wrong. Try again");
+            } else {
+                alert("Something went wrong. Try again ", response.data.msg);
             }
         });
     };
