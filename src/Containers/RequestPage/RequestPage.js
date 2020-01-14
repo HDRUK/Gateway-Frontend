@@ -137,7 +137,7 @@ const RequestPage = props => {
                 setRedirect(true);
                 resetForm();
             } else {
-                alert("Something went wrong. Try again ", response.data.msg);
+                alert(`Something went wrong. Try again  ${response.data.msg}`);
             }
         });
     };
