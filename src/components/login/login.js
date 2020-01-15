@@ -47,7 +47,12 @@ const Login = () => {
                     </LinkNoDecoration>
                     <SmallSpace />
                     {appContext.authenticated ? (
-                        <LinkText href="/logout">
+                        <LinkText
+                            href="/logout"
+                            onClick={() => {
+                                window.open("https://login.openathens.net/signout");
+                            }}
+                        >
                             <StyledButton center="true" kind="primary">
                                 {textItems.logoutButton}
                             </StyledButton>

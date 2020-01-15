@@ -41,7 +41,12 @@ const AppHeader = () => {
 
                     <HeaderAlignmentItem right>
                         {appContext.authenticated ? (
-                            <HeaderLink href="/logout">
+                            <HeaderLink
+                                href="/logout"
+                                onClick={() => {
+                                    window.open("https://login.openathens.net/signout");
+                                }}
+                            >
                                 <InvertedHeaderText>{headerText.logout}</InvertedHeaderText>
                             </HeaderLink>
                         ) : (
