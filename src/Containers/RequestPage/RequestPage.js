@@ -9,7 +9,8 @@ import {
     ThreeColumnForm,
     OneThirdFormWidth,
     TwoThirdFormWidth,
-    HalfFormWidth
+    HalfFormWidth,
+    StyledSmallText
 } from "../../styles/styles";
 import { LoadingButton, LoadingWheel } from "./styles.js";
 import {
@@ -20,7 +21,8 @@ import {
     StyledTextArea,
     CenterLoading,
     DateSelector,
-    DateInput
+    DateInput,
+    StyledModal
 } from "../../styles/carbonComponents";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -50,7 +52,10 @@ const textItems = {
         "Please provide a link(s) to relevant sources that showcase evidence of the ethical and legally compliant processing of data by your organisation.",
     contact: "Contact Number",
     button: "Submit Enquiry",
-    infoEnd: "By submitting an enquiry you agree to Health Data Research UK’s Innovation Gateway terms and conditions."
+    infoEnd: "By submitting an enquiry you agree to Health Data Research UK’s Innovation Gateway terms and conditions.",
+    modalHeading: "Enquiry sent",
+    modalContent: "How to prepare for requesting a dataset:",
+    modalLink: "https://healthdatagateway.org/guidelines"
 };
 
 const RequestPage = props => {
@@ -61,6 +66,7 @@ const RequestPage = props => {
     const [requirementsInvalid, setRequirementsInvalid] = useState(false);
 
     const [redirect, setRedirect] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const [requestLoading, setRequestLoading] = useState(false);
 
@@ -134,8 +140,7 @@ const RequestPage = props => {
             setRequestLoading(false);
             if (response.data.msg === "success") {
                 saveAccessRequest();
-                setRedirect(true);
-                resetForm();
+                setModalOpen(true);
             } else {
                 alert(`Something went wrong. Try again  ${response.data.msg}`);
             }
@@ -302,6 +307,24 @@ const RequestPage = props => {
                 <SmallSpace />
             </StyledForm>
             <SmallSpace />
+
+            <StyledModal
+                id="email-success-modal"
+                open={modalOpen}
+                passiveModal={true}
+                onRequestClose={() => {
+                    setModalOpen(false);
+                    setRedirect(true);
+                    resetForm();
+                }}
+                modalHeading={textItems.modalTitle}
+            >
+                <StyledHeading>{textItems.modalHeading}</StyledHeading>
+                <StyledSmallText>{textItems.modalContent}</StyledSmallText>
+                <StyledSmallText>
+                    <a href="/guidelines">{textItems.modalLink}</a>
+                </StyledSmallText>
+            </StyledModal>
         </div>
     );
 };
