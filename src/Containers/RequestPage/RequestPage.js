@@ -129,21 +129,20 @@ const RequestPage = props => {
                 <p> {`Research purpose: ${formInput.aim}`}</p>
                 <p> {`Linked datasets: ${formInput.datasets || "No linked datasets"}`}</p>
                 <p> {`Data field requirements: ${formInput.requirements || "Requirements unknown"}`}</p>
+                {formInput.fromEmail && <p>{`The person requesting the email is: ${formInput.fromEmail}`}</p>}
                 {formInput.startDate && <p>{`Proposed project start date: ${formInput.startDate}`}</p>}
                 {formInput.ico && <p>{`ICO registration: ${formInput.ico}`}</p>}
                 {formInput.benefits && <p>{`Research benefits: ${formInput.benefits}`}</p>}
                 {formInput.evidence && <p>{`Ethical processing evidence: ${formInput.evidence}`}</p>}
                 {formInput.number && <p>{`Contact number: ${formInput.number}`}</p>}
-                {formInput.fromEmail && <p>{`Email Address: ${formInput.fromEmail}`}</p>}
             </div>
         );
-
         axios({
             method: "POST",
             url: "/send",
             data: {
                 // sender: appContext.userEmail,
-                sender: formInput.fromEmai,
+                sender: formInput.fromEmail,
                 recipient: detailData.contactPoint,
                 // recipient: "",
                 title: detailData.title,
