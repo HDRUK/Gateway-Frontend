@@ -63,6 +63,7 @@ const RequestPage = props => {
     const appContext = useContext(AppContext);
     const [datasetRequired, setDatasetRequired] = useState(true);
     const [aimInvalid, setAimInvalid] = useState(false);
+    const [fromEmailValid, setFromEmailValid] = useState(false);
     const [datasetInvalid, setDatasetInvalid] = useState(false);
     const [requirementsInvalid, setRequirementsInvalid] = useState(false);
 
@@ -82,7 +83,15 @@ const RequestPage = props => {
     } else if (appContext.detailData.status === "error") {
         return <div>Unable to load</div>;
     }
+    const ValidateEmail = mail => {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+            // setFromEmailValid(true);
+            return true;
+        }
+        // setFromEmailValid(false);
 
+        return false;
+    };
     const resetForm = () => {
         setFormInput({});
     };
@@ -170,9 +179,11 @@ const RequestPage = props => {
                         ? setRequirementsInvalid(true)
                         : setRequirementsInvalid(false);
                     ((datasetRequired && formInput.dataset) || !datasetRequired) &&
-                        ((requirementsRequired && formInput.requirements) || !requirementsRequired) &&
-                        formInput.aim &&
-                        handleSubmit();
+                    ((requirementsRequired && formInput.requirements) || !requirementsRequired) &&
+                    formInput.aim &&
+                    ValidateEmail(formInput.fromEmail)
+                        ? setFromEmailValid(true)
+                        : setFromEmailValid(false) && handleSubmit();
                 }}
             >
                 <StyledSmallBoldText>
@@ -307,9 +318,13 @@ const RequestPage = props => {
                     <StyledSmallBoldText>{textItems.fromEmail}</StyledSmallBoldText>
                     <StyledTextInput
                         id="fromEmail"
+                        invalid={!fromEmailValid}
                         labelText={false}
                         onChange={event => {
-                            setFormInput({ ...formInput, fromEmail: event.target.value });
+                            setFormInput({
+                                ...formInput,
+                                fromEmail: event.target.value
+                            });
                         }}
                         value={formInput.fromEmail || ""}
                     ></StyledTextInput>
