@@ -55,7 +55,8 @@ const textItems = {
     infoEnd: "By submitting an enquiry you agree to Health Data Research UK’s Innovation Gateway terms and conditions.",
     modalHeading: "Enquiry sent",
     modalContent: "How to prepare for requesting a dataset:",
-    modalLink: "https://healthdatagateway.org/guidelines"
+    modalLink: "https://healthdatagateway.org/guidelines",
+    fromEmail: "Email Address"
 };
 
 const RequestPage = props => {
@@ -103,7 +104,8 @@ const RequestPage = props => {
         benefits: formInput.benefits,
         evidence: formInput.evidence,
         number: formInput.number,
-        recipient: detailData.contactPoint
+        recipient: detailData.contactPoint,
+        fromEmal: formInput.fromEmail
     };
 
     const saveAccessRequest = () => {
@@ -123,6 +125,7 @@ const RequestPage = props => {
                 {formInput.benefits && <p>{`Research benefits: ${formInput.benefits}`}</p>}
                 {formInput.evidence && <p>{`Ethical processing evidence: ${formInput.evidence}`}</p>}
                 {formInput.number && <p>{`Contact number: ${formInput.number}`}</p>}
+                {formInput.fromEmail && <p>{`Email Address: ${formInput.fromEmail}`}</p>}
             </div>
         );
 
@@ -130,7 +133,8 @@ const RequestPage = props => {
             method: "POST",
             url: "/send",
             data: {
-                sender: appContext.userEmail,
+                // sender: appContext.userEmail,
+                sender: formInput.fromEmai,
                 recipient: detailData.contactPoint,
                 // recipient: "",
                 title: detailData.title,
@@ -296,6 +300,18 @@ const RequestPage = props => {
                             setFormInput({ ...formInput, number: event.target.value });
                         }}
                         value={formInput.number || ""}
+                    ></StyledTextInput>
+                </HalfFormWidth>
+                <TinySpace />
+                <HalfFormWidth>
+                    <StyledSmallBoldText>{textItems.fromEmail}</StyledSmallBoldText>
+                    <StyledTextInput
+                        id="fromEmail"
+                        labelText={false}
+                        onChange={event => {
+                            setFormInput({ ...formInput, fromEmail: event.target.value });
+                        }}
+                        value={formInput.fromEmail || ""}
                     ></StyledTextInput>
                 </HalfFormWidth>
                 <TinySpace />
