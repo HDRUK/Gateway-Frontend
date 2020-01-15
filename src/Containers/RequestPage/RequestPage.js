@@ -85,10 +85,10 @@ const RequestPage = props => {
     }
     const ValidateEmail = mail => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
-            // setFromEmailValid(true);
+            setFromEmailValid(true);
             return true;
         }
-        // setFromEmailValid(false);
+        setFromEmailValid(false);
 
         return false;
     };
@@ -179,11 +179,10 @@ const RequestPage = props => {
                         ? setRequirementsInvalid(true)
                         : setRequirementsInvalid(false);
                     ((datasetRequired && formInput.dataset) || !datasetRequired) &&
-                    ((requirementsRequired && formInput.requirements) || !requirementsRequired) &&
-                    formInput.aim &&
-                    ValidateEmail(formInput.fromEmail)
-                        ? setFromEmailValid(true)
-                        : setFromEmailValid(false) && handleSubmit();
+                        ((requirementsRequired && formInput.requirements) || !requirementsRequired) &&
+                        formInput.aim &&
+                        ValidateEmail(formInput.fromEmail) &&
+                        handleSubmit();
                 }}
             >
                 <StyledSmallBoldText>
@@ -325,6 +324,7 @@ const RequestPage = props => {
                                 ...formInput,
                                 fromEmail: event.target.value
                             });
+                            setFromEmailValid(true);
                         }}
                         value={formInput.fromEmail || ""}
                     ></StyledTextInput>
