@@ -39,7 +39,8 @@
         "format": "prettier --check 'src/*.js'",
         "storybook": "start-storybook -p 9009 -s public",
         "build-storybook": "build-storybook -s public",
-        "cypress:open": "cypress open"
+        "cypress:open": "cypress open",
+        "sonarQube": "sonar-scanner"
     },
     "eslintConfig": {
         "extends": "react-app"
@@ -75,6 +76,7 @@
         "cypress": "^3.6.1",
         "eslint-plugin-react": "^7.16.0",
         "prettier": "1.18.2",
-        "react-test-renderer": "^16.8.6"
+        "react-test-renderer": "^16.8.6",
+        "sonar-scanner": "^3.1.0"
     }
 }
