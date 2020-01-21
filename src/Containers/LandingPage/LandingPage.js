@@ -24,6 +24,24 @@ import {
 
 import { Search32, Send32, Locked32 } from "@carbon/icons-react";
 
+const imageItems = [
+    "partnerLogo1",
+    "partnerLogo2",
+    "partnerLogo3",
+    "partnerLogo4",
+    "partnerLogo5",
+    "partnerLogo6",
+    "partnerLogo7",
+    "partnerLogo8",
+    "partnerLogo9",
+    "partnerLogo10",
+    "partnerLogo11",
+    "partnerLogo12",
+    "partnerLogo13",
+    "partnerLogo14",
+    "partnerLogo15",
+    "partnerLogo16"
+];
 const textItems = {
     landingFirstParaHeading: "What is the Innovation Gateway?",
     landingFirstPara:
@@ -116,54 +134,11 @@ const LandingPage = () => {
             </CenterBlock>
             <SmallSpace />
             <ImageBlock>
-                <PartnerImage>
-                    <Image identifier="partnerLogo1" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo2" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo3" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo4" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo5" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo6" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo7" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo8" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo9" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo10" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo11" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo12" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo13" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo14" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo15" />
-                </PartnerImage>
-                <PartnerImage>
-                    <Image identifier="partnerLogo16" />
-                </PartnerImage>
+                {imageItems.map(logo => (
+                    <PartnerImage key={logo}>
+                        <Image identifier={logo}></Image>
+                    </PartnerImage>
+                ))}
             </ImageBlock>
             <CookieConsent
                 location="bottom"

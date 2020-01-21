@@ -232,3 +232,17 @@ export const GET_FILTER_VALUES = gql`
         }
     }
 `;
+
+export const GET_SEARCH_AUDIT_LOG = gql`
+    {
+        getSearchAuditLog {
+            __typename
+            created_on
+            last_updated
+            search_Detail
+            searchAudit_ID
+            search_user_ID
+            search_end_point
+        }
+    }
+`;

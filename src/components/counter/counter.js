@@ -1,20 +1,6 @@
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
-const GET_SEARCH_AUDIT_LOG = gql`
-    {
-        getSearchAuditLog {
-            __typename
-            created_on
-            last_updated
-            search_Detail
-            searchAudit_ID
-            search_user_ID
-            search_end_point
-        }
-    }
-`;
+import { GET_SEARCH_AUDIT_LOG } from "../../queries/queries.js";
 
 const Counter = () => {
     const { loading, error, data } = useQuery(GET_SEARCH_AUDIT_LOG);

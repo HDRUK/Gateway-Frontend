@@ -11,7 +11,7 @@ const headerText = {
     logout: "Logout"
 };
 
-const AppHeader = () => {
+const Header = () => {
     const appContext = useContext(AppContext);
     const useDatasetCount = appContext.useDatasetCount;
 
@@ -71,4 +71,4 @@ const AppHeader = () => {
     );
 };
 
-export default AppHeader;
+export default Header;

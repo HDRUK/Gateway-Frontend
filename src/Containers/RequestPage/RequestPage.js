@@ -154,7 +154,8 @@ const RequestPage = props => {
                 saveAccessRequest();
                 setModalOpen(true);
             } else {
-                alert(`Something went wrong. Try again  ${response.data.msg}`);
+                setModalOpen(false);
+                // alert(`Something went wrong. Try again  ${response.data.msg}`);
             }
         });
     };

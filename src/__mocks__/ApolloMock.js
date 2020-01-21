@@ -1,23 +1,47 @@
-import gql from "graphql-tag";
-
 import { CUSTOM_SEARCH } from "../queries/queries.js";
-import { GET_SEARCH_SAVED_BY_USER_ID } from "../queries/queries.js";
+import { GET_SEARCH_SAVED_BY_USER_ID, GET_SEARCH_AUDIT_LOG } from "../queries/queries.js";
 
-const GET_SEARCH_AUDIT_LOG = gql`
+const dataBlock = [
     {
-        getSearchAuditLog {
-            __typename
-            created_on
-            last_updated
-            search_Detail
-            searchAudit_ID
-            search_user_ID
-            search_end_point
+        id: "1",
+        detail: "test",
+        endPoint: "http://localhost:5001",
+        recordLimit: 10,
+        recordOffset: 0,
+        createdOn: "01 Nov 2019",
+        name: null,
+        filters: [
+            {
+                type: "Geography",
+                value: "England"
+            }
+        ],
+        sort: {
+            applied: "Alphabetical",
+            value: "ASC"
+        }
+    },
+    {
+        id: "2",
+        detail: "test2",
+        endPoint: "http://localhost:5001",
+        recordLimit: 10,
+        recordOffset: 0,
+        createdOn: "02 Nov 2019",
+        name: "Test 2",
+        filters: [
+            {
+                type: "Geography",
+                value: "Scotland"
+            }
+        ],
+        sort: {
+            applied: "Alphabetical",
+            value: "Down"
         }
     }
-`;
-
-const mocks = [
+];
+const ApolloMock = [
     {
         request: { query: GET_SEARCH_AUDIT_LOG },
         result: {
@@ -70,46 +94,7 @@ const mocks = [
                 getSearchSavedByUserID: {
                     status: "200",
                     message: "Search saved data",
-                    data: [
-                        {
-                            id: "1",
-                            detail: "test",
-                            endPoint: "http://localhost:5001",
-                            recordLimit: 10,
-                            recordOffset: 0,
-                            createdOn: "01 Nov 2019",
-                            name: null,
-                            filters: [
-                                {
-                                    type: "Geography",
-                                    value: "England"
-                                }
-                            ],
-                            sort: {
-                                applied: "Alphabetical",
-                                value: "ASC"
-                            }
-                        },
-                        {
-                            id: "2",
-                            detail: "test2",
-                            endPoint: "http://localhost:5001",
-                            recordLimit: 10,
-                            recordOffset: 0,
-                            createdOn: "02 Nov 2019",
-                            name: "Test 2",
-                            filters: [
-                                {
-                                    type: "Geography",
-                                    value: "Scotland"
-                                }
-                            ],
-                            sort: {
-                                applied: "Alphabetical",
-                                value: "Down"
-                            }
-                        }
-                    ]
+                    data: dataBlock
                 }
             }
         }
@@ -124,50 +109,11 @@ const mocks = [
                 getSearchSavedByUserID: {
                     status: "200",
                     message: "Search saved data",
-                    data: [
-                        {
-                            id: "1",
-                            detail: "test",
-                            endPoint: "http://localhost:5001",
-                            recordLimit: 10,
-                            recordOffset: 0,
-                            createdOn: "01 Nov 2019",
-                            name: null,
-                            filters: [
-                                {
-                                    type: "Geography",
-                                    value: "England"
-                                }
-                            ],
-                            sort: {
-                                applied: "Alphabetical",
-                                value: "ASC"
-                            }
-                        },
-                        {
-                            id: "2",
-                            detail: "test2",
-                            endPoint: "http://localhost:5001",
-                            recordLimit: 10,
-                            recordOffset: 0,
-                            createdOn: "02 Nov 2019",
-                            name: "Test 2",
-                            filters: [
-                                {
-                                    type: "Geography",
-                                    value: "Scotland"
-                                }
-                            ],
-                            sort: {
-                                applied: "Alphabetical",
-                                value: "Down"
-                            }
-                        }
-                    ]
+                    data: dataBlock
                 }
             }
         }
     }
 ];
 
-export default mocks;
+export default ApolloMock;

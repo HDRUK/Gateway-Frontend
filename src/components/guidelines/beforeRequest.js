@@ -43,7 +43,7 @@ const textItems = {
     para3Text: "MRC website.",
     para3Link: "http://www.mrc.ac.uk/documents/pdf/obtaining-hscic-data-guidance-v020616/"
 };
-const GuidelinesBeforeRequest = () => {
+const BeforeRequest = () => {
     return (
         <DarkText>
             <ParagraphText>{textItems.para1a}</ParagraphText>
@@ -98,4 +98,4 @@ const GuidelinesBeforeRequest = () => {
     );
 };
 
-export default GuidelinesBeforeRequest;
+export default BeforeRequest;

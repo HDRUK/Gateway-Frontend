@@ -2,7 +2,7 @@ import React from "react";
 import { SideNavLinksList, SideNavLinkItem } from "./styles.js";
 import { GhostNavigationButton } from "../../styles/carbonComponents.js";
 
-const AboutPageNavigation = () => (
+const SideNavLinks = () => (
     <SideNavLinksList>
         <li>
             <SideNavLinkItem to="innovation">
@@ -27,4 +27,4 @@ const AboutPageNavigation = () => (
     </SideNavLinksList>
 );
 
-export default AboutPageNavigation;
+export default SideNavLinks;

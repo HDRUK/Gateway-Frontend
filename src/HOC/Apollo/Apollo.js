@@ -36,10 +36,10 @@ const client = new ApolloClient({
     cache: new InMemoryCache()
 });
 
-const ApolloApp = props => <ApolloProvider client={client}>{props.children}</ApolloProvider>;
+const Apollo = props => <ApolloProvider client={client}>{props.children}</ApolloProvider>;
 
-ApolloApp.propTypes = {
+Apollo.propTypes = {
     children: PropTypes.node
 };
 
-export default ApolloApp;
+export default Apollo;

@@ -48,8 +48,6 @@ const context = {
         previous: "title"
     },
 
-    filterString: "",
-    prevFilterString: "",
     filterObject: {},
 
     images: {
@@ -103,7 +101,6 @@ const context = {
     setPrevFilterString: jest.fn(),
     applyFilter: jest.fn(),
     checkFilters: jest.fn(),
-    removeFilter: jest.fn(),
     setSelectedSort: jest.fn(),
     setSearchSaveModalOpen: jest.fn(),
     setSearchSaved: jest.fn(),
