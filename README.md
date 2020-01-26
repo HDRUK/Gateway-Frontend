@@ -1,24 +1,7 @@
-# HDR GATEWAY
+[![LICENCE](https://img.shields.io/github/license/HDRUK/Gateway-Frontend)](https://github.com/HDRUK/Gateway-Frontend/blob/master/LICENSE)
+[![Support](https://img.shields.io/badge/Supported%20By-HDR%20UK-blue)](https://hdruk.ac.uk)
 
-## React web front end application
-
-## Licence
-
-Apache 2
-
-## Author(s)
-
-[IBM UK](https://www.ibm.com/uk-en)  
-[Health Data Research UK](https://www.hdruk.ac.uk/)  
-[University of Oxford, Department of Computer Science](http://www.cs.ox.ac.uk/)  
-[Parity](https://www.parity.net/)  
-[METADATAWORKS](https://metadataworks.co.uk/)  
-​
-
-## Contributors
-
-To be added
-​
+# HDR UK GATEWAY - Frontend (ReactJS)
 
 ## Relevant Repositories
 
@@ -26,7 +9,6 @@ React Front End Application [Repository](https://github.com/HDRUK/Gateway-Fronte
 Node Web and Authentication Server [Repository](https://github.com/HDRUK/Gateway-Auth-Server)  
 Node Graphql Data Handler [Repository](https://github.com/HDRUK/Gateway-Middleware)  
 Postgres Database Creation and update [Repository](https://github.com/HDRUK/Gateway-DB)  
-​
 
 ## Overview
 
